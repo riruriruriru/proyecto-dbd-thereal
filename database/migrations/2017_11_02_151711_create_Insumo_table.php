@@ -14,7 +14,9 @@ class CreateInsumoTable extends Migration
     public function up()
     {
         Schema::create('Insumo', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_insumo');
+            $table->interger('id_acopio_insumo')->foreign('id_acopio_isumo')->references('id_acopio')->on('CentroDeAcopio');
+            $table->interger('id_tipo_insumo_insumo')->foreign('id_tipo_insumo_insumo')->references('id_tipo_insumo')->on('TipoInsumo');
             $table->timestamps();
         });
     }
