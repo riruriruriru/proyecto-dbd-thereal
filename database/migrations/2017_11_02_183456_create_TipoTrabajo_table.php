@@ -14,8 +14,8 @@ class CreateTipoTrabajoTable extends Migration
     public function up()
     {
         Schema::create('TipoTrabajo', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('id_tipo_trabajo');
+            $table->text('descripcion');
         });
     }
 

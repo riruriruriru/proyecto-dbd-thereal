@@ -14,8 +14,9 @@ class CreateTipoInsumoTable extends Migration
     public function up()
     {
         Schema::create('TipoInsumo', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('id_tipo_insumo');
+            $table->string('nombre_insumo', 40);
+            $table->text('descripcion');
         });
     }
 

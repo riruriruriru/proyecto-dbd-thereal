@@ -17,7 +17,6 @@ class CreateTipoBeneficenciaTable extends Migration
             $table->increments('id_tipo_beneficiencia');
             $table->string('nombre_tipo', 40);
             $table->text('descripcion');
-            $table->timestamps();
         });
     }
 
