@@ -15,7 +15,7 @@ class CreateDonantesTable extends Migration
     {
         Schema::create('Donantes', function (Blueprint $table) {
             $table->increments('id_donante');
-            $table->int('id_donacion_donante');
+            $table->integer('id_donacion_donante');
             $table->foreign('id_donacion_donante')->references('id_donacion')->on('Donacion');
             $table->string('email_donante');
             $table->foreign('email_donante')->references('email')->on('Usuario');

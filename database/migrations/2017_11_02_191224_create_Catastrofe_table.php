@@ -17,7 +17,7 @@ class CreateCatastrofeTable extends Migration
             $table->increments('id_catastrofe')->unique();
             $table->timestamps();
             $table->integer('tipo_catastrofe');
-            $table->foreign('tipo_catastrofe')->references('id_tipo')->on('TipoCatastrofe');
+            $table->foreign('tipo_catastrofe')->references('id_tipo_catastrofe')->on('TipoCatastrofe');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
         });

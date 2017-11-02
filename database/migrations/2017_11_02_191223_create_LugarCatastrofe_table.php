@@ -14,7 +14,7 @@ class CreateLugarCatastrofeTable extends Migration
     public function up()
     {
         Schema::create('LugarCatastrofe', function (Blueprint $table) {
-            $table->increments('id_lugar_catastrofe');
+            $table->increments('id_lugarCatastrofe');
             $table->integer('id_catastrofe_lugarcatastrofe')->foreign('id_catastrofe_lugarcatastrofe')->references('id_catastrofe')->on('Catastrofe');
             $table->integer('id_lugar_catastrofe')->foreign('id_lugar_catastrofe')->references('id_lugar')->on('Lugar');
         });

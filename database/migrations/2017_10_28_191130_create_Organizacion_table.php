@@ -15,7 +15,7 @@ class CreateOrganizacionTable extends Migration
     {
         Schema::create('Organizacion', function (Blueprint $table) {
             $table->increments('id_organizacion')->unique();
-            $table->integer('id_tipo_beneficencia_organizacion')->foreign('id_tipo_beneficencia_organizacion')->references('id_tipo_beneficencia')->on('TipoBeneficiencia')
+            $table->integer('id_tipo_beneficencia_organizacion')->foreign('id_tipo_beneficencia_organizacion')->references('id_tipo_beneficencia')->on('TipoBeneficiencia');
             $table->string('tipo_beneficiencia',40);
 
         });

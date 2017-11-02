@@ -17,7 +17,7 @@ class CreateHistorialCatastrofeTable extends Migration
             $table->increments('id_historial');
             $table->integer('cantidad_catastrofe');
             $table->integer('cantidad_voluntarios');
-            $table->integer('total_recaudado'):
+            $table->integer('total_recaudado');
             $table->integer('total_medidas');
             $table->integer('numero_donaciones');
             $table->integer('numero_organizaciones');

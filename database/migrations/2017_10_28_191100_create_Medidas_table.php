@@ -17,7 +17,7 @@ class CreateMedidasTable extends Migration
             $table->increments('id_medidas')->unique();
             $table->integer('id_catastrofe_medidas')->foreign('id_catastrofe_medidas')->references('id_catastrofe')->on('Catastrofe');
             $table->integer('id_organizacion_medidas')->foreign('id_organizacion_medidas')->references('id_organizacion')->on('Organizacion');
-            $table->string('email')->foreing('email')->references('email')->on('Usuario');
+            $table->string('email')->foreign('email')->references('email')->on('Usuario');
 
             $table->date('fecha_inicio_medida');
             $table->date('fecha_termino_medida');
