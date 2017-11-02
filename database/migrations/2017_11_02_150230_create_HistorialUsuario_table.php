@@ -14,8 +14,11 @@ class CreateHistorialUsuarioTable extends Migration
     public function up()
     {
         Schema::create('HistorialUsuario', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('id_historial_usuarios');
+            $table->integer('total_medidas');
+            $table->integer('total_donaciones');
+            $table->integer('numero_participaciones');
+            
         });
     }
 

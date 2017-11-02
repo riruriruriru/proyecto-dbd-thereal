@@ -14,8 +14,13 @@ class CreateHistorialMedidasTable extends Migration
     public function up()
     {
         Schema::create('HistorialMedidas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('id_historial');
+            $table->string('top_medida'),40;
+            $table->integer('total_recaudado');
+            $table->string('top_donante'),40;
+            $table->string('top_actividad'),40;
+            $table->integer('numero_voluntario');
+          
         });
     }
 

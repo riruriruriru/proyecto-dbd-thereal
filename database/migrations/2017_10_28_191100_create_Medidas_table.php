@@ -17,12 +17,13 @@ class CreateMedidasTable extends Migration
             $table->increments('id_medidas')->unique();
             $table->integer('id_catastrofe_medidas')->foreign('id_catastrofe_medidas')->references('id_catastrofe')->on('Catastrofe');
             $table->integer('id_organizacion_medidas')->foreign('id_organizacion_medidas')->references('id_organizacion')->on('Organizacion');
-            $table->string('email');
+            $table->string('email')->foreing('email')->references('email')->on('Usuario');
+
             $table->date('fecha_inicio_medida');
             $table->date('fecha_termino_medida');
             $table->boolean('publico');
-            $table->increment('id_comentario_medida');
-            $table->foreign('id_comentario_medida')->references('id_comentario')->on('comentario');
+            $table->integer('id_historial')->foreign('id_historial')->references('id_historial')->on('HistorialCatastrofe');
+
             $table->timestamps();
         });
     }
