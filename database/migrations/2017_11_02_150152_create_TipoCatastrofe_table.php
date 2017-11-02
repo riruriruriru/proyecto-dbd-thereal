@@ -14,7 +14,7 @@ class CreateTipoCatastrofeTable extends Migration
     public function up()
     {
         Schema::create('TipoCatastrofe', function (Blueprint $table) {
-            $table->increment('id_tipo_catastrofe')->primary();
+            $table->increments('id_tipo_catastrofe');
             $table->string('nombre_catastrofe', 40);
             $table->text('descripcion_catastrofe');
         });

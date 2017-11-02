@@ -21,8 +21,8 @@ class CreateHistorialCatastrofeTable extends Migration
             $table->integer('total_medidas');
             $table->integer('numero_donaciones');
             $table->integer('numero_organizaciones');
-            $table->string('tipo_catastrofe_recurrente'),40;
-            $table->string('lugar_mas_afectado'),40;
+            $table->string('tipo_catastrofe_recurrente',40);
+            $table->string('lugar_mas_afectado',40);
         });
     }
 

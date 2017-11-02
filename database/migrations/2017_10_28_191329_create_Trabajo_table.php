@@ -15,7 +15,7 @@ class CreateTrabajoTable extends Migration
     {
         Schema::create('Trabajo', function (Blueprint $table) {
             $table->increments('id_trabajo')->unique();
-            $table->interger('id_tipo_trabajo_trabajo')->foreign('id_tipo_trabajo_trabajo')->references('id_tipo_trabajo')->on('TipoTrabajo');
+            $table->integer('id_tipo_trabajo_trabajo')->foreign('id_tipo_trabajo_trabajo')->references('id_tipo_trabajo')->on('TipoTrabajo');
             $table->integer('id_rnv_trabajo')->foreign('id_rnv_trabajo')->references('id_rnv')->on('RNV');
             $table->string('tipo_trabajo',30);
         });

@@ -19,7 +19,7 @@ class CreateHistorialMedidasTable extends Migration
             $table->integer('total_recaudado');
             $table->string('top_donante'),40;
             $table->string('top_actividad'),40;
-            $table->integer('numero_voluntario');
+            $table->integer('numero_voluntarios');
           
         });
     }
