@@ -15,8 +15,7 @@ class CreateComunaTable extends Migration
     {
         Schema::create('Comuna', function (Blueprint $table) {
             $table->increments('id_comuna')->unique();
-            $table->integer('id_lugar_comuna')->foreign('id_lugar_comuna')->references('id_lugar')->on('Lugar');
-            $table->string('nombre_comuna');
+            $table->string('nombre_comuna', 20);
         });
     }
 

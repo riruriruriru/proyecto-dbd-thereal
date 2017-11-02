@@ -19,6 +19,7 @@ class CreateEventoTable extends Migration
             $table->date('fecha_inicio_evento');
             $table->date('fecha_termino_evento');
             $table->integer('cantidad_voluntarios');
+            $table->integer('monto_recaudado');
             $table->integer('id_medidas_evento')->foreign('id_medidas_evento')->references('id_medidas')->on('Medidas');
         });
     }
