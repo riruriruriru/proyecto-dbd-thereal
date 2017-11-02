@@ -17,7 +17,6 @@ class CreateVoluntariadoTable extends Migration
             $table->increments('id_voluntariado')->unique();
             $table->integer('id_medidas_voluntariado')->foreign('id_medidas_voluntariado')->references('id_medidas')->on('Medidas');
             $table->integer('voluntarios_objetivo');
-            $table->integer('voluntarios_actual');
             $table->date('fecha_voluntariado');
         });
     }
