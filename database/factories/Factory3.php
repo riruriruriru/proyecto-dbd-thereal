@@ -20,7 +20,7 @@ $factory->define(App\Region::class, function (Faker $faker) {
 
 
     return [
-        'nombre_regiom' => $faker->state,
+        'nombre_region' => $faker->state,
     ];
 }
 );
@@ -79,10 +79,10 @@ $factory->define(App\HistorialUsuario::class, function (Faker $faker) {
 $factory->define(App\HistorialMedidas::class, function (Faker $faker) {
 
     return [
-			'top_medida' => rand_string(10),
+			'top_medida' => str_random(10),
             'total_recaudado' => rand(1, 50),
             'top_donante' => $faker->name,
-            'top_actividad' => rand_string(10),
+            'top_actividad' => str_random(10),
             'numero_voluntarios' => rand(1,50),
             ];
 }
