@@ -21,13 +21,20 @@ class DatabaseSeeder extends Seeder
         //$this->call('TipoCatastrofeTableSeeder');
         //$this->call('TipoInsumoTableSeeder');
         //$this->call('TipoTrabajoTableSeeder');
+        DB::table('TipoActividad')->delete();
+        DB::table('TipoBeneficencia')->delete();
+        DB::table('TipoCatastrofe')->delete();
+        DB::table('TipoInsumo')->delete();
+        DB::table('TipoTrabajo')->delete();
+        DB::table('Usuario')->delete();
+        DB::table('TipoUsuario')->delete();
         factory('App\TipoActividad')->create();
         factory('App\TipoBeneficencia', 5)->create();
         factory('App\TipoCatastrofe')->create();
         factory('App\TipoInsumo', 5)->create();
         factory('App\TipoTrabajo', 5)->create();
-        
-        $post = factory('App\Usuario', 5)->create();
+        factory('App\TipoUsuario')->create();
+        factory('App\Usuario', 5)->create();
         $this->command->info('Factoria 1 seeded!');
     }
 }

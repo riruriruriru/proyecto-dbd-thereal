@@ -36,7 +36,7 @@ $factory->define(App\Usuario::class, function (Faker $faker) {
         'nombre_usuario' => $faker->name,
         'apellido_usuario' => $faker->name,
         'telefono_usuario' => $faker->phoneNumber,
-        'password' => str_random(20),
+        'password' => str_random(5),
     ];
 }
 );
