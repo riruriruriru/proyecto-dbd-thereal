@@ -27,8 +27,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
 $factory->define(App\Usuario::class, function (Faker $faker) {
-		$id_user = \DB::table('TipoUsuario')->select('id_tipo_usuario')->get();
-		$id_user2 = $id_user->random()->id;
+		$id_user = \DB::table('TipoUsuario')->select('id_tipo')->get();
+		$id_user2 = $id_user->random()->id_tipo;
     return [
 
         'email' => $faker->unique()->safeEmail,
@@ -36,7 +36,7 @@ $factory->define(App\Usuario::class, function (Faker $faker) {
         'nombre_usuario' => $faker->name,
         'apellido_usuario' => $faker->name,
         'telefono_usuario' => $faker->phoneNumber,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => str_random(20),
     ];
 }
 );

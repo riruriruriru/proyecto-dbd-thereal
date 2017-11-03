@@ -8,7 +8,7 @@ class TipoBeneficencia extends Model
 {
     //
      protected $fillable = [];
-    protected $table = 'TipoBeneficiencia';
+    protected $table = 'TipoBeneficencia';
     public $timestamps = false;
-    protected $primaryKey = 'id_tipo_beneficiencia';
+    protected $primaryKey = 'id_tipo_beneficencia';
 }

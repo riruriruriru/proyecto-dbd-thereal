@@ -14,7 +14,7 @@ class CreateTipoBeneficenciaTable extends Migration
     public function up()
     {
         Schema::create('TipoBeneficencia', function (Blueprint $table) {
-            $table->increments('id_tipo_beneficiencia');
+            $table->increments('id_tipo_beneficencia');
             $table->string('nombre_tipo', 40);
             $table->text('descripcion');
         });

@@ -14,13 +14,13 @@ class CreateUsuarioTable extends Migration
     public function up()
     {
         Schema::create('Usuario', function (Blueprint $table) {
-            $table->string('email', 40)->unique()->primary();
+            $table->string('email', 40)->primary();
             $table->integer('id_tipo_usuario');
             $table->foreign('id_tipo_usuario')->references('id_tipo')->on('TipoUsuario');
-            $table->string('nombre_usuario',20);
-            $table->string('apellido_usuario',20);
-            $table->string('telefono_usuario',20);
-            $table->string('password',20)->nullable($value=false);
+            $table->string('nombre_usuario',40);
+            $table->string('apellido_usuario',40);
+            $table->string('telefono_usuario',40);
+            $table->string('password',40);
         });
     }
 
