@@ -8,13 +8,14 @@ $factory->define(App\Ciudad::class, function (Faker $faker) {
         'nombre_ciudad' => $faker->state,
     ];
 }
+);
 $factory->define(App\Comuna::class, function (Faker $faker) {
 
     return [
         'nombre_comuna' => $faker->city,
     ];
 }
-
+);
 $factory->define(App\Region::class, function (Faker $faker) {
 
 
@@ -22,7 +23,7 @@ $factory->define(App\Region::class, function (Faker $faker) {
         'nombre_regiom' => $faker->state,
     ];
 }
-
+);
 $factory->define(App\Lugar::class, function (Faker $faker) {
 	$id_ciudad1 =  \DB::table('Ciudad')->select('id_ciudad')->get();
 	$id_ciudad2 = $id_ciudad1->random()->id;
@@ -39,7 +40,7 @@ $factory->define(App\Lugar::class, function (Faker $faker) {
         'id_region' => $id_region2,
     ];
 }
-
+);
 $factory->define(App\LugarCatastrofe::class, function (Faker $faker) {
 	$id_catastrofe_lugar1 = \DB::table('Lugar')->select('id_lugar')->get();
 	$id_catastrofe_lugar2 = $id_catastrofe_lugar1->random()->id;
@@ -51,7 +52,7 @@ $factory->define(App\LugarCatastrofe::class, function (Faker $faker) {
         'id_lugar_catastrofe' => $id_lugarcatastrofe2,
     ];
 }
-
+);
 $factory->define(App\HistorialCatastrofe::class, function (Faker $faker) {
 
     return [
@@ -63,17 +64,18 @@ $factory->define(App\HistorialCatastrofe::class, function (Faker $faker) {
             'numero_organizaciones' => rand(1,50),
             'tipo_catastrofe_recurrente' => str_random(10),
             'lugar_mas_afectado' => $faker->city,
+            ];
 }
-
+);
 $factory->define(App\HistorialUsuario::class, function (Faker $faker) {
 
     return [
 			'total_medidas' => rand(1,50),
             'total_donaciones' => rand(1, 50),
             'numero_participaciones' => rand(1,50),
-            
+ 			];           
 }
-
+);
 $factory->define(App\HistorialMedidas::class, function (Faker $faker) {
 
     return [
@@ -82,21 +84,21 @@ $factory->define(App\HistorialMedidas::class, function (Faker $faker) {
             'top_donante' => $faker->name,
             'top_actividad' => rand_string(10),
             'numero_voluntarios' => rand(1,50),
-            
+            ];
 }
-
+);
 $factory->define(App\HistoricalUser::class, function (Faker $faker) {
 	$id_historial_usuario = \DB::table('HistorialUsuario')->select('id_historial_usuario')->get();
 	$id_historial_usuario2 = $id_historial_usuario->random()->id;
 	$email1 = \DB::table('Usuario')->select('email')->get();
 	$email2 = $email1->random()->id;
     return [
-    		$table->increments('id_historical');
-            $table->integer('id_historial_usuario');
-            $table->string('email',40);
-            $table->foreign('email')->references('email')->on('Usuario');
-            $table->foreign('id_historial_usuario')->references('id_historial_usuario')->on('HistorialUsuario');
-            
+    		$table->increments('id_historical'),
+            $table->integer('id_historial_usuario'),
+            $table->string('email',40),
+            $table->foreign('email')->references('email')->on('Usuario'),
+            $table->foreign('id_historial_usuario')->references('id_historial_usuario')->on('HistorialUsuario'),
+            ];
 }
 
 

@@ -8,6 +8,7 @@ $factory->define(Model::class, function (Faker $faker) {
 
     ];
 }
+);
 $factory->define(App\TipoUsuario::class, function (Faker $faker) {
 
     return [
@@ -16,6 +17,7 @@ $factory->define(App\TipoUsuario::class, function (Faker $faker) {
         'nombre_tipo' => $faker->name,
     ];
 }
+);
 $factory->define(App\TipoUsuario::class, function (Faker $faker) {
 
  
@@ -25,19 +27,21 @@ $factory->define(App\TipoUsuario::class, function (Faker $faker) {
         'nombre_tipo' => $faker->name,
     ];
 }
+);
 $factory->define(App\TipoTrabajo::class, function (Faker $faker) {
 
     return [
         'descripcion' => str_random(10),
     ];
 }
-
+);
 $factory->define(App\TipoActividad::class, function (Faker $faker) {
 
     return [
         'descripcion' => str_random(10),
     ];
 }
+);
 $factory->define(App\TipoBeneficencia::class, function (Faker $faker) {
 
     return [
@@ -45,7 +49,7 @@ $factory->define(App\TipoBeneficencia::class, function (Faker $faker) {
         'nombre_tipo' => $faker->str_random(40),
     ];
 }
-
+);
 $factory->define(App\TipoInsumo::class, function (Faker $faker) {
 
     return [
@@ -53,7 +57,7 @@ $factory->define(App\TipoInsumo::class, function (Faker $faker) {
         'nombre_insumo' => str_random(40),
     ];
 }
-
+);
 $factory->define(App\TipoCatastrofe::class, function (Faker $faker) {
 
     return [

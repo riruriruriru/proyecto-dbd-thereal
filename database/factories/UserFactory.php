@@ -24,7 +24,10 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\Usuario::class, function (Faker $faker) {
 		$id_user = \DB::table('TipoUsuario')->select('id_tipo_usuario')->get();
@@ -40,7 +43,10 @@ $factory->define(App\Usuario::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\Medidas::class, function (Faker $faker) {
 	$id_cat = \DB::table('Catastrofe')->select('id_catastrofe')->get();
@@ -61,7 +67,10 @@ $factory->define(App\Medidas::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\Organizacion::class, function (Faker $faker) {
 	$id_tipobene = \DB::table('TipoBeneficiencia')->select('id_tipo_beneficencia')->get();
@@ -74,7 +83,10 @@ $factory->define(App\Organizacion::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\Insumo::class, function (Faker $faker) {
 	$id_acopio_insumo = \DB::table('CentroDeAcopio')->select('id_acopio')->get();
@@ -89,7 +101,10 @@ $factory->define(App\Insumo::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\RNV::class, function (Faker $faker) {
 	$emailR = \DB::table('Usuario')->select('email')->get();
@@ -102,7 +117,10 @@ $factory->define(App\RNV::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\CentroDeAcopio::class, function (Faker $faker) {
 	$id_medacop = \DB::table('Medidas')->select('id_medidas')->get();
@@ -119,7 +137,10 @@ $factory->define(App\CentroDeAcopio::class, function (Faker $faker) {
     ];
 }
 );
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 $factory->define(App\Trabajo::class, function (Faker $faker) {
 	$id_tipotrabtrab = \DB::table('TipoTrabajo')->select('id_tipo_trabajo')->get();
