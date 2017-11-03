@@ -16,7 +16,7 @@ class CreateTipoUsuarioTable extends Migration
         Schema::create('TipoUsuario', function (Blueprint $table) {
             $table->integer('id_tipo')->primary();
             $table->text('descripcion');
-            $table->string('nombre_tipo',40);
+            $table->string('nombre_tipo',50);
         });
     }
 

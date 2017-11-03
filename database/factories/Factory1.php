@@ -12,7 +12,7 @@ $factory->define(Model::class, function (Faker $faker) {
 $factory->define(App\TipoUsuario::class, function (Faker $faker) {
 
     return [
-        'id_tipo' => rand(1,10000),
+        'id_tipo' => rand(1,999),
         'descripcion' => str_random(10),
         'nombre_tipo' => $faker->name,
     ];
