@@ -74,5 +74,30 @@ $factory->define(App\HistorialUsuario::class, function (Faker $faker) {
             
 }
 
+$factory->define(App\HistorialMedidas::class, function (Faker $faker) {
+
+    return [
+			'top_medida' => rand_string(10),
+            'total_recaudado' => rand(1, 50),
+            'top_donante' => $faker->name,
+            'top_actividad' => rand_string(10),
+            'numero_voluntarios' => rand(1,50),
+            
+}
+
+$factory->define(App\HistoricalUser::class, function (Faker $faker) {
+	$id_historial_usuario = \DB::table('HistorialUsuario')->select('id_historial_usuario')->get();
+	$id_historial_usuario2 = $id_historial_usuario->random()->id;
+	$email1 = \DB::table('Usuario')->select('email')->get();
+	$email2 = $email1->random()->id;
+    return [
+    		$table->increments('id_historical');
+            $table->integer('id_historial_usuario');
+            $table->string('email',40);
+            $table->foreign('email')->references('email')->on('Usuario');
+            $table->foreign('id_historial_usuario')->references('id_historial_usuario')->on('HistorialUsuario');
+            
+}
+
 
 );
