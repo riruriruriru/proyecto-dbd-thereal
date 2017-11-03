@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
          //$this->call('Factory1');
          //$this->call(Factory1::class);
-        factory('App\Usuario', 50)->create();
+        $post = factory('App\TipoUsuario')->create();
         $this->command->info('Factoria 1 seeded!');
     }
 }
