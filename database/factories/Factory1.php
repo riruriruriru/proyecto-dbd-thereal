@@ -46,7 +46,7 @@ $factory->define(App\TipoBeneficencia::class, function (Faker $faker) {
 
     return [
         'descripcion' => $faker->text(),
-        'nombre_tipo' => $faker->str_random(40),
+        'nombre_tipo' => 'blabala',
     ];
 }
 );

@@ -13,7 +13,12 @@ class DatabaseSeeder extends Seeder
     {
          //$this->call('Factory1');
          //$this->call(Factory1::class);
-        $post = factory('App\TipoUsuario')->create();
+        //$post = factory('App\TipoUsuario')->create();
+        $this->call('TipoActividadTableSeeder');
+        $this->call('TipoBeneficienciaTableSeeder');
+        $this->call('TipoCatastrofeTableSeeder');
+        $this->call('TipoInsumoTableSeeder');
+        $this->call('TipoTrabajoTableSeeder');
         $this->command->info('Factoria 1 seeded!');
     }
 }
