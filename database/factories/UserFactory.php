@@ -23,6 +23,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 }
+);
 
 
 $factory->define(App\Usuario::class, function (Faker $faker) {
@@ -38,6 +39,7 @@ $factory->define(App\Usuario::class, function (Faker $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
     ];
 }
+);
 
 
 $factory->define(App\Medidas::class, function (Faker $faker) {
@@ -58,6 +60,7 @@ $factory->define(App\Medidas::class, function (Faker $faker) {
         'id_historial' => $id_hist2,
     ];
 }
+);
 
 
 $factory->define(App\Organizacion::class, function (Faker $faker) {
@@ -70,6 +73,7 @@ $factory->define(App\Organizacion::class, function (Faker $faker) {
         'tipo_beneficiencia' => $faker->name,
     ];
 }
+);
 
 
 $factory->define(App\Insumo::class, function (Faker $faker) {
@@ -84,6 +88,7 @@ $factory->define(App\Insumo::class, function (Faker $faker) {
         'id_tipo_insumo_insumo' => $id_tipo_insumo2,
     ];
 }
+);
 
 
 $factory->define(App\RNV::class, function (Faker $faker) {
@@ -96,6 +101,7 @@ $factory->define(App\RNV::class, function (Faker $faker) {
         'disponibilidad' => true,
     ];
 }
+);
 
 
 $factory->define(App\CentroDeAcopio::class, function (Faker $faker) {
@@ -112,6 +118,7 @@ $factory->define(App\CentroDeAcopio::class, function (Faker $faker) {
         'recibe' => true,
     ];
 }
+);
 
 
 $factory->define(App\Trabajo::class, function (Faker $faker) {
@@ -127,6 +134,7 @@ $factory->define(App\Trabajo::class, function (Faker $faker) {
         'tipo_trabajo' => str_random(30),
     ];
 }
+);
 
 
 
@@ -141,6 +149,7 @@ $factory->define(App\Catastrofe::class, function (Faker $faker) {
         'fecha_termino' => $faker->dateTime,
     ];
 }
+);
 
 
 
@@ -154,6 +163,7 @@ $factory->define(App\Actividad::class, function (Faker $faker) {
         'tipo' => str_random(100),
     ];
 }
+);
 
 
 
@@ -168,6 +178,7 @@ $factory->define(App\Donacion::class, function (Faker $faker) {
         'numero_cuenta' => $faker->rand(1,50);
     ];
 }
+);
 
 
 $factory->define(App\Evento::class, function (Faker $faker) {
@@ -183,7 +194,7 @@ $factory->define(App\Evento::class, function (Faker $faker) {
     	'id_medidas_evento' => $id_medeven2,
     ];
 }
-
+);
 
 
 $factory->define(App\Donantes::class, function (Faker $faker) {
@@ -198,7 +209,7 @@ $factory->define(App\Donantes::class, function (Faker $faker) {
     	'email_donante' => $emaildonante2,
     ];
 }
-
+);
 
 
 $factory->define(App\Comentario::class, function (Faker $faker) {
@@ -214,7 +225,7 @@ $factory->define(App\Comentario::class, function (Faker $faker) {
     	'descripcion' => $faker->text(),
     ];
 }
-
+);
 
 
 $factory->define(App\Voluntario::class, function (Faker $faker) {
@@ -233,7 +244,7 @@ $factory->define(App\Voluntario::class, function (Faker $faker) {
     	'nombre_voluntario' => $faker->str_random(20),
     ];
 }
-
+);
 
 
 
@@ -245,9 +256,8 @@ $factory->define(App\Voluntariado::class, function (Faker $faker) {
 
     	'id_medidas_voluntariado' => $id_medvol2,
     	'voluntarios_objetivo' => $faker->rand(1,50),
-    	'fecha_voluntariado' => $faker->dateTime,,
+    	'fecha_voluntariado' => $faker->dateTime,
     ];
 }
-
 
 );
