@@ -64,13 +64,13 @@ $factory->define(App\Medidas::class, function (Faker $faker) {
 
 
 $factory->define(App\Organizacion::class, function (Faker $faker) {
-	$id_tipobene = \DB::table('TipoBeneficiencia')->select('id_tipo_beneficencia')->get();
-	$id_tipobene2 = $id_tipobene->random()->id;
+	$id_tipobene = \DB::table('TipoBeneficencia')->select('id_tipo_beneficencia')->get();
+	$id_tipobene2 = $id_tipobene->random()->id_tipo_beneficencia;
 	
     return [
 
         'id_tipo_beneficencia' => $id_tipobene2,
-        'tipo_beneficiencia' => $faker->name,
+        'nombre_tipo' => $faker->name,
     ];
 }
 );

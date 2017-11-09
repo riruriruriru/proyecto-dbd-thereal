@@ -30,13 +30,19 @@ class DatabaseSeeder extends Seeder
         DB::table('TipoTrabajo')->delete();
         DB::table('Usuario')->delete();
         DB::table('TipoUsuario')->delete();
+        DB::table('Region')->delete();
+        DB::table('Comuna')->delete();
+        DB::table('Ciudad')->delete();
         factory('App\TipoActividad')->create();
         factory('App\TipoBeneficencia', 5)->create();
         factory('App\TipoCatastrofe')->create();
         factory('App\TipoInsumo', 5)->create();
         factory('App\TipoTrabajo', 5)->create();
         factory('App\TipoUsuario')->create();
-        factory('App\Usuario', 5)->create();
+        factory('App\Usuario', 10)->create();
+        factory('App\Ciudad', 10)->create();
+        factory('App\Region', 10)->create();
+        factory('App\Comuna', 10)->create();
 
 //<<<<<<< Updated upstream
         //factory('App\TipoActividad')->create();
