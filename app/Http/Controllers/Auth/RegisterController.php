@@ -19,7 +19,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+6
     use RegistersUsers;
 
     /**
@@ -64,7 +64,6 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
