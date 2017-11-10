@@ -83,10 +83,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="http://www.onemi.cl/alertas">Alertas Onemi</a>
+                    <a href="http://www.movidosporchile.cl/">MOVIDES X CHILE</a>
+                    <a href="http://www.sismologia.cl">Sismologia</a>
+                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html">Informacion Armada</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>

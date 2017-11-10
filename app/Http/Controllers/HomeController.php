@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -15,7 +13,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +20,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usuarios = \App\User::all();
+        return view('home', compact('usuarios'));
+    }
+    public function viewPerfil()
+    {   
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        return view('perfil.perfil', compact('usuario'));
+    }
+    public function updatePerfil(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        $usuario->name = $loQueLlega->name;
+        $usuario->last_name = $loQueLlega->last_name;
+        $usuario->email = $loQueLlega->email;
+        $usuario->save();
+        return redirect()->route('home');
     }
 }
