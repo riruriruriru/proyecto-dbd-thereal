@@ -21,6 +21,8 @@ class CreateCentroDeAcopioTable extends Migration
             $table->integer('cantidad_objetivo');
             $table->boolean('situacion');
             $table->boolean('recibe');
+            $table->integer('monto_actual');
+            $table->integer('monto_total');
             $table->timestamps();
         });
     }
