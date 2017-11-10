@@ -14,10 +14,10 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #FA3C82;
                 font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
+                font-weight: 1000;
+                height: 3000vh;
                 margin: 0;
             }
 
@@ -50,7 +50,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #FA3C82;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
