@@ -1,5 +1,5 @@
-<?php
 
+<?php
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
-
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
+Route::post('update_perfil', 'HomeController@updatePerfil');
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
