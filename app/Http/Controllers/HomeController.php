@@ -76,4 +76,22 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+       public function viewVerCatastrofe()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('verCatastrofe.vercatastrofe', compact('vercatastrofe'));
+    }
+    public function uploadVerCatastrofe(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        //$usuario->name = $loQueLlega->name;
+        //$usuario->last_name = $loQueLlega->last_name;
+        //$usuario->email = $loQueLlega->email;
+        //$usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        //$usuario->save();
+        return redirect()->route('home');
+    }
+
 }

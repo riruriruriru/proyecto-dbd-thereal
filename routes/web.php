@@ -21,6 +21,9 @@ Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::get('/medida', 'HomeController@viewMedida')->name('medida');
 Route::post('update_medida', 'HomeController@updateMedida');
 
+Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
+Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');
+
 
 Route::get('/catastrofe', 'HomeController@viewCatastrofe')->name('catastrofe');
 Route::post('upload_catastrofe', 'HomeController@uploadCatastrofe');
