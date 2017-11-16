@@ -48,7 +48,6 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="/perfil">Perfil</a></li>
                             <li><a href="/catastrofe">Ingresar Catastrofe</a></li>
                             <li><a href="/medida">Ingresar Medida</a></li>
                             <li class="dropdown">
@@ -57,6 +56,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href="/perfil">Perfil</a></li>
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -67,7 +68,9 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                        
                                     </li>
+
                                 </ul>
                             </li>
                         @endguest
