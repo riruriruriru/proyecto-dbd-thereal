@@ -18,9 +18,8 @@ class CreateCatastrofeTable extends Migration
             $table->timestamps();
             $table->integer('tipo_catastrofe');
             $table->foreign('tipo_catastrofe')->references('id_tipo_catastrofe')->on('TipoCatastrofe');
-            $table->integer('id_region')->foreign('id_region')->references('id_region')->on('Region');
-            $table->integer('id_comuna')->foreign('id_comuna')->references('id_comuna')->on('Comuna');
-            $table->integer('id_ciudad')->foreign('id_ciudad')->references('id_ciudad')->on('Ciudad');
+            $table->text('lugar_catastrofe');
+            $table->text('descripcion')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
         });
