@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Catastrofe;
+use App\Medida;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class CatastrofeController extends Controller
+class MedidaController extends Controller
 {
     /*
     |--------------------------------------------------------------------------

@@ -17,6 +17,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
+
+Route::get('/medida', 'HomeController@viewMedida')->name('medida');
+Route::post('update_medida', 'HomeController@updateMedida');
+
+
 Route::get('/catastrofe', 'HomeController@viewCatastrofe')->name('catastrofe');
 Route::post('upload_catastrofe', 'HomeController@uploadCatastrofe');
 Auth::routes();

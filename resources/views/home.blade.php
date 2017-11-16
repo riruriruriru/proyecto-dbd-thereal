@@ -19,6 +19,7 @@
                             <td>{{$usuario->id}} </td>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->email}}</td>
+                            <td>{{$usuario->num_tarjeta}}</td>
                          </tr>
                          @endforeach
                     </table>

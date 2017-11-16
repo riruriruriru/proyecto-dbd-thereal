@@ -40,6 +40,11 @@
                                 @endif
                             </div>
                         </div>
+                        <label for="name" class="col-md-4 control-label">Numero Tarjeta</label>
+
+                            <div class="col-md-6">
+                                <input id="Numero Tarjeta" type="text" class="form-control" name="num_tarjeta" value="{{ $usuario->num_tarjeta}}" required autofocus>
+                            </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

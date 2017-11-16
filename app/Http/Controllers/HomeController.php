@@ -36,12 +36,13 @@ class HomeController extends Controller
         $usuario->name = $loQueLlega->name;
         $usuario->last_name = $loQueLlega->last_name;
         $usuario->email = $loQueLlega->email;
+        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
         $usuario->save();
         return redirect()->route('home');
     }
     public function viewCatastrofe()
     {   
-        $catastrofe = catastrofe();
+       // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('catastrofe.catastrofe', compact('catastrofe'));
     }
@@ -52,7 +53,27 @@ class HomeController extends Controller
         $usuario->name = $loQueLlega->name;
         $usuario->last_name = $loQueLlega->last_name;
         $usuario->email = $loQueLlega->email;
+        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
         $usuario->save();
         return redirect()->route('home');
     }
+
+    public function viewMedida()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('medida.medida', compact('medida'));
+    }
+    public function uploadMedida(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        //$usuario->name = $loQueLlega->name;
+        //$usuario->last_name = $loQueLlega->last_name;
+        //$usuario->email = $loQueLlega->email;
+        //$usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        //$usuario->save();
+        return redirect()->route('home');
+    }
+
 }

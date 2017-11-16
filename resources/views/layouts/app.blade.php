@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    @section('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @show
 </head>
 <body>
     <div id="app">
@@ -48,6 +50,7 @@
                         @else
                             <li><a href="/perfil">Perfil</a></li>
                             <li><a href="/catastrofe">Ingresar Catastrofe</a></li>
+                            <li><a href="/medida">Ingresar Medida</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
