@@ -45,15 +45,55 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Lugar" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Fecha Inicio" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Fecha Termino" required>
+                        <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar" required>
                     </div>
 
+                    <div class="bootstrap-iso">
+                     <div class="container-fluid">
+                      <div class="row">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                        <form method="post">
+                         <div class="form-group ">
+                          <label class="control-label requiredField" for="date">
+                           Fecha Inicio
+                           <span class="asteriskField">
+                            *
+                           </span>
+                          </label>
+                          <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                         </div>
+                       
+                        </form>
+                       </div>
+                      </div>
+                     </div>
+                    </div>
+
+                     
+
+                    <div class="bootstrap-iso">
+                     <div class="container-fluid">
+                      <div class="row">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                        <form method="post">
+                         <div class="form-group ">
+                          <label class="control-label requiredField" for="date">
+                           Fecha Termino
+                           <span class="asteriskField">
+                            *
+                           </span>
+                          </label>
+                          <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                         </div>
+                       
+                        </form>
+                       </div>
+                      </div>
+                     </div>
+                    </div>
+
+
+      
 
                     <div class="form-group">
                     <textarea class="form-control" type="textarea" id="message" placeholder="Descripcion" maxlength="140" rows="7"></textarea>
@@ -62,6 +102,7 @@
             
         <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
         </form>
+    </div>
     </div>
 </div>
 </div>
