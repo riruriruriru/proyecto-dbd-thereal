@@ -1,20 +1,6 @@
 @extends('layouts.app')
 
- @section('scripts')
-  @parent
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-  </script>
-   <script type="text/javascript">
-  $(function() {
-          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
-  });
-  </script>
-@stop
+ 
 
 
 @section('styles')
@@ -58,12 +44,6 @@
                       </div>
                     </div>
 
-
-
-
-
-
-
                     <div class="form-group">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Lugar" required>
                     </div>
@@ -74,10 +54,6 @@
                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Fecha Termino" required>
                     </div>
 
-                    <div class="form-group">
-                            <label class="col-md-4 control-label">Fecha de la catastrofe</label>
-                            <input name="fecha" id="datepicker" class="form-control" placeholder="Elegir" required>
-                    </div>
 
                     <div class="form-group">
                     <textarea class="form-control" type="textarea" id="message" placeholder="Descripcion" maxlength="140" rows="7"></textarea>
