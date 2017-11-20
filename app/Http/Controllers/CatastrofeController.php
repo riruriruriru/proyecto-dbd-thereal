@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Catastrofe;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
 
 class CatastrofeController extends Controller
 {

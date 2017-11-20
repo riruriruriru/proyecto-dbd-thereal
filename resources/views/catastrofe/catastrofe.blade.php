@@ -1,127 +1,93 @@
 @extends('layouts.app')
 
+ @section('scripts')
+  @parent
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+   <script type="text/javascript">
+  $(function() {
+          $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy');
+  });
+  </script>
+@stop
+
+
 @section('styles')
     @parent
     <style>
-        .title-arch {
-        text-align: center;
-        margin: 50px 0;
-        font-size: 22px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+        
+.red{
+    color:red;
     }
-.project {
-    width: 100%;
-    height: 500px;
-    background-image: url(https://image.freepik.com/free-vector/abstract-geometric-background-design_1045-764.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 0 !important;
-    float:left;
-}
-
-.project-2 {
-    background-image: url(https://image.freepik.com/free-vector/abstract-geometric-background-design_1045-764.jpg);
-}
-
-.project-3 {
-    background-image: url(https://image.freepik.com/free-vector/abstract-geometric-background-design_1045-764.jpg);
-}
-
-.project-4 {
-    background-image: url(https://image.freepik.com/free-vector/abstract-geometric-background-design_1045-764.jpg);
-}
-
-.project-hover {
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    opacity: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    background-color: rgba(186, 232, 2, 0.7);
-    padding: 40% 30px !important;
-}
-
-.project-hover hr {
-    height: 30px;
-    width: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    background-color: rgba(255, 255, 255, 1);
-    border: 0;
-}
-
-.project-hover a {
-    color: rgba(255, 255, 255, 1);
-    padding: 2px 22px;
-    line-height: 40px;
-    border: 2px solid rgba(255, 255, 255, 1);
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-}
-
-.project-hover a:hover {
-    border-color: rgba(51, 51, 51, 1);
-    color: rgba(51, 51, 51, 1);
-    background-color: #FFF;
-}
-
-.project:hover .project-hover {
-    opacity: 1;
-}
-
-.project:hover .project-hover hr {
-    width: 100%;
-    height: 5px;
-}
+.form-area
+{
+    background-color: #FAFAFA;
+    padding: 10px 40px 60px;
+    margin: 10px 0px 60px;
+    border: 1px solid GREY;
+    }
+    
 </style>
 @stop
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<div class="container-fluid">
-<div class="title-arch">Our Project<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p></div>
 
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft">
-        <div class="project-hover">
-            <h2>TITLE</h2>
+
+
+<div class="container">
+<div class="col-md-5">
+    <div class="form-area">  
+        <form role="form">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">Ingresar Catastrofe</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="selectbasic">Tipo Catastrofe</label>
+                      <div class="col-md-4">
+                        <select id="selectbasic" name="selectbasic" class="form-control">
+                          <option value="1">Option one</option>
+                          <option value="2">Option two</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Lugar" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Fecha Inicio" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Fecha Termino" required>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="col-md-4 control-label">Fecha de la catastrofe</label>
+                            <input name="fecha" id="datepicker" class="form-control" placeholder="Elegir" required>
+                    </div>
+
+                    <div class="form-group">
+                    <textarea class="form-control" type="textarea" id="message" placeholder="Descripcion" maxlength="140" rows="7"></textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
+                    </div>
             
-            <hr />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
-            <a href="#">See Project</a>
-        </div>
+        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+        </form>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
-        <div class="project-hover">
-            <h2>TITLE</h2>
-            <hr />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
-            <a href="#">See Project</a>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-3 wow animated animated2 fadeInLeft">
-        <div class="project-hover">
-            <h2>TITLE</h2>
-            <hr />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
-            <a href="#">See Project</a>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-4 wow animated fadeInLeft">
-        <div class="project-hover">
-            <h2>TITLE</h2>
-            <hr />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
-            <a href="#">See Project</a>
-        </div>
-    </div>
-    <div class="clearfix"></div>
+</div>
 </div>
 @endsection
 

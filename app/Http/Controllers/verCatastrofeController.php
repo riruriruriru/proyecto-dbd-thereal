@@ -36,7 +36,12 @@ class verCatastrofeController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
+    //TEMPORAL//////////
+    public function index()
+    {
+        return view('verCatastrofe/vercatastrofe');
+    }
+    //TEMPORAL////////////////
     public function viewMedida()
     {   
        // $catastrofe = Catastrofe::catastrofe();
