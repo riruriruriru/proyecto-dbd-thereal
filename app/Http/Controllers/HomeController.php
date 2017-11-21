@@ -40,23 +40,27 @@ class HomeController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
+    public function uploadCatastrofe(Request $request)
+    {
+        //
+      Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+        ]);
+        return back()->with('flash','Catastrofe declarada correctamente');
+    }
     public function viewCatastrofe()
     {   
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('catastrofe.catastrofe', compact('catastrofe'));
     }
-    public function uploadCatastrofe(Request $loQueLlega)
-    {
-        $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
-        $usuario->name = $loQueLlega->name;
-        $usuario->last_name = $loQueLlega->last_name;
-        $usuario->email = $loQueLlega->email;
-        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
-        $usuario->save();
-        return redirect()->route('home');
-    }
+   
 
     public function viewMedida()
     {   

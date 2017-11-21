@@ -24,7 +24,11 @@ Route::post('update_medida', 'HomeController@updateMedida');
 Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
 Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');
 
-
+//Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
+//Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
+Route::get('/catastrofe/get/{$id}','CatastrofeController@get')->name('getCatastrofe');
+Route::get('/catastrofe','CatastrofeController@index')->name('catastrofe');
+Route::post('/catastrofe/add/post', 'CatastrofeController@store')->name('catastrofe.store');
 Route::get('/catastrofe', 'HomeController@viewCatastrofe')->name('catastrofe');
 Route::post('upload_catastrofe', 'HomeController@uploadCatastrofe');
 Auth::routes();

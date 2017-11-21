@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +16,14 @@ class CreateCatastrofeTable extends Migration
     {
         Schema::create('Catastrofe', function (Blueprint $table) {
             $table->increments('id_catastrofe')->unique();
+            $table->integer('id_user')->references('id')->on('users');
             $table->timestamps();
             $table->integer('tipo_catastrofe');
-            $table->foreign('tipo_catastrofe')->references('id_tipo_catastrofe')->on('TipoCatastrofe');
             $table->text('lugar_catastrofe');
             $table->text('descripcion')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
+            $table->string('nombre');
         });
     }
 
