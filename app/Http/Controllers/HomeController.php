@@ -41,7 +41,7 @@ class HomeController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
-<<<<<<< HEAD
+
     public function uploadCatastrofe(Request $request)
     {
         //
@@ -56,7 +56,7 @@ class HomeController extends Controller
         ]);
         return back()->with('flash','Catastrofe declarada correctamente');
     }
-=======
+
 
    public function uploadMedida(Request $request)
     {
@@ -72,7 +72,7 @@ class HomeController extends Controller
             return back() ->with('flash', 'Medida declarada correctamente');
     }
 
->>>>>>> master
+
     public function viewCatastrofe()
     {   
        // $catastrofe = Catastrofe::catastrofe();
@@ -105,28 +105,6 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-<<<<<<< HEAD
-
-    public function uploadMedida(Request $loQueLlega)
-    {
-        $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
-        //$usuario->name = $loQueLlega->name;
-        //$usuario->last_name = $loQueLlega->last_name;
-        //$usuario->email = $loQueLlega->email;
-        //$usuario->num_tarjeta = $loQueLlega->num_tarjeta;
-        //$usuario->save();
-        return redirect()->route('home');
-    }
-=======
-    public function viewMedida()
-    {   
-       // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        return view('medida.medida', compact('medida'));
-    }
- 
->>>>>>> master
 
        public function viewVerCatastrofe()
     {   
