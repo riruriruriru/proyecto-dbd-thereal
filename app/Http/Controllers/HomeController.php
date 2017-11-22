@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Medidas;
 use App\Organizacion;
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 class HomeController extends Controller
 {
     /**
@@ -91,7 +88,7 @@ class HomeController extends Controller
 
     public function viewMedida()
     {   
-<<<<<<< Updated upstream
+
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $nombre = 'Teleton';
@@ -100,13 +97,9 @@ class HomeController extends Controller
         $organizacion = DB::table('Organizacion')->where('Teleton');
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizacion', 'nombre'));
-
-=======
-
         $organizaciones = DB::table('Organizacion')->get();
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre'));
->>>>>>> Stashed changes
     }
     public function viewagregarCatastrofe()
     {   
