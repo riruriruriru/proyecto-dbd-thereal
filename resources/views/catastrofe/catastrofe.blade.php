@@ -99,7 +99,6 @@ textarea.form-control {
 <!-- Select Basic -->
 <div class="form-group">
   <label for="selectbasic">Seleccionar Tipo</label>
-
     <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
       <option value="1">Incendio</option>
       <option value="2">Inundacion</option>
@@ -109,9 +108,8 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Lugar</label>  
-
-  <input id="lugar_catastrofe" name="lugar_catastrofe" placeholder="Lugar" class="form-control" type="text">
+  <label  for="Lugar">Lugar</label> 
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
   <span class="help-block">Lugar</span>  
 
 </div>
@@ -120,7 +118,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="FechaInicio">Fecha Inicio</label>  
  
-  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" type="date">
+  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date">
   <span class="help-block">help</span>  
  
 </div>
@@ -131,7 +129,7 @@ textarea.form-control {
 <div class="form-group">
   <label  for="FechaTermino">Fecha Termino</label>  
 
-  <input id="fecha_termino" name="fecha_termino" placeholder="dd-mm-aaaa" class="form-control" type="date">
+  <input id="fecha_termino" name="fecha_termino" placeholder="dd-mm-aaaa" class="form-control" required="" type="date">
   <span class="help-block">help</span>  
 
 </div>

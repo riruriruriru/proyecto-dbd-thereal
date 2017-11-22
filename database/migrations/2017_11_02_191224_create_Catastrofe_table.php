@@ -26,9 +26,6 @@ class CreateCatastrofeTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_termino')->nullable();
 
-            
-
-
         });
     }
 
