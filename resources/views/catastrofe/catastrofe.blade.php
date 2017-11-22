@@ -136,18 +136,13 @@ textarea.form-control {
 <!-- Textarea -->
 
 <div class="form-group">
-<<<<<<< HEAD
   <label class="col-md-4 control-label" for="Descripcion">Descripcion</label>  
   <div class="col-md-4">
   <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control input-md" type="text">
   <span class="help-block">help</span>  
   </div>
-=======
-  <label  for="Descripcion">Descripcion</label>
-                    
-    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"></textarea>
+  
  
->>>>>>> master
 </div>
 
 <!-- Button -->
