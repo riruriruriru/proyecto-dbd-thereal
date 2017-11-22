@@ -84,8 +84,6 @@ textarea.form-control {
                         {{ csrf_field() }}
 <fieldset>
 
-<!-- Form Name -->
-
  
 <!-- Text input-->
 <div class="col-md-6 form-line">
@@ -93,7 +91,6 @@ textarea.form-control {
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
-  <span class="help-block">nombre medida</span>  
 </div>
 
 <!-- Select Basic -->
@@ -110,7 +107,6 @@ textarea.form-control {
 <div class="form-group">
   <label  for="Lugar">Lugar</label> 
   <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
-  <span class="help-block">Lugar</span>  
 
 </div>
 
@@ -118,29 +114,16 @@ textarea.form-control {
 <div class="form-group">
   <label for="FechaInicio">Fecha Inicio</label>  
  
-  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date">
-  <span class="help-block">help</span>  
- 
+  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
 </div>
 
-<!-- Text input-->
-</div>
-<div class="col-md-6">
-<div class="form-group">
-  <label  for="FechaTermino">Fecha Termino</label>  
-
-  <input id="fecha_termino" name="fecha_termino" placeholder="dd-mm-aaaa" class="form-control" required="" type="date">
-  <span class="help-block">help</span>  
-
-</div>
 <!-- Textarea -->
-
 <div class="form-group">
   <label class="col-md-4 control-label" for="Descripcion">Descripcion</label>  
   <div class="col-md-4">
   <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control input-md" type="text">
-  <span class="help-block">help</span>  
   </div>
+
   
  
 </div>
