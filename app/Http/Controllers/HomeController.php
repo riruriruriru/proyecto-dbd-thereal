@@ -68,6 +68,25 @@ class HomeController extends Controller
         #$usuario = \App\User::find($user->id);
         return view('medida.medida', compact('medida'));
     }
+    public function viewagregarCatastrofe()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('agregarCatastrofe.agregarCatastrofe', compact('agregarCatastrofe'));
+    }
+    public function uploadagregarCatastrofe(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        $usuario->name = $loQueLlega->name;
+        $usuario->last_name = $loQueLlega->last_name;
+        $usuario->email = $loQueLlega->email;
+        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        $usuario->save();
+        return redirect()->route('home');
+    }
+
+
     public function uploadMedida(Request $loQueLlega)
     {
         $usuario = Auth::user();
