@@ -31,5 +31,9 @@ Route::get('/catastrofe','CatastrofeController@index')->name('catastrofe');
 Route::post('/catastrofe/add/post', 'CatastrofeController@store')->name('catastrofe.store');
 Route::get('/catastrofe', 'HomeController@viewCatastrofe')->name('catastrofe');
 Route::post('upload_catastrofe', 'HomeController@uploadCatastrofe');
+
+Route::get('/agregarCatastrofe', 'HomeController@viewagregarCatastrofe')->name('agregarCatastrofe');
+Route::post('upload_agregarCatastrofe', 'HomeController@uploadagregarCatastrofe');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

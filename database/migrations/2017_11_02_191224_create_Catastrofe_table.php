@@ -22,8 +22,12 @@ class CreateCatastrofeTable extends Migration
             $table->text('lugar_catastrofe');
             $table->text('descripcion')->nullable();
             $table->date('fecha_inicio');
+/*<<<<<<< Updated upstream*/
             $table->date('fecha_termino');
             $table->string('nombre');
+/*=======*/
+            $table->date('fecha_termino')->nullable();
+//>>>>>>> Stashed changes
         });
     }
 
