@@ -227,14 +227,14 @@
 
           <!-- Select Basic -->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
-            <div class="col-md-4">
+            <label  for="selectbasic">Select Basic</label>
+           
               <select id="id_organizacion_medidas" name="id_organizacion_medidas" class="form-control">
                 @foreach($organizaciones as $organizacion)
     <option value="{{ $organizacion->id_organizacion }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id_organizacion) selected='selected' @endif >{{ $organizacion->tipo_beneficiencia}}</option>
 @endforeach
               </select>
-            </div>
+            
           </div>
 
           <div class="form-group">
@@ -251,15 +251,17 @@
           <div class="form-group">
             <textarea class="form-control" name="descripcion" rows="3" placeholder="Comentario"></textarea>
             -->
-          </div>
+          <div class="form-group">
           <button class="btn btn-default" type="submit" name="button">
               <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Aceptar
           </button>
-          <div class="container">
+     
+          </div>
+      </div>
           </form>
         
 
-    <div class="row">
+  <!--  <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="progress blue">
                 <span class="progress-left">
@@ -271,7 +273,7 @@
                 <div class="progress-value">90%</div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 </div>
 </div>

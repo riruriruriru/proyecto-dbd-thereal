@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email',120)->unique();
             $table->string('password',120);
             $table->integer('id_tipo_usuario')->nullable();
-            $table->foreign('id_tipo_usuario')->references('id_tipo')->on('TipoUsuario');
             $table->rememberToken();
             $table->timestamps();
             $table->string('num_tarjeta',120)->nullable();

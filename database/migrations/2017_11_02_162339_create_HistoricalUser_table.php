@@ -15,8 +15,8 @@ class CreateHistoricalUserTable extends Migration
     {
         Schema::create('HistoricalUser', function (Blueprint $table) {
             $table->increments('id_historical');
-            $table->integer('id_historial_usuario');
-            $table->integer('id_usuario');
+            $table->integer('id_historial_usuario')->unsigned();
+            $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->foreign('id_historial_usuario')->references('id_historial_usuario')->on('HistorialUsuario');
             

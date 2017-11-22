@@ -42,7 +42,7 @@ class CatastrofeController extends Controller
             'nombre'=> $request->nombre,
             'tipo_catastrofe' => $request->tipo_catastrofe,
             'lugar_catastrofe' =>$request->lugar_catastrofe,
-            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_inicio' => date("y-m-d", strtotime($request->fecha_inicio)),
             //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
         ]);

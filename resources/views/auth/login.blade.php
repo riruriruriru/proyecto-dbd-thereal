@@ -85,6 +85,8 @@ textarea.form-control {
                 
                     <form class="form-signin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
+                        <div class="col-md-3">
+                        </div>
                         <div class="col-md-6">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">E-Mail</label>
