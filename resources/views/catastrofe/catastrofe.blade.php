@@ -91,6 +91,10 @@ textarea.form-control {
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
+<<<<<<< HEAD
+=======
+  <span class="help-block">nombre catastrofe</span>  
+>>>>>>> master
 </div>
 
 <!-- Select Basic -->

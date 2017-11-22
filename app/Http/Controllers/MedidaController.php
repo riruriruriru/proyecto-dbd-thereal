@@ -38,7 +38,7 @@ class MedidaController extends Controller
             Medidas::create([
                 //'id_catastrofe_medidas'=> 
                 'nombre_medida'=>$request->nombre,
-                //'id_organizacion_medidas'=>$request->id_organizacion,
+                'id_organizacion_medidas'=>$request->id_organizacion_medidas,
                 'id_usuario' => auth()->id(),
                 'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio)),
                 'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino)),
