@@ -93,7 +93,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
-  <span class="help-block">nombre medida</span>  
+  <span class="help-block">nombre catastrofe</span>  
 </div>
 
 <!-- Select Basic -->

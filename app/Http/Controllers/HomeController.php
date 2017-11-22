@@ -2,9 +2,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Medidas;
 use App\Organizacion;
+<<<<<<< Updated upstream
 use Illuminate\Support\Facades\DB;
+=======
+>>>>>>> Stashed changes
 class HomeController extends Controller
 {
     /**
@@ -66,7 +70,7 @@ class HomeController extends Controller
                  Medidas::create([
                 //'id_catastrofe_medidas'=> 
                 'nombre_medida'=>$request->nombre_medida,
-                //'id_organizacion_medidas'=>$request->id_organizacion,
+                'id_organizacion_medidas'=>$request->id_organizacion_medidas,
                 'id_usuario' => auth()->id(),
                 'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
                 'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
@@ -88,9 +92,15 @@ class HomeController extends Controller
     {   
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
+<<<<<<< Updated upstream
         $nombre = 'Teleton';
         $resutlado = DB::select('select id_organizacion from Organizacion where tipo_beneficencia = Teleton');
         return view('medida.medida', compact('medida', $nombre, $resutlado));
+=======
+        $organizacion = DB::table('Organizacion')->where('Teleton');
+        $nombre = 'Teleton';
+        return view('medida.medida', compact('medida', 'organizacion', 'nombre'));
+>>>>>>> Stashed changes
     }
     public function viewagregarCatastrofe()
     {   
