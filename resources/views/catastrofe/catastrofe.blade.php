@@ -145,7 +145,7 @@ textarea.form-control {
 <!-- Button -->
 <div class="form-group">
   
-    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Agregar</button>
 
 </div>
 </div>
