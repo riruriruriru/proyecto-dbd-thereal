@@ -15,19 +15,20 @@ class CreateCatastrofeTable extends Migration
     public function up()
     {
         Schema::create('Catastrofe', function (Blueprint $table) {
+
             $table->increments('id_catastrofe')->unique();
             $table->integer('id_user')->references('id')->on('users');
+            $table->string('nombre',120);
             $table->timestamps();
             $table->integer('tipo_catastrofe');
             $table->text('lugar_catastrofe');
             $table->text('descripcion')->nullable();
             $table->date('fecha_inicio');
-/*<<<<<<< Updated upstream*/
-            $table->date('fecha_termino');
-            $table->string('nombre');
-/*=======*/
             $table->date('fecha_termino')->nullable();
-//>>>>>>> Stashed changes
+
+            
+
+
         });
     }
 
