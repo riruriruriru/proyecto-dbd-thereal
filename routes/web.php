@@ -20,6 +20,7 @@ Route::post('update_perfil', 'HomeController@updatePerfil');
 
 Route::post('upload_medida', 'HomeController@uploadMedida');
 
+Route::get('get_id_org', 'HomeController@get_id_org');
 
 Route::post('/medida/add/post', 'MedidaController@store')->name('medida.store');
 

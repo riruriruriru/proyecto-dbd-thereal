@@ -207,12 +207,35 @@
       <div class="col-md-5">
           <h4><strong>Ingresar Medidas</strong></h4>
         <form>
+          <!--
           <div class="form-group">
-            <input type="text" class="form-control" name="nombre" placeholder="Nombre de Medida" required>
+            <input type="string" class="form-control" name="nombre_medida" placeholder="Nombre de Medida" required>
           </div>
+        -->
+        <!-- Text input-->
+          <div class="col-md-6 form-line">
+
           <div class="form-group">
-            <input type="integer" class="form-control" name="id_organizacion" value="" placeholder="Nombre de Organización">
+            <label for="textinput">Nombre Catastrofe</label>  
+            <input id="nombre_medida" name="nombre_medida" placeholder="Nombre" class="form-control" required="" type="text">
+            <span class="help-block">nombre catastrofe</span>  
           </div>
+
+
+
+          <!-- combox-->
+
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
+            <div class="col-md-4">
+              <select id="selectbasic" name="selectbasic" class="form-control">
+                <option value = $resultado >Option $nombre</option>
+                <option value="2">Option two</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-group">
             <input type="date" class="form-control" name="fecha_inicio_medida" value="" placeholder="Fecha de Inicio">
           </div>

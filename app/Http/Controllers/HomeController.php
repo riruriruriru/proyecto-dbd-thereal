@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Medidas;
+use App\Organizacion;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -41,6 +43,7 @@ class HomeController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
+
 
     public function uploadCatastrofe(Request $request)
     {
@@ -85,7 +88,9 @@ class HomeController extends Controller
     {   
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
-        return view('medida.medida', compact('medida'));
+        $nombre = 'Teleton';
+        $resutlado = DB::select('select id_organizacion from Organizacion where tipo_beneficencia = Teleton');
+        return view('medida.medida', compact('medida', $nombre, $resutlado));
     }
     public function viewagregarCatastrofe()
     {   
