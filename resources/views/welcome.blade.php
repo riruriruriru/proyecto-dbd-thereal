@@ -79,12 +79,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'MovidosxChile') }}
                 </div>
 
                 <div class="links">
                     <a href="http://www.onemi.cl/alertas">Alertas Onemi</a>
-                    <a href="http://www.movidosporchile.cl/">MOVIDES X CHILE</a>
+                    <a href="http://www.movidosporchile.cl/">MOVIDOS X CHILE</a>
                     <a href="http://www.sismologia.cl">Sismologia</a>
                     <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html">Informacion Armada</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>

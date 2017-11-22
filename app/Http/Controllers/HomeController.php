@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Medidas;
 class HomeController extends Controller
 {
     /**
@@ -40,6 +41,7 @@ class HomeController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
+<<<<<<< HEAD
     public function uploadCatastrofe(Request $request)
     {
         //
@@ -54,6 +56,23 @@ class HomeController extends Controller
         ]);
         return back()->with('flash','Catastrofe declarada correctamente');
     }
+=======
+
+   public function uploadMedida(Request $request)
+    {
+                 Medidas::create([
+                //'id_catastrofe_medidas'=> 
+                'nombre_medida'=>$request->nombre_medida,
+                //'id_organizacion_medidas'=>$request->id_organizacion,
+                'id_usuario' => auth()->id(),
+                'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
+                'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
+                'descripcion' => $request->descripcion,
+            ]);
+            return back() ->with('flash', 'Medida declarada correctamente');
+    }
+
+>>>>>>> master
     public function viewCatastrofe()
     {   
        // $catastrofe = Catastrofe::catastrofe();
@@ -86,6 +105,7 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+<<<<<<< HEAD
 
     public function uploadMedida(Request $loQueLlega)
     {
@@ -98,6 +118,15 @@ class HomeController extends Controller
         //$usuario->save();
         return redirect()->route('home');
     }
+=======
+    public function viewMedida()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('medida.medida', compact('medida'));
+    }
+ 
+>>>>>>> master
 
        public function viewVerCatastrofe()
     {   

@@ -18,6 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
 
+Route::post('upload_medida', 'HomeController@uploadMedida');
+
+
+Route::post('/medida/add/post', 'MedidaController@store')->name('medida.store');
+
 Route::get('/medida', 'HomeController@viewMedida')->name('medida');
 Route::post('update_medida', 'HomeController@updateMedida');
 
