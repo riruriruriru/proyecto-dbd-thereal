@@ -89,14 +89,6 @@ class HomeController extends Controller
     public function viewMedida()
     {   
 
-       // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        $nombre = 'Teleton';
-        $resutlado = DB::select('select id_organizacion from Organizacion where tipo_beneficencia = Teleton');
-        return view('medida.medida', compact('medida', $nombre, $resutlado));
-        $organizacion = DB::table('Organizacion')->where('Teleton');
-        $nombre = 'Teleton';
-        return view('medida.medida', compact('medida', 'organizacion', 'nombre'));
         $organizaciones = DB::table('Organizacion')->get();
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre'));
