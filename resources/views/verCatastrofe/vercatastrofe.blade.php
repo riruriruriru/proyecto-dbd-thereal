@@ -5,14 +5,13 @@
 
 <!-- Form Name -->
 <legend>Catastrofes</legend>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="ingresarMedida">Ingresar Medida</label>
-    
-
   <li><a href="{{ route('medida') }}">Ingresar Medida</a></li>
-</div>
+<table>
+    @foreach($catastrofes as $catastrofe)
+        <tr><td>{{$catastrofe->id_catastrofe}} - {{$catastrofe->nombre}}</td></tr>
+    @endforeach
+</table>
+
 
 </fieldset>
 </form>

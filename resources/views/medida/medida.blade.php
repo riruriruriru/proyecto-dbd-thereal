@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 @extends('layouts.app')
 
 @section('styles')
@@ -217,7 +216,7 @@
           <div class="col-md-6 form-line">
 
           <div class="form-group">
-            <label for="textinput">Nombre Catastrofe</label>  
+            <label for="textinput">Nombre Medida</label>  
             <input id="nombre_medida" name="nombre_medida" placeholder="Nombre" class="form-control" required="" type="text">
             <span class="help-block">nombre catastrofe</span>  
           </div>
@@ -230,9 +229,10 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
             <div class="col-md-4">
-              <select id="selectbasic" name="selectbasic" class="form-control">
-                <option value = $resultado >Option $nombre</option>
-                <option value="2">Option two</option>
+              <select id="id_organizacion_medidas" name="id_organizacion_medidas" class="form-control">
+                @foreach($organizaciones as $organizacion)
+    <option value="{{ $organizacion->id_organizacion }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id_organizacion) selected='selected' @endif >{{ $organizacion->tipo_beneficiencia}}</option>
+@endforeach
               </select>
             </div>
           </div>
@@ -283,5 +283,4 @@
     </div>
   </div>
   @endsection('content')
-=======
->>>>>>> Stashed changes
+
