@@ -58,9 +58,10 @@
 
 <!-- Textarea -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Descripcion">Descripcion</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="descripcion" name="descripcion">...</textarea>
+  <label class="col-md-4 control-label" for="Descripcion">Descripcion</label>  
+  <div class="col-md-4">
+  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control input-md" type="text">
+  <span class="help-block">help</span>  
   </div>
 </div>
 
@@ -71,7 +72,7 @@
     <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
   </div>
 </div>
-
+</form>
 </fieldset>
 </form>
 

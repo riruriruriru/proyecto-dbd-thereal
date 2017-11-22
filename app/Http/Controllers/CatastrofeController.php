@@ -46,7 +46,7 @@ class CatastrofeController extends Controller
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
         ]);
-        return back()->with('flash','Catastrofe declarada correctamente');
+        return back()->with('flash','Catastrofe ingresada');
     }
 
       public function get(Request $request, $id){
