@@ -137,7 +137,7 @@
 <form class="form-horizontal">
 <fieldset>
 
-<!-- Form Name -->
+<!-- Form Name 
 <legend>Catastrofes</legend>
   <li><a href="{{ route('medida') }}">Ingresar Medida</a></li>
 <table>
@@ -145,6 +145,8 @@
         <tr><td>{{$catastrofe->id_catastrofe}} - {{$catastrofe->nombre}}</td></tr>
     @endforeach
 </table>
+-->
+
 
 <div class="container">
 
@@ -154,61 +156,33 @@
         
             <li>
                 <span>ID</span>
-                <span>Name</span>
-                <span>Logins</span>
+                <span>Nombre de Catástrofe</span>
+                <span>Progreso</span>
                 <span>Role</span>
-                <span>Actions</span>
+                <span>Acción</span>
                 <span></span>
             </li>
-            <li>
-                <span>23</span>
-                <span>Harry Giles</span>
+
+            
+            	@foreach($catastrofes as $catastrofe)
+                <span>{{$catastrofe->id_catastrofe}}</span>
+                <span>{{$catastrofe->nombre}}</span>
                 <span>4341</span>
                 <span><span class="label label-warning">Manager</span></span>
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default">Edit</button>
-                        <button type="button" class="btn btn-default" disabled>Delete</button>
-                    </div>
-                </span>
-                <span></span>
-            </li>
-            <li>
-                <span>543</span>
-                <span>Susan Crown</span>
-                <span>10032</span>
-                <span><span class="label label-default">Guest</span></span>
-                <span>
-                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default">Edit</button>
-                        <button type="button" class="btn btn-default" disabled>Delete</button>
-                    </div>
-                </span>
-                <span></span>
-            </li>
-            <li>
-                <span>43</span>
-                <span>Barry Smith</span>
-                <span>91</span>
-                <span><span class="label label-primary">Engineer</span></span>
-                <span>
-                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default">Edit</button>
-                        <button type="button" class="btn btn-default" disabled>Delete</button>
-                    </div>
-                </span>
-                <span></span>
-            </li>
-            <li>
+                        <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="{{ route('catastrofe') }}">Editar</a></button>
+                        <button type="button" class="btn btn-default" disabled>Eliminar</button>
+                        <button href="{{ route('medida') }}" type="button" class="btn btn-default"><li><a href="{{ route('medida') }}">Ingresar Medida</a></li></button>
 
+                    </div>
+                </span>
+                <li></li>
+                @endforeach
+                <span></span>
             </li>
         </ul>
-
     </div>
-
-
-
-
 </fieldset>
 </form>
 @endsection('content')
