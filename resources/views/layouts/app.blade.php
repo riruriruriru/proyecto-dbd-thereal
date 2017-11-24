@@ -52,7 +52,6 @@
                         @else
                             <li><a href="/contacto">Contáctanos</a></li>
                             <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
-                            <li><a href="/medida">Ingresar Medida</a></li>
 
 
                             <li class="dropdown">
@@ -65,6 +64,20 @@
 
                                     <li>
                                         <a href="/verCatastrofe"> Ver Catástrofes</a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Medidas <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/verMedida"> Ver Medidas</a>
                                         </form>
                                         
                                     </li>
