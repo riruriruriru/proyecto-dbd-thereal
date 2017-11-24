@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
+Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
 Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessomos');

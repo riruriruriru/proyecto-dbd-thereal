@@ -102,6 +102,15 @@ class HomeController extends Controller
         return view('verMedida.verMedida', compact('medidas'));
     }
 
+        public function viewVerPerfil()
+    {   
+       $usuario = Auth::id();
+       //$informacion_usuario = DB::select('select from users where id = ?', $usuario)->get();
+       $datos = \App\User::find($usuario);
+
+       return view('verPerfil.verPerfil', compact('datos'));
+    }
+
 
     public function viewagregarCatastrofe()
     {   

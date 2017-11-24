@@ -75,7 +75,7 @@
                                     Medidas <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu"> 
                                     <li>
                                         <a href="/verMedida"> Ver Medidas</a>
                                         </form>
