@@ -93,6 +93,16 @@ class HomeController extends Controller
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre'));
     }
+
+    public function viewVerMedida()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $medidas = DB::table('Medidas')->get();
+        return view('verMedida.verMedida', compact('medidas'));
+    }
+
+
     public function viewagregarCatastrofe()
     {   
        // $catastrofe = Catastrofe::catastrofe();
@@ -131,4 +141,14 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+
+    public function viewContacto()
+    {   
+        return view('Contacto.contacto', compact('contacto'));
+    }
+
+    public function viewQuienesSomos()
+    {   
+        return view('Contacto.quienessomos', compact('quienessomos'));
+    }
 }

@@ -18,6 +18,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
 
+Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
+Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessomos');
+
 Route::post('upload_medida', 'HomeController@uploadMedida');
 
 Route::get('get_id_org', 'HomeController@get_id_org');
@@ -26,6 +29,8 @@ Route::post('/medida/add/post', 'MedidaController@store')->name('medida.store');
 
 Route::get('/medida', 'HomeController@viewMedida')->name('medida');
 Route::post('update_medida', 'HomeController@updateMedida');
+Route::get('/verMedida', 'HomeController@viewVerMedida')->name('verMedida');
+Route::post('verMedida', 'HomeController@viewVerMedida');
 
 Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
 Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');

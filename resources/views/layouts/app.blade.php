@@ -45,15 +45,36 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
+                            <li><a href="/contacto">Contáctanos</a></li>
+                            <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="/catastrofe">Ingresar Catastrofe</a></li>
-<!--<<<<<< Updated upstream-->
-                            <li><a href="/verCatastrofe">Ver Catastrofes</a></li>
-<!--=======-->
+                            <li><a href="/contacto">Contáctanos</a></li>
+                            <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
                             <li><a href="/medida">Ingresar Medida</a></li>
-                         
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Catástrofes <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="/catastrofe">Ingresar Catástrofe</a></li>
+
+                                    <li>
+                                        <a href="/verCatastrofe"> Ver Catástrofes</a>
+                                        </form>
+                                        
+                                    </li>
+
+                                </ul>
+                            </li>
+
+
+
+
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -78,6 +99,9 @@
 
                                 </ul>
                             </li>
+
+
+
                         @endguest
                     </ul>
                 </div>
@@ -86,8 +110,6 @@
 
         @yield('content')
     </div>
-
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
