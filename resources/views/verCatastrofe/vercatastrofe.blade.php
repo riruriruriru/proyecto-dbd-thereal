@@ -137,15 +137,7 @@
 <form class="form-horizontal" method="GET">
 <fieldset>
 
-<!-- Form Name 
-<legend>Catastrofes</legend>
-  <li><a href="{{ route('medida') }}">Ingresar Medida</a></li>
-<table>
-    @foreach($catastrofes as $catastrofe)
-        <tr><td>{{$catastrofe->id_catastrofe}} - {{$catastrofe->nombre}}</td></tr>
-    @endforeach
-</table>
--->
+
 
 
 <div class="container">
@@ -164,8 +156,9 @@
             </li>
 
             
-            	@foreach($catastrofes as $catastrofe)
-                <span id="id_catastrofe">{{$catastrofe->id_catastrofe}}</span>
+
+            	 @foreach($catastrofes as $catastrofe)
+                <span name="id_catastrofe">{{$catastrofe->id_catastrofe}}</span>
                 <span>{{$catastrofe->nombre}}</span>
                 <span>4341</span>
                 <span><span class="label label-warning">Manager</span></span>
@@ -173,7 +166,8 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="{{ route('catastrofe') }}">Editar</a></button>
                         <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                        <button href="{{ route('medida') }}" type="submit" class="btn btn-default"><li><a href="{{ route('medida') }}">Ingresar Medida</a></li></button>
+                      
+                        <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
 
                     </div>
                 </span>

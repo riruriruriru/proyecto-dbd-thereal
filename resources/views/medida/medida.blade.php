@@ -202,16 +202,11 @@
     <div class="col-md-7">
         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3736489.7218514383!2d90.21589792292741!3d23.857125486636733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1506502314230" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
-      <form class="form-horizontal" method="POST" action="upload_medida" >
+      <form class="form-horizontal" method="POST" action="{{ route('medida.store') }}" >
         {{ csrf_field() }}
       <div class="col-md-5">
           <h4><strong>Ingresar Medidas</strong></h4>
-        <form>
-          <!--
-          <div class="form-group">
-            <input type="string" class="form-control" name="nombre_medida" placeholder="Nombre de Medida" required>
-          </div>
-        -->
+       
         <!-- Text input-->
           <div class="col-md-6 form-line">
 
@@ -221,7 +216,13 @@
             <span class="help-block">nombre catastrofe</span>  
           </div>
 
+<!-- Text input-->
+          <div class="col-md-6 form-line">
 
+          <div class="form-group">
+            <label for="textinput">Nombre Medida</label>  
+            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" required="" value={{$catastrofe}} type="text">
+          </div>
 
           <!-- combox-->
 
@@ -247,12 +248,9 @@
           <div class="form-group">
             <input type="text" class="form-control" name="descripcion" value="" placeholder="Comentario">
           </div>
-<!-- 4234234234v
+
           <div class="form-group">
-            <textarea class="form-control" name="descripcion" rows="3" placeholder="Comentario"></textarea>
-            -->
-          <div class="form-group">
-          <button class="btn btn-default" type="submit" name="button">
+          <button class="btn btn-default"  name="button">
               <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Aceptar
           </button>
      
@@ -261,19 +259,6 @@
           </form>
         
 
-  <!--  <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="progress blue">
-                <span class="progress-left">
-                    <span class="progress-bar"></span>
-                </span>
-                <span class="progress-right">
-                    <span class="progress-bar"></span>
-                </span>
-                <div class="progress-value">90%</div>
-            </div>
-        </div>
-    </div>-->
 </div>
 </div>
 </div>

@@ -23,22 +23,26 @@ Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
 Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessomos');
 
 Route::post('upload_medida', 'HomeController@uploadMedida');
+Route::post('/medida', 'HomeController@uploadMedida')->name('medida.store');
 
 Route::get('get_id_org', 'HomeController@get_id_org');
 
-Route::post('/medida/add/post', 'MedidaController@store')->name('medida.store');
+Route::get('/prueba', 'HomeController@viewPrueba')->name('prueba');
 
 Route::get('/medida', 'HomeController@viewMedida')->name('medida');
 Route::post('update_medida', 'HomeController@updateMedida');
 Route::get('/verMedida', 'HomeController@viewVerMedida')->name('verMedida');
 Route::post('verMedida', 'HomeController@viewVerMedida');
 
+
+Route::get('/medida/{id}', 'HomeController@viewMedida')->name('medida');
+Route::get('/medida2', 'HomeController@viewMedida2')->name('medida2');
+
 Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
 Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');
 
 //Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 //Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
-Route::get('/catastrofe/get/{$id}','CatastrofeController@get')->name('getCatastrofe');
 Route::get('/catastrofe','CatastrofeController@index')->name('catastrofe');
 Route::post('/catastrofe/add/post', 'CatastrofeController@store')->name('catastrofe.store');
 Route::get('/catastrofe', 'HomeController@viewCatastrofe')->name('catastrofe');

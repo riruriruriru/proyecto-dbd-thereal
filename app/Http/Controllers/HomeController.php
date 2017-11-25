@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Medidas;
 use App\Organizacion;
+use App\Catastrofe;
 
 
 class HomeController extends Controller
@@ -65,16 +66,16 @@ class HomeController extends Controller
 
    public function uploadMedida(Request $request)
     {
-                 Medidas::create([
-                //'id_catastrofe_medidas'=> 
-                'nombre_medida'=>$request->nombre_medida,
-                'id_organizacion_medidas'=>$request->id_organizacion_medidas,
-                'id_usuario' => auth()->id(),
-                'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
-                'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
-                'descripcion' => $request->descripcion,
+        Medidas::create([
+            'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
+            'nombre_medida'=>$request->nombre_medida,
+            'id_organizacion_medidas'=>$request->id_organizacion_medidas,
+            'id_usuario' => auth()->id(),
+            'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
+            'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
+            'descripcion' => $request->descripcion,
             ]);
-            return back() ->with('flash', 'Medida declarada correctamente');
+            return back()->with('flash', 'Medida declarada correctamente');
     }
 
 
@@ -86,11 +87,21 @@ class HomeController extends Controller
     }
    
 
-    public function viewMedida()
+    public function viewMedida($id)
     {   
-
+        $catastrofe = $id;
         $organizaciones = DB::table('Organizacion')->get();
         $nombre = 'Teleton';
+        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe'));
+    }
+     public function viewMedida2()
+
+    {   
+
+        //$catastrofe = Catastrofe::get();
+        $organizaciones = DB::table('Organizacion')->get();
+        $nombre = 'Teleton';
+
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre'));
     }
 
@@ -110,6 +121,7 @@ class HomeController extends Controller
 
        return view('verPerfil.verPerfil', compact('datos'));
     }
+
 
 
     public function viewagregarCatastrofe()
@@ -136,7 +148,7 @@ class HomeController extends Controller
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $catastrofes = DB::table('Catastrofe')->get();
-        return view('verCatastrofe.vercatastrofe', compact('vercatastrofe', 'catastrofes'));
+        return view('verCatastrofe.vercatastrofe', compact('catastrofes'));
     }
     public function uploadVerCatastrofe(Request $loQueLlega)
     {
@@ -155,6 +167,11 @@ class HomeController extends Controller
     {   
         return view('Contacto.contacto', compact('contacto'));
     }
+      public function viewPrueba()
+    {   
+        return view('prueba', compact('contacto'));
+    }
+
 
     public function viewQuienesSomos()
     {   
