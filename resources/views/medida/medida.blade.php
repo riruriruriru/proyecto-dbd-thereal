@@ -196,17 +196,58 @@
     </style>
 @stop
 @section('content')
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 70%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 70%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var jposLat = "<?php echo (float)$latitud; ?>";
+        var jposLong = "<?php echo (float)$longitud; ?>";
+        var myLatLng = {lat: -25.363, lng: 131.044};
+        var latlong = new google.maps.LatLng(jposLat,jposLong);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: latlong
+        });
+
+        var marker = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: 'Origen Catastrofe'
+        });
+      
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initMap">
+    </script>
+
+
+
 <div class="container">
   <div class="panel-body">
   <div class="row">
-    <div class="col-md-7">
-        <iframe
-  width="450"
-  height="250"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&q=record+stores+in+Seattle" allowfullscreen>
-</iframe>
-      </div>
+    
       <form class="form-horizontal" method="POST" action="{{ route('medida.store') }}" >
         {{ csrf_field() }}
       <div class="col-md-5">
@@ -262,7 +303,7 @@
       </div>
           </form>
         
-<?php echo $lugar_catastrofe ?>
+
 </div>
 </div>
 </div>
@@ -273,5 +314,7 @@
       </div>
     </div>
   </div>
-  @endsection('content')
+
+    </body>
+</html>
 

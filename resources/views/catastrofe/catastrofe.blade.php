@@ -66,13 +66,12 @@ textarea.form-control {
 
 @stop
 
-
+@section('content')
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Marker Labels</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -201,8 +200,10 @@ textarea.form-control {
               icon: icon,
               title: place.name,
               position: place.geometry.location
-            }));
 
+            }));
+            $("#latitud").val(place.geometry.location.lat());
+            $("#longitud").val(place.geometry.location.lng());
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -226,8 +227,11 @@ textarea.form-control {
       position: location,
       map: map
     });
+
   }
-  $("#lugar_catastrofe").val(location);
+   $("#latitud").val(location.lat());
+   $("#longitud").val(location.lng());
+
       }
   google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -281,6 +285,20 @@ textarea.form-control {
 <div class="form-group">
   <label  for="Lugar">Lugar</label> 
   <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="Lugar">Latitud</label> 
+  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="text">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="Lugar">Longitud</label> 
+  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="text">
 
 </div>
 
