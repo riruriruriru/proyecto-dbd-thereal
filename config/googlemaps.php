@@ -14,7 +14,7 @@ return [
     |
     */
     
-    'key'       => 'base64:4Lvl/8VNFsNdScKKFk2JcGFRNqvp5CXm+Vq5mdGl+Ic=',
+    'key'       => 'AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk',
         
     /*
     |--------------------------------------------------------------------------

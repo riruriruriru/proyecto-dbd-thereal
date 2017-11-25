@@ -90,9 +90,11 @@ class HomeController extends Controller
     public function viewMedida($id)
     {   
         $catastrofe = $id;
+        $cat = Catastrofe::find($id);
+        $lugar_catastrofe= $cat->lugar_catastrofe;
         $organizaciones = DB::table('Organizacion')->get();
         $nombre = 'Teleton';
-        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe'));
+        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'lugar_catastrofe'));
     }
      public function viewMedida2()
 

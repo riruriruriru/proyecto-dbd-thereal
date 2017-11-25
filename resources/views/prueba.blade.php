@@ -1,6 +1,9 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+<!-- <!DOCTYPE html>
 <html>
   <head>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Places Searchbox</title>
@@ -89,7 +92,17 @@
     </style>
   </head>
   <body>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<?php $response = \GoogleMaps::load('geocoding')
+                ->setParamByKey('address', 'santa cruz')
+                ->setParamByKey('components.administrative_area', 'TX') 
+                 ->get();
+var_dump( json_decode( $response ) ); 
+$json_decoded = ( json_decode( $response ) ); 
+$var = $json_decoded->{'results'}[0]->{'formatted_address'};
+   echo  $json_decoded->{'results'}[0]->{'formatted_address'} ?>
+   
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box" 
+    value={{$var}} size='30'>
     <div id="map"></div>
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
@@ -167,14 +180,141 @@
         });
       }
 
-
+ 
 
     </script>
+<div class="w3-container">
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk
 &libraries=places&callback=initAutocomplete"
          async defer></script>
+           <p>The w3-container class is an important w3.CSS class.</p>
+</div>
   </body>
 </html>
+-->
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initMap">
+    </script>
+
+<section id="contact">
+
+<div class="container">
+
+
+
+
+ <div class="section-content">
+        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Catastrofe</span></h1>
+        <h3></h3>
+      </div>
+<div class="contact-section">
+<div class="container">
+<form  method="POST" action="{{ route('catastrofe.store') }}">
+                        {{ csrf_field() }}
+<fieldset>
+
+<!-- Text input-->
+<div class="col-md-6 form-line">
+
+<div class="form-group">
+  <label for="textinput">Nombre Catastrofe</label>  
+  <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label for="selectbasic">Seleccionar Tipo</label>
+    <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
+      <option value="1">Incendio</option>
+      <option value="2">Inundacion</option>
+    </select>
+ 
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="Lugar">Lugar</label> 
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="FechaInicio">Fecha Inicio</label>  
+ 
+  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
+</div>
+
+<!-- Textarea -->
+</div>
+<div class="col-md-6">
+<div class="form-group">
+  <label  for="Descripcion">Descripcion</label>  
+  
+  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control" type="text">
+
+  
+ 
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  
+    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Agregar</button>
+
+</div>
+</div>
+</form>
+</fieldset>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+
+  </body>
+</html>
 
     
