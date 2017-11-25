@@ -22,6 +22,8 @@ class CreateCatastrofeTable extends Migration
             $table->timestamps();
             $table->integer('tipo_catastrofe');
             $table->text('lugar_catastrofe');
+            $table->text('latitud');
+            $table->text('longitud');
             $table->text('descripcion');
             $table->date('fecha_inicio');
             $table->date('fecha_termino')->nullable();

@@ -56,6 +56,8 @@ class HomeController extends Controller
             'nombre'=> $request->nombre,
             'tipo_catastrofe' => $request->tipo_catastrofe,
             'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
@@ -91,10 +93,11 @@ class HomeController extends Controller
     {   
         $catastrofe = $id;
         $cat = Catastrofe::find($id);
-        $lugar_catastrofe= $cat->lugar_catastrofe;
+        $longitud= $cat->longitud;
+        $latitud = $cat->latitud;
         $organizaciones = DB::table('Organizacion')->get();
         $nombre = 'Teleton';
-        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'lugar_catastrofe'));
+        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud'));
     }
      public function viewMedida2()
 
