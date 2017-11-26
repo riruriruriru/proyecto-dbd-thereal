@@ -101,25 +101,22 @@
             <div class="header__social-icons">
                 @if (Route::has('login'))
                     @auth
-                        <a target="_blank" href="{{url('/home')}}"><i class="fa fa-home"></i></a>
+                        <a href="{{url('/home')}}"><i class="fa fa-home fa-1x"></i></a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                        </form>
+                        
                     @else
-                        <a target="_blank" href="{{url('/login')}}"><i class="fa fa-user-circle"></i></a>
+                        <a href="{{url('/login')}}"><i class="fa fa-user-circle fa-1x"></i></a>
                     @endauth
                 @endif
             </div>
         </div>
     </header>
     <!-- End Header -->
-
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -142,9 +139,15 @@
                 <div class="hero__description">
                     Este sitio busca canalizar la ayuda ante alguna emergencia o catastrofe, para que todos podamos contribuir con la donación de bienes, de dinero y voluntariado de manera informada. Por eso necesitamos tu ayuda, registrate ahora y comienza el cambio.
                 </div>
-                <div class="hero__call-to-action">
-                    <a href="/register" target="_blank" class="hero__button  ghost-button  ghost-button--hero">Comenzar cambio &nbsp; <i class="fa fa-user-plus"></i></a>
-                </div>
+                @if (Route::has('login'))
+                    @auth
+
+                    @else
+                        <div class="hero__call-to-action">
+                            <a href="/register" target="_blank" class="hero__button  ghost-button  ghost-button--hero">Comenzar cambio &nbsp; <i class="fa fa-user-plus"></i></a>
+                        </div>
+                    @endauth
+                @endif
             </div>
         </div>
     </section>
@@ -259,9 +262,14 @@
                                     </div>
                                 </div>
 
+                                @if (Route::has('login'))
+                                    @auth
 
-                                <a target="_blank" href="/register" class="showcase__button  ghost-button  ghost-button--realizations">Registrate ahora</a>
-                            </div>
+                                    @else
+                                        <a target="_blank" href="/register" class="showcase__button  ghost-button  ghost-button--realizations">     Registrate ahora</a>
+                                        </div>
+                                    @endauth
+                                @endif
                         </div>
 
                         <!-- project 2 -->
