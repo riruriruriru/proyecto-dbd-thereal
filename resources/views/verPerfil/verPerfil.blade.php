@@ -78,8 +78,8 @@ textarea.form-control {
   
 <section id="contact">
             <div class="section-content">
-                <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
-                <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+                <h1 class="section-header">Infomración del Usuario <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"></span></h1>
+                <h3></h3>
             </div>
             <div class="contact-section">
             <div class="container">
@@ -87,19 +87,21 @@ textarea.form-control {
                     <div class="col-md-6 form-line">
                         <div class="form-group">
                             <label for="exampleInputUsername">Nombre</label>
-                            <button id="Submit" name="Submit" class="btn btn-default submit">{{$datos->name}}</button>
+                            <input type="email" class="form-control" readonly="readonly" id="exampleInputEmail" value= "{{$datos->name}}">
                         </div>
+                        @if($datos->id_tipo_usuario===4)
                       <div class="form-group">
                             <label for="exampleInputUsername">Apellido</label>
-                            <input type="text" class="form-control" id="" placeholder=" Enter Name">
+                            <input type="email" class="form-control" readonly="readonly" id="exampleInputEmail" value= "{{$datos->last_name}}">
                         </div>
+                        @endif
                         <div class="form-group">
                             <label for="exampleInputEmail">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail" placeholder=" Enter Email id">
+                            <input type="email" class="form-control" readonly="readonly" id="exampleInputEmail" value= "{{$datos->email}}">
                         </div>  
                         <div class="form-group">
                             <label for="telephone">Número de tarjeta</label>
-                            <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit mobile no.">
+                            <input type="email" class="form-control" readonly="readonly" id="exampleInputEmail" value= "{{$datos->num_tarjeta}}">
                         </div>
 
                     </div>

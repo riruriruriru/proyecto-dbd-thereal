@@ -25,6 +25,7 @@ Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessom
 Route::post('upload_medida', 'HomeController@uploadMedida');
 Route::post('/medida', 'HomeController@uploadMedida')->name('medida.store');
 
+
 Route::get('get_id_org', 'HomeController@get_id_org');
 
 Route::get('/prueba', 'HomeController@viewPrueba')->name('prueba');
@@ -40,6 +41,9 @@ Route::get('/medida2', 'HomeController@viewMedida2')->name('medida2');
 
 Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
 Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');
+Route::get('/infoCatastrofe/{id}', 'HomeController@viewinfoCatastrofe')->name('infoCatastrofe');
+
+Route::get('/verOrganizaciones', 'HomeController@viewVerOrganizaciones')->name('verOrganizaciones');
 
 //Route::get('/catastrofes/add', 'CatastrofesController@index')->name('addCatastrofe');
 //Route::get('/catastrofes/historial', 'CatastrofesController@historial')->name('historialCatastrofe');
