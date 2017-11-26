@@ -20,6 +20,9 @@ Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
+
+Route::get('/home2','HomeController@viewHome2')->name('home2');
+
 Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessomos');
 
 Route::post('upload_medida', 'HomeController@uploadMedida');

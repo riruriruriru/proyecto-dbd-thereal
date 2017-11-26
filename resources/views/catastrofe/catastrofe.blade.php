@@ -129,7 +129,9 @@ textarea.form-control {
 #target {
   width: 345px;
 }
-    </style>
+</style>
+
+
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
 

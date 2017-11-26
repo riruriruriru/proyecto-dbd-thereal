@@ -199,6 +199,12 @@ class HomeController extends Controller
     {   
         return view('Contacto.contacto', compact('contacto'));
     }
+
+    public function viewHome2()
+    {   
+        return view('Home.home2', compact('home2'));
+    }
+
       public function viewPrueba()
     {   
         return view('prueba', compact('contacto'));
