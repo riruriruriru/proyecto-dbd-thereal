@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use App\Medidas;
 use App\Organizacion;
 use App\Catastrofe;
+use App\CentroDeAcopio;
+use App\Evento;
 
 
 class HomeController extends Controller
@@ -81,6 +83,26 @@ class HomeController extends Controller
         return view('verCatastrofe', compact('verCatastrofe'));
     }
 
+    public function uploadEvento(Request $request)
+    {
+        //
+      Evento::create([
+            'nombre'=> $request->nombre,
+            'id_medidas_evento' => $request->id_medidas_evento,
+            'direccion'=>$request->direccion,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'cantidad_voluntarios'=> $request->cantidad_voluntarios,
+            'voluntarios_actuales' => '0',
+            'monto_recaudado' => '0',
+            'monto_objetivo' => $request->monto_objetivo,
+            'fecha_inicio_evento' => date("m-d-Y", strtotime($request->fecha_inicio_evento)),
+            'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
+            'descripcion' => $request->descripcion,
+        ]);
+        return back()->with('flash','Catastrofe declarada correctamente');
+    }
+
 
    public function uploadMedida(Request $request)
     {
@@ -96,6 +118,24 @@ class HomeController extends Controller
             return back()->with('flash', 'Medida declarada correctamente');
     }
 
+    public function uploadCentroAcopio(Request $request)
+    {
+        CentroDeAcopio::create([
+            'nombre' => $request->nombre,
+            'id_medidas_acopio'=> $request->id_medidas_acopio,
+            'direccion'=>$request->direccion,
+            'tipo_bien'=>$request->tipo_bien,
+            'cantidad_objetivo'=>$request->cantidad_objetivo,
+            'descripcion' => $request->descripcion,
+            'recibe' => 'true',
+            'monto_actual' =>'0',
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'monto_total'=> $request->cantidad_objetivo,
+            'situacion'=> 'true',
+            ]);
+            return back()->with('flash', 'Centro declarado correctamente');
+    }
 
     public function viewCatastrofe()
     {   
@@ -103,6 +143,31 @@ class HomeController extends Controller
         #$usuario = \App\User::find($user->id);
         return view('catastrofe.catastrofe', compact('catastrofe'));
     }
+
+      public function viewAgregarCentroAcopio($id)
+    {   
+        $id_medidas_acopio = $id;
+        $medida = Medidas::find($id);
+        $nombre = $medida->nombre_medida;
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('CentroDeAcopio.centroDeAcopio', compact('id_medidas_acopio'));
+    }
+
+     public function viewAgregarEvento($id)
+    {   
+        $id_medidas_evento = $id;
+        $medida = Medidas::find($id);
+        $nombre = $medida->nombre_medida;
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('Evento.evento', compact('id_medidas_evento'));
+    }
+
+
+
    
 
     public function viewMedida($id)

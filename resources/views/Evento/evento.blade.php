@@ -128,9 +128,7 @@ textarea.form-control {
 #target {
   width: 345px;
 }
-</style>
-
-
+    </style>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
 
@@ -205,7 +203,7 @@ textarea.form-control {
             }));
             $("#latitud").val(place.geometry.location.lat());
             $("#longitud").val(place.geometry.location.lng());
-            $('#lugar_catastrofe').val(place.name)
+            $('#direccion').val(place.name)
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -256,12 +254,12 @@ textarea.form-control {
 
 
  <div class="section-content">
-        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Catastrofe</span></h1>
+        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
         <h3></h3>
       </div>
 <div class="contact-section">
 <div class="container">
-<form  method="POST" action="{{ route('catastrofe.store') }}">
+<form  method="POST" action="{{ route('evento.store') }}">
                         {{ csrf_field() }}
 <fieldset>
 
@@ -269,46 +267,63 @@ textarea.form-control {
 <div class="col-md-6 form-line">
 
 <div class="form-group">
-  <label for="textinput">Nombre Catastrofe</label>  
+  <label for="textinput">Nombre Evento</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
 </div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label for="selectbasic">Seleccionar Tipo</label>
-    <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
-      <option value="1">Incendio</option>
-      <option value="2">Inundacion</option>
-    </select>
- 
-</div>
-
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Lugar</label> 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
+  <label  for="id_medidas_evento"></label> 
+  <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value={{$id_medidas_evento}} type="hidden">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Latitud">Latitud</label> 
+  <label  for="direccion">Lugar</label> 
+  <input id="direccion" name="direccion"  placeholder="Lugar" class="form-control" required="" type="text">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="Lugar">Latitud</label> 
   <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Longitud">Longitud</label> 
+  <label  for="Lugar">Longitud</label> 
   <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label for="FechaInicio">Fecha Inicio</label>  
+  <label for="cantidad_voluntarios">Cantidad Voluntarios</label>  
  
-  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
+  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="integer"> 
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="monto_objetivo">Monto Objetivo</label> 
+  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="integer">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="fecha_inicio_evento">Fecha Inicio Evento</label> 
+  <input id="fecha_inicio_evento" name="fecha_inicio_evento"  placeholder="Fecha Inicio Evento" class="form-control" required="" type="date">
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label  for="fecha_termino_evento">Fecha Termino Evento</label> 
+  <input id="fecha_termino_evento" name="fecha_termino_evento"  placeholder="Fecha Termino Evento" class="form-control" required="" type="date">
+
 </div>
 
 <!-- Textarea -->

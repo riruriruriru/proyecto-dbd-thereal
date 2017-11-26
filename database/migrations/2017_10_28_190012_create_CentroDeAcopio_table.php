@@ -16,8 +16,11 @@ class CreateCentroDeAcopioTable extends Migration
         Schema::create('CentroDeAcopio', function (Blueprint $table) {
             $table->increments('id_acopio')->unique();
             $table->integer('id_medidas_acopio')->foreign('id_medidas_acopio')->references('id_medidas')->on('Medidas');
+            $table->string('nombre');
             $table->string('tipo_bien', 30);
             $table->string('direccion', 30);
+            $table->text('latitud');
+            $table->text('longitud');
             $table->integer('cantidad_objetivo');
             $table->boolean('situacion');
             $table->boolean('recibe');

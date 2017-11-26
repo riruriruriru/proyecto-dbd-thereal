@@ -20,7 +20,12 @@ class CreateEventoTable extends Migration
             $table->date('fecha_termino_evento');
             $table->integer('cantidad_voluntarios');
             $table->integer('voluntarios_actuales');
+            $table->text('latitud');
+            $table->text('longitud');
+            $table->text('direccion');
+            $table->text('descripcion');
             $table->integer('monto_recaudado');
+            $table->integer('monto_objetivo');
             $table->integer('id_medidas_evento')->foreign('id_medidas_evento')->references('id_medidas')->on('Medidas');
         });
     }

@@ -259,7 +259,6 @@
           <div class="form-group">
             <label for="textinput">Nombre Medida</label>  
             <input id="nombre_medida" name="nombre_medida" placeholder="Nombre" class="form-control" required="" type="text">
-            <span class="help-block">nombre catastrofe</span>  
           </div>
 
 <!-- Text input-->

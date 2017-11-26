@@ -152,13 +152,35 @@
 
             
             	@foreach($medidas as $medida)
+<<<<<<< Updated upstream
                 <span id="id_medida">{{$medida->id_medida}}</span>
                 <span>{{$medida->nombre}}</span>
+=======
+                <span id="id_medidas">{{$medida->id_medidas}}</span>
+                <span>{{$medida->nombre_medida}}</span>
+                <span>4341</span>
+                <span><span class="label label-warning">Manager</span></span>
+>>>>>>> Stashed changes
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button href= "{{ route('medida')}}" type="button" class="btn btn-default"><a href="{{ route('medida') }}">Editar</a></button>
+                        <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
                         <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                        <button href="{{ route('medida') }}" type="submit" class="btn btn-default"><li><a href="{{ route('medida') }}">Ingresar Medida</a></li></button>
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Agregar <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu"> 
+                                    <li><a href="/centroAcopio/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Centro de Acopio</a></li> 
+
+                                    <li><a href="/evento/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Evento</a></li> 
+
+                                </ul>
+                            </li>
+
+
+
+                       
 
                     </div>
                 </span>

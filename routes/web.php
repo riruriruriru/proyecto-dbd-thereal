@@ -19,6 +19,12 @@ Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
+Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
+Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
+
+
+
+
 Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
 
 Route::get('/home2','HomeController@viewHome2')->name('home2');
@@ -27,6 +33,11 @@ Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessom
 
 Route::post('upload_medida', 'HomeController@uploadMedida');
 Route::post('/medida', 'HomeController@uploadMedida')->name('medida.store');
+Route::post('/centroAcopio/add/post', 'HomeController@uploadCentroAcopio')->name('centro.store');
+Route::post('/evento/add/post', 'HomeController@uploadEvento')->name('evento.store');
+
+
+
 
 
 Route::get('get_id_org', 'HomeController@get_id_org');
