@@ -4,6 +4,10 @@
 @parent
 <style type="text/css"><
 
+
+/*           -----------------------------------*/
+
+
 .container {
     
     width: 100%;
@@ -134,49 +138,58 @@
 
 @section('content')
 
-<form class="form-horizontal" method="GET">
-<fieldset>
+                <!-- inicio tabla-->
+                
+                            <div class="container">
+
+                                <div class="listWrap">
+                                
+                                    <ul class="list">
+                                    
+                                        <li>
+                                            <span>ID</span>
+                                            <span>Nombre de Catástrofe</span>
+                                            <span>Status</span>
+                                            <span>Acción</span>
+                                            <span></span>
+                                        </li>
+
+                                        
+
+                                             @foreach($catastrofes as $catastrofe)
+                                            <span name="id_catastrofe">{{$catastrofe->id_catastrofe}}</span>
+                                            <span>{{$catastrofe->nombre}}</span>
+                                            @if($catastrofe->fecha_termino != "")
+                                            <span>Inactivo</span>
+                                            @elseif($catastrofe->fecha_termino == "")
+                                            <span>Activo</span>
+                                            @endif
+                                            <span>
+                                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
+
+                                                     @if($datos->id_tipo_usuario===3)
+                                                    <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}">Editar</a></button>
+                                                    @endif
+
+                                                    <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Informacion</a></li> 
+                                                    <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
+                                                
+
+                                                </div>
+                                            </span>
+                                            <li></li>
+                                            @endforeach
+                                            <span></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </fieldset>
+                            </form>
+
+
+<!-- fin tabla-->
 
 
 
 
-<div class="container">
-
-    <div class="listWrap">
-    
-        <ul class="list">
-        
-            <li>
-                <span>ID</span>
-                <span>Nombre de Catástrofe</span>
-                <span>Progreso</span>
-                <span>Role</span>
-                <span>Acción</span>
-                <span></span>
-            </li>
-
-            
-
-            	 @foreach($catastrofes as $catastrofe)
-                <span name="id_catastrofe">{{$catastrofe->id_catastrofe}}</span>
-                <span>{{$catastrofe->nombre}}</span>
-                <span>4341</span>
-                <span><span class="label label-warning">Manager</span></span>
-                <span>
-                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="{{ route('catastrofe') }}">Editar</a></button>
-                        <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                      
-                        <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
-
-                    </div>
-                </span>
-                <li></li>
-                @endforeach
-                <span></span>
-            </li>
-        </ul>
-    </div>
-</fieldset>
-</form>
 @endsection('content')

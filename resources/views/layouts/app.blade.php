@@ -47,11 +47,13 @@
                         @guest
                             <li><a href="/contacto">Contáctanos</a></li>
                             <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
+                            <li><a href="/verOrganizaciones">Organizaciones</a></li>
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li><a href="/contacto">Contáctanos</a></li>
                             <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
+                            <li><a href="/verOrganizaciones">Organizaciones</a></li>
 
 
                             <li class="dropdown">
@@ -93,7 +95,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="/perfil">Perfil</a></li>
+                                    <li><a href="/perfil">Editar Perfil</a></li>
+
+                                    <li><a href="/verPerfil">Ver Perfil</a></li>
 
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -110,8 +114,6 @@
 
                                 </ul>
                             </li>
-
-
 
                         @endguest
                     </ul>

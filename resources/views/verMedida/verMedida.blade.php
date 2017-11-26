@@ -145,9 +145,7 @@
         
             <li>
                 <span>ID</span>
-                <span>Nombre de Catástrofe</span>
-                <span>Progreso</span>
-                <span>Role</span>
+                <span>Nombre de Medida</span>
                 <span>Acción</span>
                 <span></span>
             </li>
@@ -156,8 +154,6 @@
             	@foreach($medidas as $medida)
                 <span id="id_medida">{{$medida->id_medida}}</span>
                 <span>{{$medida->nombre}}</span>
-                <span>4341</span>
-                <span><span class="label label-warning">Manager</span></span>
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href= "{{ route('medida')}}" type="button" class="btn btn-default"><a href="{{ route('medida') }}">Editar</a></button>

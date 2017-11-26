@@ -35,6 +35,8 @@ class HomeController extends Controller
         #$usuario = \App\User::find($user->id);
         return view('perfil.perfil', compact('usuario'));
     }
+
+
     public function updatePerfil(Request $loQueLlega)
     {
         $usuario = Auth::user();
@@ -46,7 +48,21 @@ class HomeController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
-
+/*
+        public function updateCatastrofe(Request $request)
+    {
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+        return redirect()->route('verCatastrofe');
+    }
+*/
 
     public function uploadCatastrofe(Request $request)
     {
@@ -62,7 +78,7 @@ class HomeController extends Controller
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
         ]);
-        return back()->with('flash','Catastrofe declarada correctamente');
+        return view('verCatastrofe', compact('verCatastrofe'));
     }
 
 
@@ -118,10 +134,17 @@ class HomeController extends Controller
         return view('verMedida.verMedida', compact('medidas'));
     }
 
+        public function viewVerOrganizaciones()
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $organizaciones = DB::table('Organizacion')->get();
+        return view('verOrganizaciones.verOrganizaciones', compact('organizaciones'));
+    }
+
         public function viewVerPerfil()
     {   
        $usuario = Auth::id();
-       //$informacion_usuario = DB::select('select from users where id = ?', $usuario)->get();
        $datos = \App\User::find($usuario);
 
        return view('verPerfil.verPerfil', compact('datos'));
@@ -153,8 +176,12 @@ class HomeController extends Controller
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $catastrofes = DB::table('Catastrofe')->get();
-        return view('verCatastrofe.vercatastrofe', compact('catastrofes'));
+        $usuario = Auth::id();
+       $datos = \App\User::find($usuario);
+        return view('verCatastrofe.vercatastrofe', compact('catastrofes', 'datos'));
     }
+
+
     public function uploadVerCatastrofe(Request $loQueLlega)
     {
         $usuario = Auth::user();
@@ -182,4 +209,19 @@ class HomeController extends Controller
     {   
         return view('Contacto.quienessomos', compact('quienessomos'));
     }
+
+    public function viewinfoCatastrofe($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $catastrofe = $id;
+        $cat = Catastrofe::find($id);
+        $longitud= $cat->longitud;
+        $latitud = $cat->latitud;
+        $organizaciones = DB::table('Organizacion')->get();
+        $nombre = 'Teleton';
+
+        return view('infoCatastrofe.infoCatastrofe', compact('organizaciones', 'datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
+    }
+
 }
