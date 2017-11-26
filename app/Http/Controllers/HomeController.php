@@ -176,7 +176,9 @@ class HomeController extends Controller
         $cat = Catastrofe::find($id);
         $longitud= $cat->longitud;
         $latitud = $cat->latitud;
-        $organizaciones = DB::table('Organizacion')->get();
+        //$organizaciones = DB::table('users')->get();
+        $organizaciones = DB::table('users')->where('id_tipo_usuario', '3');
+
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud'));
     }
@@ -203,7 +205,7 @@ class HomeController extends Controller
     {   
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
-        $organizaciones = DB::table('Organizacion')->get();
+        $organizaciones = DB::table('users')->where('id_tipo_usuario', '3');
         return view('verOrganizaciones.verOrganizaciones', compact('organizaciones'));
     }
 

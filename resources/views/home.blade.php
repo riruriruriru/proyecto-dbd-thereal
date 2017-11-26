@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('styles')
-@parent
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,3 +124,4 @@
 
 </style>
 
+@endsection('content')

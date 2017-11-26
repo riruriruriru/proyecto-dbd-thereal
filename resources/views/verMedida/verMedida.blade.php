@@ -152,15 +152,9 @@
 
             
             	@foreach($medidas as $medida)
-<<<<<<< Updated upstream
-                <span id="id_medida">{{$medida->id_medida}}</span>
-                <span>{{$medida->nombre}}</span>
-=======
                 <span id="id_medidas">{{$medida->id_medidas}}</span>
                 <span>{{$medida->nombre_medida}}</span>
-                <span>4341</span>
-                <span><span class="label label-warning">Manager</span></span>
->>>>>>> Stashed changes
+
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>

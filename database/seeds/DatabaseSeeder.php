@@ -23,26 +23,20 @@ class DatabaseSeeder extends Seeder
         //$this->call('TipoTrabajoTableSeeder');
 
         
-        DB::table('TipoActividad')->delete();
-        DB::table('TipoBeneficencia')->delete();
-        DB::table('TipoCatastrofe')->delete();
-        DB::table('TipoInsumo')->delete();
-        DB::table('TipoTrabajo')->delete();
-        DB::table('Usuario')->delete();
-        DB::table('TipoUsuario')->delete();
-        DB::table('Region')->delete();
-        DB::table('Comuna')->delete();
-        DB::table('Ciudad')->delete();
-        factory('App\TipoActividad')->create();
-        factory('App\TipoBeneficencia', 5)->create();
-        factory('App\TipoCatastrofe')->create();
-        factory('App\TipoInsumo', 5)->create();
-        factory('App\TipoTrabajo', 5)->create();
-        factory('App\TipoUsuario')->create();
-        factory('App\Usuario', 10)->create();
-        factory('App\Ciudad', 10)->create();
-        factory('App\Region', 10)->create();
-        factory('App\Comuna', 10)->create();
+        ;
+        DB::table('users')->delete();
+                
+        factory('App\User', 59)->create();
+        factory('App\User', 'admin',1)->create();
+        factory('App\User', 'gob',20)->create();
+        factory('App\User', 'org1')->create();
+        factory('App\User', 'org2')->create();
+        factory('App\User', 'org3')->create();
+        factory('App\User', 'org4')->create();
+        factory('App\User', 'org5')->create();
+        factory('App\User', 'org6')->create();
+
+
 
 //<<<<<<< Updated upstream
         //factory('App\TipoActividad')->create();

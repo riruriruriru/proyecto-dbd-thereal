@@ -276,7 +276,7 @@
            
               <select id="id_organizacion_medidas" name="id_organizacion_medidas" class="form-control">
                 @foreach($organizaciones as $organizacion)
-    <option value="{{ $organizacion->id_organizacion }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id_organizacion) selected='selected' @endif >{{ $organizacion->tipo_beneficiencia}}</option>
+    <option value="{{ $organizacion->id }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id) selected='selected' @endif >{{ $organizacion->name}}</option>
 @endforeach
               </select>
             
