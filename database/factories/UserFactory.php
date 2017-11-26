@@ -13,12 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 $factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+    static $password='123456';
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '4',
         'last_name' => $faker->name,
@@ -29,12 +29,11 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
 $factory->defineAs(App\User::class, 'admin',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'superAdmin',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '1',
         'last_name' => 'superAdmin',
@@ -43,12 +42,11 @@ $factory->defineAs(App\User::class, 'admin',function (Faker $faker) {
 );
 
 $factory->defineAs(App\User::class, 'gob',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '2',
         'last_name' => 'Gobierno de Chile',
@@ -58,12 +56,11 @@ $factory->defineAs(App\User::class, 'gob',function (Faker $faker) {
 
 
 $factory->defineAs(App\User::class, 'org1',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Teleton',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
@@ -72,12 +69,11 @@ $factory->defineAs(App\User::class, 'org1',function (Faker $faker) {
 );
 
 $factory->defineAs(App\User::class, 'org2',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Techo Para Chile',
         'email' => $faker->unique()->safeEmail,
-        'password' =>'123456',
+        'password' =>bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
@@ -86,12 +82,11 @@ $factory->defineAs(App\User::class, 'org2',function (Faker $faker) {
 );
 
 $factory->defineAs(App\User::class, 'org3',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Greenpeace',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
@@ -100,12 +95,11 @@ $factory->defineAs(App\User::class, 'org3',function (Faker $faker) {
 );
 
 $factory->defineAs(App\User::class, 'org4',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Moviliza',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
@@ -113,12 +107,11 @@ $factory->defineAs(App\User::class, 'org4',function (Faker $faker) {
 }
 );
 $factory->defineAs(App\User::class, 'org5',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Hogar de Cristo',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
@@ -126,12 +119,11 @@ $factory->defineAs(App\User::class, 'org5',function (Faker $faker) {
 }
 );
 $factory->defineAs(App\User::class, 'org6',function (Faker $faker) {
-    static $password;
-
+static $password='123456';
     return [
         'name' => 'Fundacion Superacion de la Pobreza',
         'email' => $faker->unique()->safeEmail,
-        'password' => '123456',
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
