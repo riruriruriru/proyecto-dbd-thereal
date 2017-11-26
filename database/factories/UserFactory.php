@@ -26,6 +26,27 @@ $factory->define(App\User::class, function (Faker $faker) {
 }
 );
 
+$factory->define(App\RNV::class, function (Faker $faker) {
+    return [
+        'disponibilidad' => 'true',
+
+    ];
+}
+);
+
+$factory->define(App\RNVUsers::class, function (Faker $faker) {
+    $id_medacop = \DB::table('users')->select('id')->where('id_tipo_usuario', '=', 3)->get();
+    $id_tipo_u = $id_medacop->random()->id;
+    $id_rnv = \DB::table('RNV')->select('id_rnv')->get();
+    $id_r = $id_rnv->random()->id_rnv;
+    return [
+        'id_rnv' => $id_r,
+        'id_usuario' => $id_tipo_u,
+
+    ];
+}
+);
+
 
 
 $factory->defineAs(App\User::class, 'admin',function (Faker $faker) {
@@ -197,18 +218,6 @@ $factory->define(App\Insumo::class, function (Faker $faker) {
 }
 );
 
-
-$factory->define(App\RNV::class, function (Faker $faker) {
-	$emailR = \DB::table('Usuario')->select('email')->get();
-	$emailR2 = $emailR->random()->id;
-
-    return [
-
-        'email' => $emailR2,
-        'disponibilidad' => true,
-    ];
-}
-);
 
 
 $factory->define(App\CentroDeAcopio::class, function (Faker $faker) {

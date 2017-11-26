@@ -48,7 +48,7 @@ class HomeController extends Controller
         $usuario->email = $loQueLlega->email;
         $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
         $usuario->save();
-        return redirect()->route('home');
+        return back()->with('flash','Datos modificados correctamente');
     }
 /*
         public function updateCatastrofe(Request $request)
@@ -80,7 +80,7 @@ class HomeController extends Controller
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
         ]);
-        return view('verCatastrofe', compact('verCatastrofe'));
+        return view('verCatastrofe', compact('verCatastrofe'))->with('flash','Catastrofe declarada correctamente');
     }
 
     public function uploadEvento(Request $request)
@@ -100,7 +100,7 @@ class HomeController extends Controller
             'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
             'descripcion' => $request->descripcion,
         ]);
-        return back()->with('flash','Catastrofe declarada correctamente');
+        return back()->with('flash','Evento declarado correctamente');
     }
 
 
@@ -177,7 +177,7 @@ class HomeController extends Controller
         $longitud= $cat->longitud;
         $latitud = $cat->latitud;
         //$organizaciones = DB::table('users')->get();
-        $organizaciones = DB::table('users')->where('id_tipo_usuario', '3');
+        $organizaciones =  DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
 
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud'));
@@ -205,7 +205,7 @@ class HomeController extends Controller
     {   
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
-        $organizaciones = DB::table('users')->where('id_tipo_usuario', '3');
+        $organizaciones =  DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         return view('verOrganizaciones.verOrganizaciones', compact('organizaciones'));
     }
 

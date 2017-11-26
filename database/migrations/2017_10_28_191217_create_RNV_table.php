@@ -15,9 +15,7 @@ class CreateRNVTable extends Migration
     {
         Schema::create('RNV', function (Blueprint $table) {
             $table->increments('id_rnv')->unique();
-            $table->integer('id_usuario')->unsigned();
             $table->boolean('disponibilidad');
-            $table->foreign('id_usuario')->references('id')->on('users');
             
         });
     }

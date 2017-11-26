@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('flash::message') 
 @section('styles')
     @parent
     <style type="text/css"><

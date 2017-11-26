@@ -25,6 +25,10 @@ class DatabaseSeeder extends Seeder
         
         ;
         DB::table('users')->delete();
+        DB::table('RNV')->delete();
+        DB::table('RNVUsers')->delete();
+
+
                 
         factory('App\User', 59)->create();
         factory('App\User', 'admin',1)->create();
@@ -35,6 +39,11 @@ class DatabaseSeeder extends Seeder
         factory('App\User', 'org4')->create();
         factory('App\User', 'org5')->create();
         factory('App\User', 'org6')->create();
+        factory('App\RNV')->create();
+        factory('App\RNVUsers', 20)->create();
+
+
+
 
 
 

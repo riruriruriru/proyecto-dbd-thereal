@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('flash::message') 
 @section('styles')
 @parent
 <style type="text/css"><
@@ -230,8 +230,8 @@ textarea.form-control {
 
 					            
 					            	@foreach($organizaciones as $organizacion)
-					                <span id="id_organizacion">{{$organizacion->id_organizacion}}</span>
-					                <span>{{$organizacione->nombre}}</span>
+					                <span id="id_organizacion">{{$organizacion->id}}</span>
+					                <span>{{$organizacion->name}}</span>
 					                <span>
 	
 					                </span>
