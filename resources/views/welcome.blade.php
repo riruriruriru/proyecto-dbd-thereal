@@ -203,20 +203,30 @@
 
                         <!-- project 1 -->
                         <div data-project="p1" class="showcase__stage  showcase__stage--active">
+                           
                             <div class="showcase__slider">
+                            
                                 <ul class="rslides">
-
+                                @if(count($catastrofes)>0)
+                                    @foreach($catastrofes as $catastrofe)
                                     <li>
-                                        <a href="content/project01_slide01.jpg" target="_blank">
-                                            <img src="content/project01_slide01.jpg">
+                                        <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" target="_blank">
+                                             @if($catastrofe->tipo_catastrofe === 1)
+                                            <img src="content/incendio.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 2)
+                                            <img src="content/inundacion.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 3)
+                                            <img src="content/terremoto.jpg">
+                                            @endif
+
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a href="content/project01_slide02.jpg" target="_blank">
-                                            <img src="content/project01_slide02.jpg">
-                                        </a>
-                                    </li>
+                                    @endforeach
+                                @elseif(count($catastrofes)===0)
+                                <li>
+                                    <img src="content/project01_slide01.jpg">
+                                </li>
+                                @endif
 
                                 </ul>
                             </div>

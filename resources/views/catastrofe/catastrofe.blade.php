@@ -280,6 +280,7 @@ textarea.form-control {
     <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
       <option value="1">Incendio</option>
       <option value="2">Inundacion</option>
+      <option value="3">Terremoto</option>
     </select>
  
 </div>

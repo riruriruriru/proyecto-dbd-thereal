@@ -30,9 +30,10 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $catastrofes = \App\Catastrofe::all();
         $usuarios = \App\User::all();
-        return view('home', compact('usuarios'));
+        return view('home', compact('usuarios', 'catastrofes'));
     }
     public function viewPerfil()
     {   

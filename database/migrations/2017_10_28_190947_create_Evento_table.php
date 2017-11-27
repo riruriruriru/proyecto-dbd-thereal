@@ -24,6 +24,7 @@ class CreateEventoTable extends Migration
             $table->text('longitud');
             $table->text('direccion');
             $table->text('descripcion');
+            $table->text('nombre');
             $table->integer('monto_recaudado');
             $table->integer('monto_objetivo');
             $table->integer('id_medidas_evento')->foreign('id_medidas_evento')->references('id_medidas')->on('Medidas');

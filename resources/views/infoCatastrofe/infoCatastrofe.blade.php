@@ -84,7 +84,6 @@ textarea.form-control {
             </div>
             <div class="contact-section">
             <div class="container">
-            <?php echo $cat->id_catastrofe ?>
 
                 <form  method="POST" action="{{ route('catastrofe.update') }}">
                         {{ csrf_field() }}
