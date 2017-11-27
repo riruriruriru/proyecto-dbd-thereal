@@ -1,5 +1,7 @@
 
 <?php
+use App\Catastrofe;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +13,8 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+	$catastrofes = Catastrofe::all();
+    return view('welcome', compact('catastrofes'));
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

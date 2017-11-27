@@ -203,21 +203,23 @@
 
                         <!-- project 1 -->
                         <div data-project="p1" class="showcase__stage  showcase__stage--active">
+                           
                             <div class="showcase__slider">
+                            
                                 <ul class="rslides">
-
+                                    @foreach($catastrofes as $catastrofe)
                                     <li>
-                                        <a href="content/project01_slide01.jpg" target="_blank">
-                                            <img src="content/project01_slide01.jpg">
+                                        <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" target="_blank">
+                                            @if($catastrofe->tipo_catastrofe === 1)
+                                            <img src="{{asset('assets/images/incendio.jpg')}}">
+                                            @elseif($catastrofe->tipo_catastrofe === 2)
+                                            <img src="{{asset('assets/mages/inundacion.jpg')}}">
+                                            @lseif($catastrofe->tipo_catastrofe === 3)
+                                            <img src="{{asset('assets/images/terremoto.jpg')}}">
+                                            @endif
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a href="content/project01_slide02.jpg" target="_blank">
-                                            <img src="content/project01_slide02.jpg">
-                                        </a>
-                                    </li>
-
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="showcase__infos-wrapper">
