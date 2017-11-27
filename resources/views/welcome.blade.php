@@ -84,6 +84,7 @@
                 <div class="header__hamburger-block">&nbsp;</div>
                 <div class="header__hamburger-block">&nbsp;</div>
             </div>
+           
             <nav class="header__navigation">
                 <a href="#start" class="js-smooth-scroll">
                     <div class="js-smooth-scroll  header__navigation-element">Home</div>
@@ -121,10 +122,10 @@
 
 
     <!-- First Fixed "Hero" Section -->
+    <!--HoMe de la aplicación-->
     <section id="hero" class="hero">
-        <div class="hero__background">&nbsp;</div>
+        <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
-        <div class="hero__pattern">&nbsp;</div>
         <div class="hero__content">
             <div class="hero__content-wrapper">
                 <div class="hero__title-wrapper">
@@ -132,8 +133,7 @@
                     <div class="hero__title-small">Bienvenido a MovidosxChile</div>
                 </div>
                 <div class="hero__photo-wrapper">
-                    <div class="hero__photo"> 
-                        <div class="hero__hat">&nbsp;</div>
+                    <div class="chile__photo"> 
                     </div>
                 </div>
                 <div class="hero__description">
