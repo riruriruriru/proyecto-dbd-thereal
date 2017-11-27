@@ -21,7 +21,9 @@ Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
+Route::get('/RNV','HomeController@viewRNV')->name('RNV');
 
+Route::post('update_rnv','HomeController@updateRNV');
 
 
 

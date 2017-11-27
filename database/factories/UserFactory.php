@@ -35,7 +35,7 @@ $factory->define(App\RNV::class, function (Faker $faker) {
 );
 
 $factory->define(App\RNVUsers::class, function (Faker $faker) {
-    $id_medacop = \DB::table('users')->select('id')->where('id_tipo_usuario', '=', 3)->get();
+    $id_medacop = \DB::table('users')->select('id')->where('id_tipo_usuario', '=', 4)->get();
     $id_tipo_u = $id_medacop->random()->id;
     $id_rnv = \DB::table('RNV')->select('id_rnv')->get();
     $id_r = $id_rnv->random()->id_rnv;

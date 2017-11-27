@@ -8,6 +8,8 @@ use App\Organizacion;
 use App\Catastrofe;
 use App\CentroDeAcopio;
 use App\Evento;
+use App\RNV;
+use App\RNVUsers;
 
 
 class HomeController extends Controller
@@ -137,6 +139,16 @@ class HomeController extends Controller
             return back()->with('flash', 'Centro declarado correctamente');
     }
 
+
+     public function updateRNV(Request $request)
+    {
+        RNVUsers::create([
+            'id_usuario'=> $request->id_usuario_activo,
+            'id_rnv' => '1',
+            ]);
+            return back()->with('flash', 'Inscrito al RNV correctamente');
+    }
+
     public function viewCatastrofe()
     {   
        // $catastrofe = Catastrofe::catastrofe();
@@ -200,6 +212,16 @@ class HomeController extends Controller
         $medidas = DB::table('Medidas')->get();
         return view('verMedida.verMedida', compact('medidas'));
     }
+
+     public function viewRNV()
+        {   
+           // $catastrofe = Catastrofe::catastrofe();
+            #$usuario = \App\User::find($user->id);
+            $id_usuario_activo = auth()->id();
+            $id_u_r = DB::table('RNVUsers')->pluck('id_usuario');
+            $usuarios = \App\User::find($id_u_r);
+            return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
+        }
 
         public function viewVerOrganizaciones()
     {   
