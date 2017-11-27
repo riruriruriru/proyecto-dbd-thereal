@@ -39,11 +39,11 @@
     <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('style/favicon/apple-touch-icon-72x72.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('style/favicon/apple-touch-icon-60x60.png')}}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{URL::asset('style/favicon/apple-touch-icon-76x76.png')}}">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-192x192.png')}}" sizes="192x192">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-160x160.png')}}" sizes="160x160">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-96x96.png')}}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-16x16.png')}}" sizes="16x16">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-32x32.png')}}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="160x160">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/48x48chilito.png')}}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/16x16chilito.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/32x32chilito.png')}}" sizes="32x32">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="style/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="style/favicon/browserconfig.xml'">
@@ -56,7 +56,6 @@
 
     <!-- Stylesheets -->
     <link href="{{URL::asset('style/css/global.css')}}" type="text/css" rel="stylesheet" media="all">
-
     <!-- Scripts preload -->
     <!--[if lt IE 9]><script src="style/js/html5shiv.js"></script><![endif]-->
 </head>
@@ -91,22 +90,22 @@
         <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
     </section>
-    <div class="hero__content" style="padding-top: 40px;"> 
+    <div class="hero__content" style="padding-top: 50px;"> 
         <!-- Blog Entries Column -->
         <div class=container>
         	<div class="row">
         <div class="col-md-8">
 
-          <h1 class="my-4 section-header__title">Noticias
-            <small>Actualmente en Chile</small>
+          <h1 class="my-4 hero__title-small">Noticias
+            <small class="hero__blanco">Actualmente en Chile</small>
           </h1>
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" width="300px" height="300px" src="content/post1-onemi.jpg" alt="Card image cap">
+            <img class="card-img-top" style="padding-top: 40px;" width="300px" height="300px" src="content/post1-onemi.jpg" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">Onemi prepara simulacro para la región de Aysén</h2>
-              <p class="card-text">La Onemi como parte de su campaña "Chile Preparado" efectuara este 5 de diciembre un simulacro para los habitantes de la zona costera de Aysén</p>
+              <h2 class="card-title hero__blanco">Onemi prepara simulacro para la región de Aysén</h2>
+              <p class="card-text hero__blanco">La Onemi como parte de su campaña "Chile Preparado" efectuara este 5 de diciembre un simulacro para los habitantes de la zona costera de Aysén</p>
               <a href="http://www.onemi.cl/simulacro/aysen-2017/" class="btn btn-primary">Leer Más &rarr;</a>
             </div>
             <div class="card-footer text-muted">
@@ -117,10 +116,10 @@
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" width="750px" height="300px" src="content/conaf-post.jpg" alt="Card image cap">
+            <img class="card-img-top" style="padding-top: 40px;" width="750px" height="300px" src="content/conaf-post.jpg" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">CONAF controla 76 incendios forestales </h2>
-              <p class="card-text">La Corporación Nacional Forestal, CONAF, actualmente combate 110 incendios forestales de los cuales 23 son de gran magnitud, con un comportamiento extremo y de alta severidad.</p>
+              <h2 class="card-title hero__blanco">CONAF controla 76 incendios forestales </h2>
+              <p class="card-text hero__blanco">La Corporación Nacional Forestal, CONAF, actualmente combate 110 incendios forestales de los cuales 23 son de gran magnitud, con un comportamiento extremo y de alta severidad.</p>
               <a href="http://www.altoincendios.cl/conaf-controla-76-incendios-forestales/" class="btn btn-primary">Leer Más &rarr;</a>
             </div>
             <div class="card-footer text-muted">
@@ -147,7 +146,7 @@
 
           <!-- Search Widget -->
           <div class="card my-4">
-            <h5 class="card-header" style="padding-top: 40px;">Search</h5>
+            <h5 class="card-header hero__blanco" style="padding-top: 40px;">Search</h5>
             <div class="card-body">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search for...">
@@ -160,7 +159,7 @@
 
           <!-- Categories Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
+            <h5 class="card-header hero__blanco">Vea también</h5>
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
