@@ -1,66 +1,6 @@
  @extends('layouts.app')
 <!DOCTYPE html><html lang="en">
 <head>
-<style type="text/css">
-.carousel {
-   
-    overflow: hidden;
-}
-.carousel .item {
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -ms-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
-}
-.carousel .active.left, .carousel .active.right {
-    left:0;
-    opacity:0;
-    z-index:2;
-}
-.carousel .next, .carousel .prev {
-    left:0;
-    opacity:1;
-    z-index:1;
-}
-.item:nth-child(1) {
-  background: darkred;
-}
-
-.item:nth-child(2) {
-  background: red;
-}
-
-.item:nth-child(3) {
-  background: orange;
-}
-
-.custom {
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  color: #080808;
-}
-.custom-title {
-  margin-bottom: 0.75rem;
-}
-
-</style>
-
-<script type="text/javascript">
-     $(document).ready(function() {
-    $('.carousel').carousel({interval: 2000});
-    });
-</script>
-
 
     <!-- Basic informations -->
     <meta charset="utf-8">
@@ -157,51 +97,38 @@
         	<div class="row">
         <div class="col-md-8">
 
-          <h1 class="my-4">Noticias
+          <h1 class="my-4 section-header__title">Noticias
             <small>Actualmente en Chile</small>
           </h1>
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" width="750px" height="300px" src="content/asteroides.jpg" alt="Card image cap">
+            <img class="card-img-top" width="300px" height="300px" src="content/post1-onemi.jpg" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">Gran Catastrofe</h2>
-              <p class="card-text">Pata ciclismo en la patagonia deja a la isla de chiloe sin acceso al continente</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+              <h2 class="card-title">Onemi prepara simulacro para la región de Aysén</h2>
+              <p class="card-text">La Onemi como parte de su campaña "Chile Preparado" efectuara este 5 de diciembre un simulacro para los habitantes de la zona costera de Aysén</p>
+              <a href="http://www.onemi.cl/simulacro/aysen-2017/" class="btn btn-primary">Leer Más &rarr;</a>
             </div>
             <div class="card-footer text-muted">
               Posted on Noviembre 27, 2017 by
-              <a href="#">Start Bootstrap</a>
+              <a href="#">Admin</a>
             </div>
           </div>
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" width="750px" height="300px" src="content/conaf-post.jpg" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+              <h2 class="card-title">CONAF controla 76 incendios forestales </h2>
+              <p class="card-text">La Corporación Nacional Forestal, CONAF, actualmente combate 110 incendios forestales de los cuales 23 son de gran magnitud, con un comportamiento extremo y de alta severidad.</p>
+              <a href="http://www.altoincendios.cl/conaf-controla-76-incendios-forestales/" class="btn btn-primary">Leer Más &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
+              Posted on Noviembre 27, 2017 by Admin
             </div>
           </div>
 
           <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
 
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
