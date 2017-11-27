@@ -537,6 +537,17 @@ class HomeController extends Controller
         return view('Evento.evento', compact('id_medidas_evento'));
     }
 
+         public function viewAgregarDonacion($id)
+    {   
+        $id_medidas_donacion = $id;
+        $medida = Medidas::find($id);
+        $nombre = $medida->nombre_medida;
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('Donaciones.donaciones', compact('id_medidas_donacion', 'nombre'));
+    }
+
     public function viewMedida($id)
     {   
         $catastrofe = $id;

@@ -149,7 +149,7 @@ textarea.form-control {
 
         // This event listener calls addMarker() when the map is clicked.
         google.maps.event.addListener(map, 'click', function(event) {
-          addMarker(event.latLng, map);
+          addMarker(event.latLng, map, event.place);
         });
         
 
@@ -226,10 +226,11 @@ textarea.form-control {
     } else {
     marker = new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
     });
 
   }
+  $('#lugar_catastrofe').val(name);
    $("#latitud").val(location.lat());
    $("#longitud").val(location.lng());
 
