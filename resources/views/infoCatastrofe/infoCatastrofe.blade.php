@@ -126,14 +126,14 @@ textarea.form-control {
 						<!-- Text input-->
 						<div class="form-group">
 						  <label  for="Latitud">Latitud</label> 
-						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" readonly="readonly" required="" type="text">
+						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" readonly="readonly" style="display: none" required="" type="text">
 
 						</div>
 
 						<!-- Text input-->
 						<div class="form-group">
 						  <label  for="Longitud">Longitud</label> 
-						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" readonly="readonly" required="" type="text">
+						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" style="display: none" readonly="readonly" required="" type="text">
 
 						</div>
 
@@ -244,14 +244,14 @@ textarea.form-control {
 						<!-- Text input-->
 						<div class="form-group">
 						  <label  for="Latitud">Latitud</label> 
-						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" required="" type="text">
+						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" required="" style="display: none" type="text">
 
 						</div>
 
 						<!-- Text input-->
 						<div class="form-group">
 						  <label  for="Longitud">Longitud</label> 
-						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" required="" type="text">
+						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" style="display: none" required="" type="text">
 
 						</div>
 

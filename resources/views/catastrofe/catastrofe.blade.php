@@ -333,14 +333,14 @@ textarea.form-control {
 <!-- Text input-->
 <div class="form-group">
    
-  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="hidden">
+  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" style= "display: none" required="" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
 
-  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="hidden">
+  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
 </div>
 

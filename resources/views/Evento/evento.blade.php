@@ -288,14 +288,14 @@ textarea.form-control {
 <!-- Text input-->
 <div class="form-group">
   <label  for="Lugar">Latitud</label> 
-  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="text">
+  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
   <label  for="Lugar">Longitud</label> 
-  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="text">
+  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
 </div>
 
