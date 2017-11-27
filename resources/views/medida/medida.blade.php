@@ -316,4 +316,13 @@
 
     </body>
 </html>
-
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+            header('Refresh: 0.01; URL=/verMedida');
+        }
+?>

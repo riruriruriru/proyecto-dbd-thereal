@@ -174,11 +174,6 @@
 
                                 </ul>
                             </li>
-
-
-
-                       
-
                     </div>
                 </span>
                 <li></li>
@@ -191,15 +186,12 @@
 </fieldset>
 
 </form>
+
 <div class="form-group" style = "position: relative;margin-left: 600px;">
 <!-- Form Name -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
- <script>
-        alert ("{{Session::get('flash')}}");
-</script>
-
- <form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}"  >
+ 
+<form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}"  >
         {{ csrf_field() }}
 <!-- Text input-->
 <div class="col-md-3">
@@ -216,6 +208,7 @@
 </div>
 </div>
 </form>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </div>
 
