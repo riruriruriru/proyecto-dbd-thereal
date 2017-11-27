@@ -84,10 +84,9 @@
                 <div class="header__hamburger-block">&nbsp;</div>
                 <div class="header__hamburger-block">&nbsp;</div>
             </div>
-           
             <nav class="header__navigation">
                 <a href="#start" class="js-smooth-scroll">
-                    <div class="js-smooth-scroll  header__navigation-element">Home</div>
+                    <div class="header__navigation-element  header__navigation-element--realizations">Home</div>
                 </a>
                 <a href="#experience" class="js-smooth-scroll">
                     <div class="header__navigation-element  header__navigation-element--experience">Información</div>
@@ -126,6 +125,13 @@
     <section id="hero" class="hero">
         <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
+        <div class="hero__call-to-linkens">
+                    <a href="http://www.onemi.cl/alertas" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Alertas Onemi&nbsp;</a>
+                    <a href="http://www.movidosporchile.cl/" target="_blank" class="hero__button  ghost-button  ghost-button--hero">MOVIDOS X CHILE&nbsp;</a>
+                    <a href="http://www.sismologia.cl" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Sismologia&nbsp;</a>
+                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Informacion Armada &nbsp;</a>
+                    <a href="https://github.com/laravel/laravel" target="_blank" class="hero__button  ghost-button" >GitHub&nbsp;</a>
+            </div>
         <div class="hero__content">
             <div class="hero__content-wrapper">
                 <div class="hero__title-wrapper">
@@ -383,59 +389,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name', 'MovidosxChile') }}
-                </div>
-
-                <div class="links">
-                    <a href="http://www.onemi.cl/alertas">Alertas Onemi</a>
-                    <a href="http://www.movidosporchile.cl/">MOVIDOS X CHILE</a>
-                    <a href="http://www.sismologia.cl">Sismologia</a>
-                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html">Informacion Armada</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-

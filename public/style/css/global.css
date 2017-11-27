@@ -844,6 +844,7 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
   width: 280px;
   height: 280px;
   border-radius: 150px;
+  margin-top: 10px;
   background-image: url("../img/chilito.png");
   background-size: cover;
 }
@@ -897,6 +898,11 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
 }
 
 .hero__call-to-action {
+  clear: both;
+  text-align: center;
+  padding-top: 70px;
+}
+.hero__call-to-linkens {
   clear: both;
   text-align: center;
   padding-top: 70px;
