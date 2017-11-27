@@ -141,8 +141,8 @@ textarea.form-control {
       function initialize() {
         var bangalore = { lat: 12.97, lng: 77.59 };
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13,
+          center: {lat: -33.4727088, lng: -70.7702575},
+          zoom: 9,
           mapTypeId: 'roadmap'
         });
 
