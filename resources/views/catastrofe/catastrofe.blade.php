@@ -136,7 +136,20 @@ textarea.form-control {
     <script>
       // In the following example, markers appear when the user clicks on the map.
       // Each marker is labeled with a single alphabetical character.
-   
+   function geocodePosition(pos) {
+var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                latLng: pos
+            }, function (responses) {
+                if (responses && responses.length > 0) {
+                    $('#lugar_catastrofe').val(responses[2].formatted_address);
+                    console.log(responses[2].formatted_address)
+                } else {
+                    
+                }
+            });
+        }
+
 
       function initialize() {
         var bangalore = { lat: 12.97, lng: 77.59 };
@@ -204,7 +217,8 @@ textarea.form-control {
             }));
             $("#latitud").val(place.geometry.location.lat());
             $("#longitud").val(place.geometry.location.lng());
-            $('#lugar_catastrofe').val(place.name)
+              geocodePosition(place.geometry.location);
+ 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -230,10 +244,10 @@ textarea.form-control {
     });
 
   }
-  $('#lugar_catastrofe').val(name);
+
    $("#latitud").val(location.lat());
    $("#longitud").val(location.lng());
-
+   geocodePosition(marker.getPosition());
       }
   google.maps.event.addDomListener(window, 'load', initialize);
 

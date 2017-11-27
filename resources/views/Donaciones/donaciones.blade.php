@@ -82,7 +82,7 @@ textarea.form-control {
       </div>
 <div class="contact-section">
 <div class="container">
-<form  method="POST" action="">
+<form  method="POST" action="{{ route('donacion.store') }}">
                         {{ csrf_field() }}
 <fieldset>
 
@@ -95,51 +95,39 @@ textarea.form-control {
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label  for="id_medidas_evento"></label> 
-  <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value={{$id_medidas_donacion}} type="hidden">
+  <label  for="id_medidas_donacion"></label> 
+  <input id="id_medidas_donacion" name="id_medidas_donacion"  placeholder="" class="form-control" required="" value={{$id_medidas_donacion}} type="hidden">
 
 </div>
 
 
 <!-- Text input-->
 <div class="form-group">
-  <label for="cantidad_voluntarios">Cantidad Voluntarios</label>  
+  <label for="objetivo">Monto objetivo</label>  
  
-  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="integer"> 
+  <input id="objetivo" name="objetivo" placeholder="Monto objetivo" class="form-control" required="" type="number" min ="0"> 
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label  for="numero_cuenta">Numero Cuenta</label> 
+  <input id="numero_cuenta" name="numero_cuenta"  placeholder="Numero Cuenta" class="form-control" required="" type="number">
+
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label  for="fecha_inicio">Fecha Inicio Donaciones</label> 
+  <input id="fecha_inicio" name="fecha_inicio"  placeholder="Fecha Inicio Donaciones" class="form-control" required="" type="date">
+
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="monto_objetivo">Monto Objetivo</label> 
-  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="integer">
+  <label  for="fecha_termino">Fecha Termino Donaciones</label> 
+  <input id="fecha_termino" name="fecha_termino"  placeholder="Fecha Termino Donaciones" class="form-control" required="" type="date">
 
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label  for="fecha_inicio_evento">Fecha Inicio Evento</label> 
-  <input id="fecha_inicio_evento" name="fecha_inicio_evento"  placeholder="Fecha Inicio Evento" class="form-control" required="" type="date">
 
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label  for="fecha_termino_evento">Fecha Termino Evento</label> 
-  <input id="fecha_termino_evento" name="fecha_termino_evento"  placeholder="Fecha Termino Evento" class="form-control" required="" type="date">
-
-</div>
-
-<!-- Textarea -->
-</div>
-<div class="col-md-6">
-<div class="form-group">
-  <label  for="Descripcion">Descripcion</label>  
-  
-  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control" type="text">
-
-  
- 
-</div>
 
 <!-- Button -->
 <div class="form-group">

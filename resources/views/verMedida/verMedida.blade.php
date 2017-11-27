@@ -171,6 +171,7 @@
 
                                     <li><a href="/evento/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Evento</a></li> 
                                      <li><a href="/donacion/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Donacion</a></li> 
+                                     
 
                                 </ul>
                             </li>

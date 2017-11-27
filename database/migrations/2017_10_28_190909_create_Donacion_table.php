@@ -20,6 +20,8 @@ class CreateDonacionTable extends Migration
             $table->text('nombre');
             $table->integer('numero_cuenta');
             $table->integer('monto_actual');
+            $table->date('fecha_inicio');
+            $table->date('fecha_termino');
         });
     }
 
