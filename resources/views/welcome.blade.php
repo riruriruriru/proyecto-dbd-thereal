@@ -37,11 +37,11 @@
     <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('style/favicon/apple-touch-icon-72x72.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('style/favicon/apple-touch-icon-60x60.png')}}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{URL::asset('style/favicon/apple-touch-icon-76x76.png')}}">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-192x192.png')}}" sizes="192x192">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-160x160.png')}}" sizes="160x160">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-96x96.png')}}" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-16x16.png')}}" sizes="16x16">
-    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/favicon-32x32.png')}}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="160x160">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/48x48chilito.png')}}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/16x16chilito.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/32x32chilito.png')}}" sizes="32x32">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="style/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="style/favicon/browserconfig.xml'">
