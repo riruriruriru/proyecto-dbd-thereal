@@ -196,6 +196,7 @@
                                     <li>
                                         <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" target="_blank">
                                              @if($catastrofe->tipo_catastrofe === 1)
+                                             <label >
                                             <img src="content/incendio.jpg">
                                             @elseif($catastrofe->tipo_catastrofe === 2)
                                             <img src="content/inundacion.jpg">
