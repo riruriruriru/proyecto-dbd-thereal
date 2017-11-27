@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @include('flash::message') 
 @section('styles')
     @parent
@@ -596,14 +597,14 @@
                 <span>Acciones</span>
                 <span></span>
             </li>
-             @foreach($evento as $eventos)
+             @foreach($eventos as $evento)
             <li>
-                <spanid id="id_evento">{{$eventos->id_evento}}</span>
+                <spanid id="id_evento">{{$evento->id_evento}}</span>
                 
-                <span>{{$eventos->cantidad_voluntarios}}</span>
-                <span>{{$eventos->voluntarios_actuales}}</span>
-                <span>{{$eventos->monto_recaudado}}</span>
-                <span>{{$eventos->monto_objetivo}}</span>
+                <span>{{$evento->cantidad_voluntarios}}</span>
+                <span>{{$evento->voluntarios_actuales}}</span>
+                <span>{{$evento->monto_recaudado}}</span>
+                <span>{{$evento->monto_objetivo}}</span>
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button type="button" class="btn btn-default">Edit</button>

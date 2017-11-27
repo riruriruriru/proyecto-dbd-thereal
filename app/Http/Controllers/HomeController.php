@@ -148,8 +148,8 @@ class HomeController extends Controller
      public function updateRNV(Request $request)
     {
         $i = auth()->id();
-        $id_placeholder = DB::table('RNVUsers')->where('id_usuario', '=', $i)->get();
-        if($id_placeholder==NULL){
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $i)->get();
+        if(count($id_placeholder)==0){
             RNVUsers::create([
                 'id_usuario'=> $request->id_usuario_activo,
                 'id_rnv' => '1',
@@ -346,11 +346,11 @@ class HomeController extends Controller
         $datos = \App\User::find($usuario);
         $medida = Medidas::find($id);
         $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->get();
-        $evento = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
-        $organizaciones = DB::table('Organizacion')->get();
+        $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
+        $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;
 
-        return view('infoMedida.infoMedida', compact('datos', 'medida', 'evento', 'centroAcop', 'organizaciones', 'catastrofe'));
+        return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe'));
     }
 
 
