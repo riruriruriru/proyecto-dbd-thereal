@@ -28,7 +28,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\RNV::class, function (Faker $faker) {
     return [
-        'disponibilidad' => 'true',
+        'disponibilidad' => (bool)'true',
 
     ];
 }

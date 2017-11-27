@@ -204,7 +204,7 @@
 </div>
 
 <!-- Button -->
-<div class="form-group">
+<div class="form-group" >
     <button id="Submit" name="button" class="btn btn-default submit">Inscribirme!</button>
 </div>
 
