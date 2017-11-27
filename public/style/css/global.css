@@ -716,16 +716,6 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
   overflow: hidden;
 }
 
-.orga__background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -400;
-  width: 100%;
-  height: 100%;
-  background-image: url("../img/logos_organ.jpg");
-  background-repeat: repeat;
-}
 
 .hero__background {
   position: absolute;
@@ -839,6 +829,9 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
   float: right;
 }
 
+
+/*------------Area Custom-------------*\
+\*------------------------------------*/
 .chile__photo {
   position: relative;
   width: 250px;
@@ -847,6 +840,24 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
   margin-top: 15px;
   background-image: url("../img/chilito.png");
   background-size: cover;
+}
+.orga__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -400;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/logos_organ.jpg");
+  background-repeat: repeat;
+}
+.hero__call-to-linkens {
+  clear: both;
+  text-align: center;
+  padding-top: 70px;
+}
+.hero__blanco{
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero__photo {
