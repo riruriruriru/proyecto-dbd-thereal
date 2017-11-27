@@ -21,6 +21,7 @@ class CreateCatastrofeTable extends Migration
             $table->string('nombre',120);
             $table->timestamps();
             $table->integer('tipo_catastrofe');
+            $table->text('nombre_tipo_catastrofe');
             $table->text('lugar_catastrofe');
             $table->text('latitud');
             $table->text('longitud');

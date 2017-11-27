@@ -267,10 +267,28 @@ textarea.form-control {
 <div class="col-md-6 form-line">
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
 
+<label for="textinput">Clickee en el mapa para seleccionar lugar de la catastrofe o ingrese localización en buscador</label>  
+
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
 </div>
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+    <script>
+    $("#nombre_tipo_catastrofe").hide();
+        $(document).ready(function (){
+            $("#tipo_catastrofe").change(function() {
+                // foo is the id of the other select box 
+                if ($(this).val() == "17") {
+                    $("#nombre_tipo_catastrofe").show();
+                }else{
+                    $("#nombre_tipo_catastrofe").hide();
+                } 
+            });
+        });
+    </script>
 
 <!-- Select Basic -->
 <div class="form-group">
@@ -279,9 +297,30 @@ textarea.form-control {
       <option value="1">Incendio</option>
       <option value="2">Inundacion</option>
       <option value="3">Terremoto</option>
+      <option value="4">Tsunami</option>
+      <option value="5">Erupción Volcánica</option>
+      <option value="6">Aluvión</option>
+      <option value="7">Sequía</option>
+      <option value="8">Temporal de lluvia</option>
+      <option value="9">Marejadas</option>
+      <option value="10">Tormentas de arena</option>
+      <option value="11">Temperaturas extremas</option>
+      <option value="12">Heladas</option>
+      <option value="13">Avalanchas de nieve</option>
+      <option value="14">Actividad Volcánica</option>
+      <option value="15">Brote de enfermedades</option>
+      <option value="16">Pandemia</option>
+      <option value="17">Otros</option>
     </select>
- 
+
 </div>
+
+<!-- Text input-->
+<div class="form-group">
+  <input id="nombre_tipo_catastrofe" name="nombre_tipo_catastrofe" style="display: none" placeholder="Otros" class="form-control" type="text">
+
+</div>
+
 
 <!-- Text input-->
 <div class="form-group">

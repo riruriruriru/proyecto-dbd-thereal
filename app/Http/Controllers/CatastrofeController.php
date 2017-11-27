@@ -37,17 +37,282 @@ class CatastrofeController extends Controller
     public function store(Request $request)
     {
         //
-      Catastrofe::create([
+      $placeholder='abc';
+         $tipo = $request->tipo_catastrofe;
+        if($tipo=='1'){
+                 Catastrofe::create([
             'id_user'=> auth()->id(),
             'nombre'=> $request->nombre,
             'tipo_catastrofe' => $request->tipo_catastrofe,
-            'lugar_catastrofe' => $request->lugar_catastrofe,
-            'latitud' =>$request->latitud,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Incendio',
+             
+
         ]);
+            }
+            else if($tipo=='2'){
+               Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Inundacion',
+             
+
+        ]);
+            }
+            else if($tipo=='3'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Terremoto',
+             
+
+        ]);
+            }
+            else if($tipo=='4'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Tsunami',
+             
+
+        ]);
+            }
+            else if($tipo=='5'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Erupción Volcánica',
+             
+
+        ]);
+            }
+            else if($tipo=='6'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Aluvión',
+             
+
+        ]);
+            }
+            else if($tipo=='7'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' =>'Sequía',
+             
+
+        ]);
+            }
+            else if($tipo=='8'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Temporal de lluvia',
+             
+
+        ]);
+            }
+            else if($tipo=='9'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Marejadas',
+             
+
+        ]);
+            }
+            else if($tipo=='10'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Tormentas de arena',
+             
+
+        ]);
+            }
+            else if($tipo=='11'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Temperaturas extremas',
+             
+
+        ]);
+            }
+            else if($tipo=='12'){
+                  Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Heladas',
+             
+
+        ]);
+            }
+            else if($tipo=='13'){
+                            Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Avalanchas de nieve',
+             
+
+        ]);
+            }
+            else if($tipo=='14'){
+                            Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Actividad volcanica',
+             
+
+        ]);
+            }
+            else if($tipo=='15'){
+                            Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Brote de enfermedades',
+             
+
+        ]);
+            }
+            else if($tipo=='16'){
+                            Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => 'Pandemia',
+             
+
+        ]);
+            }
+            else{
+                            Catastrofe::create([
+            'id_user'=> auth()->id(),
+            'nombre'=> $request->nombre,
+            'tipo_catastrofe' => $request->tipo_catastrofe,
+            'lugar_catastrofe' =>$request->lugar_catastrofe,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'descripcion' => $request->descripcion,
+            'nombre_tipo_catastrofe' => $request->nombre_tipo_catastrofe,
+             
+
+        ]);
+
+            }
+
         return back()->with('flash','Catastrofe ingresada');
     }
 
