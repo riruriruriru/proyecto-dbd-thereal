@@ -38,6 +38,7 @@ Route::post('/medida', 'HomeController@uploadMedida')->name('medida.store');
 Route::post('/centroAcopio/add/post', 'HomeController@uploadCentroAcopio')->name('centro.store');
 Route::post('/evento/add/post', 'HomeController@uploadEvento')->name('evento.store');
 
+Route::post('/infoCatastrofe', 'HomeController@updateCatastrofe')->name('catastrofe.update');
 
 
 

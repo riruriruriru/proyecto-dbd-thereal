@@ -10,6 +10,7 @@ use App\CentroDeAcopio;
 use App\Evento;
 use App\RNV;
 use App\RNVUsers;
+use App\User;
 
 
 class HomeController extends Controller
@@ -52,21 +53,24 @@ class HomeController extends Controller
         $usuario->save();
         return back()->with('flash','Datos modificados correctamente');
     }
-/*
+
         public function updateCatastrofe(Request $request)
-    {
-            'id_user'=> auth()->id(),
-            'nombre'=> $request->nombre,
-            'tipo_catastrofe' => $request->tipo_catastrofe,
-            'lugar_catastrofe' =>$request->lugar_catastrofe,
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
-            'descripcion' => $request->descripcion,
-        return redirect()->route('verCatastrofe');
+    {       
+        
+            $usuario = Auth::id();
+            $datos = User::find($usuario);
+            $catastrofe = $request->id_catastrofe;
+            //$cat = Catastrofe::find($id);
+            
+            $latitud =$request->latitud;
+            $longitud = $request->longitud;
+            $cat = Catastrofe::updateOrCreate( ['id_catastrofe'=> $request->id_catastrofe],['nombre' => $request->nombre, 'tipo_catastrofe' => $request->tipo_catastrofe],
+    ['lugar_catastrofe' => $request->lugar_catastrofe], ['latitud' => $request->latitud], ['longitud' => $request->longitud], ['fecha_inicio'=> date("m-d-Y", strtotime($request->fecha_inicio))], ['fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino))], ['descripcion'=>  $request->descripcion]);
+
+        //return view('/infoCatastrofe', compact('cat', 'datos', 'longitud', 'latitud', 'usuario', 'catastrofe'));
+        return back()->with('fhasl', 'Catastrofe Actualizada');
     }
-*/
+
 
     public function uploadCatastrofe(Request $request)
     {
@@ -323,10 +327,8 @@ class HomeController extends Controller
         $cat = Catastrofe::find($id);
         $longitud= $cat->longitud;
         $latitud = $cat->latitud;
-        $organizaciones = DB::table('Organizacion')->get();
-        $nombre = 'Teleton';
 
-        return view('infoCatastrofe.infoCatastrofe', compact('organizaciones', 'datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
+        return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
     }
 
 }

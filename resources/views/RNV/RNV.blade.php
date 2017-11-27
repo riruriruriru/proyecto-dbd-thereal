@@ -135,6 +135,8 @@
 
 
 <form class="form-horizontal" method="GET">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 {{Session::get('flash')}}
 <fieldset>
 
