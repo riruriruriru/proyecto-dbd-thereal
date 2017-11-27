@@ -135,7 +135,7 @@
 
 
 <form class="form-horizontal" method="GET">
-
+{{Session::get('flash')}}
 <fieldset>
 
 <div class="container">

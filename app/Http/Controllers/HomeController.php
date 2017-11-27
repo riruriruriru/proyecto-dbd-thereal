@@ -142,11 +142,21 @@ class HomeController extends Controller
 
      public function updateRNV(Request $request)
     {
-        RNVUsers::create([
-            'id_usuario'=> $request->id_usuario_activo,
-            'id_rnv' => '1',
-            ]);
-            return back()->with('flash', 'Inscrito al RNV correctamente');
+        $i = auth()->id();
+        $id_placeholder = DB::table('RNVUsers')->where('id_usuario', '=', $i)->get();
+        if($id_placeholder==NULL){
+            RNVUsers::create([
+                'id_usuario'=> $request->id_usuario_activo,
+                'id_rnv' => '1',
+                ]);
+                return back()->with('flash', 'Inscrito al RNV correctamente');
+
+        }
+        else{
+
+                return back()->with('flash', 'Ya se encuentra inscrito en el RNV');
+
+        }
     }
 
     public function viewCatastrofe()
