@@ -193,10 +193,6 @@ class HomeController extends Controller
         return view('Evento.evento', compact('id_medidas_evento'));
     }
 
-
-
-   
-
     public function viewMedida($id)
     {   
         $catastrofe = $id;
@@ -227,6 +223,17 @@ class HomeController extends Controller
         $medidas = DB::table('Medidas')->get();
         return view('verMedida.verMedida', compact('medidas'));
     }
+
+
+
+    public function viewVerMedidasCatastrofe($id)
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $medidas = DB::table('Medidas')->where('id_catastrofe_medidas', '=', $id)->get();
+        return view('verMedida.verMedida', compact('medidas'));
+    }
+
 
      public function viewRNV()
         {   
@@ -331,5 +338,20 @@ class HomeController extends Controller
 
         return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
     }
+
+
+    public function viewinfoMedida($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $medida = Medidas::find($id);
+        $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->get();
+        $evento = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
+        $organizaciones = DB::table('Organizacion')->get();
+        $catastrofe = $medida->id_catastrofe_medidas;
+
+        return view('infoMedida.infoMedida', compact('datos', 'medida', 'evento', 'centroAcop', 'organizaciones', 'catastrofe'));
+    }
+
 
 }

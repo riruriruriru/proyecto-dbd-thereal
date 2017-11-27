@@ -224,7 +224,6 @@ textarea.form-control {
 					            <li>
 					                <span>ID</span>
 					                <span>Nombre de Organización</span>
-					                <span>Tipo de Beneficencia</span>
 					                <span></span>
 					            </li>
 
@@ -232,9 +231,6 @@ textarea.form-control {
 					            	@foreach($organizaciones as $organizacion)
 					                <span id="id_organizacion">{{$organizacion->id}}</span>
 					                <span>{{$organizacion->name}}</span>
-					                <span>
-	
-					                </span>
 					                <li></li>
 					                @endforeach
 					                <span></span>

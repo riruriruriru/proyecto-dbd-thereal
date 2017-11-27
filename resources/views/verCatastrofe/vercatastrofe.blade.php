@@ -173,6 +173,7 @@
 
                                                     <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Informacion</a></li> 
                                                     <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
+                                                    <li><a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a></li> 
                                                 
 
                                                 </div>
