@@ -136,32 +136,6 @@
 
 <form class="form-horizontal" method="GET">
 
-<form class="form-horizontal">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Form Name</legend>
- <form class="form-horizontal" method="POST" action="update_rnv" >
-        {{ csrf_field() }}
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput"></label>  
-  <div class="col-md-4">
-  <input id="id_usuario_activo" name="id_usuario_activo" type="hidden" placeholder="placeholder" value={{$id_usuario_activo}} class="form-control input-md">
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <div class="col-md-4">
-    <button id="Submit" name="singlebutton" class="btn btn-default submit">Button</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-</form>
-
 <fieldset>
 
 <div class="container">
@@ -215,6 +189,27 @@
 
 </fieldset>
 </form>
+<div class="form-group">
+<!-- Form Name -->
+ <form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}" >
+        {{ csrf_field() }}
+<!-- Text input-->
+<div class="form-group">
+  <div class="col-md-4">
+  <input id="id_usuario_activo" name="id_usuario_activo" type="hidden" placeholder="placeholder" value={{$id_usuario_activo}} class="form-control input-md">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <div class="col-md-4">
+    <button id="Submit" name="button" class="btn btn-default submit">Inscribirme!</button>
+  </div>
+</div>
+
+
+</form>
+</div>
 
 
 @endsection('content')

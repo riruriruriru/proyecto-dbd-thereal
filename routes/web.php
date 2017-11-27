@@ -23,7 +23,7 @@ Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name(
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
 Route::get('/RNV','HomeController@viewRNV')->name('RNV');
 
-Route::post('update_rnv','HomeController@updateRNV');
+Route::post('RNV/add/post','HomeController@updateRNV')->name('RNV.store');
 
 
 
