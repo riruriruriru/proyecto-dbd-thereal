@@ -140,7 +140,7 @@
         <div class="hero__content">
             <div class="hero__content-wrapper">
                 <div class="hero__title-wrapper">
-                    <div class="hero__title-large">Hola!</div>
+                    <div class="hero__title-large" style="padding-top: 40px;">Hola!</div>
                     <div class="hero__title-small">Bienvenido a MovidosxChile</div>
                 </div>
                 <div class="hero__photo-wrapper">
