@@ -103,7 +103,7 @@
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" width="300px" height="300px" src="content/pos1-onemi.jpg" alt="Card image cap">
+            <img class="card-img-top" width="300px" height="300px" src="content/post1-onemi.jpg" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">Onemi prepara simulacro para la región de Aysén</h2>
               <p class="card-text">La Onemi como parte de su campaña "Chile Preparado" efectuara este 5 de diciembre un simulacro para los habitantes de la zona costera de Aysén</p>
