@@ -145,7 +145,6 @@
                 </div>
                 <div class="hero__photo-wrapper">
                     <div class="chile__photo"> 
-                        <div class="hero__hat">&nbsp;</div>
                     </div>
                 </div>
                 <div class="hero__description">
@@ -356,59 +355,4 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name', 'MovidosxChile') }}
-                </div>
-
-                <div class="links">
-                    <a href="http://www.onemi.cl/alertas">Alertas Onemi</a>
-                    <a href="http://www.movidosporchile.cl/">MOVIDOS X CHILE</a>
-                    <a href="http://www.sismologia.cl">Sismologia</a>
-                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html">Informacion Armada</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
 

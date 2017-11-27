@@ -14,7 +14,7 @@ use App\Catastrofe;
 */
 Route::get('/', function () {
 	$catastrofes = Catastrofe::all();
-    return view('welcome', compact('catastrofes'));
+    return view('home', compact('catastrofes'));
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
