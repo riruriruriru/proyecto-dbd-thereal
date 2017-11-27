@@ -28,7 +28,7 @@ Route::get('/RNV','HomeController@viewRNV')->name('RNV');
 
 Route::post('RNV/add/post','HomeController@updateRNV')->name('RNV.store');
 
-
+Route::get('/verMedida/{id}','HomeController@viewVerMedidasCatastrofe')->name('verMedidaCatastrofe');
 
 Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
 
@@ -62,6 +62,7 @@ Route::get('/medida2', 'HomeController@viewMedida2')->name('medida2');
 Route::get('/verCatastrofe', 'HomeController@viewVerCatastrofe')->name('verCatastrofe');
 Route::post('update_verCatastrofe', 'HomeController@updateVerCatastrofe');
 Route::get('/infoCatastrofe/{id}', 'HomeController@viewinfoCatastrofe')->name('infoCatastrofe');
+Route::get('/infoMedida/{id}', 'HomeController@viewinfoMedida')->name('infoMedida');
 
 Route::get('/verOrganizaciones', 'HomeController@viewVerOrganizaciones')->name('verOrganizaciones');
 

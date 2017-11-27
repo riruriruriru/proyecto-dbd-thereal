@@ -159,6 +159,7 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
                         <button type="button" class="btn btn-default" disabled>Eliminar</button>
+                        <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default"><a href="">Información</a></li> 
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Agregar <span class="caret"></span>
