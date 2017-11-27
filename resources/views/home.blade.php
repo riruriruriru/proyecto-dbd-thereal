@@ -35,6 +35,23 @@
   background: orange;
 }
 
+.custom {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  color: #080808;
+}
+.custom-title {
+  margin-bottom: 0.75rem;
+}
 
 </style>
 
@@ -129,24 +146,26 @@
 
     <!-- First Fixed "Hero" Section -->
     <!--HoMe de la aplicación-->
+
     <section id="hero" class="hero">
         <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
-        <div class="hero__content" style="padding-top: 30px;"> 
-        <div class="row">
-
+    </section>
+    <div class="hero__content" style="padding-top: 40px;"> 
         <!-- Blog Entries Column -->
+        <div class=container>
+        	<div class="row">
         <div class="col-md-8">
 
-          <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
+          <h1 class="my-4">Noticias
+            <small>Actualmente en Chile</small>
           </h1>
 
           <!-- Blog Post -->
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" width="750px" height="300px" src="content/asteroides.jpg" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">Post 1</h2>
+              <h2 class="card-title">Gran Catastrofe</h2>
               <p class="card-text">Pata ciclismo en la patagonia deja a la isla de chiloe sin acceso al continente</p>
               <a href="#" class="btn btn-primary">Read More &rarr;</a>
             </div>
@@ -201,12 +220,12 @@
 
           <!-- Search Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Search</h5>
+            <h5 class="card-header" style="padding-top: 40px;">Search</h5>
             <div class="card-body">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
+                  <button class="btn btn-secondary" type="button">Buscar!</button>
                 </span>
               </div>
             </div>
@@ -220,20 +239,20 @@
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">Web Design</a>
+                      <a href="/verCatastrofe">Catastrofes</a>
                     </li>
                     <li>
-                      <a href="#">HTML</a>
+                      <a href="/verMedida">Medidas</a>
                     </li>
                     <li>
-                      <a href="#">Freebies</a>
+                      <a href="#">Has tu donación</a>
                     </li>
                   </ul>
                 </div>
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">JavaScript</a>
+                      <a href="#">¿Quieres ser Voluntario?</a>
                     </li>
                     <li>
                       <a href="#">CSS</a>
@@ -247,23 +266,20 @@
             </div>
           </div>
 
-          <!-- Side Widget -->
+          <!-- Side Widget 
           <div class="card my-4">
             <h5 class="card-header">Side Widget</h5>
             <div class="card-body">
               You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
             </div>
-          </div>
+          </div>-->
 
         </div>
 
       </div>
       <!-- /.row -->
-
+      </div>
     </div>
-            
-
-    </section>
     
 
     
