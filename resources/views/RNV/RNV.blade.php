@@ -136,9 +136,7 @@
 
 
 <form class="form-horizontal" method="GET">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-{{Session::get('flash')}}
 <fieldset>
 
 <div class="container">
@@ -191,9 +189,13 @@
     </div>
 
 </fieldset>
+
 </form>
 <div class="form-group">
 <!-- Form Name -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+{{Session::get('flash')}}
  <form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}" >
         {{ csrf_field() }}
 <!-- Text input-->
@@ -206,9 +208,8 @@
     <button id="Submit" name="button" class="btn btn-default submit">Inscribirme!</button>
 </div>
 
-
 </form>
-</div>
 
+</div>
 
 @endsection('content')

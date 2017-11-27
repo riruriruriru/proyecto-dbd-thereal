@@ -285,8 +285,9 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
- 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="hidden">
+   <label for="textinput">Lugar Catastrofe</label>  
+
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
 
 </div>
 
