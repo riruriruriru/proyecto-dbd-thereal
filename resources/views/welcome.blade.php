@@ -224,7 +224,7 @@
                                     @endforeach
                                 @elseif(count($catastrofes)===0)
                                 <li>
-                                    <img src="content/project01_slide01.jpg">
+                                    <img src="content/logo.jpg">
                                 </li>
                                 @endif
 
@@ -297,6 +297,8 @@
             </div>
         </section>
         <!-- End "Experience" Section -->
+
+
 
         <!-- "Contact" Section -->
         <section id="contact" class="contact">
