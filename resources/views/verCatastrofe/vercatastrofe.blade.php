@@ -21,6 +21,7 @@
     
     height: 800px;
     width: 1000px;
+    padding-top: 50px;
     
 }
 

@@ -96,9 +96,13 @@
                 </a>
             </nav>
 
-        
+            <div class="header__hamburger">
+            </div>
+            <nav class="header__navigation-element">
+                
+            </nav>
 
-            <div class="header__social-icons">
+            <div class="header__social-icons" >
                 @if (Route::has('login'))
                     @auth
                         <a href="{{url('/home')}}"><i class="fa fa-home fa-1x"></i></a>
@@ -113,6 +117,7 @@
                         <a href="{{url('/login')}}"><i class="fa fa-user-circle fa-1x"></i></a>
                     @endauth
                 @endif
+
             </div>
         </div>
     </header>
@@ -140,6 +145,7 @@
                 </div>
                 <div class="hero__photo-wrapper">
                     <div class="chile__photo"> 
+                        <div class="hero__hat">&nbsp;</div>
                     </div>
                 </div>
                 <div class="hero__description">
@@ -161,35 +167,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Scrollable Content -->
     <div class="content">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- "Experience" Section -->
         <section id="experience" class="experience">
             <div class="experience__hollow-arrow">&nbsp;</div>
@@ -287,18 +266,6 @@
                                     @endauth
                                 @endif
                         </div>
-
-                        <!-- project 2 -->
-                        
-
-                        <!-- project 3 -->
-                        
-
-                        <!-- project 4 -->
-                        
-
-                        <!-- project 5 -->
-
                 </div>
             </div>
         </section>
@@ -389,3 +356,59 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    {{ config('app.name', 'MovidosxChile') }}
+                </div>
+
+                <div class="links">
+                    <a href="http://www.onemi.cl/alertas">Alertas Onemi</a>
+                    <a href="http://www.movidosporchile.cl/">MOVIDOS X CHILE</a>
+                    <a href="http://www.sismologia.cl">Sismologia</a>
+                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html">Informacion Armada</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </body>
+

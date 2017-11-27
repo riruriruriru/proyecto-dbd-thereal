@@ -19,7 +19,9 @@
   padding-top: 60px;
   width: 100%;
   width: 100vw;
-  height: 450px;
+  height: 100%;
+  height: 100vw;
+  position: fixed;
   background: #3a6186; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -72,9 +74,8 @@ textarea.form-control {
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
-
 <section id="contact">
-  
+   
     <div class="container">
         <div class="section-content">
             <h1 class="section-header">Modificar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Perfil</span></h1>
@@ -130,7 +131,6 @@ textarea.form-control {
         </div>
     </div>
 </section>
-          
-   
+
 
 @endsection

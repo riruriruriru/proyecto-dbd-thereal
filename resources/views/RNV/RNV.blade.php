@@ -19,6 +19,7 @@
     
     height: 800px;
     width: 1000px;
+    padding-top: 50px;
     
 }
 
@@ -197,16 +198,12 @@
         {{ csrf_field() }}
 <!-- Text input-->
 <div class="form-group">
-  <div class="col-md-4">
   <input id="id_usuario_activo" name="id_usuario_activo" type="hidden" placeholder="placeholder" value={{$id_usuario_activo}} class="form-control input-md">
-  </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-  <div class="col-md-4">
     <button id="Submit" name="button" class="btn btn-default submit">Inscribirme!</button>
-  </div>
 </div>
 
 

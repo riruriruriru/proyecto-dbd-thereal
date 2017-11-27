@@ -15,9 +15,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @show
 </head>
-<body>
+<body >
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="position: fixed; width: 100%; top: 0px">
             <div class="container">
                 <div class="navbar-header">
 
@@ -45,14 +45,10 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="/contacto">Contáctanos</a></li>
-                            <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
                             <li><a href="/verOrganizaciones">Organizaciones</a></li>
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="/contacto">Contáctanos</a></li>
-                            <li><a href="/quienessomos">¿Quiénes Somos?</a></li>
                             <li><a href="/verOrganizaciones">Organizaciones</a></li>
                             <li><a href="/RNV">RNV</a></li>
 
@@ -121,7 +117,6 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

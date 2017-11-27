@@ -15,7 +15,7 @@
 }
 #contact{
     
-    font-family: 'Teko', sans-serif;
+  font-family: 'Teko', sans-serif;
   padding-top: 60px;
   width: 100%;
   width: 100vw;
@@ -67,9 +67,7 @@ textarea.form-control {
 
 @stop
 
-<!DOCTYPE html>
-<html>
-  <head>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -133,7 +131,7 @@ textarea.form-control {
 
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
+    <div id="map" style ="top: 50px;"></div>
 
     <script>
       // In the following example, markers appear when the user clicks on the map.
@@ -240,11 +238,9 @@ textarea.form-control {
 
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
-  </head>
-  <body>
-  
+    
 
+<body>
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
@@ -262,12 +258,14 @@ textarea.form-control {
       </div>
 <div class="contact-section">
 <div class="container">
+  
 <form  method="POST" action="{{ route('catastrofe.store') }}">
                         {{ csrf_field() }}
 <fieldset>
 
 <!-- Text input-->
 <div class="col-md-6 form-line">
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
 
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
@@ -287,26 +285,28 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Lugar</label> 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
+ 
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="hidden">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Latitud">Latitud</label> 
-  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="text">
+   
+  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" type="hidden">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Longitud">Longitud</label> 
-  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="text">
+
+  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" type="hidden">
 
 </div>
 
 <!-- Text input-->
+</div>
+<div class="col-md-6">
 <div class="form-group">
   <label for="FechaInicio">Fecha Inicio</label>  
  
@@ -314,8 +314,7 @@ textarea.form-control {
 </div>
 
 <!-- Textarea -->
-</div>
-<div class="col-md-6">
+
 <div class="form-group">
   <label  for="Descripcion">Descripcion</label>  
   
@@ -341,6 +340,4 @@ textarea.form-control {
 
 </section>
 
-
-  </body>
-</html>
+</body>

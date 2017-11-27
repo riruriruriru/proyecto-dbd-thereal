@@ -217,7 +217,7 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
+    <div id="map" style="top: 50px"></div>
     <script>
 
       function initMap() {
