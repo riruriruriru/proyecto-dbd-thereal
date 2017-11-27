@@ -77,12 +77,12 @@ textarea.form-control {
 
 
  <div class="section-content">
-        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
+        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Donacion</span></h1>
         <h3></h3>
       </div>
 <div class="contact-section">
 <div class="container">
-<form  method="POST" action="{{ route('evento.store') }}">
+<form  method="POST" action="">
                         {{ csrf_field() }}
 <fieldset>
 
@@ -90,36 +90,16 @@ textarea.form-control {
 <div class="col-md-6 form-line">
 
 <div class="form-group">
-  <label for="textinput">Nombre Evento</label>  
+  <label for="textinput">Nombre Donacion</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
 </div>
 <!-- Text input-->
 <div class="form-group">
   <label  for="id_medidas_evento"></label> 
-  <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value={{$id_medidas_evento}} type="hidden">
+  <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value={{$id_medidas_donacion}} type="hidden">
 
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label  for="direccion">Lugar</label> 
-  <input id="direccion" name="direccion"  placeholder="Lugar" class="form-control" required="" type="text">
-
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label  for="Lugar">Latitud</label> 
-  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
-
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label  for="Lugar">Longitud</label> 
-  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
-
-</div>
 
 <!-- Text input-->
 <div class="form-group">
