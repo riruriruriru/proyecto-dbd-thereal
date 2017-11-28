@@ -479,6 +479,51 @@
           <div class="col-md-6 form-line">
 
           <div class="form-group">
+            @if($datos->id_tipo_usuario===4)
+            <label for="textinput">Nombre Medida</label>  
+            <input id="nombre_medida" name="nombre_medida" value="{{$medida->nombre_medida}}" placeholder="Nombre" class="form-control" readonly="readonly" required="" type="text">
+          </div>
+
+<!-- Text input-->
+          <div class="col-md-6 form-line">
+
+          <div class="form-group"> 
+            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" readonly="readonly" required="" value={{$catastrofe}} type="hidden">
+          </div>
+
+          <!-- combox-->
+
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label  for="selectbasic">Select Basic</label>
+           
+              <select id="id_organizacion_medidas" name="id_organizacion_medidas" value="{{$medida->id_organizacion_medidas}}" class="form-control" readonly="readonly" >
+                @foreach($organizaciones as $organizacion)
+    <option value="{{ $organizacion->id }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id) selected='selected' @endif >{{ $organizacion->name}}</option>
+@endforeach
+              </select>
+            
+          </div>
+
+          <div class="form-group">
+            <input type="date" class="form-control" readonly="readonly"  name="fecha_inicio_medida" value="{{$medida->fecha_inicio_medida}}" placeholder="Fecha de Inicio">
+          </div>
+          <div class="form-group">
+            <input type="date" class="form-control" readonly="readonly"  name="fecha_termino_medida" value="{{$medida->fecha_termino_medida}}" placeholder="Fecha de Término">
+          </div>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" readonly="readonly" name="descripcion" value="{{$medida->descripcion}}" placeholder="Comentario">
+          </div>
+     
+          </div>
+
+          @endif
+
+
+
+
+                      @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3)
             <label for="textinput">Nombre Medida</label>  
             <input id="nombre_medida" name="nombre_medida" value="{{$medida->nombre_medida}}" placeholder="Nombre" class="form-control" required="" type="text">
           </div>
@@ -493,16 +538,23 @@
           <!-- combox-->
 
           <!-- Select Basic -->
+          @if($datos->id_tipo_usuario!=4)
           <div class="form-group">
             <label  for="selectbasic">Select Basic</label>
            
               <select id="id_organizacion_medidas" name="id_organizacion_medidas" value="{{$medida->id_organizacion_medidas}}" class="form-control">
                 @foreach($organizaciones as $organizacion)
     <option value="{{ $organizacion->id }}" @if(old('organizacion')&&old('organizacion')== $organizacion->id) selected='selected' @endif >{{ $organizacion->name}}</option>
-@endforeach
+                @endforeach
               </select>
             
           </div>
+          @elseif($datos->id_tipo_usuario===4)
+           <div class="form-group">
+            <input type="text" class="form-control" name="organizacion" value="{{$org}}" placeholder="Organizacion">
+          </div>
+
+          @endif
 
           <div class="form-group">
             <input type="date" class="form-control" name="fecha_inicio_medida" value="{{$medida->fecha_inicio_medida}}" placeholder="Fecha de Inicio">
@@ -514,13 +566,14 @@
           <div class="form-group">
             <input type="text" class="form-control" name="descripcion" value="{{$medida->descripcion}}" placeholder="Comentario">
           </div>
-
+          
           <div class="form-group">
           <button class="btn btn-default"  name="button">
               <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Aceptar
           </button>
      
           </div>
+          @endif
       </div>
           </form>
         
@@ -623,6 +676,53 @@
     </div>
 
 </div>
+
+<!--Tabla donaciones-->
+
+
+<div class="container">
+
+    <div class="listWrap">
+    
+        <ul class="list">
+        
+            <li>
+                <span>ID</span>
+                <span>Nombre Donacion</span>
+                <span>Fecha Inicio</span>
+                <span>Fecha Termino</span>
+                <span>Monto Recaudado</span>
+                <span>Monto Objetivo</span>
+                <span>Acciones</span>
+                <span></span>
+            </li>
+             @foreach($donaciones as $donacion)
+            <li>
+                <spanid id="id_evento">{{$donacion->id_donacion}}</span>
+                <span>{{$donacion->nombre}}</span>
+                <span>{{$donacion->fecha_inicio}}</span>
+                <span>{{$donacion->fecha_termino}}</span>
+                <span>{{$donacion->monto_actual}}</span>
+                <span>{{$donacion->objetivo}}</span>
+                <span>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default" disabled>Delete</button>
+                        <li><a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default"><a href="/verDonaciones/{{$donacion->id_donacion}}">Donar</a></li> 
+                    </div>
+                </span>
+                <span></span>
+            </li>
+            @endforeach
+            
+            <li>
+
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
 
 <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js" integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE=" crossorigin="anonymous"></script>
 

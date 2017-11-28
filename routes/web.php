@@ -22,9 +22,15 @@ Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
+Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');
+
+
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
 Route::get('/RNV','HomeController@viewRNV')->name('RNV');
+Route::get('/donacion/{id}','HomeController@viewAgregarDonacion')->name('donacion');
+Route::post('/donacion/add/post', 'HomeController@uploadDonacion')->name('donacion.store');
+
 
 Route::post('RNV/add/post','HomeController@updateRNV')->name('RNV.store');
 

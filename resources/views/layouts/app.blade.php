@@ -59,8 +59,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    @if(Auth::user()->id_tipo_usuario ===1 or Auth::user()->id_tipo_usuario ===2)
                                     <li><a href="/catastrofe">Ingresar Catástrofe</a></li>
-
+                                    @endif
                                     <li>
                                         <a href="/verCatastrofe"> Ver Catástrofes</a>
                                         </form>

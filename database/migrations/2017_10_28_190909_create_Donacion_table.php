@@ -17,8 +17,11 @@ class CreateDonacionTable extends Migration
             $table->increments('id_donacion')->unique();
             $table->integer('id_medidas_donacion')->foreign('id_medidas_donacion')->references('id_medidas')->on('Medidas');
             $table->integer('objetivo');
+            $table->text('nombre');
             $table->integer('numero_cuenta');
             $table->integer('monto_actual');
+            $table->date('fecha_inicio');
+            $table->date('fecha_termino');
         });
     }
 

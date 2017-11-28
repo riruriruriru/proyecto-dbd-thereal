@@ -151,7 +151,7 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Buscar!</button>
+                  <button class="btn btn-secondary" type="button">Buscar</button>
                 </span>
               </div>
             </div>
@@ -165,13 +165,13 @@
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="/verCatastrofe">Catastrofes</a>
+                      <a href="/verCatastrofe">Catástrofes</a>
                     </li>
                     <li>
                       <a href="/verMedida">Medidas</a>
                     </li>
                     <li>
-                      <a href="#">Has tu donación</a>
+                      <a href="#">Haz tu donación</a>
                     </li>
                   </ul>
                 </div>

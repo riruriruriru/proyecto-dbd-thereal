@@ -11,6 +11,7 @@ use App\Evento;
 use App\RNV;
 use App\RNVUsers;
 use App\User;
+use App\Donacion;
 
 
 class HomeController extends Controller
@@ -454,6 +455,27 @@ class HomeController extends Controller
         return back()->with('flash','Evento declarado correctamente');
     }
 
+     public function uploadDonacion(Request $request)
+    {
+        //
+    
+      Donacion::create([
+            'nombre'=> $request->nombre,
+            'id_medidas_donacion' => $request->id_medidas_donacion,
+            'objeivo'=> $request->objetivo,
+            'monto_actual' => '0',
+            'numero_cuenta' => $request->numero_cuenta,
+            'objetivo' => $request->objetivo,
+            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+
+
+
+        ]);
+        return back()->with('flash','Donacion declarada correctamente');
+    }
+
+
 
    public function uploadMedida(Request $request)
     {
@@ -535,6 +557,17 @@ class HomeController extends Controller
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('Evento.evento', compact('id_medidas_evento'));
+    }
+
+         public function viewAgregarDonacion($id)
+    {   
+        $id_medidas_donacion = $id;
+        $medida = Medidas::find($id);
+        $nombre = $medida->nombre_medida;
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('Donaciones.donaciones', compact('id_medidas_donacion', 'nombre'));
     }
 
     public function viewMedida($id)
@@ -683,6 +716,15 @@ class HomeController extends Controller
         return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
     }
 
+  public function viewVerDonaciones($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $donacion = \App\Donacion::find($id);
+
+        return view('verDonaciones.verDonaciones', compact('donacion', 'datos'));
+    }
+
 
     public function viewinfoMedida($id)
     {
@@ -691,10 +733,13 @@ class HomeController extends Controller
         $medida = Medidas::find($id);
         $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->get();
         $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
+        $org = DB::table('users')->where('id', '=', $medida->id_organizacion_medidas)->get();
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;
 
-        return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe'));
+        $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->get();
+
+        return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org'));
     }
 
 

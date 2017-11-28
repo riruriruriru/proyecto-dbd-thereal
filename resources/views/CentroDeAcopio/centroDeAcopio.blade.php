@@ -309,7 +309,7 @@ textarea.form-control {
 <!-- Text input-->
 <div class="form-group">
   <label  for="cantidad_objetivo">Cantidad Objetivo</label> 
-  <input id="cantidad_objetivo" name="cantidad_objetivo"  placeholder="Cantidad Objetivo" class="form-control" required="" type="text">
+  <input id="cantidad_objetivo" name="cantidad_objetivo"  placeholder="Cantidad Objetivo" class="form-control" required="" type="number">
 
 </div>
 

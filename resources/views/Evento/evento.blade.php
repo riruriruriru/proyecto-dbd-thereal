@@ -303,13 +303,13 @@ textarea.form-control {
 <div class="form-group">
   <label for="cantidad_voluntarios">Cantidad Voluntarios</label>  
  
-  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="integer"> 
+  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="number"> 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
   <label  for="monto_objetivo">Monto Objetivo</label> 
-  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="integer">
+  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="number">
 
 </div>
 
