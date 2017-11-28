@@ -135,9 +135,6 @@
                     <a href="http://www.movidosporchile.cl/" target="_blank" class="hero__button  ghost-button  ghost-button--hero">MOVIDOS X CHILE&nbsp;</a>
                     <a href="http://www.sismologia.cl" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Sismologia&nbsp;</a>
                     <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Informacion Armada &nbsp;</a>
-                    <a href="http://www.sismologia.cl" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Sismología&nbsp;</a>
-                    <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Información Armada &nbsp;</a>
-                    <a href="https://github.com/laravel/laravel" target="_blank" class="hero__button  ghost-button" >GitHub&nbsp;</a>
             </div>
         <div class="hero__content">
             <div class="hero__content-wrapper">
