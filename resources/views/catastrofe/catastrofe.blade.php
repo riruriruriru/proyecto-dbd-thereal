@@ -282,7 +282,6 @@ var geocoder = new google.maps.Geocoder();
 <div class="col-md-6 form-line">
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
 
-<label for="textinput">Clickee en el mapa para seleccionar lugar de la catastrofe o ingrese localización en buscador</label>  
 
 <div class="form-group">
   <label for="textinput">Nombre Catastrofe</label>  
