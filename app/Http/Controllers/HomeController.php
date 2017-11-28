@@ -798,6 +798,25 @@ public function donar(Request $request)
         return view('DonarCentroAcopio.donarAcopio', compact('acopio', 'datos', 'latitud', 'longitud'));
     }
 
+    public function viewInscribirseEvento($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $evento = \App\Evento::find($id);
+        $latitud = $evento->latitud;
+        $longitud = $evento->longitud;
+        return view('Evento.inscribirseEvento', compact('evento', 'datos', 'latitud', 'longitud'));
+    }
+
+      public function viewAgregarActividadEvento($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $evento = \App\Evento::find($id);
+        $latitud = $evento->latitud;
+        $longitud = $evento->longitud;
+        return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud'));
+    }
       public function DonarAcopio(Request $request)
     {
         $id = $request->id_acopio;

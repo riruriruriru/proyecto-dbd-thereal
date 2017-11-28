@@ -22,6 +22,8 @@ Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::post('/verDonaciones', 'HomeController@updateTarjeta')->name('tarjeta.update');
 Route::post('/verDonaciones/add/post', 'HomeController@Donar')->name('donante.store');
+Route::get('/inscribirseEvento/{id}', 'HomeController@viewInscribirseEvento');
+Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadEvento');
 
 
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');

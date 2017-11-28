@@ -673,7 +673,10 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button type="button" class="btn btn-default">Edit</button>
                         <button type="button" class="btn btn-default" disabled>Delete</button>
-
+                              <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default"><a href="/inscribirseEvento/{{$evento->id_evento}}">Inscribirse Evento</a></li>
+                              @if($datos->id_tipo_usuario !=4)
+                              <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default"><a href="/agregarActividadEvento/{{$evento->id_evento}}">Agregar Actividad</a></li>
+                              @endif  
                     </div>
                 </span>
                 <span></span>

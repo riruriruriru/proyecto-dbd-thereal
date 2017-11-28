@@ -282,11 +282,11 @@ var geocoder = new google.maps.Geocoder();
 
 <div class="form-group">
   <label for="textinput">Nombre Evento</label>  
-  <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
+  <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly">
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value="{{$id_medidas_evento}}" type="hidden">
+  <input id="id_evento" name="id_evento"  placeholder="" class="form-control" required="" value="{{$evento->id_evento}}" type="hidden">
 
 </div>
 
