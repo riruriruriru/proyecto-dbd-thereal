@@ -906,5 +906,28 @@ public function donar(Request $request)
         return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org'));
     }
 
+     public function createUser(Request $data)
+    {
+        User::create([
+            'name' => $data->name,
+           'last_name'=>$data->last_name,
+            'email' => $data->email,
+            'password' => bcrypt($data->password),
+            'id_tipo_usuario' => $data->id_tipo_usuario,
+
+            
+        ]);
+        return back();
+    }
+
+    public function viewcreateUser()
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+
+        return view('crearUsuarios', compact('usuario'));
+    }
+
+
 
 }

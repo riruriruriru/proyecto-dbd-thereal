@@ -27,6 +27,9 @@ Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadE
 Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('evento.update');
 Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
 
+Route::post('/crearUsuarios/add/post', 'HomeController@createUser')->name('usuario.crear');
+Route::get('/crearUsuarios', 'HomeController@viewcreateUser');
+
 
 
 
