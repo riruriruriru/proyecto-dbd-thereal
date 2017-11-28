@@ -49,11 +49,11 @@
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button type="button" style="padding-top: 50px;" class="btn btn-default">Edit</button>
+                                <button type="button" class="btn btn-default">Edit</button>
                                 @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}" style="padding-top: 50px;" type="button" class="btn btn-default">Agregar Actividad</a></li>
+                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
                                 @endif
-                                <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  style="padding-top: 50px;" type="button" class="btn btn-default">Inscribirse Evento</a></li>
+                                <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse Evento</a></li>
 
                             </div>
                             </th>
