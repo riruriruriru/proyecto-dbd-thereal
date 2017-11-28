@@ -396,3 +396,23 @@ var geocoder = new google.maps.Geocoder();
 </section>
 
 </body>
+<?php
+          $dato = Session::get('flash');
+          if ($dato == ''){
+            echo "<script>alert('";
+            echo "Ingresar localición directamente en el mapa";
+            echo "')";
+            echo "</script>";
+          }
+?>
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+            header('Refresh: 0.01; URL=/verCatastrofe');
+        }
+?>
+

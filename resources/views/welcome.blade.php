@@ -92,7 +92,7 @@
                     <div class="header__navigation-element  header__navigation-element--experience">Información</div>
                 </a>
                 <a href="#contact" class="js-smooth-scroll">
-                    <div class="header__navigation-element  header__navigation-element--contact">Contactanos</div>
+                    <div class="header__navigation-element  header__navigation-element--contact">Contáctanos</div>
                 </a>
             </nav>
 
@@ -135,7 +135,6 @@
                     <a href="http://www.movidosporchile.cl/" target="_blank" class="hero__button  ghost-button  ghost-button--hero">MOVIDOS X CHILE&nbsp;</a>
                     <a href="http://www.sismologia.cl" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Sismologia&nbsp;</a>
                     <a href="https://www.armada.cl/armada/articulos-sin-seccion/general/informacion-de-ayuda-para-zonas-de-catastrofe/2014-02-25/121945.html" target="_blank" class="hero__button  ghost-button  ghost-button--hero" >Informacion Armada &nbsp;</a>
-                    <a href="https://github.com/laravel/laravel" target="_blank" class="hero__button  ghost-button" >GitHub&nbsp;</a>
             </div>
         <div class="hero__content">
             <div class="hero__content-wrapper">
@@ -145,10 +144,11 @@
                 </div>
                 <div class="hero__photo-wrapper">
                     <div class="chile__photo"> 
+                        <div class="hero__hat">&nbsp;</div> 
                     </div>
                 </div>
                 <div class="hero__description">
-                    Este sitio busca canalizar la ayuda ante alguna emergencia o catastrofe, para que todos podamos contribuir con la donación de bienes, de dinero y voluntariado de manera informada. Por eso necesitamos tu ayuda, registrate ahora y comienza el cambio.
+                    Este sitio busca canalizar la ayuda ante alguna emergencia o catástrofe, para que todos podamos contribuir con la donación de bienes, de dinero y voluntariado de manera informada. Por eso necesitamos tu ayuda, regístrate ahora y comienza el cambio.
                 </div>
                 @if (Route::has('login'))
                     @auth
@@ -218,7 +218,7 @@
                             <div class="showcase__infos-wrapper">
                                 <div class="showcase__title">
                                     Medidas
-                                    <div class="showcase__title-description">Como ayudar</div>
+                                    <div class="showcase__title-description">Cómo ayudar</div>
                                 </div>
 
                                 <div class="showcase__point">
@@ -239,7 +239,7 @@
                                         lugares <span class="showcase__readmore">más</span>
                                     </div>
                                     <div class="showcase__point-details-full">
-                                        mediante una transferencia bancaria a una cuenta de un banco especificado aqui en la página.
+                                        mediante una transferencia bancaria a una cuenta de un banco especificado aquí en la página.
                                         <span class="showcase__readless">menos</span>
                                     </div>
                                 </div>
@@ -261,7 +261,7 @@
                                     @auth
 
                                     @else
-                                        <a target="_blank" href="/register" class="showcase__button  ghost-button  ghost-button--realizations">     Registrate ahora</a>
+                                        <a target="_blank" href="/register" class="showcase__button  ghost-button  ghost-button--realizations">     Regístrate ahora</a>
                                         </div>
                                     @endauth
                                 @endif
@@ -278,7 +278,7 @@
             <div class="contact__wrapper">
                 <div class="section-header">
                     <div class="section-header__title  section-header__title--contact">Contactanos</div>
-                    <div class="section-header__subtitle">Contactanos mediante nuestras redes sociales o solo llena el formulario</div>
+                    <div class="section-header__subtitle">Contáctanos mediante nuestras redes sociales o solo llena el formulario</div>
                 </div>
 
                 <div class="contact__icons-wrapper">
@@ -303,7 +303,7 @@
                     <div class="contact__textarea-wrapper">
                         <label for="message_content" class="contact__label">Mensaje</label>
                         <div class="contact__response-ajax-text">&nbsp;</div>
-                        <textarea id="message_content" rows="10" placeholder="Hola, si tienes alguna duda por favor escribenos tu inquietud" required></textarea>
+                        <textarea id="message_content" rows="10" placeholder="Hola, si tienes alguna duda por favor escríbenos tu inquietud" required></textarea>
                     </div>
 
                     <div class="contact__bottom-wrapper">
@@ -311,12 +311,12 @@
                             <div class="contact__input-wrapper  contact__input-wrapper--name">
                                 <label for="sender_name" class="contact__label">Tu nombre</label>
                                 <div class="contact__response-ajax-text">&nbsp;</div>
-                                <input id="sender_name" type="text" placeholder="Sebastian Morris" required>
+                                <input id="sender_name" type="text" placeholder="" required>
                             </div>
                             <div class="contact__input-wrapper  contact__input-wrapper--email">
                                 <label for="sender_email" class="contact__label">Tu correo</label>
                                 <div class="contact__response-ajax-text">&nbsp;</div>
-                                <input id="sender_email" type="email" placeholder="morris@morris.com" required>
+                                <input id="sender_email" type="email" placeholder="" required>
                             </div>
                         </div>
 
@@ -338,15 +338,6 @@
             </div>
         </section>
         <!-- End "Contact" Section -->
-
-        <!-- Footer -->
-        <footer id="footer" class="footer">
-            <div class="footer__wrapper">
-                <div class="footer__copyright">Todos los derechos reservados &copy; 2017</div>
-                <a href="http://serafin.io/?utm_source=Aurora-Template&utm_medium=Footer-Image&utm_campaign=Freebie" target="_blank" class="footer__image">&nbsp;</a>
-            </div>
-        </footer>
-        <!-- End Footer -->
 
 
     </div>

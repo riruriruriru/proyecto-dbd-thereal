@@ -313,7 +313,7 @@ class CatastrofeController extends Controller
 
             }
 
-        return back()->with('flash','Catastrofe ingresada');
+        return back()->with('flash','Catastrofe ingresada correctamente');
     }
 
       public function get(Request $request, $id){

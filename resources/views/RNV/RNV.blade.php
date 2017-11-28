@@ -174,11 +174,6 @@
 
                                 </ul>
                             </li>
-
-
-
-                       
-
                     </div>
                 </span>
                 <li></li>
@@ -191,25 +186,40 @@
 </fieldset>
 
 </form>
-<div class="form-group">
-<!-- Form Name -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-{{Session::get('flash')}}
- <form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}" >
+<div class="form-group" style = "position: relative;margin-left: 600px;">
+<!-- Form Name -->
+
+ 
+<form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}"  >
         {{ csrf_field() }}
 <!-- Text input-->
+<div class="col-md-3">
+    
+</div>
 <div class="form-group">
   <input id="id_usuario_activo" name="id_usuario_activo" type="hidden" placeholder="placeholder" value={{$id_usuario_activo}} class="form-control input-md">
 </div>
 
 <!-- Button -->
-<div class="form-group" >
-    <button id="Submit" name="button" class="btn btn-default submit">Inscribirme!</button>
+<div class="col-md-6">
+<div class="form-group">
+    <button id="Submit" name="button" class="btn btn-default submit" >Inscribirme!</button>
 </div>
-
+</div>
 </form>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </div>
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+          
+        }
+?>
 
 @endsection('content')
