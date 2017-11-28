@@ -84,8 +84,11 @@ textarea.form-control {
             </div>
             <div class="contact-section">
             <div class="container">
-                <form>
-                    <div class="col-md-6 form-line">
+                <form class="form-signin" >
+                   <div class="col-md-3">
+                        </div>
+
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleInputUsername">Nombre</label>
                             <input type="email" class="form-control" readonly="readonly" id="exampleInputEmail" value= "{{$datos->name}}">
