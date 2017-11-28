@@ -61,7 +61,7 @@ Route::get('get_id_org', 'HomeController@get_id_org');
 Route::get('/prueba', 'HomeController@viewPrueba')->name('prueba');
 
 Route::get('/medida', 'HomeController@viewMedida')->name('medida');
-Route::post('update_medida', 'HomeController@updateMedida');
+Route::post('/infoMedida', 'HomeController@updateMedida')->name('medida.update');
 Route::get('/verMedida', 'HomeController@viewVerMedida')->name('verMedida');
 Route::post('verMedida', 'HomeController@viewVerMedida');
 

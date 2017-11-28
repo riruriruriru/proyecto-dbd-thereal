@@ -53,7 +53,7 @@ $factory->defineAs(App\User::class, 'admin',function (Faker $faker) {
 static $password='123456';
     return [
         'name' => 'superAdmin',
-        'email' => $faker->unique()->safeEmail,
+        'email' => 'super@admin.cl',
         'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '1',

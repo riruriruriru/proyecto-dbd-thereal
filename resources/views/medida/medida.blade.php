@@ -179,7 +179,7 @@ textarea.form-control {
 <div class="contact-section">
 <div class="container">
   
-<form  method="POST" action="{{ route('catastrofe.store') }}">
+<form  method="POST" action="{{ route('medida.store') }}">
                         {{ csrf_field() }}
 <fieldset>
 
@@ -188,7 +188,7 @@ textarea.form-control {
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script> 
 <div class="form-group">
   <label for="textinput">Nombre Medida</label>  
-  <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
+  <input id="nombre_medida" name="nombre_medida" placeholder="Nombre" class="form-control" required="" type="text">
 </div>
 
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -229,7 +229,7 @@ textarea.form-control {
 <div class="form-group">
    <label for="textinput">Lugar Catastrofe</label>  
 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" type="text">
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" value= '{{$cat->lugar_catastrofe}}' type="text">
 
 </div>
 
@@ -283,7 +283,7 @@ textarea.form-control {
             echo $dato;
             echo "')";
             echo "</script>";
-            header('Refresh: 0.01; URL=/verCatastrofe');
+            header('Refresh: 0.01; URL=/verMedida');
         }
 ?>
 

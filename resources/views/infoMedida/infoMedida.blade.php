@@ -470,7 +470,7 @@
   <div class="panel-body">
   <div class="row">
     
-      <form class="form-horizontal" method="POST" action="{{ route('medida.store') }}" >
+      <form class="form-horizontal" method="POST" action="{{ route('medida.update') }}" >
         {{ csrf_field() }}
       <div class="col-md-5">
           <h4><strong>Información Medida </strong></h4>
@@ -488,9 +488,14 @@
           <div class="col-md-6 form-line">
 
           <div class="form-group"> 
-            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" readonly="readonly" required="" value={{$catastrofe}} type="hidden">
+            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" readonly="readonly" required="" value="{{$catastrofe}}" type="text" style= "display: none">
           </div>
 
+ <div class="col-md-6 form-line">
+
+          <div class="form-group"> 
+            <input id="id_medida" name="id_medida" placeholder="Nombre" class="form-control" readonly="readonly" required="" value="{{$medida->id_medidas}}" type="text" style= "display: none">
+          </div>
           <!-- combox-->
 
           <!-- Select Basic -->
@@ -524,6 +529,7 @@
 
 
                       @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3)
+
             <label for="textinput">Nombre Medida</label>  
             <input id="nombre_medida" name="nombre_medida" value="{{$medida->nombre_medida}}" placeholder="Nombre" class="form-control" required="" type="text">
           </div>
@@ -532,9 +538,13 @@
           <div class="col-md-6 form-line">
 
           <div class="form-group"> 
-            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" required="" value={{$catastrofe}} type="hidden">
+            <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="Nombre" class="form-control" required="" value="{{$catastrofe}}" type="hidden">
           </div>
+ <div class="col-md-6 form-line">
 
+          <div class="form-group"> 
+            <input id="id_medida" name="id_medida" placeholder="id medida" class="form-control"  required="" value="{{$medida->id_medidas}}" type="hidden" >
+          </div>
           <!-- combox-->
 
           <!-- Select Basic -->

@@ -492,6 +492,22 @@ class HomeController extends Controller
             return back()->with('flash', 'Medida declarada correctamente');
     }
 
+       public function updateMedida(Request $request)
+    {
+        $id = $request->id_medida;
+            $medida  = Medidas::find($id);
+            $medida->id_catastrofe_medidas= $request->id_catastrofe_medidas;
+            $medida->nombre_medida=$request->nombre_medida;
+            $medida->id_organizacion_medidas=$request->id_organizacion_medidas;
+            
+            $medida->fecha_inicio_medida=date("m-d-Y", strtotime($request->fecha_inicio_medida));
+            $medida->fecha_termino_medida=date("m-d-Y", strtotime($request->fecha_termino_medida));
+            $medida->descripcion = $request->descripcion;
+            $medida->save();
+            return back()->with('flash', 'Medida actualizada correctamente');
+    }
+
+
     public function uploadCentroAcopio(Request $request)
     {
         CentroDeAcopio::create([
@@ -581,7 +597,7 @@ class HomeController extends Controller
         $organizaciones =  DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
 
         $nombre = 'Teleton';
-        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud'));
+        return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud', 'cat'));
     }
      public function viewMedida2()
 
