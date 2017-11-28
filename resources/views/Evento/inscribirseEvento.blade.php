@@ -173,13 +173,13 @@ textarea.form-control {
 
 
 <div class="section-content">
-        <h1 class="section-header">Agregar Actividades <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
+        <h1 class="section-header">Inscribirse <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
         <h3></h3>
 </div>
 <div class="contact-section">
 <div class="container">
   
-<form  method="POST" action="{{ route('donar.Acopio') }}">
+<form  method="POST" action="{{route ('evento2.update') }}">
                         {{ csrf_field() }}
 <fieldset>
 
@@ -187,16 +187,18 @@ textarea.form-control {
 <div class="col-md-6 form-line">
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script> 
 <div class="form-group">
-  <label for="textinput">Nombre Acopio</label>  
-  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$acopio->nombre}}">
+  <label for="textinput">Nombre Evento</label>  
+  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->nombre}}">
 </div>
 
 <div class="form-group">
-  <label for="textinput">Tipo Bien</label>  
-  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$acopio->tipo_bien}}">
+  <label for="textinput">Cantidad Voluntarios Restantes</label>  
+  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->cantidad_voluntarios}}">
 </div>
 <!-- Select Basic -->
-
+<div class="form-group">
+  <input id="id_evento" name="id_evento" placeholder="Nombre" class="form-control" required="" type="hidden" readonly="readonly" value="{{$evento->id_evento}}" >
+</div>
 
 <!-- Text input-->
 
@@ -204,16 +206,16 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
-   <label for="textinput">Lugar Acopio</label>  
+   <label for="textinput">Lugar Evento</label>  
 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" value= '{{$acopio->direccion}}' type="text" readonly="readonly" >
+  <input id="lugar_evento" name="lugar_evento"  placeholder="Lugar" class="form-control" required="" value= '{{$evento->direccion}}' type="text" readonly="readonly" >
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
 
-  <input id="id_acopio" name="id_acopio"  placeholder="Lugar" class="form-control" required="" value= '{{$acopio->id_acopio}}' type="hidden" readonly="readonly" >
+  <input id="id_evento" name="id_evento"  placeholder="Lugar" class="form-control" required="" value= '{{$evento->id_evento}}' type="hidden" readonly="readonly" >
 
 </div>
 
@@ -224,22 +226,25 @@ textarea.form-control {
 <div class="form-group">
   <label for="FechaInicio">Monto Actual</label>  
  
-  <input id="monto_actual" name="monto_actual" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$acopio->monto_actual}}"> 
+  <input id="monto_recaudado" name="monto_recaudado" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->monto_recaudado}}"> 
 </div>
 <div class="form-group">
-  <label for="cantidad_objetivo">Monto Objetivo</label>  
+  <label for="monto_objetivo">Monto Objetivo</label>  
  
-  <input id="cantidad_objetivo" name="cantidad_objetivo" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$acopio->cantidad_objetivo}}"> 
+  <input id="monto_objetivo" name="monto_objetivo" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->monto_objetivo}}"> 
 </div>
 <!-- Textarea -->
 
-<div class="form-group">
-  <label  for="monto_donacion">Donacion</label>  
-  
-  <input id="monto_donacion" name="monto_donacion" placeholder="Descripcion" class="form-control" type="number" >
 
-  
- 
+<!-- Select Basic -->
+<div class="form-group">
+          <label  for="selectbasic">Actividad</label>
+              <select id="id_actividad" name="id_actividad" class="form-control">
+                    @foreach($actividades as $actividad)
+                      <option value="{{ $actividad->id_actividad }}" @if(old('actividad')&&old('actividad')== $actividad->id_actividad) selected='selected' @endif >{{ $actividad->nombre_actividad}}</option>
+                    @endforeach
+    </select>
+            
 </div>
 
 <!-- Button -->

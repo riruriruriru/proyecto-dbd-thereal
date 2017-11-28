@@ -762,25 +762,48 @@ public function updateTarjeta(Request $request)
         return back()->with('flash', 'tarjeta actualizada correctamente');
     }
 
+    public function updateEvento2(Request $request)
+    {
+        $usuario = Auth::id();
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
+        $datos = \App\User::find($usuario);
+        $evento = Evento::find($request->id_evento);
+        $actividad = DB::table('Actividad')->where('id_actividad', '=', $request->id_actividad)->get();
+        if(count($id_placeholder)>0){
+                $evento->voluntarios_actuales = $evento->voluntarios_actuales +1;
+                $evento->save();
+                return back()->with('flash', 'Inscrito al evento correctamente');
+
+        }
+        else if((count($id_placeholder)==0)){
+
+                return back()->with('flash', 'Debe inscribirse previamente al RNV');
+
+        }
+        //$donacion = \App\Donacion::find($usuario);
+        return back()->with('flash', 'tarjeta actualizada correctamente');
+    }
+
 public function updateEvento(Request $request)
     {
         //$donacion = \App\Donacion::find($usuario);
         $evento = Evento::find($request->id_evento);
+        if($request->tipo_actividad == 'Otros'){
+         Actividad::create([
+            'nombre_actividad' => $request->nombre_actividad,
+            'tipo' => $request->nombre_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
+            ]);   
+        }
+        else{
             Actividad::create([
-            'nombre' => $request->nombre,
-            'id_medidas_acopio'=> $request->id_medidas_acopio,
-            'direccion'=>$request->direccion,
-            'tipo_bien'=>$request->tipo_bien2,
-            'cantidad_objetivo'=>$request->cantidad_objetivo,
-            'descripcion' => $request->descripcion,
-            'recibe' => 'true',
-            'monto_actual' =>'0',
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'monto_total'=> $request->cantidad_objetivo,
-            'situacion'=> 'true',
+            'nombre_actividad' => $request->tipo_actividad,
+            'tipo' => $request->tipo_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
             ]);
-         $datos->save();
+        }
         return back()->with('flash', 'tarjeta actualizada correctamente');
     }
 public function donar(Request $request)
@@ -828,7 +851,9 @@ public function donar(Request $request)
         $evento = \App\Evento::find($id);
         $latitud = $evento->latitud;
         $longitud = $evento->longitud;
-        return view('Evento.inscribirseEvento', compact('evento', 'datos', 'latitud', 'longitud'));
+        $actividades = DB::table('Actividad')->where('actividad_id_evento', '=', $id)->get();
+
+        return view('Evento.inscribirseEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
     }
 
       public function viewAgregarActividadEvento($id)
@@ -838,7 +863,8 @@ public function donar(Request $request)
         $evento = \App\Evento::find($id);
         $latitud = $evento->latitud;
         $longitud = $evento->longitud;
-        return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud'));
+        $actividades = DB::table('Actividad')->where('actividad_id_evento', '=', $id)->get();
+        return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
     }
       public function DonarAcopio(Request $request)
     {
@@ -859,7 +885,7 @@ public function donar(Request $request)
         $datos = \App\User::find($usuario);
         $medida = Medidas::find($id);
         $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->where('recibe', '=', 'true')->get();
-        $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
+        $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->get();
         $org = DB::table('users')->where('id', '=', $medida->id_organizacion_medidas)->get();
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;

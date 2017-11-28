@@ -25,6 +25,7 @@ Route::post('/verDonaciones/add/post', 'HomeController@Donar')->name('donante.st
 Route::get('/inscribirseEvento/{id}', 'HomeController@viewInscribirseEvento');
 Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadEvento');
 Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('evento.update');
+Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
 
 
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
