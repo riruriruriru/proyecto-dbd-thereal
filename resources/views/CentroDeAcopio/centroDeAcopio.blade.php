@@ -131,7 +131,7 @@ textarea.form-control {
 }
     </style>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
+    <div id="map" style="top: 50px"></div>
 
     <script>
       // In the following example, markers appear when the user clicks on the map.
@@ -286,9 +286,7 @@ var geocoder = new google.maps.Geocoder();
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label  for="id_medidas_acopio"></label> 
   <input id="id_medidas_acopio" name="id_medidas_acopio"  placeholder="" class="form-control" required="" value={{$id_medidas_acopio}} type="hidden">
-
 </div>
 
 <!-- Text input-->
@@ -342,6 +340,8 @@ var geocoder = new google.maps.Geocoder();
 </div>
 
 <!-- Text input-->
+</div>
+<div class="col-md-6">
 <div class="form-group">
   <input id="tipo_bien2" name="tipo_bien2" style="display: none" placeholder="Otros" class="form-control" type="text">
 
@@ -356,8 +356,7 @@ var geocoder = new google.maps.Geocoder();
 
 
 <!-- Textarea -->
-</div>
-<div class="col-md-6">
+
 <div class="form-group">
   <label  for="Descripcion">Descripcion</label>  
   
