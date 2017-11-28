@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $catastrofes = \App\Catastrofe::all();
+        $catastrofes = \App\Catastrofe::orderBy('fecha_inicio', 'asc')->take(5)->get();
         $usuarios = \App\User::all();
         return view('home', compact('usuarios', 'catastrofes'));
     }
