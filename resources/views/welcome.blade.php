@@ -144,7 +144,6 @@
                 </div>
                 <div class="hero__photo-wrapper">
                     <div class="chile__photo"> 
-                        <div class="hero__hat">&nbsp;</div> 
                     </div>
                 </div>
                 <div class="hero__description">
