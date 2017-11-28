@@ -510,6 +510,24 @@ class HomeController extends Controller
 
     public function uploadCentroAcopio(Request $request)
     {
+        if($request->tipo_bien == 'Otros'){
+            CentroDeAcopio::create([
+            'nombre' => $request->nombre,
+            'id_medidas_acopio'=> $request->id_medidas_acopio,
+            'direccion'=>$request->direccion,
+            'tipo_bien'=>$request->tipo_bien2,
+            'cantidad_objetivo'=>$request->cantidad_objetivo,
+            'descripcion' => $request->descripcion,
+            'recibe' => 'true',
+            'monto_actual' =>'0',
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'monto_total'=> $request->cantidad_objetivo,
+            'situacion'=> 'true',
+            ]);
+
+        }
+        else{
         CentroDeAcopio::create([
             'nombre' => $request->nombre,
             'id_medidas_acopio'=> $request->id_medidas_acopio,
@@ -524,6 +542,7 @@ class HomeController extends Controller
             'monto_total'=> $request->cantidad_objetivo,
             'situacion'=> 'true',
             ]);
+    }
             return back()->with('flash', 'Centro declarado correctamente');
     }
 
@@ -765,6 +784,28 @@ public function donar(Request $request)
         $donacion = \App\Donacion::find($id);
 
         return view('verDonaciones.verDonaciones', compact('donacion', 'datos'));
+    }
+
+    public function viewDonarAcopio($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $acopio = \App\CentroDeAcopio::find($id);
+        $latitud = $acopio->latitud;
+        $longitud = $acopio->longitud;
+        return view('DonarCentroAcopio.donarAcopio', compact('acopio', 'datos', 'latitud', 'longitud'));
+    }
+
+      public function DonarAcopio(Request $request)
+    {
+        $id = $request->id_acopio;
+        $acopio = \App\CentroDeAcopio::find($id);
+        $acopio->monto_actual = $acopio->monto_actual + $request->monto_donacion;
+        if($acopio->monto_actual>=$acopio->monto_objetivo){
+            $acopio->recibe = (bool)'false';
+        }
+        $acopio->save();
+        return back()->with('flash', 'Donacion exitosa!');
     }
 
 

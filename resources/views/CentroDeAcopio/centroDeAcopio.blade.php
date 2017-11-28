@@ -136,7 +136,19 @@ textarea.form-control {
     <script>
       // In the following example, markers appear when the user clicks on the map.
       // Each marker is labeled with a single alphabetical character.
-   
+      function geocodePosition(pos) {
+var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                latLng: pos
+            }, function (responses) {
+                if (responses && responses.length > 0) {
+                    $('#direccion').val(responses[2].formatted_address);
+                    console.log(responses[2].formatted_address)
+                } else {
+                    
+                }
+            });
+        }
 
       function initialize() {
         var bangalore = { lat: 12.97, lng: 77.59 };
@@ -204,7 +216,7 @@ textarea.form-control {
             }));
             $("#latitud").val(place.geometry.location.lat());
             $("#longitud").val(place.geometry.location.lng());
-            $('#direccion').val(place.name)
+   geocodePosition(marker.getPosition());
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -232,6 +244,7 @@ textarea.form-control {
   }
    $("#latitud").val(location.lat());
    $("#longitud").val(location.lng());
+   geocodePosition(marker.getPosition());
 
       }
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -280,30 +293,58 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Lugar</label> 
-  <input id="direccion" name="direccion"  placeholder="Lugar" class="form-control" required="" type="text">
+  <label  for="Lugar">Direccion</label> 
+  <input id="direccion" name="direccion"  placeholder="Lugar" class="form-control" required="" type="text" readonly="readonly">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Latitud</label> 
   <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" required="" style="display: none" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Longitud</label> 
   <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" required="" style="display: none" type="text">
 
 </div>
 
 <!-- Text input-->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+    <script>
+    $("#tipo_bien").hide();
+        $(document).ready(function (){
+            $("#tipo_bien").change(function() {
+                // foo is the id of the other select box 
+                if ($(this).val() == "Otros") {
+                    $("#tipo_bien2").show();
+                }else{
+                    $("#tipo_bien2").hide();
+                } 
+            });
+        });
+    </script>
+
+<!-- Select Basic -->
 <div class="form-group">
-  <label for="tipo_bien">Tipo Bien</label>  
- 
-  <input id="tipo_bien" name="tipo_bien" placeholder="Tipo Bien" class="form-control" required="" type="text"> 
+  <label for="selectbasic">Seleccionar Tipo</label>
+    <select id="tipo_bien" name="tipo_bien" class="form-control">
+      <option value="Ropa">Ropa</option>
+      <option value="Alimentos no perecibles">Alimentos no perecibles</option>
+      <option value="Medicinas">Medicinas</option>
+      <option value="Materiales">Materiales</option>
+      <option value="Herramientas">Herramientas</option>
+      <option value="Otros">Otros</option>
+    </select>
+
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <input id="tipo_bien2" name="tipo_bien2" style="display: none" placeholder="Otros" class="form-control" type="text">
+
 </div>
 
 <!-- Text input-->

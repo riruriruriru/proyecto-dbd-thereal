@@ -618,6 +618,7 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button type="button" class="btn btn-default">Edit</button>
                         <button type="button" class="btn btn-default" disabled>Delete</button>
+                             <li><a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default"><a href="/donarAcopio/{{$centroAcopio->id_acopio}}">Donar</a></li> 
                     </div>
                 </span>
                 <span></span>
@@ -672,6 +673,7 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button type="button" class="btn btn-default">Edit</button>
                         <button type="button" class="btn btn-default" disabled>Delete</button>
+
                     </div>
                 </span>
                 <span></span>

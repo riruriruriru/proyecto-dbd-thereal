@@ -114,7 +114,7 @@
 @elseif($datos->num_tarjeta!=NULL)
 <label class="col-md-4 control-label" for="textinput">Text Input</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="placeholder" value= "{{$datos->num_tarjeta}}" class="form-control input-md">
+  <input id="textinput" name="textinput" type="text" placeholder="placeholder" value= "{{$datos->num_tarjeta}}" class="form-control input-md" readonly="readonly">
   </div>
 @endif
 

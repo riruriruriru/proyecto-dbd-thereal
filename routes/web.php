@@ -42,6 +42,10 @@ Route::get('/verMedida/{id}','HomeController@viewVerMedidasCatastrofe')->name('v
 
 Route::get('/contacto', 'HomeController@viewContacto')->name('contacto');
 
+Route::get('/donarAcopio/{id}', 'HomeController@viewDonarAcopio');
+Route::post('/donarAcopio', 'HomeController@DonarAcopio')->name('donar.Acopio');
+
+
 Route::get('/home2','HomeController@viewHome2')->name('home2');
 
 Route::get('/quienessomos', 'HomeController@viewQuienesSomos')->name('quienessomos');
