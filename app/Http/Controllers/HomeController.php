@@ -767,6 +767,8 @@ public function donar(Request $request)
         $id_d = $request->id_donacion;
         $donacion = \App\Donacion::find($id_d);
         //$donacion = \App\Donacion::find($usuario);
+        $donacion->monto_actual = $donacion->monto_actual + $request->monto;
+        $donacion->save();
           Donantes::create([
             'id_usuario' => Auth::id(),
             'id_donacion_donante'=> $request->id_donacion,
@@ -820,7 +822,7 @@ public function donar(Request $request)
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;
 
-        $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->get();
+        $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->whereRaw('monto_actual < objetivo')->get();
 
         return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org'));
     }
