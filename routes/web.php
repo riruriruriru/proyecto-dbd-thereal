@@ -30,8 +30,13 @@ Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2
 Route::post('/crearUsuarios/add/post', 'HomeController@createUser')->name('usuario.crear');
 Route::get('/crearUsuarios', 'HomeController@viewcreateUser');
 
+Route::get('/uwu', function()
+{
+    return Twitter::getUserTimeline(array('screen_name' => 'onemichile', 'count' => 5, 'format' => 'json'));
+});
 
-
+Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
+Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 

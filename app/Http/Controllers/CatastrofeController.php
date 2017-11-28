@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Catastrofe;
+use Twitter;
 
 
 class CatastrofeController extends Controller
@@ -310,9 +311,12 @@ class CatastrofeController extends Controller
              
 
         ]);
-
+        
             }
-
+        $texto = '#' . $request->nombre . ' ' . $request->nombre_tipo_catastrofe . ' ';
+        $texto2 = $texto . ' '. $request->fecha_inicio;
+        $texto3 = $texto2 . ' '. $request->descripcion;    
+        Twitter::postTweet(array('status' => $texto3, 'format' => 'json'));
         return back()->with('flash','Catastrofe ingresada correctamente');
     }
 

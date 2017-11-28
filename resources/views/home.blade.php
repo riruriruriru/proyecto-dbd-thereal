@@ -1,4 +1,16 @@
  @extends('layouts.app')
+@section('styles')
+    @parent
+<style type="text/css">
+  .boxContenedor{
+    width: px;
+    height: 633px;
+    overflow: scroll;
+  }
+
+</style>
+
+@stop
 <!DOCTYPE html><html lang="en">
 <head>
 
@@ -189,6 +201,14 @@
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+
+<div class="boxContenedor">
+ <a class="twitter-timeline" href="https://twitter.com/onemichile?lang=es">Onemi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+       
             </div>
           </div>
 
