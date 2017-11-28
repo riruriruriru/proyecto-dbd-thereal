@@ -20,6 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'HomeController@viewPerfil')->name('perfil');
 Route::post('update_perfil', 'HomeController@updatePerfil');
+Route::post('/verDonaciones', 'HomeController@updateTarjeta')->name('tarjeta.update');
+Route::post('/verDonaciones/add/post', 'HomeController@Donar')->name('donante.store');
+
+
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');

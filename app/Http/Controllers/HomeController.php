@@ -12,6 +12,7 @@ use App\RNV;
 use App\RNVUsers;
 use App\User;
 use App\Donacion;
+use App\Donantes;
 
 
 class HomeController extends Controller
@@ -715,6 +716,31 @@ class HomeController extends Controller
 
         return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
     }
+public function updateTarjeta(Request $request)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        //$donacion = \App\Donacion::find($usuario);
+        $datos->num_tarjeta = $request->num_tarjeta;
+        $datos->save();
+        return back()->with('flash', 'tarjeta actualizada correctamente');
+    }
+public function donar(Request $request)
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        $id_d = $request->id_donacion;
+        $donacion = \App\Donacion::find($id_d);
+        //$donacion = \App\Donacion::find($usuario);
+          Donantes::create([
+            'id_usuario' => Auth::id(),
+            'id_donacion_donante'=> $request->id_donacion,
+            'monto'=>$request->monto,
+            ]);
+        return back()->with('flash', 'Donacion realizada correctamente');
+    }
+
+
 
   public function viewVerDonaciones($id)
     {
