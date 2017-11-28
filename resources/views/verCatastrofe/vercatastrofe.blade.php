@@ -143,7 +143,7 @@
                 
                             <div class="container">
 
-                                <div class="listWrap">
+                                <div class="listWrap" style="position: relative; top: 50px">
                                 
                                     <ul class="list">
                                     
@@ -169,11 +169,14 @@
                                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
 
                                                      @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3)
+                                                     
                                                     <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}">Editar</a></button>
                                                     @endif
 
                                                     <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Informacion</a></li>
+
                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3) 
+
                                                     <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
                                                     @endif
                                                     <li><a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a></li> 

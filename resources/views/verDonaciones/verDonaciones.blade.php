@@ -3,6 +3,65 @@
 @section('styles')
 @parent
 <style>
+
+     .content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 45px;
+}
+
+.section-content{
+  text-align: center; 
+
+}
+#contact{
+    
+    font-family: 'Teko', sans-serif;
+  padding-top: 60px;
+  width: 100%;
+  width: 100vw;
+  height:     px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;    
+}
+.contact-section{
+  padding-top: 40px;
+}
+.contact-section .col-md-6{
+  width: 50%;
+}
+
+.form-line{
+  border-right: 1px solid #B29999;
+}
+
+.form-group{
+  margin-top: 10px;
+}
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+   /* margin-top: px;*/
+}
+
+.submit{
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+
+}
 .paymentWrap {
   padding: 50px;
 }
@@ -72,83 +131,96 @@
 
 @section('content')
 
-<div class="form-group" style="position: relative; top: 50px">
-<label >Nombre Donacion</label>  
-    <label >{{$donacion->nombre}}</label>
-      <label >Monto Actual</label>
-        <label >{{$donacion->monto_actual}}</label>
-        <label >Monto Objetivo</label>
-        <label >{{$donacion->objetivo}}</label>
-        <label >Fecha Inicio</label>
-        <label >{{$donacion->fecha_inicio}}</label>
-        <label >Fecha Termino</label>
-        <label >{{$donacion->fecha_termino}}</label>  
-  
-</div>
+
 @if($datos->num_tarjeta===NULL)
+
+<section id="contact">
+  
+    <div class="container">
+
+       <div class="contact-section">
+            <div class="container">
 
 
 <!-- Form Name -->
-<form  method="POST" action="{{route ('tarjeta.update')}}">
+<form  method="POST" class="form-signin" action="{{route ('tarjeta.update')}}">
                         {{ csrf_field() }}
 <!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Numero Tarjeta</label>  
-  <div class="col-md-4">
-  <input id="num_tarjeta" name="num_tarjeta" type="text" placeholder="Numero Tarjeta Credito" class="form-control input-md">
-  
+<div class="col-md-3">
+                        </div>
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="textinput">Numero Tarjeta</label>  
+    <input id="num_tarjeta" name="num_tarjeta" type="text" placeholder="Numero Tarjeta Credito" class="form-control input-md">
   </div>
-</div>
+
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
-  </div>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Aceptar</button>
+</div>
 </div>
 
+@endif
+</div>
+</div>
+</form>
+</div>
+</div>
 
 </form>
-
-@elseif($datos->num_tarjeta!=NULL)
-<label class="col-md-4 control-label" for="textinput">Text Input</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="placeholder" value= "{{$datos->num_tarjeta}}" class="form-control input-md" readonly="readonly">
-  </div>
-@endif
-
-<div class="container" style="position: relative; top: 150px">
-
-  
-  <form  method="POST" action="{{route ('donante.store')}}">
-                        {{ csrf_field() }}
-
-  <div class="col-md-4">
-  <input id="id_donacion" name="id_donacion" type="hidden" placeholder="id_donacion" value= "{{$donacion->id_donacion}}" class="form-control input-md">
-  </div>
-<label class="col-md-4 control-label" for="textinput">Monto:</label>  
-  <div class="col-md-4">
-  <input id="monto" name="monto" type="number" placeholder="monto" value= "" class="form-control input-md">
-  </div>
- @if($datos->num_tarjeta!=NULL)
-         <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
-  </div>
 </div>
 
 
+<section id="contact">
+  
+    <div class="container">
 
+       <div class="contact-section">
+
+<div class="container" >
+
+  
+  <form  method="POST" class="form-signin" action="{{route ('donante.store')}}">
+                        {{ csrf_field() }}
+  <div class="col-md-3">
+                        </div>
+<div class="col-md-6">
+  
+  <input id="id_donacion" name="id_donacion" type="hidden" placeholder="id_donacion" value= "{{$donacion->id_donacion}}" class="form-control input-md">
+
+
+   <div class="form-group">
+<label for="textinput">Monto</label>   
+  <input id="monto" name="monto" type="number" placeholder="monto" value= "" class="form-control input-md">
+</div>
+ @if($datos->num_tarjeta!=NULL)
+         <div class="form-group">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Donar</button>
+</div>
+
+
+</div>
               @endif
 
 </form>
+</div>
+</div>
+</div>
+  
+    <div class="container">
 
+       <div class="contact-section">
+
+<div class="container" >
+
+  
+  <form >
+                        {{ csrf_field() }}
   <div class="row">
     <div class="paymentCont">
             <div class="headingWrap">
-                <h3 class="headingTop text-center">Select Your Payment Method</h3>  
+                <h3 class="headingTop text-center">Seleciona tu metodo de pago</h3>  
             </div>
             <div class="paymentWrap">
               <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
@@ -180,3 +252,15 @@
 
 
   @endsection('content')
+
+  <?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+            header('Refresh: 0.01; URL=/verMedida');
+          
+        }
+?>

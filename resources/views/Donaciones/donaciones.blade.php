@@ -114,6 +114,8 @@ textarea.form-control {
 
 </div>
 <!-- Text input-->
+</div>
+<div class="col-md-6">
 <div class="form-group">
   <label  for="fecha_inicio">Fecha Inicio Donaciones</label> 
   <input id="fecha_inicio" name="fecha_inicio"  placeholder="Fecha Inicio Donaciones" class="form-control" required="" type="date">
@@ -148,3 +150,14 @@ textarea.form-control {
 
   </body>
 </html>
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+            header('Refresh: 0.01; URL=/verMedida');
+          
+        }
+?>

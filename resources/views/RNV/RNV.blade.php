@@ -4,8 +4,6 @@
 @parent
 <style type="text/css"><
 
-<style type="text/css"><
-
 .container {
     
     width: 100%;
@@ -221,5 +219,3 @@
           
         }
 ?>
-
-@endsection('content')
