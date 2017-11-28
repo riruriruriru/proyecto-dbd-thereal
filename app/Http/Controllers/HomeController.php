@@ -924,8 +924,12 @@ public function donar(Request $request)
     {
         $id = Auth::id();
         $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1){
+        return view('crearUsuarios', compact('usuario'));}
+        else{
 
-        return view('crearUsuarios', compact('usuario'));
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
     }
 
 

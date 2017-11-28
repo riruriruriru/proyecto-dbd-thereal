@@ -26,6 +26,22 @@
     <meta name="twitter:creator" content="">
     <meta name="twitter:card" content="">
     -->
+<script> 
+
+twttr.widgets.createTimeline(
+  {
+    sourceType: "profile",
+    screenName: "TwitterDev"
+  },
+  document.getElementById("container")
+);
+
+
+</script>
+<a class="twitter-timeline"
+  href="https://twitter.com/twitterdev">
+Tweets by @TwitterDev
+</a>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('style/favicon/apple-touch-icon-180x180.png')}}">
@@ -144,6 +160,7 @@
                 </div>
                 <div class="hero__photo-wrapper">
                     <div class="chile__photo"> 
+                        <div class="hero__hat">&nbsp;</div>
                     </div>
                 </div>
                 <div class="hero__description">
