@@ -15,7 +15,7 @@
 }
 #contact{
     
-    font-family: 'Teko', sans-serif;
+  font-family: 'Teko', sans-serif;
   padding-top: 60px;
   width: 100%;
   width: 100vw;
@@ -67,14 +67,15 @@ textarea.form-control {
 
 @stop
 
-<!DOCTYPE html>
-<html>
-  <head>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+      @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+/*Google font integration*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
       #map {
         height: 90%;
       }
@@ -129,137 +130,41 @@ textarea.form-control {
 #target {
   width: 345px;
 }
-    </style>
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="top: 50px"></div>
-
-    <script>
-      // In the following example, markers appear when the user clicks on the map.
-      // Each marker is labeled with a single alphabetical character.
-    function geocodePosition(pos) {
-var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({
-                latLng: pos
-            }, function (responses) {
-                if (responses && responses.length > 0) {
-                    $('#direccion').val(responses[2].formatted_address);
-                    console.log(responses[2].formatted_address)
-                } else {
-                    
-                }
-            });
-        }
-
-      function initialize() {
-        var bangalore = { lat: 12.97, lng: 77.59 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.4727088, lng: -70.7702575},
-          zoom: 9,
-          mapTypeId: 'roadmap'
-        });
+</style>
 
 
-        // This event listener calls addMarker() when the map is clicked.
-        google.maps.event.addListener(map, 'click', function(event) {
-          addMarker(event.latLng, map);
-        });
-        
+ 
 
-  // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-
-            }));
-            $("#latitud").val(place.geometry.location.lat());
-            $("#longitud").val(place.geometry.location.lng());
-            $('#direccion').val(place.name)
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-
-      // Adds a marker to the map.
-      var marker;
-      function addMarker(location, map) {
-        // Add the marker at the clicked location, and add the next-available label
-        // from the array of alphabetical characters.
-       if ( marker ) {
-      marker.setPosition(location);
-    } else {
-    marker = new google.maps.Marker({
-      position: location,
-      map: map
-    });
-
-  }
-   $("#latitud").val(location.lat());
-   $("#longitud").val(location.lng());
-   geocodePosition(marker.getPosition());
-
-      }
-  google.maps.event.addDomListener(window, 'load', initialize);
-
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
-  </head>
-  <body>
-  
-
+<body>
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+ <div id="map" style="top: 50px"></div>
+    <script>
+      function initMap() {
+        var jposLat = "<?php echo (float)$latitud; ?>";
+        var jposLong = "<?php echo (float)$longitud; ?>";
+        var myLatLng = {lat: -25.363, lng: 131.044};
+        var latlong = new google.maps.LatLng(jposLat,jposLong);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: latlong
+        });
+
+        var marker = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: 'Origen Catastrofe'
+        });
+      
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initMap">
+    </script>
+
 <section id="contact">
 
 <div class="container">
@@ -267,89 +172,116 @@ var geocoder = new google.maps.Geocoder();
 
 
 
- <div class="section-content">
-        <h1 class="section-header">Agregar <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
+<div class="section-content">
+        <h1 class="section-header">Agregar Actividades <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Evento</span></h1>
         <h3></h3>
-      </div>
+</div>
 <div class="contact-section">
 <div class="container">
-<form  method="POST" action="{{ route('evento.store') }}">
+  
+<form  method="POST" action="{{route ('evento.update') }}">
                         {{ csrf_field() }}
 <fieldset>
 
 <!-- Text input-->
 <div class="col-md-6 form-line">
-
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script> 
 <div class="form-group">
   <label for="textinput">Nombre Evento</label>  
-  <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly">
-</div>
-<!-- Text input-->
-<div class="form-group">
-  <input id="id_evento" name="id_evento"  placeholder="" class="form-control" required="" value="{{$evento->id_evento}}" type="hidden">
-
+  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->nombre}}">
 </div>
 
-<!-- Text input-->
 <div class="form-group">
-  <label  for="direccion">Direccion</label> 
-  <input id="direccion" name="direccion"  placeholder="Lugar" class="form-control" required="" type="text" readonly="readonly">
-
+  <label for="textinput">Cantidad Voluntarios Restantes</label>  
+  <input id="nombre_acopio" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->cantidad_voluntarios}}">
+</div>
+<!-- Select Basic -->
+<div class="form-group">
+  <input id="id_evento" name="id_evento" placeholder="Nombre" class="form-control" required="" type="hidden" readonly="readonly" value="{{$evento->id_evento}}" >
 </div>
 
 <!-- Text input-->
-<div class="form-group">
-  <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
-</div>
+
 
 <!-- Text input-->
 <div class="form-group">
-  <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
+   <label for="textinput">Lugar Evento</label>  
+
+  <input id="lugar_evento" name="lugar_evento"  placeholder="Lugar" class="form-control" required="" value= '{{$evento->direccion}}' type="text" readonly="readonly" >
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label for="cantidad_voluntarios">Cantidad Voluntarios</label>  
- 
-  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="number"> 
+
+  <input id="id_evento" name="id_evento"  placeholder="Lugar" class="form-control" required="" value= '{{$evento->id_evento}}' type="hidden" readonly="readonly" >
+
 </div>
 
 <!-- Text input-->
-<div class="form-group">
-  <label  for="monto_objetivo">Monto Objetivo</label> 
-  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="number">
-
-</div>
-
 <!-- Text input-->
 </div>
 <div class="col-md-6">
 <div class="form-group">
-  <label  for="fecha_inicio_evento">Fecha Inicio Evento</label> 
-  <input id="fecha_inicio_evento" name="fecha_inicio_evento"  placeholder="Fecha Inicio Evento" class="form-control" required="" type="date">
+  <label for="FechaInicio">Monto Actual</label>  
+ 
+  <input id="monto_recaudado" name="monto_recaudado" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->monto_recaudado}}"> 
+</div>
+<div class="form-group">
+  <label for="monto_objetivo">Monto Objetivo</label>  
+ 
+  <input id="monto_objetivo" name="monto_objetivo" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->monto_objetivo}}"> 
+</div>
+<!-- Textarea -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+    <script>
+    $("#nombre_actividad").hide();
+        $(document).ready(function (){
+            $("#tipo_actividad").change(function() {
+                // foo is the id of the other select box 
+                if ($(this).val() == "Otros") {
+                    $("#nombre_actividad").show();
+                }else{
+                    $("#nombre_actividad").hide();
+                } 
+            });
+        });
+    </script>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label for="selectbasic">Seleccionar Tipo</label>
+    <select id="tipo_actividad" name="tipo_actividad" class="form-control">
+      <option value="Animacion">Animacion Evento</option>
+      <option value="Construccion">Construccion</option>
+      <option value="Recoleccion">Recoleccion</option>
+      <option value="Atencion Medica">Atencion Medica</option>
+      <option value="Rescate">Rescate</option>
+      <option value="Cocina">Cocina</option>
+      <option value="Organizacion">Organizacion</option>
+      <option value="Transporte">Transporte</option>
+      <option value="Otros">Otros</option>
+    </select>
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="fecha_termino_evento">Fecha Termino Evento</label> 
-  <input id="fecha_termino_evento" name="fecha_termino_evento"  placeholder="Fecha Termino Evento" class="form-control" required="" type="date">
+
+  <input id="nombre_actividad" name="nombre_actividad" style="display: none" placeholder="Otros" class="form-control" type="text">
 
 </div>
 
-<!-- Textarea -->
-
+<!-- Text input-->
 <div class="form-group">
-  <label  for="Descripcion">Descripcion</label>  
-  
-  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control" type="text">
+  <label for="cantidad_participantes">Cantidad Participantes</label>  
 
-  
- 
+  <input id="cantidad_participantes" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
+
 </div>
-
 <!-- Button -->
 <div class="form-group">
   
@@ -366,6 +298,14 @@ var geocoder = new google.maps.Geocoder();
 
 </section>
 
+</body>
 
-  </body>
-</html>
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+        }
+?>

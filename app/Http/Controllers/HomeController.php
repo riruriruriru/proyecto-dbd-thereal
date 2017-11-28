@@ -13,6 +13,7 @@ use App\RNVUsers;
 use App\User;
 use App\Donacion;
 use App\Donantes;
+use App\Actividad;
 
 
 class HomeController extends Controller
@@ -758,6 +759,28 @@ public function updateTarjeta(Request $request)
         //$donacion = \App\Donacion::find($usuario);
         $datos->num_tarjeta = $request->num_tarjeta;
         $datos->save();
+        return back()->with('flash', 'tarjeta actualizada correctamente');
+    }
+
+public function updateEvento(Request $request)
+    {
+        //$donacion = \App\Donacion::find($usuario);
+        $evento = Evento::find($request->id_evento);
+            Actividad::create([
+            'nombre' => $request->nombre,
+            'id_medidas_acopio'=> $request->id_medidas_acopio,
+            'direccion'=>$request->direccion,
+            'tipo_bien'=>$request->tipo_bien2,
+            'cantidad_objetivo'=>$request->cantidad_objetivo,
+            'descripcion' => $request->descripcion,
+            'recibe' => 'true',
+            'monto_actual' =>'0',
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'monto_total'=> $request->cantidad_objetivo,
+            'situacion'=> 'true',
+            ]);
+         $datos->save();
         return back()->with('flash', 'tarjeta actualizada correctamente');
     }
 public function donar(Request $request)

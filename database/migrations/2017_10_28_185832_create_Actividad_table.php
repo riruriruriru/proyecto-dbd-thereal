@@ -15,6 +15,8 @@ class CreateActividadTable extends Migration
     {
         Schema::create('Actividad', function (Blueprint $table) {
             $table->increments('id_actividad');
+            $table->text('nombre_actividad');
+            $table->integer('participantes_actividad');
             $table->integer('actividad_id_evento')->foreign('id_evento')->references('id_evento')->on('Evento');
             $table->string('tipo', 100);
 
