@@ -802,7 +802,7 @@ public function donar(Request $request)
         $acopio = \App\CentroDeAcopio::find($id);
         $acopio->monto_actual = $acopio->monto_actual + $request->monto_donacion;
         if($acopio->monto_actual>=$acopio->monto_objetivo){
-            $acopio->recibe = (bool)'false';
+            $acopio->recibe = 'false';
         }
         $acopio->save();
         return back()->with('flash', 'Donacion exitosa!');
@@ -814,7 +814,7 @@ public function donar(Request $request)
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
         $medida = Medidas::find($id);
-        $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->get();
+        $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->where('recibe', '=', 'true')->get();
         $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->get();
         $org = DB::table('users')->where('id', '=', $medida->id_organizacion_medidas)->get();
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
