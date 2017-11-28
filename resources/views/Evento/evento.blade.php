@@ -131,7 +131,7 @@ textarea.form-control {
 }
     </style>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
+    <div id="map" style="top: 50px"></div>
 
     <script>
       // In the following example, markers appear when the user clicks on the map.
@@ -273,7 +273,6 @@ textarea.form-control {
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label  for="id_medidas_evento"></label> 
   <input id="id_medidas_evento" name="id_medidas_evento"  placeholder="" class="form-control" required="" value={{$id_medidas_evento}} type="hidden">
 
 </div>
@@ -287,14 +286,12 @@ textarea.form-control {
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Latitud</label> 
   <input id="latitud" name="latitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label  for="Lugar">Longitud</label> 
   <input id="longitud" name="longitud"  placeholder="Lugar" class="form-control" style="display: none" required="" type="text">
 
 </div>
@@ -314,6 +311,8 @@ textarea.form-control {
 </div>
 
 <!-- Text input-->
+</div>
+<div class="col-md-6">
 <div class="form-group">
   <label  for="fecha_inicio_evento">Fecha Inicio Evento</label> 
   <input id="fecha_inicio_evento" name="fecha_inicio_evento"  placeholder="Fecha Inicio Evento" class="form-control" required="" type="date">
@@ -328,8 +327,7 @@ textarea.form-control {
 </div>
 
 <!-- Textarea -->
-</div>
-<div class="col-md-6">
+
 <div class="form-group">
   <label  for="Descripcion">Descripcion</label>  
   
