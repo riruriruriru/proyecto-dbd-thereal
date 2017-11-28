@@ -14,6 +14,7 @@ use App\User;
 use App\Donacion;
 use App\Donantes;
 use App\Actividad;
+use App\ActividadUsers;
 
 
 class HomeController extends Controller
@@ -769,9 +770,15 @@ public function updateTarjeta(Request $request)
         $datos = \App\User::find($usuario);
         $evento = Evento::find($request->id_evento);
         $actividad = DB::table('Actividad')->where('id_actividad', '=', $request->id_actividad)->get();
-        if(count($id_placeholder)>0){
+        $actUser = DB::table('ActividadUsers')->where('id_evento', '=', $request->id_evento)->where('id_user','=',$usuario)->get();
+        if(count($id_placeholder)>0 and count($actUser)==0){
                 $evento->voluntarios_actuales = $evento->voluntarios_actuales +1;
                 $evento->save();
+                ActividadUsers::create([
+            'id_actividad' => $request->id_actividad,
+            'id_user' => $usuario,
+            'id_evento' => $request->id_evento,
+            ]);  
                 return back()->with('flash', 'Inscrito al evento correctamente');
 
         }
@@ -781,13 +788,17 @@ public function updateTarjeta(Request $request)
 
         }
         //$donacion = \App\Donacion::find($usuario);
-        return back()->with('flash', 'tarjeta actualizada correctamente');
+        return back()->with('flash', 'ya se encuentra participando en este evento');
     }
 
 public function updateEvento(Request $request)
     {
         //$donacion = \App\Donacion::find($usuario);
         $evento = Evento::find($request->id_evento);
+        if($request->cantidad_participantes>=$evento->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
         if($request->tipo_actividad == 'Otros'){
          Actividad::create([
             'nombre_actividad' => $request->nombre_actividad,
@@ -804,7 +815,7 @@ public function updateEvento(Request $request)
             'actividad_id_evento' =>$request->id_evento,
             ]);
         }
-        return back()->with('flash', 'tarjeta actualizada correctamente');
+        return back()->with('flash', 'actividad actualizada correctamente');
     }
 public function donar(Request $request)
     {

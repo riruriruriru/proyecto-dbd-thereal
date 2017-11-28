@@ -201,6 +201,34 @@
                                             <img src="content/inundacion.jpg">
                                             @elseif($catastrofe->tipo_catastrofe === 3)
                                             <img src="content/terremoto.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 4)
+                                            <img src="content/tsunami.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 5)
+                                            <img src="content/erupcion.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 6)
+                                            <img src="content/aluvion.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe ===7)
+                                            <img src="content/sequia.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 8)
+                                            <img src="content/temporal.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 9)
+                                            <img src="content/marejadas.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 10)
+                                            <img src="content/arena.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 11)
+                                            <img src="content/extremas.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 12)
+                                            <img src="content/heladas.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 13)
+                                            <img src="content/avalanchas.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 14)
+                                            <img src="content/actividad.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 15)
+                                            <img src="content/brote.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 16)
+                                            <img src="content/pandemia.jpg">
+                                            @elseif($catastrofe->tipo_catastrofe === 17)
+                                            <img src="content/asteroides.jpg">
                                             @endif
 
                                         </a>

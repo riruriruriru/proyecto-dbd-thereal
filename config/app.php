@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         'GoogleMaps\ServiceProvider\GoogleMapsServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+        Thujohn\Twitter\TwitterServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'GoogleMaps' => 'GoogleMaps\Facade\GoogleMapsFacade',
         'Flash' => 'Laracasts\Flash\Flash',
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
 
     ],
 
