@@ -50,7 +50,10 @@
                             <th> 
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default">Edit</button>
-                                <button type="button" class="btn btn-default" disabled>Delete</button>
+                                @if($datos->id_tipo_usuario!=4)
+                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
+                                @endif
+                                <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse Evento</a></li>
 
                             </div>
                             </th>

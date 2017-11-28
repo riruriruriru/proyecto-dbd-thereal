@@ -160,18 +160,7 @@
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
                         <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    Agregar <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu"> 
-                                    <li><a href="" class= "btn btn-default">Agregar Centro de Acopio</a></li> 
-
-                                    <li><a href="" class= "btn btn-default">Agregar Evento</a></li> 
-
-                                </ul>
-                            </li>
+                     
                     </div>
                 </span>
                 <li></li>

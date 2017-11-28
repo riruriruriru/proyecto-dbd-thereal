@@ -26,10 +26,9 @@ Route::get('/inscribirseEvento/{id}', 'HomeController@viewInscribirseEvento');
 Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadEvento');
 Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('evento.update');
 Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
-Route::get('/userTimeline', function()
-{
-	return Twitter::getUserTimeline(['screen_name' => 'onemichile', 'count' => 20, 'format' => 'json']);
-});
+
+
+
 
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
