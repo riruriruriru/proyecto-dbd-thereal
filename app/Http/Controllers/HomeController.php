@@ -747,6 +747,10 @@ class HomeController extends Controller
             $usuarios = \App\User::find($id_u_r);
             return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios'));
         }
+            
+            
+           
+    
 
 
         public function viewVerOrganizaciones()
