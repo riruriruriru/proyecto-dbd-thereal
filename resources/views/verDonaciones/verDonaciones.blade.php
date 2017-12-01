@@ -192,7 +192,7 @@ textarea.form-control {
 
    <div class="form-group">
 <label for="textinput">Monto</label>   
-  <input id="monto" name="monto" type="number" placeholder="monto" value= "" class="form-control input-md">
+  <input id="monto" name="monto" type="number" min="0" placeholder="monto" value= "" class="form-control input-md">
 </div>
  @if($datos->num_tarjeta!=NULL)
          <div class="form-group">
