@@ -16,7 +16,7 @@
 }
 #contact{
     
-    font-family: 'Teko', sans-serif;
+  font-family: 'Teko', sans-serif;
   padding-top: 60px;
   width: 100%;
   width: 100vw;
@@ -132,7 +132,6 @@ textarea.form-control {
 @section('content')
 
 
-@if($datos->num_tarjeta===NULL)
 
 <section id="contact">
   
@@ -151,17 +150,12 @@ textarea.form-control {
 <div class="col-md-6">
   <div class="form-group">
     <label for="textinput">Numero Tarjeta</label>  
-    <input id="num_tarjeta" name="num_tarjeta" type="text" placeholder="Numero Tarjeta Credito" class="form-control input-md">
+    <input id="num_tarjeta" name="num_tarjeta" type="text" placeholder="Numero Tarjeta Credito" min="1" class="form-control input-md">
   </div>
 
-
-<!-- Button -->
-<div class="form-group">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Aceptar</button>
-</div>
 </div>
 
-@endif
+
 </div>
 </div>
 </form>
@@ -172,7 +166,7 @@ textarea.form-control {
 </div>
 
 
-<section id="contact">
+<section id="contact" style="padding-top: 0px;">
   
     <div class="container">
 
@@ -192,16 +186,16 @@ textarea.form-control {
 
    <div class="form-group">
 <label for="textinput">Monto</label>   
-  <input id="monto" name="monto" type="number" min="0" placeholder="monto" value= "" class="form-control input-md">
+  <input id="monto" name="monto" type="number" min="1" placeholder="monto" value= "" class="form-control input-md">
 </div>
- @if($datos->num_tarjeta!=NULL)
+
          <div class="form-group">
     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Donar</button>
 </div>
 
 
 </div>
-              @endif
+   
 
 </form>
 </div>

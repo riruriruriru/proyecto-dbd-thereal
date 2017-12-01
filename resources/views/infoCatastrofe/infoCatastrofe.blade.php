@@ -133,25 +133,47 @@ textarea.form-control {
 
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="top: 50px"></div>
+    <div id="map" style ="top: 50px;"></div>
 
     <script>
       // In the following example, markers appear when the user clicks on the map.
       // Each marker is labeled with a single alphabetical character.
-   
+   function geocodePosition(pos) {
+var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                latLng: pos
+            }, function (responses) {
+                if (responses && responses.length > 0) {
+                    $('#lugar_catastrofe').val(responses[2].formatted_address);
+                    console.log(responses[2].formatted_address)
+                } else {
+                    
+                }
+            });
+        }
+
 
       function initialize() {
+        var jposLat = "<?php echo (float)$latitud; ?>";
+        var jposLong = "<?php echo (float)$longitud; ?>";
         var bangalore = { lat: 12.97, lng: 77.59 };
+        var latlong = new google.maps.LatLng(jposLat,jposLong);
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -25.363, lng: 131.044},
-          zoom: 10,
-          mapTypeId: 'roadmap'
+          zoom: 9,
+          center: latlong
+      
+        });
+
+        var marker2 = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: 'Origen Catastrofe'
         });
 
 
         // This event listener calls addMarker() when the map is clicked.
         google.maps.event.addListener(map, 'click', function(event) {
-          addMarker(event.latLng, map);
+          addMarker(event.latLng, map, event.place);
         });
         
 
@@ -206,7 +228,8 @@ textarea.form-control {
             }));
             $("#latitud").val(place.geometry.location.lat());
             $("#longitud").val(place.geometry.location.lng());
-            $('#lugar_catastrofe').val(place.name)
+              geocodePosition(place.geometry.location);
+ 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -228,22 +251,38 @@ textarea.form-control {
     } else {
     marker = new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
     });
 
   }
+
    $("#latitud").val(location.lat());
    $("#longitud").val(location.lng());
-
+   geocodePosition(marker.getPosition());
       }
   google.maps.event.addDomListener(window, 'load', initialize);
 
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
 
+  <script>
+    $("#nombre_tipo_catastrofe").hide();
+        $(document).ready(function (){
+            $("#tipo_catastrofe").change(function() {
+                // foo is the id of the other select box 
+                if ($(this).val() == "17") {
+                    $("#nombre_tipo_catastrofe").show();
+                }else{
+                    $("#nombre_tipo_catastrofe").hide();
+                } 
+            });
+        });
+    </script>
+
+  
 
 @section('content')
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
    	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -255,11 +294,12 @@ textarea.form-control {
             </div>
             <div class="contact-section">
             <div class="container">
+                   	<!--Para usuario normal se le muestra información-->
+          @if($datos->id_tipo_usuario===4)
 
-                <form  method="POST" action="{{ route('catastrofe.update') }}">
+          <form  method="POST" action="{{ route('catastrofe.update') }}">
                         {{ csrf_field() }}
-                    	<!--Para usuario normal se le muestra información-->
-                    	@if($datos->id_tipo_usuario===4)
+            <fieldset> 
                     	<!-- Text input-->
 						<div class="col-md-6 form-line">
 
@@ -276,11 +316,9 @@ textarea.form-control {
 						<!-- Select Basic -->
 						<div class="form-group">
 						  <label for="selectbasic">Seleccionar Tipo</label>
-						  @if($cat->tipo_catastrofe === 1)
-						    <input id="lugar_catastrofe" name="lugar_catastrofe"  value="Incendio" class="form-control" readonly="readonly" required="" type="text">
-						    @elseif($cat->tipo_catastrofe === 2)
-						     <input id="lugar_catastrofe" name="lugar_catastrofe"  value="Inundacion" class="form-control" readonly="readonly" required="" type="text">
-						    @endif
+						  
+						     <input id="lugar_catastrofe" name="lugar_catastrofe"  value="{{$cat->nombre_tipo_catastrofe}}" class="form-control" readonly="readonly" required="" type="text">
+						    
 						 
 						</div>
 
@@ -316,14 +354,14 @@ textarea.form-control {
 						</div>
 
 
-						@if($cat->fecha_termino != "")
+						    @if($cat->fecha_termino != "")
 						<div class="form-group">
 						  <label for="FechaTerminp">Fecha Termino</label>  
 						 
 						  <input id="fecha_termino" name="fecha_termino" value="{{$cat->fecha_termino}}" class="form-control" readonly="readonly" required="" type="date"> 
 						</div>
 
-						@endif
+						    @endif
 
 
 
@@ -336,139 +374,140 @@ textarea.form-control {
 						 
 						</div>
            </div>
-
-                        @endif
-
-                    	@if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===1)
-                        
-						<!-- Text input-->
-						<div class="col-md-6 form-line">
-
-						<div class="form-group">
-						  <label for="textinput">Nombre Catastrofe</label>  
-						  <input id="nombre" name="nombre" value="{{ $cat->nombre}}" class="form-control" required="" type="string">
-						</div>
-
-						<div class="form-group">
-						  <input id="id_catastrofe" name="id_catastrofe" value="{{ $cat->id_catastrofe}}" class="form-control" readonly="readonly" required="" type="hidden">
-						</div>
+              </fieldset>
+        </form>
+            @endif
+       
 
 
-						<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+           
+            @if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===1)
+            <form  method="POST" action="{{ route('catastrofe.update') }}">
+                        {{ csrf_field() }}
+            <fieldset>     
+						
+						  <div class="col-md-6 form-line">
 
-    <script>
-    $("#nombre_tipo_catastrofe").hide();
-        $(document).ready(function (){
-            $("#tipo_catastrofe").change(function() {
-                // foo is the id of the other select box 
-                if ($(this).val() == "17") {
-                    $("#nombre_tipo_catastrofe").show();
-                }else{
-                    $("#nombre_tipo_catastrofe").hide();
-                } 
-            });
-        });
-    </script>
+						  <div class="form-group">
+						    <label for="textinput">Nombre Catastrofe</label>  
+						    <input id="nombre" name="nombre" value="{{ $cat->nombre}}" class="form-control" required="" type="string">
+						  </div>
 
+						  <div class="form-group">
+						    <input id="id_catastrofe" name="id_catastrofe" value="{{ $cat->id_catastrofe}}" class="form-control" readonly="readonly" required="" type="hidden">
+						  </div>
+
+
+						  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+  
 <!-- Select Basic -->
-<div class="form-group">
-  <label for="selectbasic">Seleccionar Tipo</label>
-    <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
-      <option value="1">Incendio</option>
-      <option value="2">Inundacion</option>
-      <option value="3">Terremoto</option>
-      <option value="4">Tsunami</option>
-      <option value="5">Erupción Volcánica</option>
-      <option value="6">Aluvión</option>
-      <option value="7">Sequía</option>
-      <option value="8">Temporal de lluvia</option>
-      <option value="9">Marejadas</option>
-      <option value="10">Tormentas de arena</option>
-      <option value="11">Temperaturas extremas</option>
-      <option value="12">Heladas</option>
-      <option value="13">Avalanchas de nieve</option>
-      <option value="14">Actividad Volcánica</option>
-      <option value="15">Brote de enfermedades</option>
-      <option value="16">Pandemia</option>
-      <option value="17">Otros</option>
-    </select>
+              <div class="form-group">
+                <label for="selectbasic">Seleccionar Tipo</label>
+                  <select id="tipo_catastrofe" name="tipo_catastrofe" class="form-control">
+                    <option value="{{$cat->nombre_tipo_catastrofe}}">{{$cat->nombre_tipo_catastrofe}}</option>
+                    <option value="Incendio">Incendio</option>
+                    <option value="Inundacion">Inundacion</option>
+                    <option value="Terremoto">Terremoto</option>
+                    <option value="Tsunami">Tsunami</option>
+                    <option value="Erupción">Erupción Volcánica</option>
+                    <option value="Aluvión">Aluvión</option>
+                    <option value="Sequía">Sequía</option>
+                    <option value="Temporal">Temporal de lluvia</option>
+                    <option value="Marejadas">Marejadas</option>
+                    <option value="Tormentas de arena">Tormentas de arena</option>
+                    <option value="Temperaturas extremas">Temperaturas extremas</option>
+                    <option value="Heladas">Heladas</option>
+                    <option value="Avalanchas">Avalanchas de nieve</option>
+                    <option value="Actividad Volcánica">Actividad Volcánica</option>
+                    <option value="Brote enfermedades">Brote de enfermedades</option>
+                    <option value="Pandemia">Pandemia</option>
+                    <option value="Otros">Otros</option>
+                  </select>
 
-</div>
+              </div>
 
 <!-- Text input-->
-<div class="form-group">
-  <input id="nombre_tipo_catastrofe" name="nombre_tipo_catastrofe" style="display: none" placeholder="Otros" class="form-control" required="" type="text">
+             
 
-</div>
+  
+  						<div class="form-group">
+  						  <label  for="Lugar">Lugar</label> 
+  						  <input id="lugar_catastrofe" name="lugar_catastrofe"  value="{{$cat->lugar_catastrofe}}" class="form-control" required="" type="text">
 
-						<!-- Text input-->
-						<div class="form-group">
-						  <label  for="Lugar">Lugar</label> 
-						  <input id="lugar_catastrofe" name="lugar_catastrofe"  value="{{$cat->lugar_catastrofe}}" class="form-control" required="" type="text">
-
-						</div>
+  						</div>
 
 						<!-- Text input-->
-						<div class="form-group">
-						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" required="" style="display: none" type="text">
+  						<div class="form-group">
+  						  <input id="latitud" name="latitud" value ="{{$cat->latitud}}" class="form-control" required="" style="display: none" type="text">
 
-						</div>
+  						</div>
 
 						<!-- Text input-->
-						<div class="form-group">
-						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" style="display: none" required="" type="text">
+  						<div class="form-group">
+  						  <input id="longitud" name="longitud"  value="{{$cat->longitud}}" class="form-control" style="display: none" required="" type="text">
 
-						</div>
+  						</div>
 
 
 						<!-- Textarea -->
 						</div>
 						<div class="col-md-6 form">
 
-						<!-- Text input-->
-						<div class="form-group">
-						  <label for="FechaInicio">Fecha Inicio</label>  
-						 
-						  <input id="fecha_inicio" name="fecha_inicio" value="{{$cat->fecha_inicio}}" class="form-control" required="" type="date"> 
-						</div>
+  						<!-- Text input-->
+  						<div class="form-group">
+  						  <label for="FechaInicio">Fecha Inicio</label>  
+  						 
+  						  <input id="fecha_inicio" name="fecha_inicio" value="{{$cat->fecha_inicio}}" class="form-control" required="" type="date"> 
+  						</div>
 
 
-						<div class="form-group">
-						  <label for="FechaTerminp">Fecha Termino</label>  
-						 
-						  <input id="fecha_termino" name="fecha_termino" value="{{$cat->fecha_termino}}" class="form-control" type="date"> 
-						</div>
+  						<div class="form-group">
+  						  <label for="FechaTerminp">Fecha Termino</label>  
+  						 
+  						  <input id="fecha_termino" name="fecha_termino" value="{{$cat->fecha_termino}}" class="form-control" type="date"> 
+  						</div>
 
-
-
-						<div class="form-group">
-						  <label  for="Descripcion">Descripcion</label>  
-						  
-						  <input id="descripcion" name="descripcion" value="{{$cat->descripcion}}"  class="form-control" type="text">
-
-						  
-						 
-						</div>
+  						<div class="form-group">
+  						  <label  for="Descripcion">Descripcion</label>  
+  						  <input id="descripcion" name="descripcion" value="{{$cat->descripcion}}"  class="form-control" type="text">
+  						 
+  						</div>
 
 						<!-- Button -->
-						<div class="form-group">
-						  
-						    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Actualizar</button>
+  						<div class="form-group">
+  						  
+  						    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Actualizar</button>
 
+  						</div>
 						</div>
-						</div>
+            </fieldset>
 						</form>
-						</fieldset>
-						</form>
+					   @endif
+	
 						</div>
 						</div>
 						</div>
-						</section>
-                        @endif
+					
+                        
 
                     </div>
-                </form>
+          
+
             </div>
+
         </section>
+
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+            header('Refresh: 0.01; URL=/verMedida');
+        }
+?>
+
 
 @endsection('content')
