@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -165,7 +166,10 @@ class HomeController extends Controller
     public function uploadCatastrofe(Request $request)
     {
         //
-         $placeholder='abc';
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario==2){
+            $placeholder='abc';
          $tipo = $request->tipo_catastrofe;
         if($tipo=='1'){
                  Catastrofe::create([
@@ -441,13 +445,22 @@ class HomeController extends Controller
 
             }
 
-        return view('verCatastrofe', compact('verCatastrofe'))->with('flash','Catastrofe declarada correctamente');
+        return view('verCatastrofe', compact('verCatastrofe'))->with('flash','Catastrofe declarada correctamente');}
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear catástrofes');
+        }
+         
     }
 
     public function uploadEvento(Request $request)
     {
         //
-       
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3)
+        {
+
       Evento::create([
             'nombre'=> $request->nombre,
             'id_medidas_evento' => $request->id_medidas_evento,
@@ -463,9 +476,13 @@ class HomeController extends Controller
             'descripcion' => $request->descripcion,
 
 
-
         ]);
         return back()->with('flash','Evento declarado correctamente');
+    }
+        else{
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+      
     }
 
     public function uploadVoluntariado(Request $request)
@@ -493,8 +510,10 @@ class HomeController extends Controller
      public function uploadDonacion(Request $request)
     {
         //
-    
-      Donacion::create([
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario==2 or $usuario->id_tipo_usuario==3){
+            Donacion::create([
             'nombre'=> $request->nombre,
             'id_medidas_donacion' => $request->id_medidas_donacion,
             'objeivo'=> $request->objetivo,
@@ -507,13 +526,20 @@ class HomeController extends Controller
 
 
         ]);
-        return back()->with('flash','Donacion declarada correctamente');
+        return back()->with('flash','Donacion declarada correctamente');}
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+    
+      
     }
 
 
 
    public function uploadMedida(Request $request)
     {
+
         Medidas::create([
             'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
             'nombre_medida'=>$request->nombre_medida,
@@ -603,31 +629,58 @@ class HomeController extends Controller
 
     public function viewCatastrofe()
     {   
-       // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        return view('catastrofe.catastrofe', compact('catastrofe'));
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3){
+            
+        return view('catastrofe.catastrofe', compact('catastrofe'));}
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
     }
+        
 
       public function viewAgregarCentroAcopio($id)
-    {   
-        $id_medidas_acopio = $id;
-        $medida = Medidas::find($id);
-        $nombre = $medida->nombre_medida;
+    {    
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3){ 
+            $id_medidas_acopio = $id;
+            $medida = Medidas::find($id);
+            $nombre = $medida->nombre_medida;
 
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('CentroDeAcopio.centroDeAcopio', compact('id_medidas_acopio'));
+            
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+       
     }
 
      public function viewAgregarEvento($id)
     {   
-        $id_medidas_evento = $id;
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario === 2 or $usuario->id_tipo_usuario === 3){
+             $id_medidas_evento = $id;
         $medida = Medidas::find($id);
         $nombre = $medida->nombre_medida;
 
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('Evento.evento', compact('id_medidas_evento'));
+            
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+       
     }
 
      public function viewAgregarVoluntariado($id)
@@ -643,17 +696,45 @@ class HomeController extends Controller
 
          public function viewAgregarDonacion($id)
     {   
-        $id_medidas_donacion = $id;
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario ===2 or $usuario->id_tipo_usuario === 3){
+             $id_medidas_donacion = $id;
         $medida = Medidas::find($id);
         $nombre = $medida->nombre_medida;
 
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('Donaciones.donaciones', compact('id_medidas_donacion', 'nombre'));
+            
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+       
     }
 
     public function viewMedida($id)
     {   
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3){
+             $catastrofe = $id;
+            $cat = Catastrofe::find($id);
+            $longitud= $cat->longitud;
+            $latitud = $cat->latitud;
+            //$organizaciones = DB::table('users')->get();
+            $organizaciones =  DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
+
+            $nombre = 'Teleton';
+            return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud', 'cat'));
+            
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
         $catastrofe = $id;
         $cat = Catastrofe::find($id);
         $longitud= $cat->longitud;
@@ -664,6 +745,7 @@ class HomeController extends Controller
         $nombre = 'Teleton';
         return view('medida.medida', compact('medida', 'organizaciones', 'nombre', 'catastrofe', 'longitud','latitud', 'cat'));
     }
+
      public function viewMedida2()
 
     {   
@@ -677,20 +759,38 @@ class HomeController extends Controller
 
     public function viewVerMedida()
     {   
-       // $catastrofe = Catastrofe::catastrofe();
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario==4){
+                   // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
+
         $medidas = DB::table('Medidas')->get();
         return view('verMedida.verMedida', compact('medidas'));
+        }
+        else{
+            return back()->with('flash', 'No posee permisos para crear usuarios');
+        }
+
     }
 
 
 
     public function viewVerMedidasCatastrofe($id)
     {   
-       // $catastrofe = Catastrofe::catastrofe();
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $medidas = DB::table('Medidas')->where('id_catastrofe_medidas', '=', $id)->get();
         return view('verMedida.verMedida', compact('medidas'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para acceder a esta página');
+        }
+
     }
 
 
@@ -704,18 +804,36 @@ class HomeController extends Controller
             return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
         }
 
+                return back()->with('flash', 'No posee permisos para ingresar a esta página');
+            }
+           
+    }
+
         public function viewVerOrganizaciones()
     {   
-       // $catastrofe = Catastrofe::catastrofe();
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $organizaciones =  DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         return view('verOrganizaciones.verOrganizaciones', compact('organizaciones'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
 
-        public function viewVerPerfil()
+    public function viewVerPerfil()
     {   
-       $usuario = Auth::id();
-       $datos = \App\User::find($usuario);
+       $usuario = Auth::user();
+       if($usuario->id_tipo_usuario === 5)
+       {
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+       }
+       $datos = $usuario;
 
        return view('verPerfil.verPerfil', compact('datos'));
     }
@@ -724,10 +842,20 @@ class HomeController extends Controller
 
     public function viewagregarCatastrofe()
     {   
-       // $catastrofe = Catastrofe::catastrofe();
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('agregarCatastrofe.agregarCatastrofe', compact('agregarCatastrofe'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
+
     public function uploadagregarCatastrofe(Request $loQueLlega)
     {
         $usuario = Auth::user();
@@ -743,12 +871,22 @@ class HomeController extends Controller
 
        public function viewVerCatastrofe()
     {   
-       // $catastrofe = Catastrofe::catastrofe();
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $catastrofes = DB::table('Catastrofe')->get();
         $usuario = Auth::id();
        $datos = \App\User::find($usuario);
         return view('verCatastrofe.vercatastrofe', compact('catastrofes', 'datos'));
+        }
+        else{
+
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
 
 
@@ -767,6 +905,7 @@ class HomeController extends Controller
 
     public function viewContacto()
     {   
+
         return view('Contacto.contacto', compact('contacto'));
     }
 
@@ -790,14 +929,21 @@ class HomeController extends Controller
     {
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
-        $catastrofe = $id;
-        $cat = Catastrofe::find($id);
-        $longitud= $cat->longitud;
-        $latitud = $cat->latitud;
+        if($datos->id_tipo_usuario==1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4){
+            $catastrofe = $id;
+            $cat = Catastrofe::find($id);
+            $longitud= $cat->longitud;
+            $latitud = $cat->latitud;
 
         return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
-public function updateTarjeta(Request $request)
+    public function updateTarjeta(Request $request)
     {
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
@@ -939,25 +1085,44 @@ public function donar(Request $request)
     {
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
-        $donacion = \App\Donacion::find($id);
+        if($datos->id_tipo_usuario === 1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4)
+        {
+            $donacion = \App\Donacion::find($id);
 
         return view('verDonaciones.verDonaciones', compact('donacion', 'datos'));
+        }
+        else
+        {
+            return back()->with('flash', 'Donacion realizada correctamente');
+        }
     }
 
     public function viewDonarAcopio($id)
     {
+
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
-        $acopio = \App\CentroDeAcopio::find($id);
+        if($datos->id_tipo_usuario==1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4){
+            $acopio = \App\CentroDeAcopio::find($id);
         $latitud = $acopio->latitud;
         $longitud = $acopio->longitud;
         return view('DonarCentroAcopio.donarAcopio', compact('acopio', 'datos', 'latitud', 'longitud'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+        
     }
 
     public function viewInscribirseEvento($id)
     {
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
+        if($datos->id_tipo_usuario===5)
+        {
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
         $evento = \App\Evento::find($id);
         $latitud = $evento->latitud;
         $longitud = $evento->longitud;
@@ -980,13 +1145,22 @@ public function donar(Request $request)
 
       public function viewAgregarActividadEvento($id)
     {
+
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
-        $evento = \App\Evento::find($id);
-        $latitud = $evento->latitud;
-        $longitud = $evento->longitud;
-        $actividades = DB::table('Actividad')->where('actividad_id_evento', '=', $id)->get();
-        return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
+        if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3)
+        {
+            $evento = \App\Evento::find($id);
+            $latitud = $evento->latitud;
+            $longitud = $evento->longitud;
+            $actividades = DB::table('Actividad')->where('actividad_id_evento', '=', $id)->get();
+            return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
+        }
+        else
+        {
+            return back()->with('No posee permisos para ingresar a esta página');
+        }
+        
     }
 
         public function viewAgregarTrabajoVoluntariado($id)
@@ -1016,6 +1190,10 @@ public function donar(Request $request)
     {
         $usuario = Auth::id();
         $datos = \App\User::find($usuario);
+        if($datos->id_tipo_usuario===5)
+        {
+            return back()->with('No posee permisos para ingresar a esta página');
+        }
         $medida = Medidas::find($id);
         $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->where('recibe', '=', 'true')->get();
         $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->get();
