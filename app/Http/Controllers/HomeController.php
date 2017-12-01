@@ -732,10 +732,16 @@ class HomeController extends Controller
             return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
         }
 
-                return back()->with('flash', 'No posee permisos para ingresar a esta página');
-            }
-           
-    }
+             public function viewSolicitudes()
+        {   
+           // $catastrofe = Catastrofe::catastrofe();
+            #$usuario = \App\User::find($user->id);
+            $id_usuario_activo = auth()->id();
+            $id_u_r = DB::table('RNVUsers')->where('verificador', (bool)'false')->get();
+            $usuarios = \App\User::find($id_u_r);
+            return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios'));
+        }
+
 
         public function viewVerOrganizaciones()
     {   

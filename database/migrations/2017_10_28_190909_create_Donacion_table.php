@@ -22,6 +22,7 @@ class CreateDonacionTable extends Migration
             $table->integer('monto_actual');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
+            $table->boolean('verificador');
         });
     }
 

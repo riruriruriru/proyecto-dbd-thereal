@@ -256,13 +256,12 @@ textarea.form-control {
   <label for="selectbasic">Seleccionar Tipo</label>
     <select id="tipo_actividad" name="tipo_actividad" class="form-control">
       <option value="Animacion">Animacion Evento</option>
-      <option value="Construccion">Construccion</option>
-      <option value="Recoleccion">Recoleccion</option>
-      <option value="Atencion Medica">Atencion Medica</option>
-      <option value="Rescate">Rescate</option>
+      <option value="Seguridad">Seguridad</option>
       <option value="Cocina">Cocina</option>
+      <option value="Paramedicos">Paramedicos</option>
+      <option value="Artistas">Artistas</option>
+      <option value="Aseo">Aseo</option>
       <option value="Organizacion">Organizacion</option>
-      <option value="Transporte">Transporte</option>
       <option value="Otros">Otros</option>
     </select>
 
