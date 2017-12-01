@@ -15,6 +15,15 @@ use App\Donacion;
 use App\Donantes;
 use App\Actividad;
 use App\ActividadUsers;
+use App\Voluntariado;
+use App\VoluntariadoUser;
+use App\Trabajo;
+use App\HabilidadesUser;
+use App\Habilidades;
+
+
+
+
 
 
 class HomeController extends Controller
@@ -55,6 +64,7 @@ class HomeController extends Controller
         $usuario->last_name = $loQueLlega->last_name;
         $usuario->email = $loQueLlega->email;
         $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        $usuario->rut_pasaporte = $loQueLlega->rut_pasaporte;
         $usuario->save();
         return back()->with('flash','Datos modificados correctamente');
     }
@@ -458,6 +468,28 @@ class HomeController extends Controller
         return back()->with('flash','Evento declarado correctamente');
     }
 
+    public function uploadVoluntariado(Request $request)
+    {
+        //
+       
+      Voluntariado::create([
+            'nombre'=> $request->nombre,
+            'id_medidas_voluntariado' => $request->id_medidas_voluntariado,
+            'direccion'=>$request->direccion,
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'cantidad_voluntarios'=> $request->cantidad_voluntarios,
+            'voluntarios_actuales' => '0',
+            'fecha_inicio_voluntariado' => date("m-d-Y", strtotime($request->fecha_inicio_voluntariado)),
+            'fecha_termino_voluntariado' => date("m-d-Y", strtotime($request->fecha_termino_voluntariado)),
+            'descripcion' => $request->descripcion,
+
+
+
+        ]);
+        return back()->with('flash','Voluntariado declarado correctamente');
+    }
+
      public function uploadDonacion(Request $request)
     {
         //
@@ -557,8 +589,9 @@ class HomeController extends Controller
             RNVUsers::create([
                 'id_usuario'=> $request->id_usuario_activo,
                 'id_rnv' => '1',
+                'verificador' => (bool)'false',
                 ]);
-                return back()->with('flash', 'Inscrito al RNV correctamente');
+                return back()->with('flash', 'Su solicitud fue enviada correctamente');
 
         }
         else{
@@ -595,6 +628,17 @@ class HomeController extends Controller
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('Evento.evento', compact('id_medidas_evento'));
+    }
+
+     public function viewAgregarVoluntariado($id)
+    {   
+        $id_medidas_voluntariado = $id;
+        $medida = Medidas::find($id);
+        $nombre = $medida->nombre_medida;
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('Voluntariado.viewVoluntariado', compact('id_medidas_voluntariado'));
     }
 
          public function viewAgregarDonacion($id)
@@ -655,7 +699,7 @@ class HomeController extends Controller
            // $catastrofe = Catastrofe::catastrofe();
             #$usuario = \App\User::find($user->id);
             $id_usuario_activo = auth()->id();
-            $id_u_r = DB::table('RNVUsers')->pluck('id_usuario');
+            $id_u_r = DB::table('RNVUsers')->where('verificador', (bool)'true')->pluck('id_usuario');
             $usuarios = \App\User::find($id_u_r);
             return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
         }
@@ -791,6 +835,34 @@ public function updateTarjeta(Request $request)
         return back()->with('flash', 'ya se encuentra participando en este evento');
     }
 
+    public function updateVoluntariado2(Request $request)
+    {
+        $usuario = Auth::id();
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
+        $datos = \App\User::find($usuario);
+        $voluntariado = Voluntariado::find($request->id_voluntariado);
+        $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->get();
+        $actUser = DB::table('VoluntariadoUser')->where('id_voluntariado', '=', $request->id_voluntariado)->where('id_user','=',$usuario)->get();
+        if(count($id_placeholder)>0 and count($actUser)==0){
+                $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;
+                $voluntariado->save();
+                VoluntariadoUser::create([
+            'id_trabajo' => $request->id_actividad,
+            'id_user' => $usuario,
+            'id_voluntariado' => $request->id_evento,
+            ]);  
+                return back()->with('flash', 'Inscrito al voluntariado correctamente');
+
+        }
+        else if((count($id_placeholder)==0)){
+
+                return back()->with('flash', 'Debe inscribirse previamente al RNV');
+
+        }
+        //$donacion = \App\Donacion::find($usuario);
+        return back()->with('flash', 'ya se encuentra participando en este voluntariado');
+    }
+
 public function updateEvento(Request $request)
     {
         //$donacion = \App\Donacion::find($usuario);
@@ -817,6 +889,33 @@ public function updateEvento(Request $request)
         }
         return back()->with('flash', 'actividad actualizada correctamente');
     }
+public function updateVoluntariado(Request $request)
+    {
+        //$donacion = \App\Donacion::find($usuario);
+        $voluntariado = Voluntariado::find($request->id_voluntariado);
+        if($request->cantidad_participantes>=$voluntariado->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
+        if($request->tipo_trabajo == 'Otros'){
+         Trabajo::create([
+            'nombre_trabajo' => $request->nombre_trabajo,
+            'tipo' => $request->nombre_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);   
+        }
+        else{
+            Trabajo::create([
+            'nombre_trabajo' => $request->tipo_trabajo,
+            'tipo' => $request->tipo_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);
+        }
+        return back()->with('flash', 'Trabajo actualizado correctamente');
+    }
+
 public function donar(Request $request)
     {
         $id = Auth::id();
@@ -867,6 +966,18 @@ public function donar(Request $request)
         return view('Evento.inscribirseEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
     }
 
+      public function viewInscribirseVoluntariado($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $voluntariado = \App\Voluntariado::find($id);
+        $latitud = $voluntariado->latitud;
+        $longitud = $voluntariado->longitud;
+        $trabajos = DB::table('Trabajo')->where('trabajo_id_voluntariado', '=', $id)->get();
+
+        return view('Voluntariado.inscribirseVoluntariado', compact('voluntariado', 'datos', 'latitud', 'longitud', 'trabajos'));
+    }
+
       public function viewAgregarActividadEvento($id)
     {
         $usuario = Auth::id();
@@ -876,6 +987,17 @@ public function donar(Request $request)
         $longitud = $evento->longitud;
         $actividades = DB::table('Actividad')->where('actividad_id_evento', '=', $id)->get();
         return view('Evento.agregarActividadEvento', compact('evento', 'datos', 'latitud', 'longitud', 'actividades'));
+    }
+
+        public function viewAgregarTrabajoVoluntariado($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $voluntariado = \App\Voluntariado::find($id);
+        $latitud = $voluntariado->latitud;
+        $longitud = $voluntariado->longitud;
+        $trabajos = DB::table('Trabajo')->where('trabajo_id_voluntariado', '=', $id)->get();
+        return view('Voluntariado.agregarTrabajoVoluntariado', compact('voluntariado', 'datos', 'latitud', 'longitud', 'trabajos'));
     }
       public function DonarAcopio(Request $request)
     {
@@ -900,10 +1022,10 @@ public function donar(Request $request)
         $org = DB::table('users')->where('id', '=', $medida->id_organizacion_medidas)->get();
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;
-
+        $voluntariados = DB::table('Voluntariado')->where('id_medidas_voluntariado', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->get();
         $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->whereRaw('monto_actual < objetivo')->get();
 
-        return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org'));
+        return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org', 'voluntariados'));
     }
 
      public function createUser(Request $data)
@@ -914,7 +1036,7 @@ public function donar(Request $request)
             'email' => $data->email,
             'password' => bcrypt($data->password),
             'id_tipo_usuario' => $data->id_tipo_usuario,
-
+            'rut_pasaporte' => $data->rut_pasaporte,
             
         ]);
         return back();
@@ -930,6 +1052,45 @@ public function donar(Request $request)
 
             return back()->with('flash', 'No posee permisos para crear usuarios');
         }
+    }
+
+     public function viewRegistroRNV()
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        $habilidades_user = DB::table('HabilidadesUser')->where('id_user', '=', $id)->pluck('tipo_habilidad');
+        return view('RNV.registroRNV', compact('usuario','habilidades_user'));
+    }
+
+
+     public function viewInscribirseRNV()
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        $rnv = \App\RNV::all();
+        return view('registroRNV', compact('usuario', 'rnv'));
+
+    }
+
+        public function viewAgregarHabilidad()
+    {
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        $habilidades_user = DB::table('HabilidadesUser')->where('id_user', $id)->pluck('tipo_habilidad')->toArray();
+        $habilidades = Habilidades::all();
+        return view('agregarHabilidad', compact('usuario', 'habilidades_user', 'habilidades'));
+
+    }
+           public function updateHabilidad(Request $request)
+    {
+            $id = Auth::id();
+            HabilidadesUser::Create([
+            'id_user' => $id,
+            'tipo_habilidad' => $request->tipo_habilidad,
+            ]);
+
+        return back()->with('flash', 'uwu');
+
     }
 
 

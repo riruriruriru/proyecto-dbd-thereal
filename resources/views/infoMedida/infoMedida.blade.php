@@ -63,6 +63,45 @@
             </table>
         </div>
 
+ <section >
+        <h1>Tabla voluntariado</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0" style="top :50px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Voluntariado</th>
+                        <th>Cantidad de Voluntarios</th>
+                        <th>Voluntarios Actuales</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                     @foreach($voluntariados as $voluntariado)
+                        <tr>
+                            <th id="id_evento">{{$voluntariado->id_voluntariado}}</th>
+                            <th>{{$voluntariado->nombre}}</th>
+                            <th>{{$voluntariado->cantidad_voluntarios}}</th>
+                            <th>{{$voluntariado->voluntarios_actuales}}</th>
+                            <th> 
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default">Edit</button>
+                                @if($datos->id_tipo_usuario!=4)
+                                <li><a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a></li>
+                                @endif
+                                <li><a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse Voluntariado</a></li>
+
+                            </div>
+                            </th>
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
 
 
     </section>

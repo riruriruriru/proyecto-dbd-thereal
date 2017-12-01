@@ -105,6 +105,12 @@ textarea.form-control {
                             
                         </div>
 
+                        <div class="form-group{{ $errors->has('rut_pasaporte') ? ' has-error' : '' }}">
+                            <label for="rut_pasaporte">Rut o Pasaporte</label>
+                            <input id="rut_pasaporte" type="text" class="form-control" name="rut_pasaporte" required autofocus>
+                            
+                        </div>
+
                         <!-- Select Basic -->
 <div class="form-group">
   <label for="selectbasic">Seleccionar Tipo</label>

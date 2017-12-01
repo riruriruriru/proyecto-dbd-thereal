@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('num_tarjeta',120)->nullable();
+            $table->text('rut_pasaporte');
         });
     }
 

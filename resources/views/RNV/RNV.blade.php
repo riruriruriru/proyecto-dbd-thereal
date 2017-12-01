@@ -178,8 +178,7 @@
 <!-- Form Name -->
 
  
-<form class="form-horizontal" method="POST" action="{{ route('RNV.store') }}"  >
-        {{ csrf_field() }}
+
 <!-- Text input-->
 <div class="col-md-3">
     
@@ -191,10 +190,9 @@
 <!-- Button -->
 <div class="col-md-6">
 <div class="form-group">
-    <button id="Submit" name="button" class="btn btn-default submit" >Inscribirme!</button>
+   <li><a href="/registroRNV"  type="button" class="btn btn-default">Registrarse</a></li>
 </div>
 </div>
-</form>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </div>

@@ -22,6 +22,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '4',
         'last_name' => $faker->name,
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -42,7 +43,7 @@ $factory->define(App\RNVUsers::class, function (Faker $faker) {
     return [
         'id_rnv' => $id_r,
         'id_usuario' => $id_tipo_u,
-
+        'verificador'=> (bool)'true',
     ];
 }
 );
@@ -58,6 +59,7 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '1',
         'last_name' => 'superAdmin',
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -71,6 +73,8 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '2',
         'last_name' => 'Gobierno de Chile',
+        'rut_pasaporte'=>rand(17000000,1800000),
+
     ];
 }
 );
@@ -85,6 +89,7 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -98,7 +103,8 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
-    ];
+        'rut_pasaporte'=>rand(17000000,1800000),
+        ];
 }
 );
 
@@ -111,6 +117,7 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -124,6 +131,7 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -136,6 +144,7 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
+        'rut_pasaporte'=>rand(17000000,1800000),
     ];
 }
 );
@@ -148,6 +157,77 @@ static $password='123456';
         'remember_token' => str_random(10),
         'id_tipo_usuario' => '3',
         'last_name' => 'Organizacion',
+        'rut_pasaporte'=>rand(17000000,1800000),
+    ];
+}
+);
+
+$factory->defineAs(App\Habilidades::class, 'h1',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Recoleccion',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h2',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Rescate Montania',
+    ];
+}
+);
+
+$factory->defineAs(App\Habilidades::class, 'h3',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Rescate Marino',
+    ];
+}
+);
+
+$factory->defineAs(App\Habilidades::class, 'h4',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Construccion',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h5',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Transporte',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h6',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Carga',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h7',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Bombero',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h8',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Asistencia Médica',
+    ];
+}
+);
+
+$factory->defineAs(App\Habilidades::class, 'h9',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Cocina',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h10',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Veterinario',
+    ];
+}
+);
+$factory->defineAs(App\Habilidades::class, 'h11',function (Faker $faker) {
+    return [
+        'tipo_habilidad' => 'Profesor',
     ];
 }
 );

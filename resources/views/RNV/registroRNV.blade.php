@@ -75,7 +75,7 @@ textarea.form-control {
   
     <div class="container">
         <div class="section-content">
-            <h1 class="section-header">Registro <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Usuario</span></h1>
+            <h1 class="section-header">Inscribirse <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> RNV</span></h1>
             <h3></h3>
         </div>
           
@@ -83,31 +83,25 @@ textarea.form-control {
             <div class="container">
    
            
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('RNV.store') }}">
                         {{ csrf_field() }}
                     <div class="col-md-6 form-line">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name">Nombre</label>
                           
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ $usuario->name }}" readonly= 'readonly' required autofocus>
+                          
+                        </div>
 
-                             @if ($errors->has('name'))
-                                <span class="help-block">
-                                     <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
+
+                            <div class="col-md-6 form-line">                          
+                            <input id="id_usuario_activo"  class="form-control" name="id_usuario_activo" value="{{ $usuario->id }}" readonly= 'readonly' type= 'hidden' required autofocus>
                           
                         </div>
 
                         <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <label for="last_name">Apellido</label>
-                            <input id="last_name" type="text" class="form-control" name="last_name" required autofocus>
-                            
-                        </div>
-
-                        <div class="form-group{{ $errors->has('rut_pasaporte') ? ' has-error' : '' }}">
-                            <label for="rut_pasaporte">Rut o Pasaporte</label>
-                            <input id="rut_pasaporte" type="text" class="form-control" name="rut_pasaporte" required autofocus>
+                            <input id="last_name" type="text" class="form-control" name="last_name" value="{{ $usuario->last_name }}" readonly= 'readonly' required autofocus>
                             
                         </div>
 
@@ -115,51 +109,54 @@ textarea.form-control {
                             <label for="email">E-Mail</label>
 
                             
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
+                            <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" readonly= 'readonly' required>
                             
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password">Contraseña</label>
+                    <div class="col-md-6 form">
+                      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email">Rut o Pasaporte</label>
 
-                       
-                            <input id="password" type="password" class="form-control" name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
+                            
+                            <input id="rut_pasaporte" type="rut_pasaporte" class="form-control" name="email" value="{{ $usuario->rut_pasaporte }}" readonly= 'readonly' required>
                             
                         </div>
+                    
 
-                        <div class="form-group">
-                            <label for="password-confirm">Confirmar contraseña</label>
+                        @foreach($habilidades_user as $habilidad)
+                          <div class="form-group">
+                            <label for="password-confirm">Habilidad</label>
 
                             
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input id="tipo_habilidad" type="text" readonly="readonly" class="form-control" name="tipo_habilidad" value='{{$habilidad}}' >
                            
                         </div>
 
+                        @endforeach
+
+
                         <div class="form-group">
                             
-                             <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Registrar</button>
+                             <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Enviar Solicitud</button>
                             
                         </div>
+                      </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+          <?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
           
+        }
+?>
  
 
 @endsection

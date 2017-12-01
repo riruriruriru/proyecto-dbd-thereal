@@ -23,9 +23,22 @@ Route::post('update_perfil', 'HomeController@updatePerfil');
 Route::post('/verDonaciones', 'HomeController@updateTarjeta')->name('tarjeta.update');
 Route::post('/verDonaciones/add/post', 'HomeController@Donar')->name('donante.store');
 Route::get('/inscribirseEvento/{id}', 'HomeController@viewInscribirseEvento');
+Route::get('/inscribirseVoluntariado/{id}', 'HomeController@viewInscribirseVoluntariado');
+Route::get('/agregarHabilidad', 'HomeController@viewAgregarHabilidad');
+Route::post('/agregarHabilidad/add/post', 'HomeController@updateHabilidad')->name('habilidad.update');
+Route::get('/registroRNV', 'HomeController@viewRegistroRNV');
+
+
+
+
 Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadEvento');
+Route::get('/agregarTrabajoVoluntariado/{id}', 'HomeController@viewAgregarTrabajoVoluntariado');
+
 Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('evento.update');
+Route::post('/agregarTrabajoVoluntariado', 'HomeController@updateVoluntariado')->name('voluntariado.update');
+
 Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
+Route::post('/inscribirseVoluntariado', 'HomeController@updateVoluntariado2')->name('voluntariado2.update');
 
 Route::post('/crearUsuarios/add/post', 'HomeController@createUser')->name('usuario.crear');
 Route::get('/crearUsuarios', 'HomeController@viewcreateUser');
@@ -45,6 +58,8 @@ Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('ver
 
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
+Route::get('/voluntariado/{id}','HomeController@viewAgregarVoluntariado')->name('voluntariado');
+
 Route::get('/RNV','HomeController@viewRNV')->name('RNV');
 Route::get('/donacion/{id}','HomeController@viewAgregarDonacion')->name('donacion');
 Route::post('/donacion/add/post', 'HomeController@uploadDonacion')->name('donacion.store');
@@ -68,6 +83,7 @@ Route::post('upload_medida', 'HomeController@uploadMedida');
 Route::post('/medida', 'HomeController@uploadMedida')->name('medida.store');
 Route::post('/centroAcopio/add/post', 'HomeController@uploadCentroAcopio')->name('centro.store');
 Route::post('/evento/add/post', 'HomeController@uploadEvento')->name('evento.store');
+Route::post('/voluntariado/add/post', 'HomeController@uploadVoluntariado')->name('voluntariado.store');
 
 Route::post('/infoCatastrofe', 'HomeController@updateCatastrofe')->name('catastrofe.update');
 

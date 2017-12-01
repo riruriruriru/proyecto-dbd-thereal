@@ -13,11 +13,13 @@ class CreateTrabajoTable extends Migration
      */
     public function up()
     {
-        Schema::create('Trabajo', function (Blueprint $table) {
-            $table->increments('id_trabajo')->unique();
-            $table->integer('id_tipo_trabajo_trabajo')->foreign('id_tipo_trabajo_trabajo')->references('id_tipo_trabajo')->on('TipoTrabajo');
-            $table->integer('id_rnv_trabajo')->foreign('id_rnv_trabajo')->references('id_rnv')->on('RNV');
-            $table->string('tipo_trabajo',30);
+           Schema::create('Trabajo', function (Blueprint $table) {
+            $table->increments('id_trabajo');
+            $table->text('nombre_trabajo');
+            $table->integer('participantes_trabajo');
+            $table->integer('trabajo_id_voluntariado')->foreign('id_voluntariado')->references('id_voluntariado')->on('Voluntariado');
+            $table->string('tipo', 100);
+
         });
     }
 

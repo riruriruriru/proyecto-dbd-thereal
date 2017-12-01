@@ -14,11 +14,18 @@ class CreateVoluntariadoTable extends Migration
     public function up()
     {
         Schema::create('Voluntariado', function (Blueprint $table) {
-            $table->increments('id_voluntariado')->unique();
-            $table->integer('id_medidas_voluntariado')->foreign('id_medidas_voluntariado')->references('id_medidas')->on('Medidas');
-            $table->integer('voluntarios_objetivo');
+             $table->increments('id_voluntariado')->unique();
+            $table->timestamps();
+            $table->date('fecha_inicio_voluntariado');
+            $table->date('fecha_termino_voluntariado');
+            $table->integer('cantidad_voluntarios');
             $table->integer('voluntarios_actuales');
-            $table->date('fecha_voluntariado');
+            $table->text('latitud');
+            $table->text('longitud');
+            $table->text('direccion');
+            $table->text('descripcion');
+            $table->text('nombre');
+            $table->integer('id_medidas_voluntariado')->foreign('id_medidas_voluntariado')->references('id_medidas')->on('Medidas');
         });
     }
 

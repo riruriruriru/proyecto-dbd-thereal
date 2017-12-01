@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->delete();
         DB::table('RNV')->delete();
         DB::table('RNVUsers')->delete();
-
+        DB::table('Habilidades')->delete();
 
                 
         factory('App\User', 59)->create();
@@ -41,6 +41,17 @@ class DatabaseSeeder extends Seeder
         factory('App\User', 'org6')->create();
         factory('App\RNV')->create();
         factory('App\RNVUsers', 20)->create();
+        factory('App\Habilidades', 'h1')->create();
+        factory('App\Habilidades', 'h2')->create();
+        factory('App\Habilidades', 'h3')->create();
+        factory('App\Habilidades', 'h4')->create();
+        factory('App\Habilidades', 'h5')->create();
+        factory('App\Habilidades', 'h6')->create();
+        factory('App\Habilidades', 'h7')->create();
+        factory('App\Habilidades', 'h8')->create();
+        factory('App\Habilidades', 'h9')->create();
+        factory('App\Habilidades', 'h10')->create();
+        factory('App\Habilidades', 'h11')->create();
 
 
 

@@ -101,6 +101,16 @@ textarea.form-control {
                             <input id="name" type="text" class="form-control" name="last_name" value="{{ $usuario->last_name}}" required autofocus>
                          
                         </div>
+
+                          <div class="form-group{{ $errors->has('rut_pasaporte') ? ' has-error' : '' }}">
+                            <label for="rut_pasaporte" >Rut o Pasaporte</label>
+
+                           
+                            <input id="rut_pasaporte" type="text" class="form-control" name="rut_pasaporte" value="{{ $usuario->rut_pasaporte}}" required autofocus>
+                         
+                        </div>
+
+
                         </div>
                         <div class="col-md-6">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
