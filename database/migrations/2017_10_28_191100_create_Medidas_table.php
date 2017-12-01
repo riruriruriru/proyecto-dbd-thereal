@@ -24,7 +24,7 @@ class CreateMedidasTable extends Migration
             $table->date('fecha_termino_medida');
             $table->boolean('publico')->nullable();
             $table->integer('id_historial')->foreign('id_historial')->references('id_historial')->on('HistorialCatastrofe')->nullable();
-            $table->boolean('verificador');
+            $table->boolean('verificador')->nullable();
 
             $table->timestamps();
         });

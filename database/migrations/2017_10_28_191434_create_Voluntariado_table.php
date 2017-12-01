@@ -25,7 +25,7 @@ class CreateVoluntariadoTable extends Migration
             $table->text('direccion');
             $table->text('descripcion');
             $table->text('nombre');
-            $table->boolean('verificador');
+            $table->boolean('verificador')->nullable();
             $table->integer('id_medidas_voluntariado')->foreign('id_medidas_voluntariado')->references('id_medidas')->on('Medidas');
         });
     }

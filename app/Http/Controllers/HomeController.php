@@ -400,6 +400,7 @@ class HomeController extends Controller
             'monto_recaudado' => '0',
             'monto_objetivo' => $request->monto_objetivo,
             'fecha_inicio_evento' => date("m-d-Y", strtotime($request->fecha_inicio_evento)),
+            'verificador' => (bool)'false',
             'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
             'descripcion' => $request->descripcion,
 
@@ -428,6 +429,7 @@ class HomeController extends Controller
             'fecha_inicio_voluntariado' => date("m-d-Y", strtotime($request->fecha_inicio_voluntariado)),
             'fecha_termino_voluntariado' => date("m-d-Y", strtotime($request->fecha_termino_voluntariado)),
             'descripcion' => $request->descripcion,
+            'verificador' => (bool)'false',
 
 
 
@@ -450,6 +452,7 @@ class HomeController extends Controller
             'objetivo' => $request->objetivo,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            'verificador' => (bool)'false',
 
 
 
@@ -475,6 +478,7 @@ class HomeController extends Controller
             'id_usuario' => auth()->id(),
             'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
             'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
+            'verificador' => (bool)'false',
             'descripcion' => $request->descripcion,
             ]);
             return back()->with('flash', 'Medida declarada correctamente');
@@ -512,6 +516,7 @@ class HomeController extends Controller
             'longitud' => $request->longitud,
             'monto_total'=> $request->cantidad_objetivo,
             'situacion'=> 'true',
+            'verificador' => (bool)'false',
             ]);
 
         }
@@ -529,6 +534,7 @@ class HomeController extends Controller
             'longitud' => $request->longitud,
             'monto_total'=> $request->cantidad_objetivo,
             'situacion'=> 'true',
+            'verificador' => (bool)'false',
             ]);
     }
             return back()->with('flash', 'Centro declarado correctamente');

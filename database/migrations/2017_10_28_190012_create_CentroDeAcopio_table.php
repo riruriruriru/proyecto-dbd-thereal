@@ -27,6 +27,7 @@ class CreateCentroDeAcopioTable extends Migration
             $table->integer('monto_actual');
             $table->integer('monto_total');
             $table->timestamps();
+            $table->boolean('verificador')->nullable();
         });
     }
 
