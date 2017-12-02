@@ -221,13 +221,14 @@ textarea.form-control {
 
 <!-- Text input-->
 <!-- Text input-->
-</div>
-<div class="col-md-6">
+
 <div class="form-group">
   <label for="FechaInicio">Monto Actual</label>  
  
   <input id="monto_recaudado" name="monto_recaudado" placeholder="" class="form-control" required="" type="text" readonly="readonly" value="{{$evento->monto_recaudado}}"> 
 </div>
+</div>
+<div class="col-md-6">
 <div class="form-group">
   <label for="monto_objetivo">Monto Objetivo</label>  
  
@@ -278,7 +279,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="cantidad_participantes">Cantidad Participantes</label>  
 
-  <input id="cantidad_participantes" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
+  <input id="cantidad_participantes" min="1" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
 
 </div>
 <!-- Button -->
