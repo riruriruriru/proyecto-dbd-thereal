@@ -49,12 +49,7 @@ class HomeController extends Controller
         $usuarios = \App\User::all();
         return view('home', compact('usuarios', 'catastrofes'));
     }
-    public function viewPerfil()
-    {   
-        $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
-        return view('perfil.perfil', compact('usuario'));
-    }
+
 
 
     public function updatePerfil(Request $loQueLlega)
@@ -88,6 +83,112 @@ class HomeController extends Controller
             
         //return view('/infoCatastrofe', compact('cat', 'datos', 'longitud', 'latitud', 'usuario', 'catastrofe'));
         return back()->with('flash', 'Catastrofe Actualizada');
+    }
+
+
+       public function updateMedida(Request $request)
+    {
+        $id = $request->id_medida;
+        $medida  = Medidas::find($id);
+        $medida->nombre_medida=$request->nombre_medida;
+        $medida->fecha_inicio_medida=date("m-d-Y", strtotime($request->fecha_inicio_medida));            
+        $medida->fecha_termino_medida=date("m-d-Y", strtotime($request->fecha_termino_medida));
+        $medida->descripcion = $request->descripcion;
+        $medida->save();
+        return back()->with('flash', 'Medida actualizada correctamente');
+    }
+
+
+     public function updateRNV(Request $request)
+    {
+        $i = auth()->id();
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $i)->get();
+        if(count($id_placeholder)==0){
+            RNVUsers::create([
+                'id_usuario'=> $request->id_usuario_activo,
+                'id_rnv' => '1',
+                'verificador' => 0,
+                ]);
+                return back()->with('flash', 'Su solicitud fue enviada correctamente');
+
+        }
+        else{
+
+                return back()->with('flash', 'Ya se encuentra inscrito en el RNV');
+
+        }
+    }
+
+
+
+    //Metodos upload
+    public function uploadagregarCatastrofe(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        $usuario->name = $loQueLlega->name;
+        $usuario->last_name = $loQueLlega->last_name;
+        $usuario->email = $loQueLlega->email;
+        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        $usuario->save();
+        return redirect()->route('home');
+    }
+
+    public function uploadCentroAcopio(Request $request)
+    {
+        if($request->tipo_bien == 'Otros'){
+            CentroDeAcopio::create([
+            'nombre' => $request->nombre,
+            'id_medidas_acopio'=> $request->id_medidas_acopio,
+            'direccion'=>$request->direccion,
+            'tipo_bien'=>$request->tipo_bien2,
+            'cantidad_objetivo'=>$request->cantidad_objetivo,
+            'descripcion' => $request->descripcion,
+            'recibe' => 'true',
+            'monto_actual' =>'0',
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'monto_total'=> $request->cantidad_objetivo,
+            'situacion'=> 'true',
+            'verificador' => 0,
+            ]);
+
+        }
+        else{
+        CentroDeAcopio::create([
+            'nombre' => $request->nombre,
+            'id_medidas_acopio'=> $request->id_medidas_acopio,
+            'direccion'=>$request->direccion,
+            'tipo_bien'=>$request->tipo_bien,
+            'cantidad_objetivo'=>$request->cantidad_objetivo,
+            'descripcion' => $request->descripcion,
+            'recibe' => 'true',
+            'monto_actual' =>'0',
+             'latitud' =>$request->latitud,
+            'longitud' => $request->longitud,
+            'monto_total'=> $request->cantidad_objetivo,
+            'situacion'=> 'true',
+            'verificador' => 0,
+            ]);
+        }
+            return back()->with('flash', 'Centro declarado correctamente');
+    }
+
+
+    public function uploadMedida(Request $request)
+    {
+        
+        Medidas::create([
+            'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
+            'nombre_medida'=>$request->nombre_medida,
+            'id_organizacion_medidas'=>$request->id_organizacion_medidas,
+            'id_usuario' => auth()->id(),
+            'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
+            'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
+            'verificador' =>0,
+            'descripcion' => $request->descripcion,
+            ]);
+            return back()->with('flash', 'Medida declarada correctamente');
     }
 
 
@@ -383,11 +484,6 @@ class HomeController extends Controller
 
     public function uploadEvento(Request $request)
     {
-        //
-        $id = Auth::id();
-        $usuario = \App\User::find($id);
-        if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3)
-        {
 
       Evento::create([
             'nombre'=> $request->nombre,
@@ -407,10 +503,7 @@ class HomeController extends Controller
 
         ]);
         return back()->with('flash','Evento declarado correctamente');
-    }
-        else{
-            return back()->with('flash', 'No posee permisos para crear usuarios');
-        }
+
       
     }
 
@@ -439,137 +532,266 @@ class HomeController extends Controller
 
      public function uploadDonacion(Request $request)
     {
-        //
+        Donacion::create([
+        'nombre'=> $request->nombre,
+        'id_medidas_donacion' => $request->id_medidas_donacion,
+        'objeivo'=> $request->objetivo,
+        'monto_actual' => '0',
+        'numero_cuenta' => $request->numero_cuenta,
+        'objetivo' => $request->objetivo,
+        'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+        'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+        'verificador' => 0,
+        ]);
+        return back()->with('flash','Donacion declarada correctamente');
+    }
+
+
+    public function uploadVerCatastrofe(Request $loQueLlega)
+    {
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        //$usuario->name = $loQueLlega->name;
+        //$usuario->last_name = $loQueLlega->last_name;
+        //$usuario->email = $loQueLlega->email;
+        //$usuario->num_tarjeta = $loQueLlega->num_tarjeta;
+        //$usuario->save();
+        return redirect()->route('home');
+    }
+
+    public function updateTarjeta(Request $request)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        //$donacion = \App\Donacion::find($usuario);
+        $datos->num_tarjeta = $request->num_tarjeta;
+        $datos->save();
+        return back()->with('flash', 'tarjeta actualizada correctamente');
+    }
+
+    public function updateEvento2(Request $request)
+    {
+        $usuario = Auth::id();
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
+        $datos = \App\User::find($usuario);
+        $evento = Evento::find($request->id_evento);
+        $actividad = DB::table('Actividad')->where('id_actividad', '=', $request->id_actividad)->get();
+        $actUser = DB::table('ActividadUsers')->where('id_evento', '=', $request->id_evento)->where('id_user','=',$usuario)->get();
+        if(count($id_placeholder)>0 and count($actUser)==0){
+                $evento->voluntarios_actuales = $evento->voluntarios_actuales +1;
+                $evento->save();
+                ActividadUsers::create([
+            'id_actividad' => $request->id_actividad,
+            'id_user' => $usuario,
+            'id_evento' => $request->id_evento,
+            ]);  
+                return back()->with('flash', 'Inscrito al evento correctamente');
+
+        }
+        else if((count($id_placeholder)==0)){
+
+                return back()->with('flash', 'Debe inscribirse previamente al RNV');
+
+        }
+        //$donacion = \App\Donacion::find($usuario);
+        return back()->with('flash', 'ya se encuentra participando en este evento');
+    }
+
+    public function updateVoluntariado2(Request $request)
+    {
+        $usuario = Auth::id();
+        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
+        $datos = \App\User::find($usuario);
+        $voluntariado = Voluntariado::find($request->id_voluntariado);
+        $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->get();
+        $actUser = DB::table('VoluntariadoUser')->where('id_voluntariado', '=', $request->id_voluntariado)->where('id_user','=',$usuario)->get();
+        if(count($id_placeholder)>0 and count($actUser)==0){
+                $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;
+                $voluntariado->save();
+                VoluntariadoUser::create([
+            'id_trabajo' => $request->id_actividad,
+            'id_user' => $usuario,
+            'id_voluntariado' => $request->id_evento,
+            ]);  
+                return back()->with('flash', 'Inscrito al voluntariado correctamente');
+
+        }
+        else if((count($id_placeholder)==0)){
+
+                return back()->with('flash', 'Debe inscribirse previamente al RNV');
+
+        }
+        //$donacion = \App\Donacion::find($usuario);
+        return back()->with('flash', 'ya se encuentra participando en este voluntariado');
+    }
+
+    public function updateEvento(Request $request)
+    {
+        //$donacion = \App\Donacion::find($usuario);
+        $evento = Evento::find($request->id_evento);
+        if($request->cantidad_participantes>=$evento->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
+        if($request->tipo_actividad == 'Otros'){
+         Actividad::create([
+            'nombre_actividad' => $request->nombre_actividad,
+            'tipo' => $request->nombre_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
+            ]);   
+        }
+        else{
+            Actividad::create([
+            'nombre_actividad' => $request->tipo_actividad,
+            'tipo' => $request->tipo_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
+            ]);
+        }
+        return back()->with('flash', 'actividad actualizada correctamente');
+    }
+
+    public function updateVoluntariado(Request $request)
+    {
+        //$donacion = \App\Donacion::find($usuario);
+        $voluntariado = Voluntariado::find($request->id_voluntariado);
+        if($request->cantidad_participantes>=$voluntariado->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
+        if($request->tipo_trabajo == 'Otros'){
+         Trabajo::create([
+            'nombre_trabajo' => $request->nombre_trabajo,
+            'tipo' => $request->nombre_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);   
+        }
+        else{
+            Trabajo::create([
+            'nombre_trabajo' => $request->tipo_trabajo,
+            'tipo' => $request->tipo_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);
+        }
+        return back()->with('flash', 'Trabajo actualizado correctamente');
+
+
+
+    //Metodos view: 
+
+    public function viewContacto()
+    {   
+
+        return view('Contacto.contacto', compact('contacto'));
+    }
+
+    public function viewHome2()
+    {   
+        return view('Home.home2', compact('home2'));
+    }
+
+    public function viewPrueba()
+    {   
+        return view('prueba', compact('contacto'));
+    }
+
+    public function viewQuienesSomos()
+    {   
+        return view('Contacto.quienessomos', compact('quienessomos'));
+    }
+
+    public function viewPerfil()
+    {   
+        $usuario = Auth::user();
+        #$usuario = \App\User::find($user->id);
+        return view('perfil.perfil', compact('usuario'));
+    }
+
+
+    public function viewVerPerfil()
+    {   
+       $usuario = Auth::user();
+       if($usuario->id_tipo_usuario === 5)
+       {
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+       }
+       $datos = $usuario;
+
+       return view('verPerfil.verPerfil', compact('datos'));
+    }
+
+
+
+    public function viewagregarCatastrofe()
+    {   
         $id = Auth::id();
         $usuario = \App\User::find($id);
-        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario==2 or $usuario->id_tipo_usuario==3){
-            Donacion::create([
-            'nombre'=> $request->nombre,
-            'id_medidas_donacion' => $request->id_medidas_donacion,
-            'objeivo'=> $request->objetivo,
-            'monto_actual' => '0',
-            'numero_cuenta' => $request->numero_cuenta,
-            'objetivo' => $request->objetivo,
-            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
-            'verificador' => 0,
-
-
-
-        ]);
-        return back()->with('flash','Donacion declarada correctamente');}
-        else{
-
-            return back()->with('flash', 'No posee permisos para crear usuarios');
-        }
-    
-      
-    }
-
-
-
-   public function uploadMedida(Request $request)
-    {
-        
-        Medidas::create([
-            'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
-            'nombre_medida'=>$request->nombre_medida,
-            'id_organizacion_medidas'=>$request->id_organizacion_medidas,
-            'id_usuario' => auth()->id(),
-            'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
-            'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
-            'verificador' =>0,
-            'descripcion' => $request->descripcion,
-            ]);
-            return back()->with('flash', 'Medida declarada correctamente');
-    }
-
-       public function updateMedida(Request $request)
-    {
-        $id = $request->id_medida;
-
-            $medida  = Medidas::find($id);
-            $medida->nombre_medida=$request->nombre_medida;
-            $medida->fecha_inicio_medida=date("m-d-Y", strtotime($request->fecha_inicio_medida));
-            $medida->fecha_termino_medida=date("m-d-Y", strtotime($request->fecha_termino_medida));
-            $medida->descripcion = $request->descripcion;
-            $medida->save();
-            return back()->with('flash', 'Medida actualizada correctamente');
-    }
-
-
-    public function uploadCentroAcopio(Request $request)
-    {
-        if($request->tipo_bien == 'Otros'){
-            CentroDeAcopio::create([
-            'nombre' => $request->nombre,
-            'id_medidas_acopio'=> $request->id_medidas_acopio,
-            'direccion'=>$request->direccion,
-            'tipo_bien'=>$request->tipo_bien2,
-            'cantidad_objetivo'=>$request->cantidad_objetivo,
-            'descripcion' => $request->descripcion,
-            'recibe' => 'true',
-            'monto_actual' =>'0',
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'monto_total'=> $request->cantidad_objetivo,
-            'situacion'=> 'true',
-            'verificador' => 0,
-            ]);
-
-        }
-        else{
-        CentroDeAcopio::create([
-            'nombre' => $request->nombre,
-            'id_medidas_acopio'=> $request->id_medidas_acopio,
-            'direccion'=>$request->direccion,
-            'tipo_bien'=>$request->tipo_bien,
-            'cantidad_objetivo'=>$request->cantidad_objetivo,
-            'descripcion' => $request->descripcion,
-            'recibe' => 'true',
-            'monto_actual' =>'0',
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'monto_total'=> $request->cantidad_objetivo,
-            'situacion'=> 'true',
-            'verificador' => 0,
-            ]);
-    }
-            return back()->with('flash', 'Centro declarado correctamente');
-    }
-
-
-     public function updateRNV(Request $request)
-    {
-        $i = auth()->id();
-        $id_placeholder = RNVUsers::where('id_usuario', '=', $i)->get();
-        if(count($id_placeholder)==0){
-            RNVUsers::create([
-                'id_usuario'=> $request->id_usuario_activo,
-                'id_rnv' => '1',
-                'verificador' => 0,
-                ]);
-                return back()->with('flash', 'Su solicitud fue enviada correctamente');
-
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('agregarCatastrofe.agregarCatastrofe', compact('agregarCatastrofe'));
         }
         else{
 
-                return back()->with('flash', 'Ya se encuentra inscrito en el RNV');
-
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
         }
+
+    }
+
+       public function viewVerCatastrofe()
+    {   
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
+                   // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $catastrofes = DB::table('Catastrofe')->get();
+        $usuario = Auth::id();
+       $datos = \App\User::find($usuario);
+        return view('verCatastrofe.vercatastrofe', compact('catastrofes', 'datos'));
+        }
+        else{
+
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
 
     public function viewCatastrofe()
     {   
         $id = Auth::id();
         $usuario = \App\User::find($id);
-        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3){
-            
-        return view('catastrofe.catastrofe', compact('catastrofe'));}
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3)
+        {
+            return view('catastrofe.catastrofe', compact('catastrofe'));
+        }
         else{
 
             return back()->with('flash', 'No posee permisos para ingresar a esta página');
         }
+    }
+
+   public function viewinfoCatastrofe($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        if($datos->id_tipo_usuario==1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4){
+            $catastrofe = $id;
+            $cat = Catastrofe::find($id);
+            $longitud= $cat->longitud;
+            $latitud = $cat->latitud;
+
+        return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para ingresar a esta página');
+        }
+
     }
         
 
@@ -688,7 +910,6 @@ class HomeController extends Controller
     }
 
      public function viewMedida2()
-
     {   
 
         //$catastrofe = Catastrofe::get();
@@ -716,7 +937,6 @@ class HomeController extends Controller
     }
 
 
-
     public function viewVerMedidasCatastrofe($id)
     {   
         $idU = Auth::id();
@@ -736,19 +956,19 @@ class HomeController extends Controller
 
 
      public function viewRNV()
-        {   
-           // $catastrofe = Catastrofe::catastrofe();
-            #$usuario = \App\User::find($user->id);
-            $id_usuario_activo = auth()->id();
-            $id_u_r = DB::table('RNVUsers')->where('verificador', 1)->pluck('id_usuario');
-            $usuarios = \App\User::find($id_u_r);
-            return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
-        }
+    {   
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $id_usuario_activo = auth()->id();
+        $id_u_r = DB::table('RNVUsers')->where('verificador', 1)->pluck('id_usuario');
+        $usuarios = \App\User::find($id_u_r);
+        return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
+    }
 
       
 
 
-        public function viewVerOrganizaciones()
+    public function viewVerOrganizaciones()
     {   
         $id = Auth::id();
         $usuario = \App\User::find($id);
@@ -765,240 +985,8 @@ class HomeController extends Controller
 
     }
 
-    public function viewVerPerfil()
-    {   
-       $usuario = Auth::user();
-       if($usuario->id_tipo_usuario === 5)
-       {
-            return back()->with('flash', 'No posee permisos para ingresar a esta página');
-       }
-       $datos = $usuario;
+   
 
-       return view('verPerfil.verPerfil', compact('datos'));
-    }
-
-
-
-    public function viewagregarCatastrofe()
-    {   
-        $id = Auth::id();
-        $usuario = \App\User::find($id);
-        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
-                   // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        return view('agregarCatastrofe.agregarCatastrofe', compact('agregarCatastrofe'));
-        }
-        else{
-
-            return back()->with('flash', 'No posee permisos para ingresar a esta página');
-        }
-
-    }
-
-    public function uploadagregarCatastrofe(Request $loQueLlega)
-    {
-        $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
-        $usuario->name = $loQueLlega->name;
-        $usuario->last_name = $loQueLlega->last_name;
-        $usuario->email = $loQueLlega->email;
-        $usuario->num_tarjeta = $loQueLlega->num_tarjeta;
-        $usuario->save();
-        return redirect()->route('home');
-    }
-
-
-       public function viewVerCatastrofe()
-    {   
-        $id = Auth::id();
-        $usuario = \App\User::find($id);
-        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3 or $usuario->id_tipo_usuario===4){
-                   // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        $catastrofes = DB::table('Catastrofe')->get();
-        $usuario = Auth::id();
-       $datos = \App\User::find($usuario);
-        return view('verCatastrofe.vercatastrofe', compact('catastrofes', 'datos'));
-        }
-        else{
-
-
-            return back()->with('flash', 'No posee permisos para ingresar a esta página');
-        }
-
-    }
-
-
-    public function uploadVerCatastrofe(Request $loQueLlega)
-    {
-        $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
-        //$usuario->name = $loQueLlega->name;
-        //$usuario->last_name = $loQueLlega->last_name;
-        //$usuario->email = $loQueLlega->email;
-        //$usuario->num_tarjeta = $loQueLlega->num_tarjeta;
-        //$usuario->save();
-        return redirect()->route('home');
-    }
-
-
-    public function viewContacto()
-    {   
-
-        return view('Contacto.contacto', compact('contacto'));
-    }
-
-    public function viewHome2()
-    {   
-        return view('Home.home2', compact('home2'));
-    }
-
-      public function viewPrueba()
-    {   
-        return view('prueba', compact('contacto'));
-    }
-
-
-    public function viewQuienesSomos()
-    {   
-        return view('Contacto.quienessomos', compact('quienessomos'));
-    }
-
-    public function viewinfoCatastrofe($id)
-    {
-        $usuario = Auth::id();
-        $datos = \App\User::find($usuario);
-        if($datos->id_tipo_usuario==1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4){
-            $catastrofe = $id;
-            $cat = Catastrofe::find($id);
-            $longitud= $cat->longitud;
-            $latitud = $cat->latitud;
-
-        return view('infoCatastrofe.infoCatastrofe', compact('datos', 'cat', 'nombre', 'catastrofe', 'longitud', 'latitud'));
-        }
-        else{
-
-            return back()->with('flash', 'No posee permisos para ingresar a esta página');
-        }
-
-    }
-    public function updateTarjeta(Request $request)
-    {
-        $usuario = Auth::id();
-        $datos = \App\User::find($usuario);
-        //$donacion = \App\Donacion::find($usuario);
-        $datos->num_tarjeta = $request->num_tarjeta;
-        $datos->save();
-        return back()->with('flash', 'tarjeta actualizada correctamente');
-    }
-
-    public function updateEvento2(Request $request)
-    {
-        $usuario = Auth::id();
-        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
-        $datos = \App\User::find($usuario);
-        $evento = Evento::find($request->id_evento);
-        $actividad = DB::table('Actividad')->where('id_actividad', '=', $request->id_actividad)->get();
-        $actUser = DB::table('ActividadUsers')->where('id_evento', '=', $request->id_evento)->where('id_user','=',$usuario)->get();
-        if(count($id_placeholder)>0 and count($actUser)==0){
-                $evento->voluntarios_actuales = $evento->voluntarios_actuales +1;
-                $evento->save();
-                ActividadUsers::create([
-            'id_actividad' => $request->id_actividad,
-            'id_user' => $usuario,
-            'id_evento' => $request->id_evento,
-            ]);  
-                return back()->with('flash', 'Inscrito al evento correctamente');
-
-        }
-        else if((count($id_placeholder)==0)){
-
-                return back()->with('flash', 'Debe inscribirse previamente al RNV');
-
-        }
-        //$donacion = \App\Donacion::find($usuario);
-        return back()->with('flash', 'ya se encuentra participando en este evento');
-    }
-
-    public function updateVoluntariado2(Request $request)
-    {
-        $usuario = Auth::id();
-        $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
-        $datos = \App\User::find($usuario);
-        $voluntariado = Voluntariado::find($request->id_voluntariado);
-        $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->get();
-        $actUser = DB::table('VoluntariadoUser')->where('id_voluntariado', '=', $request->id_voluntariado)->where('id_user','=',$usuario)->get();
-        if(count($id_placeholder)>0 and count($actUser)==0){
-                $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;
-                $voluntariado->save();
-                VoluntariadoUser::create([
-            'id_trabajo' => $request->id_actividad,
-            'id_user' => $usuario,
-            'id_voluntariado' => $request->id_evento,
-            ]);  
-                return back()->with('flash', 'Inscrito al voluntariado correctamente');
-
-        }
-        else if((count($id_placeholder)==0)){
-
-                return back()->with('flash', 'Debe inscribirse previamente al RNV');
-
-        }
-        //$donacion = \App\Donacion::find($usuario);
-        return back()->with('flash', 'ya se encuentra participando en este voluntariado');
-    }
-
-public function updateEvento(Request $request)
-    {
-        //$donacion = \App\Donacion::find($usuario);
-        $evento = Evento::find($request->id_evento);
-        if($request->cantidad_participantes>=$evento->cantidad_voluntarios){
-            return back()->with('flash', 'cantidad mayor de voluntarios');
-
-        }
-        if($request->tipo_actividad == 'Otros'){
-         Actividad::create([
-            'nombre_actividad' => $request->nombre_actividad,
-            'tipo' => $request->nombre_actividad,
-            'participantes_actividad' => $request->cantidad_participantes,
-            'actividad_id_evento' =>$request->id_evento,
-            ]);   
-        }
-        else{
-            Actividad::create([
-            'nombre_actividad' => $request->tipo_actividad,
-            'tipo' => $request->tipo_actividad,
-            'participantes_actividad' => $request->cantidad_participantes,
-            'actividad_id_evento' =>$request->id_evento,
-            ]);
-        }
-        return back()->with('flash', 'actividad actualizada correctamente');
-    }
-public function updateVoluntariado(Request $request)
-    {
-        //$donacion = \App\Donacion::find($usuario);
-        $voluntariado = Voluntariado::find($request->id_voluntariado);
-        if($request->cantidad_participantes>=$voluntariado->cantidad_voluntarios){
-            return back()->with('flash', 'cantidad mayor de voluntarios');
-
-        }
-        if($request->tipo_trabajo == 'Otros'){
-         Trabajo::create([
-            'nombre_trabajo' => $request->nombre_trabajo,
-            'tipo' => $request->nombre_trabajo,
-            'participantes_trabajo' => $request->cantidad_participantes,
-            'trabajo_id_voluntariado' =>$request->id_voluntariado,
-            ]);   
-        }
-        else{
-            Trabajo::create([
-            'nombre_trabajo' => $request->tipo_trabajo,
-            'tipo' => $request->tipo_trabajo,
-            'participantes_trabajo' => $request->cantidad_participantes,
-            'trabajo_id_voluntariado' =>$request->id_voluntariado,
-            ]);
-        }
-        return back()->with('flash', 'Trabajo actualizado correctamente');
     }
 
 public function donar(Request $request)
@@ -1210,55 +1198,50 @@ public function donar(Request $request)
 
     }
 
-          public function viewSolicitudes()
-        {   
+    public function viewSolicitudes()
+    {   
 
 
-                       // $catastrofe = Catastrofe::catastrofe();
-            #$usuario = \App\User::find($user->id);
-            $id_usuario_activo = auth()->id();
-            $u = User::find($id_usuario_activo);
-            if($u->id_tipo_usuario == 4){
-                return back()->with('flash', 'no posee permisos para acceder a esta vista');
-
-            }
-
-
-            $RNVS = DB::table('RNVUsers')->where('verificador', 0)->get();
-            $rnvs2 = DB::table('RNVUsers')->where('verificador', 0)->pluck('id_usuario');
-            $usuarios_rnv = User::find($rnvs2);
-            $eventos = DB::table('Evento')->where('verificador', 0)->get();
-            $medidas = DB::table('Medidas')->where('verificador', 0)->get();
-            $donaciones = DB::table('Donacion')->where('verificador', 0)->get();
-            $centros = DB::table('CentroDeAcopio')->where('verificador', 0)->get();
-            $voluntariados = DB::table('Voluntariado')->where('verificador', 0)->get();
-            return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios_rnv', 'centros', 'voluntariados', 'eventos', 'medidas', 'donaciones', 'RNVS'));
+        // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        $id_usuario_activo = auth()->id();
+        $u = User::find($id_usuario_activo);
+        if($u->id_tipo_usuario == 4){
+            return back()->with('flash', 'no posee permisos para acceder a esta vista');
+        }
+       $RNVS = DB::table('RNVUsers')->where('verificador', 0)->get();
+        $rnvs2 = DB::table('RNVUsers')->where('verificador', 0)->pluck('id_usuario');
+        $usuarios_rnv = User::find($rnvs2);
+        $eventos = DB::table('Evento')->where('verificador', 0)->get();
+        $medidas = DB::table('Medidas')->where('verificador', 0)->get();
+        $donaciones = DB::table('Donacion')->where('verificador', 0)->get();
+        $centros = DB::table('CentroDeAcopio')->where('verificador', 0)->get();
+        $voluntariados = DB::table('Voluntariado')->where('verificador', 0)->get();
+        return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios_rnv', 'centros', 'voluntariados', 'eventos', 'medidas', 'donaciones', 'RNVS'));
         }
 
     public function solicitudRNV(Request $request)
-        {
-            $u = Auth::user();
-            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
-                return back()->with('flash', 'no posee los permisos para realizar esta accion');
-
-            }
-            $id = $request->id_usuario;
-            $rnvuser = RNVUsers::where('id_usuario', $id)->first();
-            $rnvuser->verificador = $request->verificador;
-            $rnvuser->id_usuario = $request->id_usuario;
-            $rnvuser->save();
-
-        return back()->with('flash', 'Solicitud aprobada');
+    {
+        $u = Auth::user();
+       if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5)
+       {         
+        return back()->with('flash', 'no posee los permisos para realizar esta accion');
 
         }
+        $id = $request->id_usuario;
+        $rnvuser = RNVUsers::where('id_usuario', $id)->first();
+        $rnvuser->verificador = $request->verificador;
+        $rnvuser->id_usuario = $request->id_usuario;            
+        $rnvuser->save();
+        return back()->with('flash', 'Solicitud aprobada');
+        }
 
-         public function viewverSolicitud($id)
+    public function viewverSolicitud($id)
     {
         $usuario = \App\User::find($id);
         $rnv = \App\RNV::all();
-         $habilidades_user = DB::table('HabilidadesUser')->where('id_user', '=', $id)->pluck('tipo_habilidad');
+        $habilidades_user = DB::table('HabilidadesUser')->where('id_user', '=', $id)->pluck('tipo_habilidad');
         return view('Solicitudes.verSolicitud', compact('usuario', 'rnv', 'habilidades_user'));
-
     }
 
 }
