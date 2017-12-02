@@ -240,12 +240,12 @@ textarea.form-control {
 <div class="form-group">
   <label for="FechaInicio">Fecha Inicio</label>  
  
-  <input id="fecha_inicio" name="fecha_inicio" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
+  <input id="fecha_inicio_medida" name="fecha_inicio_medida" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
 </div>
 <div class="form-group">
   <label for="FechaTermino">Fecha Termino</label>  
  
-  <input id="fecha_termino" name="fecha_termino" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
+  <input id="fecha_termino_medida" name="fecha_termino_medida" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
 </div>
 <!-- Textarea -->
 
