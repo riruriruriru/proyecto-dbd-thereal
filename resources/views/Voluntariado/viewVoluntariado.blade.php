@@ -368,7 +368,7 @@ var geocoder = new google.maps.Geocoder();
           $dato = Session::get('flash');
           if ($dato == ''){
             echo "<script>alert('";
-            echo "Ingresar localición directamente en el mapa";
+            echo "Ingresar localización directamente en el mapa";
             echo "')";
             echo "</script>";
           }
@@ -376,10 +376,27 @@ var geocoder = new google.maps.Geocoder();
 <?php
         $dato = Session::get('flash');
         if ($dato != ''){
-            echo "<script>alert('";
-            echo $dato;
-            echo "')";
-            echo "</script>";
-            header('Refresh: 0.01; URL=/verMedida');
+            if ($dato == 'Voluntariado declarado correctamente'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/verMedida');
+          }
+          if ($dato == 'No posee permisos para crear usuarios'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/welcome');
+          }
+          else  {
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+           
+          }
+          
         }
 ?>

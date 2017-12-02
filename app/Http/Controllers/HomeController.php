@@ -72,22 +72,44 @@ class HomeController extends Controller
 
         public function updateCatastrofe(Request $request)
     {       
+
+
+
+
             $usuario = Auth::id();
             $datos = User::find($usuario);
             $catastrofe = $request->id_catastrofe;
+            
+
+
+            $fechaInicio = strtotime($request->fecha_inicio);
+            $fechaTermino = strtotime($request->fecha_termino);
+            if($fechaInicio > $fechaTermino){
+                    return back()->with('flash', 'La fecha termino no puede ser menor');
+            }
+            $fechaActual = strtotime(date("d-m-Y",time()));
+            if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+            }
+            else{
+                    $latitud =$request->latitud;
+                    $longitud = $request->longitud;
+                    $nombreTipo = $request->tipo_catastrofe;
+                    $cat = Catastrofe::updateOrCreate( ['id_catastrofe'=> $request->id_catastrofe],['nombre' => $request->nombre],
+                    ['lugar_catastrofe' => $request->lugar_catastrofe], ['latitud' => $request->latitud], ['longitud' => $request->longitud], ['fecha_inicio'=> date("m-d-Y", strtotime($request->fecha_inicio))], ['fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino))], ['descripcion'=>  $request->descripcion], ['nombre_tipo_catastrofe'=> $nombreTipo]);
+                    $cat->fecha_termino = $request->fecha_termino;
+                    $cat->save();
+                    return back()->with('flash', 'Catastrofe Actualizada');
+            
+            }
+            
+
             //$cat = Catastrofe::find($id);
             
-            $latitud =$request->latitud;
-            $longitud = $request->longitud;
-            $nombreTipo = $request->tipo_catastrofe;
-            $cat = Catastrofe::updateOrCreate( ['id_catastrofe'=> $request->id_catastrofe],['nombre' => $request->nombre],
-            ['lugar_catastrofe' => $request->lugar_catastrofe], ['latitud' => $request->latitud], ['longitud' => $request->longitud], ['fecha_inicio'=> date("m-d-Y", strtotime($request->fecha_inicio))], ['fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino))], ['descripcion'=>  $request->descripcion], ['nombre_tipo_catastrofe'=> $nombreTipo]);
-            $cat->fecha_termino = $request->fecha_termino;
-            $cat->save();
             
             
         //return view('/infoCatastrofe', compact('cat', 'datos', 'longitud', 'latitud', 'usuario', 'catastrofe'));
-        return back()->with('flash', 'Catastrofe Actualizada');
+        
     }
 
 
@@ -388,25 +410,35 @@ class HomeController extends Controller
         $usuario = \App\User::find($id);
         if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3)
         {
+                $fechaActual = strtotime(date("d-m-Y",time()));
+                $fechaInicio = strtotime($request->fecha_inicio_evento);
+                $fechaTermino = strtotime($request->fecha_termino_evento);
+                if($fechaInicio > $fechaTermino){
+                        return back()->with('flash', 'La fecha termino no puede ser menor');
+                }
+                if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+                }
+                else{
+                  Evento::create([
+                        'nombre'=> $request->nombre,
+                        'id_medidas_evento' => $request->id_medidas_evento,
+                        'direccion'=>$request->direccion,
+                         'latitud' =>$request->latitud,
+                        'longitud' => $request->longitud,
+                        'cantidad_voluntarios'=> $request->cantidad_voluntarios,
+                        'voluntarios_actuales' => '0',
+                        'monto_recaudado' => '0',
+                        'monto_objetivo' => $request->monto_objetivo,
+                        'fecha_inicio_evento' => date("m-d-Y", strtotime($request->fecha_inicio_evento)),
+                        'verificador' => 0,
+                        'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
+                        'descripcion' => $request->descripcion,
 
-      Evento::create([
-            'nombre'=> $request->nombre,
-            'id_medidas_evento' => $request->id_medidas_evento,
-            'direccion'=>$request->direccion,
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'cantidad_voluntarios'=> $request->cantidad_voluntarios,
-            'voluntarios_actuales' => '0',
-            'monto_recaudado' => '0',
-            'monto_objetivo' => $request->monto_objetivo,
-            'fecha_inicio_evento' => date("m-d-Y", strtotime($request->fecha_inicio_evento)),
-            'verificador' => 0,
-            'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
-            'descripcion' => $request->descripcion,
 
-
-        ]);
-        return back()->with('flash','Evento declarado correctamente');
+                    ]);
+                    return back()->with('flash','Evento declarado correctamente');
+                }
     }
         else{
             return back()->with('flash', 'No posee permisos para crear usuarios');
@@ -417,24 +449,44 @@ class HomeController extends Controller
     public function uploadVoluntariado(Request $request)
     {
         //
-       
-      Voluntariado::create([
-            'nombre'=> $request->nombre,
-            'id_medidas_voluntariado' => $request->id_medidas_voluntariado,
-            'direccion'=>$request->direccion,
-             'latitud' =>$request->latitud,
-            'longitud' => $request->longitud,
-            'cantidad_voluntarios'=> $request->cantidad_voluntarios,
-            'voluntarios_actuales' => '0',
-            'fecha_inicio_voluntariado' => date("m-d-Y", strtotime($request->fecha_inicio_voluntariado)),
-            'fecha_termino_voluntariado' => date("m-d-Y", strtotime($request->fecha_termino_voluntariado)),
-            'descripcion' => $request->descripcion,
-            'verificador' => 0,
+        $id = Auth::id();
+        $usuario = \App\User::find($id);
+
+        if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2 or $usuario->id_tipo_usuario===3)
+        {
+
+            $fechaInicio = strtotime($request->fecha_inicio_voluntariado);
+            $fechaTermino = strtotime($request->fecha_termino_voluntariado);
+            if($fechaInicio > $fechaTermino){
+                return back()->with('flash', 'La fecha termino no puede ser menor');
+            }
+            $fechaActual = strtotime(date("d-m-Y",time()));
+            if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+            }
+            else{
+            Voluntariado::create([
+                'nombre'=> $request->nombre,
+                'id_medidas_voluntariado' => $request->id_medidas_voluntariado,
+                'direccion'=>$request->direccion,
+                 'latitud' =>$request->latitud,
+                'longitud' => $request->longitud,
+                'cantidad_voluntarios'=> $request->cantidad_voluntarios,
+                'voluntarios_actuales' => '0',
+                'fecha_inicio_voluntariado' => date("m-d-Y", strtotime($request->fecha_inicio_voluntariado)),
+                'fecha_termino_voluntariado' => date("m-d-Y", strtotime($request->fecha_termino_voluntariado)),
+                'descripcion' => $request->descripcion,
+                'verificador' => 0,
 
 
 
-        ]);
-        return back()->with('flash','Voluntariado declarado correctamente');
+            ]);
+            return back()->with('flash','Voluntariado declarado correctamente');
+            }
+        }
+        else{
+            return back()->with('flash', 'No posee permisos para crear usuarios');   
+        }
     }
 
      public function uploadDonacion(Request $request)
@@ -442,22 +494,37 @@ class HomeController extends Controller
         //
         $id = Auth::id();
         $usuario = \App\User::find($id);
+
         if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario==2 or $usuario->id_tipo_usuario==3){
-            Donacion::create([
-            'nombre'=> $request->nombre,
-            'id_medidas_donacion' => $request->id_medidas_donacion,
-            'objeivo'=> $request->objetivo,
-            'monto_actual' => '0',
-            'numero_cuenta' => $request->numero_cuenta,
-            'objetivo' => $request->objetivo,
-            'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
-            'verificador' => 0,
+
+            $fechaInicio = strtotime($request->fecha_inicio);
+            $fechaTermino = strtotime($request->fecha_termino);
+            if($fechaInicio > $fechaTermino){
+                return back()->with('flash', 'La fecha termino no puede ser menor');
+            }
+            $fechaActual = strtotime(date("d-m-Y",time()));
+            if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+            }
+            else{
+
+                Donacion::create([
+                'nombre'=> $request->nombre,
+                'id_medidas_donacion' => $request->id_medidas_donacion,
+                'objeivo'=> $request->objetivo,
+                'monto_actual' => '0',
+                'numero_cuenta' => $request->numero_cuenta,
+                'objetivo' => $request->objetivo,
+                'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
+                'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+                'verificador' => 0,
 
 
 
-        ]);
-        return back()->with('flash','Donacion declarada correctamente');}
+                ]);
+            return back()->with('flash','Donacion declarada correctamente');
+        }
+    }
         else{
 
             return back()->with('flash', 'No posee permisos para crear usuarios');
@@ -471,23 +538,45 @@ class HomeController extends Controller
    public function uploadMedida(Request $request)
     {
         
-        Medidas::create([
-            'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
-            'nombre_medida'=>$request->nombre_medida,
-            'id_organizacion_medidas'=>$request->id_organizacion_medidas,
-            'id_usuario' => auth()->id(),
-            'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
-            'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
-            'verificador' =>0,
-            'descripcion' => $request->descripcion,
-            ]);
+
+        $fechaInicio = strtotime($request->fecha_inicio_medida);
+        $fechaTermino = strtotime($request->fecha_termino_medida);
+        if($fechaInicio > $fechaTermino){
+                return back()->with('flash', 'La fecha termino no puede ser menor');
+        }
+        $fechaActual = strtotime(date("d-m-Y",time()));
+        if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+        }
+        else{
+            Medidas::create([
+                'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
+                'nombre_medida'=>$request->nombre_medida,
+                'id_organizacion_medidas'=>$request->id_organizacion_medidas,
+                'id_usuario' => auth()->id(),
+                'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
+                'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
+                'verificador' =>0,
+                'descripcion' => $request->descripcion,
+                ]);
             return back()->with('flash', 'Medida declarada correctamente');
+        }
+            
     }
 
        public function updateMedida(Request $request)
     {
         $id = $request->id_medida;
-
+        $fechaInicio = strtotime($request->fecha_inicio_medida);
+        $fechaTermino = strtotime($request->fecha_termino_medida);
+        if($fechaInicio > $fechaTermino){
+                return back()->with('flash', 'La fecha termino no puede ser menor');
+        }
+        $fechaActual = strtotime(date("d-m-Y",time()));
+        if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+        }
+        else{
             $medida  = Medidas::find($id);
             $medida->nombre_medida=$request->nombre_medida;
             $medida->fecha_inicio_medida=date("m-d-Y", strtotime($request->fecha_inicio_medida));
@@ -495,6 +584,7 @@ class HomeController extends Controller
             $medida->descripcion = $request->descripcion;
             $medida->save();
             return back()->with('flash', 'Medida actualizada correctamente');
+        }
     }
 
 

@@ -78,7 +78,7 @@ textarea.form-control {
   
     <div class="container">
         <div class="section-content">
-            <h1 class="section-header">Registro <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Usuario</span></h1>
+            <h1 class="section-header">Información <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Medida</span></h1>
             <h3></h3>
         </div>
           
@@ -131,7 +131,7 @@ textarea.form-control {
 
                         <div class="form-group">
                             
-                             <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Aceptar</button>
+                             <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Actualizar</button>
                             
                         </div>
                     </div>
@@ -338,7 +338,7 @@ textarea.form-control {
             echo $dato;
             echo "')";
             echo "</script>";
-            header('Refresh: 0.01');
+            header('Refresh');
         }
 ?>
 

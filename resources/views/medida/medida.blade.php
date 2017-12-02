@@ -278,12 +278,24 @@ textarea.form-control {
 
 <?php
         $dato = Session::get('flash');
-        if ($dato != ''){
-            echo "<script>alert('";
-            echo $dato;
-            echo "')";
-            echo "</script>";
-            header('Refresh: 0.01; URL=/verMedida');
+        if($dato != ''){
+
+          if ($dato == 'Medida actualizada correctamente'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/verMedida');
+          }
+          else  {
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+           
+          }
         }
+       
+
 ?>
 

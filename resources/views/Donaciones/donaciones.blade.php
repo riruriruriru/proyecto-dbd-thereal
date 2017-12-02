@@ -153,11 +153,27 @@ textarea.form-control {
 <?php
         $dato = Session::get('flash');
         if ($dato != ''){
-            echo "<script>alert('";
-            echo $dato;
-            echo "')";
-            echo "</script>";
-            header('Refresh: 0.01; URL=/verMedida');
+          if ($dato == 'Donacion declarada correctamente'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/verMedida');
+          }
+          if ($dato == 'No posee permisos para crear usuarios'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/welcome');
+          }
+          else  {
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+           
+          }
           
         }
 ?>
