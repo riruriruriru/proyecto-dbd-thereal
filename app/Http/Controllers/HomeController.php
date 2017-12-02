@@ -470,7 +470,7 @@ class HomeController extends Controller
 
    public function uploadMedida(Request $request)
     {
-
+        
         Medidas::create([
             'id_catastrofe_medidas'=> $request->id_catastrofe_medidas,
             'nombre_medida'=>$request->nombre_medida,
@@ -487,11 +487,9 @@ class HomeController extends Controller
        public function updateMedida(Request $request)
     {
         $id = $request->id_medida;
+
             $medida  = Medidas::find($id);
-            $medida->id_catastrofe_medidas= $request->id_catastrofe_medidas;
             $medida->nombre_medida=$request->nombre_medida;
-            $medida->id_organizacion_medidas=$request->id_organizacion_medidas;
-            
             $medida->fecha_inicio_medida=date("m-d-Y", strtotime($request->fecha_inicio_medida));
             $medida->fecha_termino_medida=date("m-d-Y", strtotime($request->fecha_termino_medida));
             $medida->descripcion = $request->descripcion;
@@ -619,14 +617,23 @@ class HomeController extends Controller
 
      public function viewAgregarVoluntariado($id)
     {   
-        $id_medidas_voluntariado = $id;
-        $medida = Medidas::find($id);
-        $nombre = $medida->nombre_medida;
 
-       // $catastrofe = Catastrofe::catastrofe();
-        #$usuario = \App\User::find($user->id);
-        return view('Voluntariado.viewVoluntariado', compact('id_medidas_voluntariado'));
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario === 2 or $usuario->id_tipo_usuario === 3){
+            $id_medidas_voluntariado = $id;
+            $medida = Medidas::find($id);
+            $nombre = $medida->nombre_medida;
+
+            // $catastrofe = Catastrofe::catastrofe();
+            #$usuario = \App\User::find($user->id);
+            return view('Voluntariado.viewVoluntariado', compact('id_medidas_voluntariado'));
+        }
+        else{
+             return back()->with('flash', 'No posee los permisos para ingresar');
+        }
     }
+    
 
          public function viewAgregarDonacion($id)
     {   

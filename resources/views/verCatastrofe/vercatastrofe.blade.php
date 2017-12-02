@@ -168,15 +168,14 @@
                                             <span>
                                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
 
-                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3)
-                                                     
-                                                    <button href= "{{ route('catastrofe')}}" type="button" class="btn btn-default"><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}">Editar</a></button>
+                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
+                                                     <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a></li>
                                                     @endif
 
-                                                    <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Informacion</a></li>
-
+                                                     @if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4)
+                                                    <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Información</a></li>
+                                                    @endif
                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3) 
-
                                                     <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
                                                     @endif
                                                     <li><a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a></li> 
