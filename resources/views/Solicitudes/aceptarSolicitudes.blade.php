@@ -18,8 +18,12 @@
   
   <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
-<form method="GET">
-    <section style="top :50px;">
+
+
+
+
+<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
+     <section style="top :50px;">
         <h1>Tabla Medidas</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
@@ -48,17 +52,7 @@
                 </tbody>
             </table>
         </div>
-
-
-
     </section>
-</form>
-
-
-
-
-
-<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
     <section >
         <h1>Tabla evento</h1>
         <div class="tbl-header">

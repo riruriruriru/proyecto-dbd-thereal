@@ -112,16 +112,17 @@ textarea.form-control {
                         </div>
 
                         <!-- Select Basic -->
-<div class="form-group">
-  <label for="selectbasic">Seleccionar Tipo</label>
-    <select id="id_tipo_usuario" name="id_tipo_usuario" class="form-control">
-      <option value="2">Gobierno</option>
-      <option value="3">Organizacion</option>
-      <option value="4">Usuario Comun</option>
-    </select>
+                        <div class="form-group">
+                          <label for="selectbasic">Seleccionar Tipo</label>
+                            <select id="id_tipo_usuario" name="id_tipo_usuario" class="form-control">
+                              <option value="2">Gobierno</option>
+                              <option value="3">Organizacion</option>
+                              <option value="4">Usuario Comun</option>
+                            </select>
 
-</div>
-
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">E-Mail</label>
 
@@ -135,8 +136,7 @@ textarea.form-control {
                             @endif
                             
                         </div>
-                    </div>
-                    <div class="col-md-6">
+                
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password">Contraseña</label>
 
