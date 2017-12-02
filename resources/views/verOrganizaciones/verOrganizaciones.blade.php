@@ -1,10 +1,9 @@
 @include('flash::message') 
+@extends('layouts.app')
+
 @section('styles')
 @parent
 <style type="text/css"><
-
-/*Contact sectiom*/
-
 
 .container {
     
@@ -17,8 +16,8 @@
 
 .listWrap {
     
-    height: 800px;
-    width: 1000px;
+    height: auto;
+    width: auto;
     padding-top: 50px;
     
 }
@@ -87,11 +86,11 @@
 
 .list li:nth-child(1) {
     
-    background-color: #201c2b;
+    background-color: #000;
     text-transform: uppercase;
-    font-size: 8pt;
+    font-size: 10pt;
     font-weight: bold;
-    color: #b8b5c0;
+    color: #fff;
 
     
 }
@@ -126,92 +125,90 @@
     
 }
 
-
-
-.content-header{
-  font-family: 'Oleo Script', cursive;
-  color:#fcc500;
-  font-size: 45px;
-}
-
-.section-content{
-  text-align: center; 
-
-}
-#contact{
-    
-    font-family: 'Teko', sans-serif;
-  padding-top: px;
-  width: 100%;
-  width: 100vw;
-  height: 100vw;
-  position: fixed;
-  background: #3a6186; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color : #fff;    
-}
-.contact-section{
-  padding-top: px;
-}
-.contact-section .col-md-6{
-  width: 50%;
-}
-
-.form-line{
-  border-right: 1px solid #B29999;
-}
-
-.form-group{
-  margin-top: 10px;
-}
-label{
-  font-size: 1.3em;
-  line-height: 1em;
-  font-weight: normal;
-}
-.form-control{
-  font-size: 1.3em;
-  color: #080808;
-}
-textarea.form-control {
-    height: 135px;
-   /* margin-top: px;*/
-}
-
-.submit{
-  font-size: 1.1em;
-  float: right;
-  width: 150px;
-  background-color: transparent;
-  color: #fff;
-
-}
-
 </style>
 @stop
 
 
+<!DOCTYPE html><html lang="en">
+<head>
+
+    <!-- Basic informations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Site informations -->
+    <title>MovidosxChile</title>
+    <meta name="author" content="Dominik Serafin">
+    <meta name="description" content="Free HTML5 Template created by Dominik Serafin.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Aurora Template">
+    <meta property="og:description" content="Free HTML5 Template created by Dominik Serafin.">
+    <meta property="og:url" content="http://serafin.io/aurora-template/">
+    <meta property="og:image" content="http://serafin.io/aurora-template/content/og_image.png">
+
+    <!-- Twitter Card -->
+    <!--
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:domain" content="">
+    <meta name="twitter:image:src" content="">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:card" content="">
+    -->
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('style/favicon/apple-touch-icon-180x180.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{URL::asset('style/favicon/apple-touch-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{URL::asset('style/favicon/apple-touch-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{URL::asset('style/favicon/apple-touch-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('style/favicon/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('style/favicon/apple-touch-icon-57x57.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('style/favicon/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('style/favicon/apple-touch-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{URL::asset('style/favicon/apple-touch-icon-76x76.png')}}">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="160x160">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/48x48chilito.png')}}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/16x16chilito.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/32x32chilito.png')}}" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="style/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="style/favicon/browserconfig.xml'">
+    <link rel="shortcut icon" href="{{URL::asset('favicon.ico')}}">
+
+    <!-- Fonts -->
+    <link href="{{URL::asset('style/fonts/webfont-raleway/webfont-raleway.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('style/fonts/webfont-font-awesome/css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}">
+
+    <!-- Stylesheets -->
+    <link href="{{URL::asset('style/css/global.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- Scripts preload -->
+    <!--[if lt IE 9]><script src="style/js/html5shiv.js"></script><![endif]-->
+</head>
 
 @section('content')
+<body style="color: #fff">
+    <div id="start" class="start">&nbsp;</div>
+    <div class="maxwidth1050">&nbsp;</div>
 
+      <section id="hero" class="hero">
+        <div class="orga__background">&nbsp;</div>
+        <div class="hero__gradient">&nbsp;</div>
+    </section>
 
-     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-<section id="contact">
-            @extends('layouts.app')
-            <div class="section-content">
-                <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"></span></h1>
-                <h3></h3>
-            </div>
-            <div class="contact-section">
-            <div class="container">
-                <form class="form-horizontal" method="GET">
-          <fieldset>
+    <div class="hero__content" style="padding-top: 50px;"> 
 
+      <form class="form-horizontal" method="GET">
+         
+                        
           <div class="container">
+             <div class="col-md-3">
+                        </div>
+          <div class="col-md-6">
 
               <div class="listWrap">
               
@@ -220,26 +217,33 @@ textarea.form-control {
                       <li>
                           <span>ID</span>
                           <span>Nombre de Organización</span>
-                          <span></span>
+                        
                       </li>
 
                       
                         @foreach($organizaciones as $organizacion)
-                          <span id="id_organizacion">{{$organizacion->id}}</span>
-                          <span>{{$organizacion->name}}</span>
+                          <span style="font-size: 20px" id="id_organizacion">{{$organizacion->id}}</span>
+                          <span style="font-size: 20px">{{$organizacion->name}}</span>
                           <li></li>
                           @endforeach
-                          <span></span>
-                      </li>
+                 
+                    
                   </ul>
               </div>
-          </fieldset>
-          </form>
             </div>
-        </section>
+          </div>
+          
+          </form>
 
 
+    </div>
 
+</body>
+</html>
+  
+
+         
+  
 @endsection('content')
 
 

@@ -19,9 +19,6 @@
   <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
 
-
-
-
 <form method="GET" style="border-top-width: 50px;border-top-style: solid;">
      <section style="top :50px;">
         <h1>Tabla Medidas</h1>
