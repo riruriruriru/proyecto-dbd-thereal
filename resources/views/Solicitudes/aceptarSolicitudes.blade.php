@@ -99,8 +99,11 @@
                 </tbody>
             </table>
         </div>
+        </form>
+</section>
 
- <section >
+
+
         <h1>Tabla voluntariado</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0" style="top :50px;">
@@ -137,9 +140,6 @@
         </div>
 
 
-    </section>
-</form>
-<form method="GET">
     <section style="top :50px;">
         <h1>Tabla Centro de acopio</h1>
         <div class="tbl-header">
@@ -172,7 +172,6 @@
 
 
     </section>
-</form>
 
 <form method="GET">
     <section style="top :50px;">
@@ -220,7 +219,6 @@
     </section>
 </form>
 
-<form method="GET">
     <section style="top :50px;">
         <h1>Tabla RNV</h1>
         <div class="tbl-header">
@@ -241,15 +239,21 @@
                         <tr>
                             <th id="id_usuario">{{$usuario->id}}</th>
                             <th>{{$usuario->name}}</th>
+                            <th> <li><a href="/verSolicitud/{{$usuario->id}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> <th>
                             <th> 
-                            <form method="POST" action="{{ route('rnvSolicitud.update') }}">
+                        <form  method="POST" action="{{ route('solicitud.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
-                            <input id="id_usuario" type="hidden" class="form-control" name="id_usuario" value= "{{$usuario->id}}" required>
+                            <input id="id_usuario" type="hidden" class="form-control" name="id_usuario" value= "{{$usuario->id}}" >
                         </div>
-                        <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
                         </form>
-                            </div>
+
+                        </div>
                             </th>
                         </tr>
                      @endforeach
@@ -258,9 +262,7 @@
         </div>
 
 
-
     </section>
-</form>
 
 
 </body>

@@ -27,6 +27,8 @@ Route::get('/inscribirseVoluntariado/{id}', 'HomeController@viewInscribirseVolun
 Route::get('/agregarHabilidad', 'HomeController@viewAgregarHabilidad');
 Route::post('/agregarHabilidad/add/post', 'HomeController@updateHabilidad')->name('habilidad.update');
 Route::get('/registroRNV', 'HomeController@viewRegistroRNV');
+Route::get('/verSolicitud/{id}', 'HomeController@viewverSolicitud');
+
 
 
 
@@ -55,7 +57,7 @@ Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');
 Route::get('/aceptarSolicitudes', 'HomeController@viewSolicitudes');
-Route::post('/aceptarSolicitudes/add/post', 'HomeController@aceptarSolicitudRNV')->name('rnvSolicitud.update');
+Route::post('/aceptarSolicitudes', 'HomeController@solicitudRNV')->name('solicitud.update');
 
 
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');

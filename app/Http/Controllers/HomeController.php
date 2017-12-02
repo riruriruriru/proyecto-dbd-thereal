@@ -1212,9 +1212,18 @@ public function donar(Request $request)
 
           public function viewSolicitudes()
         {   
-           // $catastrofe = Catastrofe::catastrofe();
+
+
+                       // $catastrofe = Catastrofe::catastrofe();
             #$usuario = \App\User::find($user->id);
             $id_usuario_activo = auth()->id();
+            $u = User::find($id_usuario_activo);
+            if($u->id_tipo_usuario == 4){
+                return back()->with('flash', 'no posee permisos para acceder a esta vista');
+
+            }
+
+
             $RNVS = DB::table('RNVUsers')->where('verificador', 0)->get();
             $rnvs2 = DB::table('RNVUsers')->where('verificador', 0)->pluck('id_usuario');
             $usuarios_rnv = User::find($rnvs2);
@@ -1226,18 +1235,30 @@ public function donar(Request $request)
             return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios_rnv', 'centros', 'voluntariados', 'eventos', 'medidas', 'donaciones', 'RNVS'));
         }
 
-    public function aceptarSolicitudRNV(Request $request)
+    public function solicitudRNV(Request $request)
         {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
             $id = $request->id_usuario;
-            $rnvuser = RNVUsers::find($id);
-            $rnvuser->verificador = 1;
-            return $rnvuser;
+            $rnvuser = RNVUsers::where('id_usuario', $id)->first();
+            $rnvuser->verificador = $request->verificador;
+            $rnvuser->id_usuario = $request->id_usuario;
             $rnvuser->save();
 
-        return back()->with('flash', 'uwu');
+        return back()->with('flash', 'Solicitud aprobada');
 
         }
 
+         public function viewverSolicitud($id)
+    {
+        $usuario = \App\User::find($id);
+        $rnv = \App\RNV::all();
+         $habilidades_user = DB::table('HabilidadesUser')->where('id_user', '=', $id)->pluck('tipo_habilidad');
+        return view('Solicitudes.verSolicitud', compact('usuario', 'rnv', 'habilidades_user'));
 
+    }
 
 }
