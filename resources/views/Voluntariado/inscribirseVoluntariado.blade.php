@@ -205,6 +205,8 @@ textarea.form-control {
 
 
 <!-- Text input-->
+</div>
+<div class="col-md-6 form">
 <div class="form-group">
    <label for="textinput">Lugar Voluntariado</label>  
 
@@ -222,6 +224,7 @@ textarea.form-control {
 <!-- Text input-->
 <!-- Text input-->
 <!-- Select Basic -->
+
 <div class="form-group">
           <label  for="selectbasic">Trabajos</label>
               <select id="id_trabajo" name="id_Trabajo" class="form-control">
