@@ -193,7 +193,7 @@ textarea.form-control {
 
 <div class="form-group">
   <label for="textinput">Cantidad Voluntarios Restantes</label>  
-  <input id="cantidad_voluntarios" name="nombre_acopio" placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$voluntariado->cantidad_voluntarios}}">
+  <input id="cantidad_voluntarios" name="nombre_acopio"  placeholder="Nombre" class="form-control" required="" type="text" readonly="readonly" value="{{$voluntariado->cantidad_voluntarios}}">
 </div>
 <!-- Select Basic -->
 <div class="form-group">
@@ -222,6 +222,7 @@ textarea.form-control {
 <!-- Text input-->
 <!-- Text input-->
 </div>
+<div class="col-md-6">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
     <script>
@@ -266,7 +267,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="cantidad_participantes">Cantidad Participantes</label>  
 
-  <input id="cantidad_participantes" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
+  <input id="cantidad_participantes" min="1" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
 
 </div>
 <!-- Button -->
