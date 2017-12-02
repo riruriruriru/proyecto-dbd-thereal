@@ -54,6 +54,8 @@ Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');
+Route::get('/aceptarSolicitudes', 'HomeController@viewSolicitudes');
+Route::post('/aceptarSolicitudes/add/post', 'HomeController@aceptarSolicitudRNV')->name('rnvSolicitud.update');
 
 
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');

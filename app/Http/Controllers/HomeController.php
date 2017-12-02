@@ -400,7 +400,7 @@ class HomeController extends Controller
             'monto_recaudado' => '0',
             'monto_objetivo' => $request->monto_objetivo,
             'fecha_inicio_evento' => date("m-d-Y", strtotime($request->fecha_inicio_evento)),
-            'verificador' => (bool)'false',
+            'verificador' => 0,
             'fecha_termino_evento' => date("m-d-Y", strtotime($request->fecha_termino_evento)),
             'descripcion' => $request->descripcion,
 
@@ -429,7 +429,7 @@ class HomeController extends Controller
             'fecha_inicio_voluntariado' => date("m-d-Y", strtotime($request->fecha_inicio_voluntariado)),
             'fecha_termino_voluntariado' => date("m-d-Y", strtotime($request->fecha_termino_voluntariado)),
             'descripcion' => $request->descripcion,
-            'verificador' => (bool)'false',
+            'verificador' => 0,
 
 
 
@@ -452,7 +452,7 @@ class HomeController extends Controller
             'objetivo' => $request->objetivo,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
             'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
-            'verificador' => (bool)'false',
+            'verificador' => 0,
 
 
 
@@ -478,7 +478,7 @@ class HomeController extends Controller
             'id_usuario' => auth()->id(),
             'fecha_inicio_medida'=>date("m-d-Y", strtotime($request->fecha_inicio_medida)),
             'fecha_termino_medida'=>date("m-d-Y", strtotime($request->fecha_termino_medida)),
-            'verificador' => (bool)'false',
+            'verificador' =>0,
             'descripcion' => $request->descripcion,
             ]);
             return back()->with('flash', 'Medida declarada correctamente');
@@ -516,7 +516,7 @@ class HomeController extends Controller
             'longitud' => $request->longitud,
             'monto_total'=> $request->cantidad_objetivo,
             'situacion'=> 'true',
-            'verificador' => (bool)'false',
+            'verificador' => 0,
             ]);
 
         }
@@ -534,7 +534,7 @@ class HomeController extends Controller
             'longitud' => $request->longitud,
             'monto_total'=> $request->cantidad_objetivo,
             'situacion'=> 'true',
-            'verificador' => (bool)'false',
+            'verificador' => 0,
             ]);
     }
             return back()->with('flash', 'Centro declarado correctamente');
@@ -549,7 +549,7 @@ class HomeController extends Controller
             RNVUsers::create([
                 'id_usuario'=> $request->id_usuario_activo,
                 'id_rnv' => '1',
-                'verificador' => (bool)'false',
+                'verificador' => 0,
                 ]);
                 return back()->with('flash', 'Su solicitud fue enviada correctamente');
 
@@ -733,24 +733,12 @@ class HomeController extends Controller
            // $catastrofe = Catastrofe::catastrofe();
             #$usuario = \App\User::find($user->id);
             $id_usuario_activo = auth()->id();
-            $id_u_r = DB::table('RNVUsers')->where('verificador', (bool)'true')->pluck('id_usuario');
+            $id_u_r = DB::table('RNVUsers')->where('verificador', 1)->pluck('id_usuario');
             $usuarios = \App\User::find($id_u_r);
             return view('RNV.RNV', compact('id_usuario_activo', 'usuarios'));
         }
 
-             public function viewSolicitudes()
-        {   
-           // $catastrofe = Catastrofe::catastrofe();
-            #$usuario = \App\User::find($user->id);
-            $id_usuario_activo = auth()->id();
-            $id_u_r = DB::table('RNVUsers')->where('verificador', (bool)'false')->get();
-            $usuarios = \App\User::find($id_u_r);
-            return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios'));
-        }
-            
-            
-           
-    
+      
 
 
         public function viewVerOrganizaciones()
@@ -1214,6 +1202,34 @@ public function donar(Request $request)
         return back()->with('flash', 'uwu');
 
     }
+
+          public function viewSolicitudes()
+        {   
+           // $catastrofe = Catastrofe::catastrofe();
+            #$usuario = \App\User::find($user->id);
+            $id_usuario_activo = auth()->id();
+            $RNVS = DB::table('RNVUsers')->where('verificador', 0)->get();
+            $rnvs2 = DB::table('RNVUsers')->where('verificador', 0)->pluck('id_usuario');
+            $usuarios_rnv = User::find($rnvs2);
+            $eventos = DB::table('Evento')->where('verificador', 0)->get();
+            $medidas = DB::table('Medidas')->where('verificador', 0)->get();
+            $donaciones = DB::table('Donacion')->where('verificador', 0)->get();
+            $centros = DB::table('CentroDeAcopio')->where('verificador', 0)->get();
+            $voluntariados = DB::table('Voluntariado')->where('verificador', 0)->get();
+            return view('Solicitudes.aceptarSolicitudes', compact('id_usuario_activo', 'usuarios_rnv', 'centros', 'voluntariados', 'eventos', 'medidas', 'donaciones', 'RNVS'));
+        }
+
+    public function aceptarSolicitudRNV(Request $request)
+        {
+            $id = $request->id_usuario;
+            $rnvuser = RNVUsers::find($id);
+            $rnvuser->verificador = 1;
+            return $rnvuser;
+            $rnvuser->save();
+
+        return back()->with('flash', 'uwu');
+
+        }
 
 
 

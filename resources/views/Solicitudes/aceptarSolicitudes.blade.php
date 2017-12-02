@@ -18,6 +18,46 @@
   
   <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
+<form method="GET">
+    <section style="top :50px;">
+        <h1>Tabla Medidas</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre medida</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                     @foreach($medidas as $medida)
+                        <tr>
+                            <th id="id_evento">{{$medida->id_medidas}}</th>
+                            <th>{{$medida->nombre_medida}}</th>
+                            <th> 
+                            
+                            </div>
+                            </th>
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </section>
+</form>
+
+
+
+
+
 <form method="GET" style="border-top-width: 50px;border-top-style: solid;">
     <section >
         <h1>Tabla evento</h1>
@@ -50,10 +90,7 @@
                             <th> 
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default">Edit</button>
-                                @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
-                                @endif
-                                <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse Evento</a></li>
+                            
 
                             </div>
                             </th>
@@ -88,12 +125,8 @@
                             <th>{{$voluntariado->cantidad_voluntarios}}</th>
                             <th>{{$voluntariado->voluntarios_actuales}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">Edit</button>
-                                @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a></li>
-                                @endif
-                                <li><a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse Voluntariado</a></li>
+                           
+                         
 
                             </div>
                             </th>
@@ -123,16 +156,12 @@
         <div class="tbl-content">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tbody>
-                     @foreach($centroAcop as $centroAcopio)
+                     @foreach($centros as $centroAcopio)
                         <tr>
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">Edit</button>
-                                <button type="button" class="btn btn-default" disabled>Delete</button>
-                                    <li><a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a></li>
-                            </div>
+                           
                             </th>
                         </tr>
                      @endforeach
@@ -145,7 +174,6 @@
     </section>
 </form>
 
-</form>
 <form method="GET">
     <section style="top :50px;">
         <h1>Tabla Donaciones</h1>
@@ -192,7 +220,58 @@
     </section>
 </form>
 
+<form method="GET">
+    <section style="top :50px;">
+        <h1>Tabla RNV</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Voluntario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                     @foreach($usuarios_rnv as $usuario)
+                        <tr>
+                            <th id="id_usuario">{{$usuario->id}}</th>
+                            <th>{{$usuario->name}}</th>
+                            <th> 
+                            <form method="POST" action="{{ route('rnvSolicitud.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_usuario" type="hidden" class="form-control" name="id_usuario" value= "{{$usuario->id}}" required>
+                        </div>
+                        <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+                            </div>
+                            </th>
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </section>
+</form>
+
 
 </body>
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+        }
+?>
 
 @endsection('content')

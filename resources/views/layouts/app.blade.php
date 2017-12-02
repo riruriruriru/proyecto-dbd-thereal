@@ -53,6 +53,7 @@
                             <li><a href="/RNV">RNV</a></li>
                         @if(Auth::user()->id_tipo_usuario === 1)
                             <li><a href="/crearUsuarios">Registrar Usuarios</a></li>
+                            <li><a href="/aceptarSolicitudes">Aceptar Solicitudes</a></li>
                         @elseif(Auth::user()->id_tipo_usuario === 4)
                             <li><a href="/agregarHabilidad">Agregar Habilidad</a></li>
                         @endif
