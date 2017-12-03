@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->delete();
         DB::table('RNV')->delete();
         DB::table('RNVUsers')->delete();
+        DB::table('Medidas')->delete();
+        DB::table('Catastrofe')->delete();
+        DB::table('Voluntariado')->delete();
         DB::table('Habilidades')->delete();
 
                 

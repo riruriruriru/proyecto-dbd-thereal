@@ -577,6 +577,11 @@ class HomeController extends Controller
 
     public function uploadCentroAcopio(Request $request)
     {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
         if($request->tipo_bien == 'Otros'){
             CentroDeAcopio::create([
             'nombre' => $request->nombre,
@@ -783,7 +788,7 @@ class HomeController extends Controller
                    // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
 
-        $medidas = DB::table('Medidas')->get();
+        $medidas = DB::table('Medidas')->where('verificador', 1)->get();
         return view('verMedida.verMedida', compact('medidas'));
         }
         else{
@@ -1027,6 +1032,10 @@ public function updateEvento(Request $request)
 
         }
         if($request->tipo_actividad == 'Otros'){
+             $actividad_placeholder = Actividad::where('nombre_actividad', $request->nombre_actividad)->where('actividad_id_evento', $request->id_evento)->get();
+            if(count($actividad_placeholder)>0){
+                return back()->with('flash', 'actividad ya se encuentra inscrita');
+            }
          Actividad::create([
             'nombre_actividad' => $request->nombre_actividad,
             'tipo' => $request->nombre_actividad,
@@ -1035,6 +1044,10 @@ public function updateEvento(Request $request)
             ]);   
         }
         else{
+             $actividad_placeholder = Actividad::where('nombre_actividad', $request->tipo_actividad)->where('actividad_id_evento', $request->id_evento)->get();
+            if(count($actividad_placeholder)>0){
+                return back()->with('flash', 'actividad ya se encuentra inscrita');
+            }
             Actividad::create([
             'nombre_actividad' => $request->tipo_actividad,
             'tipo' => $request->tipo_actividad,
@@ -1204,13 +1217,13 @@ public function donar(Request $request)
             return back()->with('No posee permisos para ingresar a esta página');
         }
         $medida = Medidas::find($id);
-        $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->where('recibe', '=', 'true')->get();
-        $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->get();
+        $centroAcop =  DB::table('CentroDeAcopio')->where('id_medidas_acopio', '=', $id)->where('recibe', '=', 'true')->where('verificador', 1)->get();
+        $eventos = DB::table('Evento')->where('id_medidas_evento', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->where('verificador', 1)->get();
         $org = DB::table('users')->where('id', '=', $medida->id_organizacion_medidas)->get();
         $organizaciones = DB::table('users')->where('id_tipo_usuario', '=', 3)->get();
         $catastrofe = $medida->id_catastrofe_medidas;
-        $voluntariados = DB::table('Voluntariado')->where('id_medidas_voluntariado', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->get();
-        $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->whereRaw('monto_actual < objetivo')->get();
+        $voluntariados = DB::table('Voluntariado')->where('id_medidas_voluntariado', '=', $id)->whereRaw('voluntarios_actuales < cantidad_voluntarios')->where('verificador', 1)->get();
+        $donaciones = DB::table('Donacion')->where('id_medidas_donacion', '=', $id)->whereRaw('monto_actual < objetivo')->where('verificador', 1)->get();
 
         return view('infoMedida.infoMedida', compact('datos', 'medida', 'eventos', 'centroAcop', 'organizaciones', 'catastrofe', 'donaciones', 'org', 'voluntariados'));
     }
@@ -1322,6 +1335,55 @@ public function donar(Request $request)
 
         }
 
+      public function solicitudMedida(Request $request)
+        {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+            $id = $request->id_medidas;
+            $medida = Medidas::where('id_medidas', $id)->first();
+            $medida->verificador = $request->verificador;
+            $medida->save();
+
+        return back()->with('flash', 'Solicitud aprobada');
+
+        }
+
+
+      public function solicitudAcopio(Request $request)
+        {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+            $id = $request->id_acopio;
+            $acopio = CentroDeAcopio::where('id_acopio', $id)->first();
+            $acopio->verificador = $request->verificador;
+            $acopio->save();
+
+        return back()->with('flash', 'Solicitud aprobada');
+
+        }
+
+     public function solicitudEventos(Request $request)
+        {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+            $id = $request->id_evento;
+            $evento = Evento::where('id_evento', $id)->first();
+            $evento->verificador = $request->verificador;
+            $evento->save();
+
+        return back()->with('flash', 'Solicitud aprobada');
+
+        }
+
          public function viewverSolicitud($id)
     {
         $usuario = \App\User::find($id);
@@ -1330,5 +1392,112 @@ public function donar(Request $request)
         return view('Solicitudes.verSolicitud', compact('usuario', 'rnv', 'habilidades_user'));
 
     }
+        public function viewverEvento($id)
+    {
+        $datos = Auth::user();
+        $evento = \App\Evento::find($id);
+        $latitud = $evento->latitud;
+        $longitud = $evento->longitud;
+        return view('Evento.verEvento', compact('evento', 'latitud', 'longitud', 'datos'));
 
+    }
+          public function viewverAcopio($id)
+    {
+        $datos = Auth::user();
+        $acopio = \App\CentroDeAcopio::find($id);
+        $latitud = $acopio->latitud;
+        $longitud = $acopio->longitud;
+        return view('CentroDeAcopio.verCentroAcopio', compact('acopio', 'latitud', 'longitud', 'datos'));
+
+    }
+
+    public function updateEventoFinal(Request $request)
+    {
+
+        $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+        $fechaActual = strtotime(date("d-m-Y",time()));
+                $fechaInicio = strtotime($request->fecha_inicio_evento);
+                $fechaTermino = strtotime($request->fecha_termino_evento);
+                if($fechaInicio > $fechaTermino){
+                        return back()->with('flash', 'La fecha termino no puede ser menor');
+                }
+                if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+                }
+        //$donacion = \App\Donacion::find($usuario);
+        $evento = Evento::find($request->id_evento);
+        $evento->nombre = $request->nombre;
+        $evento->cantidad_voluntarios = $request->voluntarios_restantes;
+        $evento->monto_recaudado = $request->monto_recaudado;
+        $evento->monto_objetivo = $request->monto_objetivo;
+        $evento->fecha_inicio_evento = date("m-d-Y", strtotime($request->fecha_inicio_evento));
+        $evento->fecha_termino_evento = date("m-d-Y", strtotime($request->fecha_inicio_evento));
+        $evento->save();
+        if($request->cantidad_participantes>=$evento->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
+        if($request->tipo_actividad == 'Otros'){
+            $actividad_placeholder = Actividad::where('nombre_actividad', $request->nombre_actividad)->where('actividad_id_evento', $request->id_evento)->get();
+            if(count($actividad_placeholder)>0){
+                return back()->with('flash', 'actividad ya se encuentra inscrita');
+            }
+         Actividad::create([
+            'nombre_actividad' => $request->nombre_actividad,
+            'tipo' => $request->nombre_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
+            ]);   
+        }
+        else{
+               $actividad_placeholder = Actividad::where('nombre_actividad', $request->tipo_actividad)->where('actividad_id_evento', $request->id_evento)->get();
+            if(count($actividad_placeholder)>0){
+                return back()->with('flash', 'actividad ya se encuentra inscrita');
+            }
+            Actividad::create([
+            'nombre_actividad' => $request->tipo_actividad,
+            'tipo' => $request->tipo_actividad,
+            'participantes_actividad' => $request->cantidad_participantes,
+            'actividad_id_evento' =>$request->id_evento,
+            ]);
+        }
+        return back()->with('flash', 'Evento modificado correctamente');
+    }
+
+    public function updateCentroAcopio(Request $request)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $acopio = CentroDeAcopio::find($request->id_acopio);
+        if($request->tipo_bien == 'Otros'){
+            $acopio->nombre = $request->nombre;
+            $acopio->direccion=$request->direccion;
+            $acopio->tipo_bien=$request->tipo_bien2;
+            $acopio->cantidad_objetivo=$request->cantidad_objetivo;
+             $acopio->latitud =$request->latitud;
+            $acopio->longitud = $request->longitud;
+            $acopio->monto_total= $request->cantidad_objetivo;
+            $acopio->save();
+
+        }
+        else{
+         $acopio->nombre = $request->nombre;
+            $acopio->direccion=$request->direccion;
+            $acopio->tipo_bien=$request->tipo_bien;
+            $acopio->cantidad_objetivo=$request->cantidad_objetivo;
+             $acopio->latitud =$request->latitud;
+            $acopio->longitud = $request->longitud;
+            $acopio->monto_total= $request->cantidad_objetivo;
+            $acopio->save();
+    }
+            return back()->with('flash', 'Centro actualizado correctamente');
+    }
 }
+

@@ -37,6 +37,7 @@ Route::get('/agregarActividadEvento/{id}', 'HomeController@viewAgregarActividadE
 Route::get('/agregarTrabajoVoluntariado/{id}', 'HomeController@viewAgregarTrabajoVoluntariado');
 
 Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('evento.update');
+Route::post('/verEvento', 'HomeController@updateEventoFinal')->name('evento.updateFinal');
 Route::post('/agregarTrabajoVoluntariado', 'HomeController@updateVoluntariado')->name('voluntariado.update');
 
 Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
@@ -56,8 +57,20 @@ Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');
+Route::get('/verEvento/{id}', 'HomeController@viewverEvento');
+Route::get('/verCentroAcopio/{id}', 'HomeController@viewverAcopio');
+Route::post('/verCentroAcopio', 'HomeController@updateCentroAcopio')->name('centro.update');
+
+
 Route::get('/aceptarSolicitudes', 'HomeController@viewSolicitudes');
 Route::post('/aceptarSolicitudes', 'HomeController@solicitudRNV')->name('solicitud.update');
+
+Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudMedida')->name('solicitudM.update');
+
+
+Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudAcopio')->name('solicitudC.update');
+
+Route::post('/aceptarSolicitudes', 'HomeController@solicitudEventos')->name('solicitudE.update');
 
 
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');

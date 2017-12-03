@@ -187,6 +187,7 @@ textarea.form-control {
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default">Edit</button>
                                 @if($datos->id_tipo_usuario!=4)
+                                <li><a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Modificar Evento</a></li>
                                 <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
                                 @endif
                                 <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse Evento</a></li>
@@ -265,7 +266,9 @@ textarea.form-control {
                             <th>{{$centroAcopio->nombre}}</th>
                             <th> 
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">Edit</button>
+                                @if($datos->id_tipo_usuario!=4)
+                                <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a></li>
+                                @endif
                                 <button type="button" class="btn btn-default" disabled>Delete</button>
                                     <li><a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a></li>
                             </div>

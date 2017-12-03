@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
 
-<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
      <section style="top :50px;">
         <h1>Tabla Medidas</h1>
         <div class="tbl-header">
@@ -38,11 +37,25 @@
                 <tbody>
                      @foreach($medidas as $medida)
                         <tr>
-                            <th id="id_evento">{{$medida->id_medidas}}</th>
+                            <th id="id_medidas">{{$medida->id_medidas}}</th>
                             <th>{{$medida->nombre_medida}}</th>
-                            <th> 
                             
-                            </div>
+                            <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> 
+                            <th> 
+                            <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a></li>
+                        <form  method="POST" action="{{ route('solicitudM.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_medidas" type="hidden" class="form-control" name="id_medidas" value= "{{$medida->id_medidas}}" >
+                        </div>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+
+                        </div>
                             </th>
                         </tr>
                      @endforeach
@@ -79,11 +92,25 @@
                             <th>{{$evento->monto_recaudado}}</th>
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">Edit</button>
+                             <li><a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> <th>
+                            <th> 
+                        <form  method="POST" action="{{ route('solicitudE.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_evento" type="hidden" class="form-control" name="id_evento" value= "{{$evento->id_evento}}" >
+                        </div>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+
+                        </div>
                             
 
                             </div>
+
                             </th>
                         </tr>
                      @endforeach
@@ -151,8 +178,27 @@
                         <tr>
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
-                            <th> 
+                            <th> <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a></li>
                            
+                            </th>
+                             <th> 
+                        <form  method="POST" action="{{ route('solicitudC.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_acopio" type="hidden" class="form-control" name="id_acopio" value= "{{$centroAcopio->id_acopio}}" >
+                        </div>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+
+                        </div>
+                            
+
+                            </div>
+
                             </th>
                         </tr>
                      @endforeach
