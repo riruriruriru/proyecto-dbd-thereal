@@ -70,7 +70,7 @@ Route::post('/modificarDonaciones', 'HomeController@updateDonacion')->name('dona
 Route::get('/aceptarSolicitudes', 'HomeController@viewSolicitudes');
 Route::post('solicitud_RNV', 'HomeController@solicitudRNV')->name('solicitud.update');
 
-Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudMedida')->name('solicitudM.update');
+Route::post('solicitud_m', 'HomeController@solicitudMedida')->name('solicitudM.update');
 
 Route::post('solicitud_v', 'HomeController@solicitudVoluntariado')->name('solicitudV.update');
 

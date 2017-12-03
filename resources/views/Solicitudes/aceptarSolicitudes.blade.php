@@ -99,7 +99,7 @@
                             <th id="id_medidas">{{$medida->id_medidas}}</th>
                             <th>{{$medida->nombre_medida}}</th>
                             
-                            <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> 
+                
                             <th> 
                             <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a></li>
                         <form  method="POST" action="{{ route('solicitudM.update') }}">
