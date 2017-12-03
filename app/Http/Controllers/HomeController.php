@@ -815,7 +815,7 @@ class HomeController extends Controller
         #$usuario = \App\User::find($user->id);
 
         $medidas = DB::table('Medidas')->where('verificador', 1)->get();
-        return view('verMedida.verMedida', compact('medidas'));
+        return view('verMedida.verMedida', compact('medidas', "usuario"));
         }
         else{
             return back()->with('flash', 'No posee permisos para crear usuarios');
@@ -833,7 +833,7 @@ class HomeController extends Controller
                    // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         $medidas = DB::table('Medidas')->where('id_catastrofe_medidas', '=', $id)->get();
-        return view('verMedida.verMedida', compact('medidas'));
+        return view('verMedida.verMedida', compact('medidas', 'usuario'));
         }
         else{
 
@@ -1621,8 +1621,6 @@ public function donar(Request $request)
     public function updateDonacion(Request $request)
     {
         //
-       
-
             $fechaInicio = strtotime($request->fecha_inicio);
             $fechaTermino = strtotime($request->fecha_termino);
             if($fechaInicio > $fechaTermino){
@@ -1649,5 +1647,84 @@ public function donar(Request $request)
             return back()->with('flash','Donacion modificada correctamente');
         }
     }
+
+
+    //metodos borrar
+
+    public function borrarEvento($id)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $evento = Evento::find($id);
+        $evento->delete();
+        return back()->with('flash', 'Evento eliminado correctamente');
+    }
+
+    public function borrarCentroAcopio($id)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $centroAcopio = CentroDeAcopio::find($id);
+        $centroAcopio->delete();
+        return back()->with('flash', 'Centro de acopio eliminado correctametne');
+    }
+
+    public function borrarVoluntariado($id)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $voluntariado = Voluntariado::find($id);
+        $voluntariado->delete();
+        return back()->with('flash', 'Voluntariado eliminado correctametne');
+    }
+
+    public function borrarDonacion($id)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $donacion = Donacion::find($id);
+        $donacion->delete();
+        return back()->with('flash', 'Donacion eliminado correctametne');
+    }
+
+    public function borrarMedida(Request $request)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        return $request;
+        $id = $request->id_medidas;
+        $medida = Medidas::find($id);
+        $ids_evento = Evento::where('id_medidas_evento', '=', $id)->get();
+        $ids_acopios = CentroDeAcopio::where('id_medidas_acopio', '=', $id)->get();
+        $ids_donaciones = Donacion::where('id_medidas_donacion', '=', $id)->get();
+        $ids_voluntariados = Voluntariado::where('id_medidas_voluntariado', '=', $id)->get();
+        foreach ($ids_evento as $evento) {
+            borrarEvento($evento);
+        }
+        foreach ($ids_acopios as $acopio) {
+            borrarCentroAcopio($acopio);
+        }
+        foreach ($ids_donaciones as $donacion) {
+            borrarDonacion($donacion);
+        }
+        foreach ($ids_voluntariados as $voluntariado) {
+            borrarVoluntariado($voluntariado);
+        }
+        $medida->delete();
+        return back()->with('flash', 'Medida eliminada correctametne');
+    }
+
+
+
 }
 

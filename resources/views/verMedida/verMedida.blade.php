@@ -159,7 +159,18 @@
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
-                        <button type="button" class="btn btn-default" disabled>Eliminar</button>
+
+
+                        @if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2)
+                            <form  method="POST" action="{{ route('borrarMedida') }}">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input id="id_medidas" type="hidden" class="form-control" name="id_medidas" value= "{{$medida->id_medidas}}" >
+                            </div>
+                            <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                        </form>
+
+                        @endif
                         <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Información</a>
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Agregar <span class="caret"></span>

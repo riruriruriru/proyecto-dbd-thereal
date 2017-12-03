@@ -81,6 +81,14 @@ Route::post('solicitud_d', 'HomeController@solicitudDonacion')->name('solicitudD
 Route::post('/aceptarSolicitudes', 'HomeController@solicitudEventos')->name('solicitudE.update');
 
 
+Route::post('borrarEvento', 'HomeController@borrarEvento')->name('borrarEvento');
+Route::post('borrarCentroAcopio', 'HomeController@borrarCentroAcopio')->name('borrarCentroAcopio');
+Route::post('borrarDonacion', 'HomeController@borrarDonacion')->name('borrarDonacion');
+Route::post('borrarVoluntariado', 'HomeController@borrarVoluntariado')->name('borrarVoluntariado');
+Route::post('borrarMedida', 'HomeController@borrarMedida')->name('borrarMedida');
+
+
+
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
 Route::get('/voluntariado/{id}','HomeController@viewAgregarVoluntariado')->name('voluntariado');
