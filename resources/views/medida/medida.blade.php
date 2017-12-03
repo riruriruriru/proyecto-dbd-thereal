@@ -229,7 +229,7 @@ textarea.form-control {
 <div class="form-group">
    <label for="textinput">Lugar Catastrofe</label>  
 
-  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" value= '{{$cat->lugar_catastrofe}}' type="text">
+  <input id="lugar_catastrofe" name="lugar_catastrofe"  placeholder="Lugar" class="form-control" required="" value= '{{$cat->lugar_catastrofe}}' type="text" readonly="readonly">
 
 </div>
 
@@ -247,6 +247,7 @@ textarea.form-control {
  
   <input id="fecha_termino_medida" name="fecha_termino_medida" placeholder="dd-mm-aaaa" class="form-control" required="" type="date"> 
 </div>
+  <input id="id_catastrofe_medidas" name="id_catastrofe_medidas" placeholder="dd-mm-aaaa" class="form-control" required="" type="hidden" value= "{{$cat->id_catastrofe}}">
 <!-- Textarea -->
 
 <div class="form-group">
