@@ -93,6 +93,7 @@ textarea.form-control {
   <label for="textinput">Nombre Donacion</label>  
   <input id="nombre" name="nombre" placeholder="Nombre" class="form-control" required="" type="text">
 </div>
+
 <!-- Text input-->
 <div class="form-group">
   <label  for="id_medidas_donacion"></label> 
@@ -107,12 +108,14 @@ textarea.form-control {
  
   <input id="objetivo" name="objetivo" placeholder="Monto objetivo" class="form-control" required="" type="number" min ="0"> 
 </div>
+
 <!-- Text input-->
 <div class="form-group">
   <label  for="numero_cuenta">Numero Cuenta</label> 
   <input id="numero_cuenta" name="numero_cuenta"  placeholder="Numero Cuenta" class="form-control" required="" type="number">
 
 </div>
+
 <!-- Text input-->
 </div>
 <div class="col-md-6">

@@ -350,7 +350,7 @@ var geocoder = new google.maps.Geocoder();
 <!-- Text input-->
 <div class="form-group">
   <label  for="cantidad_objetivo">Cantidad Objetivo</label> 
-  <input id="cantidad_objetivo" name="cantidad_objetivo"  placeholder="Cantidad Objetivo" class="form-control" required="" type="number">
+  <input id="cantidad_objetivo" name="cantidad_objetivo"  placeholder="Cantidad Objetivo" class="form-control" required="" type="number" min=0>
 
 </div>
 
