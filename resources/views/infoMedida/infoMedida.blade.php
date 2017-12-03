@@ -16,10 +16,10 @@
 #contact{
     
     font-family: 'Teko', sans-serif;
-  padding-top: 60px;
+  padding-top: 150px;
   width: 100%;
   width: 100vw;
-  height: 450px;
+  height: 50vw;
   background: #3a6186; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -68,11 +68,7 @@ textarea.form-control {
 
 @section('content')
 
-<head>
-  <meta charset="UTF-8">
-  <title>Fixed table header</title>
-  
-</head>
+
 
 <section id="contact" style = "margin-left: 0px; margin-bottom: 0px;" >
   
@@ -111,14 +107,14 @@ textarea.form-control {
                         </div>
 
                    
-
+                           </div>
+                        <div class="col-md-6">
                         <div class="form-group">
                             <label for="fecha_inicio_medida">Fecha inicio</label>
                             <input id="fecha_inicio_medida" type="date" class="form-control" name="fecha_inicio_medida" value="{{$medida->fecha_inicio_medida}}" required autofocus>
                             
                         </div>
-                        </div>
-                        <div class="col-md-6">
+                     
                         <div class="form-group">
                             <label for="fecha_termino">Fecha termino</label>
 
@@ -144,10 +140,70 @@ textarea.form-control {
 <body>
 
 
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Site informations -->
+    <title>MovidosxChile</title>
+    <meta name="author" content="Dominik Serafin">
+    <meta name="description" content="Free HTML5 Template created by Dominik Serafin.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Aurora Template">
+    <meta property="og:description" content="Free HTML5 Template created by Dominik Serafin.">
+    <meta property="og:url" content="http://serafin.io/aurora-template/">
+    <meta property="og:image" content="http://serafin.io/aurora-template/content/og_image.png">
+
+    <!-- Twitter Card -->
+    <!--
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:domain" content="">
+    <meta name="twitter:image:src" content="">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:card" content="">
+    -->
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('style/favicon/apple-touch-icon-180x180.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{URL::asset('style/favicon/apple-touch-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{URL::asset('style/favicon/apple-touch-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{URL::asset('style/favicon/apple-touch-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('style/favicon/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('style/favicon/apple-touch-icon-57x57.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('style/favicon/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('style/favicon/apple-touch-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{URL::asset('style/favicon/apple-touch-icon-76x76.png')}}">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/64x64chilito.png')}}" sizes="160x160">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/48x48chilito.png')}}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/16x16chilito.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{URL::asset('style/favicon/32x32chilito.png')}}" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="style/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="style/favicon/browserconfig.xml'">
+    <link rel="shortcut icon" href="{{URL::asset('favicon.ico')}}">
+
+    <!-- Fonts -->
+    <link href="{{URL::asset('style/fonts/webfont-raleway/webfont-raleway.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('style/fonts/webfont-font-awesome/css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}">
+
+    <!-- Stylesheets -->
+    <link href="{{URL::asset('style/css/global.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
   
-  <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+    <div id="start" class="start">&nbsp;</div>
+    <div class="maxwidth1050">&nbsp;</div>
+
+      <section id="hero" class="hero" style="margin-left: 0px;">
+        <div class="orga__background">&nbsp;</div>
+        <div class="hero__gradient">&nbsp;</div>
+    </section>
 
 
 
@@ -184,12 +240,12 @@ textarea.form-control {
                             <th>{{$evento->monto_recaudado}}</th>
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <div class="btn-group btn-group-xs" style="width: 200px;" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default">Edit</button>
                                 @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
+                                <a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar</a>
                                 @endif
-                                <li><a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse Evento</a></li>
+                                <a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse</a>
 
                             </div>
                             </th>
@@ -224,12 +280,12 @@ textarea.form-control {
                             <th>{{$voluntariado->cantidad_voluntarios}}</th>
                             <th>{{$voluntariado->voluntarios_actuales}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 250px;">
                                 <button type="button" class="btn btn-default">Edit</button>
                                 @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a></li>
+                                <a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a>
                                 @endif
-                                <li><a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse Voluntariado</a></li>
+                                <a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse</a>
 
                             </div>
                             </th>
@@ -267,7 +323,7 @@ textarea.form-control {
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                 <button type="button" class="btn btn-default">Edit</button>
                                 <button type="button" class="btn btn-default" disabled>Delete</button>
-                                    <li><a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a></li>
+                                    <a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a>
                             </div>
                             </th>
                         </tr>
@@ -314,7 +370,7 @@ textarea.form-control {
                             <th>                           
                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                     <button type="button" class="btn btn-default" disabled>Delete</button>
-                                    <li><a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a></li> 
+                                    <a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a> 
                                 </div>
                             </th>
                         </tr>

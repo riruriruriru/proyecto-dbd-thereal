@@ -15,10 +15,10 @@
 #contact{
     
     font-family: 'Teko', sans-serif;
-  padding-top: 60px;
+  padding-top: 150px;
   width: 100%;
   width: 100vw;
-  height: 450px;
+  height: 53vw;
   background: #3a6186; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -94,17 +94,18 @@ textarea.form-control {
                         </div>
 
 
-                            <div class="col-md-6 form-line">                          
+                            <div class="form-group">                          
                             <input id="id_usuario_activo"  class="form-control" name="id_usuario_activo" value="{{ $usuario->id }}" readonly= 'readonly' type= 'hidden' required autofocus>
                           
-                        </div>
+                             </div>
 
                         <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <label for="last_name">Apellido</label>
                             <input id="last_name" type="text" class="form-control" name="last_name" value="{{ $usuario->last_name }}" readonly= 'readonly' required autofocus>
                             
                         </div>
-
+                    </div>
+                    <div class="col-md-6 form">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">E-Mail</label>
 
@@ -112,8 +113,7 @@ textarea.form-control {
                             <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" readonly= 'readonly' required>
                             
                         </div>
-                    </div>
-                    <div class="col-md-6 form">
+         
                       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">Rut o Pasaporte</label>
 
