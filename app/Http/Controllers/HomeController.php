@@ -715,6 +715,8 @@ class HomeController extends Controller
              return back()->with('flash', 'No posee los permisos para ingresar');
         }
     }
+
+
     
 
          public function viewAgregarDonacion($id)
@@ -1165,6 +1167,17 @@ public function donar(Request $request)
         return view('Voluntariado.inscribirseVoluntariado', compact('voluntariado', 'datos', 'latitud', 'longitud', 'trabajos'));
     }
 
+      public function viewUpdateVoluntariado($id)
+    {
+        $usuario = Auth::id();
+        $datos = \App\User::find($usuario);
+        $voluntariado = \App\Voluntariado::find($id);
+        $latitud = $voluntariado->latitud;
+        $longitud = $voluntariado->longitud;
+        $trabajos = DB::table('Trabajo')->where('trabajo_id_voluntariado', '=', $id)->get();
+        return view('Voluntariado.verVoluntariado', compact('voluntariado', 'datos', 'latitud', 'longitud', 'trabajos'));
+    }
+
       public function viewAgregarActividadEvento($id)
     {
 
@@ -1368,6 +1381,21 @@ public function donar(Request $request)
 
         }
 
+          public function solicitudVoluntariado(Request $request)
+        {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+            $id = $request->id_voluntariado;
+            $voluntariado = Voluntariado::where('id_voluntariado', $id)->first();
+            $voluntariado->verificador = $request->verificador;
+            $voluntariado->save();
+
+        return back()->with('flash', 'Solicitud aprobada');
+
+        }
      public function solicitudEventos(Request $request)
         {
             $u = Auth::user();
@@ -1498,6 +1526,51 @@ public function donar(Request $request)
             $acopio->save();
     }
             return back()->with('flash', 'Centro actualizado correctamente');
+    }
+
+    public function updateVoluntariadoFINAL(Request $request)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario ==4 or $u->id_tipo_usuario ==5){
+
+            return back()->with('flash', 'no posee los permisos necesarios para realizar esta accion');
+        }
+        //$donacion = \App\Donacion::find($usuario);
+        $voluntariado = Voluntariado::find($request->id_voluntariado);
+        $voluntariado->descripcion = $request->descripcion;
+        $voluntariado->cantidad_voluntarios = $request->cantidad_voluntarios;
+        $voluntariado->nombre = $request->nombre;
+        if($request->cantidad_participantes>=$voluntariado->cantidad_voluntarios){
+            return back()->with('flash', 'cantidad mayor de voluntarios');
+
+        }
+
+        if($request->tipo_trabajo == 'Otros'){
+        $trabajos_validos = Trabajo::where('trabajo_id_voluntariado', $request->id_voluntariado)->where('nombre_trabajo', $request->nombre_trabajo)->get();
+        if(count($trabajos_validos )>0){
+            return back()->with('flash', 'trabajo ya se encuentra en voluntariado');
+        }
+         Trabajo::create([
+            'nombre_trabajo' => $request->nombre_trabajo,
+            'tipo' => $request->nombre_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);   
+        }
+        else{
+            $trabajos_validos = Trabajo::where('trabajo_id_voluntariado', $request->id_voluntariado)->where('nombre_trabajo', $request->tipo_trabajo)->get();
+            if(count($trabajos_validos )>0){
+                return back()->with('flash', 'trabajo ya se encuentra en voluntariado');
+            }
+            Trabajo::create([
+            'nombre_trabajo' => $request->tipo_trabajo,
+            'tipo' => $request->tipo_trabajo,
+            'participantes_trabajo' => $request->cantidad_participantes,
+            'trabajo_id_voluntariado' =>$request->id_voluntariado,
+            ]);
+        }
+        $voluntariado->save();
+        return back()->with('flash', 'Voluntariado actualizado correctamente');
     }
 }
 

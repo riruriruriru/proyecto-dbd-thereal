@@ -40,6 +40,8 @@ Route::post('/agregarActividadEvento', 'HomeController@updateEvento')->name('eve
 Route::post('/verEvento', 'HomeController@updateEventoFinal')->name('evento.updateFinal');
 Route::post('/agregarTrabajoVoluntariado', 'HomeController@updateVoluntariado')->name('voluntariado.update');
 
+Route::post('/verVoluntariado', 'HomeController@updateVoluntariadoFINAL')->name('voluntariadoFINAL.update');
+
 Route::post('/inscribirseEvento', 'HomeController@updateEvento2')->name('evento2.update');
 Route::post('/inscribirseVoluntariado', 'HomeController@updateVoluntariado2')->name('voluntariado2.update');
 
@@ -67,6 +69,7 @@ Route::post('/aceptarSolicitudes', 'HomeController@solicitudRNV')->name('solicit
 
 Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudMedida')->name('solicitudM.update');
 
+Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudVoluntariado')->name('solicitudV.update');
 
 Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudAcopio')->name('solicitudC.update');
 
@@ -76,6 +79,7 @@ Route::post('/aceptarSolicitudes', 'HomeController@solicitudEventos')->name('sol
 Route::get('/centroAcopio/{id}','HomeController@viewAgregarCentroAcopio')->name('centroAcopio');
 Route::get('/evento/{id}','HomeController@viewAgregarEvento')->name('evento');
 Route::get('/voluntariado/{id}','HomeController@viewAgregarVoluntariado')->name('voluntariado');
+Route::get('/verVoluntariado/{id}','HomeController@viewUpdateVoluntariado');
 
 Route::get('/RNV','HomeController@viewRNV')->name('RNV');
 Route::get('/donacion/{id}','HomeController@viewAgregarDonacion')->name('donacion');

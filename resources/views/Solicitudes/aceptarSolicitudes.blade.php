@@ -206,10 +206,25 @@
                             <th>{{$voluntariado->cantidad_voluntarios}}</th>
                             <th>{{$voluntariado->voluntarios_actuales}}</th>
                             <th> 
-                           
-                         
+                             <li><a href="/verVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> <th>
+                            <th> 
+                        <form  method="POST" action="{{ route('solicitudV.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_voluntariado" type="hidden" class="form-control" name="id_voluntariado" value= "{{$voluntariado->id_voluntariado}}" >
+                        </div>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+
+                        </div>
+                            
 
                             </div>
+
                             </th>
                         </tr>
                      @endforeach

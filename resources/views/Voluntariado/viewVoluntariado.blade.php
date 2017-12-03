@@ -339,7 +339,7 @@ var geocoder = new google.maps.Geocoder();
 <div class="form-group">
   <label  for="Descripcion">Descripcion</label>  
   
-  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control" type="text">
+  <input id="descripcion" name="descripcion" placeholder="Descripcion" class="form-control" type="text" required="">
 
   
  
