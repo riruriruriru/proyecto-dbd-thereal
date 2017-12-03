@@ -501,7 +501,7 @@ class HomeController extends Controller
                 Donacion::create([
                 'nombre'=> $request->nombre,
                 'id_medidas_donacion' => $request->id_medidas_donacion,
-                'objeivo'=> $request->objetivo,
+                'objetivo'=> $request->objetivo,
                 'monto_actual' => '0',
                 'numero_cuenta' => $request->numero_cuenta,
                 'objetivo' => $request->objetivo,
@@ -553,6 +553,11 @@ class HomeController extends Controller
 
        public function updateMedida(Request $request)
     {
+        $u = Auth::user();
+        if($u->id_tipo_usuario != 1){
+
+            return back()->with('flash', 'no posee permisos para realizar esta accion');
+        }
         $id = $request->id_medida;
         $fechaInicio = strtotime($request->fecha_inicio_medida);
         $fechaTermino = strtotime($request->fecha_termino_medida);
@@ -731,6 +736,25 @@ class HomeController extends Controller
        // $catastrofe = Catastrofe::catastrofe();
         #$usuario = \App\User::find($user->id);
         return view('Donaciones.donaciones', compact('id_medidas_donacion', 'nombre'));
+            
+        }
+        else{
+
+            return back()->with('flash', 'No posee permisos para realizar esta accion');
+        }
+       
+    }
+          public function viewModificarDonacion($id)
+    {   
+        $idU = Auth::id();
+        $usuario = \App\User::find($idU);
+        if($usuario->id_tipo_usuario==1 or $usuario->id_tipo_usuario ===2 or $usuario->id_tipo_usuario === 3){
+             $id_medidas_donacion = $id;
+        $donacion = Donacion::find($id);
+
+       // $catastrofe = Catastrofe::catastrofe();
+        #$usuario = \App\User::find($user->id);
+        return view('Donaciones.modificarDonaciones', compact('donacion'));
             
         }
         else{
@@ -1002,23 +1026,27 @@ class HomeController extends Controller
         $usuario = Auth::id();
         $id_placeholder = RNVUsers::where('id_usuario', '=', $usuario)->get();
         $datos = \App\User::find($usuario);
+        $habilidades_user = HabilidadesUser::where('id_user', $usuario)->pluck('tipo_habilidad')->toArray();
         $voluntariado = Voluntariado::find($request->id_voluntariado);
-        $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->get();
+        $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->where('trabajo_id_voluntariado', $request->id_voluntariado)->pluck('nombre_trabajo')->first();
         $actUser = DB::table('VoluntariadoUser')->where('id_voluntariado', '=', $request->id_voluntariado)->where('id_user','=',$usuario)->get();
         if(count($id_placeholder)>0 and count($actUser)==0){
-                $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;
+            if(in_array((string)$trabajo, $habilidades_user)){
+                  $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;
                 $voluntariado->save();
                 VoluntariadoUser::create([
-            'id_trabajo' => $request->id_actividad,
+            'id_trabajo' => $request->id_trabajo,
             'id_user' => $usuario,
-            'id_voluntariado' => $request->id_evento,
+            'id_voluntariado' => $request->id_voluntariado,
             ]);  
+            }
+            else{
+                return back()->with('flash', 'no posee las calificaciones necesarias');
+
+
+            }
+              
                 return back()->with('flash', 'Inscrito al voluntariado correctamente');
-
-        }
-        else if((count($id_placeholder)==0)){
-
-                return back()->with('flash', 'Debe inscribirse previamente al RNV');
 
         }
         //$donacion = \App\Donacion::find($usuario);
@@ -1314,7 +1342,7 @@ public function donar(Request $request)
             #$usuario = \App\User::find($user->id);
             $id_usuario_activo = auth()->id();
             $u = User::find($id_usuario_activo);
-            if($u->id_tipo_usuario == 4){
+            if($u->id_tipo_usuario == 4 or $u->id_tipo_usuario == 5 or $u->id_tipo_usuario == 3){
                 return back()->with('flash', 'no posee permisos para acceder a esta vista');
 
             }
@@ -1407,6 +1435,22 @@ public function donar(Request $request)
             $evento = Evento::where('id_evento', $id)->first();
             $evento->verificador = $request->verificador;
             $evento->save();
+
+        return back()->with('flash', 'Solicitud aprobada');
+
+        }
+
+    public function solicitudDonacion(Request $request)
+        {
+            $u = Auth::user();
+            if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+                return back()->with('flash', 'no posee los permisos para realizar esta accion');
+
+            }
+            $id = $request->id_donacion;
+            $donacion = Donacion::where('id_donacion', $id)->first();
+            $donacion->verificador = $request->verificador;
+            $donacion->save();
 
         return back()->with('flash', 'Solicitud aprobada');
 
@@ -1571,6 +1615,39 @@ public function donar(Request $request)
         }
         $voluntariado->save();
         return back()->with('flash', 'Voluntariado actualizado correctamente');
+    }
+
+
+    public function updateDonacion(Request $request)
+    {
+        //
+       
+
+            $fechaInicio = strtotime($request->fecha_inicio);
+            $fechaTermino = strtotime($request->fecha_termino);
+            if($fechaInicio > $fechaTermino){
+                return back()->with('flash', 'La fecha termino no puede ser menor');
+            }
+            $fechaActual = strtotime(date("d-m-Y",time()));
+            if($fechaInicio < $fechaActual){
+                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
+            }
+            else{
+                $donacion = Donacion::find($request->id_donacion);
+                
+                $donacion->nombre= $request->nombre;
+                $donacion->objetivo= $request->objetivo;
+                $donacion->monto_actual = '0';
+                $donacion->numero_cuenta = $request->numero_cuenta;
+                $donacion->objetivo = $request->objetivo;
+                $donacion->fecha_inicio = date("m-d-Y", strtotime($request->fecha_inicio));
+                $donacion->fecha_termino = date("m-d-Y", strtotime($request->fecha_termino));
+                $donacion->save();
+
+
+
+            return back()->with('flash','Donacion modificada correctamente');
+        }
     }
 }
 

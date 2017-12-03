@@ -59,19 +59,24 @@ Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
 Route::get('/verPerfil', 'HomeController@viewVerPerfil')->name('verPerfil');
 
 Route::get('/verDonaciones/{id}', 'HomeController@viewVerDonaciones')->name('verDonaciones');
+
+Route::get('/modificarDonaciones/{id}', 'HomeController@viewModificarDonacion');
 Route::get('/verEvento/{id}', 'HomeController@viewverEvento');
 Route::get('/verCentroAcopio/{id}', 'HomeController@viewverAcopio');
 Route::post('/verCentroAcopio', 'HomeController@updateCentroAcopio')->name('centro.update');
 
+Route::post('/modificarDonaciones', 'HomeController@updateDonacion')->name('donacion.update');
 
 Route::get('/aceptarSolicitudes', 'HomeController@viewSolicitudes');
-Route::post('/aceptarSolicitudes', 'HomeController@solicitudRNV')->name('solicitud.update');
+Route::post('solicitud_RNV', 'HomeController@solicitudRNV')->name('solicitud.update');
 
 Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudMedida')->name('solicitudM.update');
 
-Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudVoluntariado')->name('solicitudV.update');
+Route::post('solicitud_v', 'HomeController@solicitudVoluntariado')->name('solicitudV.update');
 
 Route::post('/aceptarSolicitudes/add/post', 'HomeController@solicitudAcopio')->name('solicitudC.update');
+
+Route::post('solicitud_d', 'HomeController@solicitudDonacion')->name('solicitudD.update');
 
 Route::post('/aceptarSolicitudes', 'HomeController@solicitudEventos')->name('solicitudE.update');
 

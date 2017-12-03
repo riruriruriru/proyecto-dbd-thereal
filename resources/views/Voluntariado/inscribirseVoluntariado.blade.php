@@ -227,7 +227,7 @@ textarea.form-control {
 
 <div class="form-group">
           <label  for="selectbasic">Trabajos</label>
-              <select id="id_trabajo" name="id_Trabajo" class="form-control">
+              <select id="id_trabajo" name="id_trabajo" class="form-control">
                     @foreach($trabajos as $trabajo)
                       <option value="{{ $trabajo->id_trabajo }}" @if(old('trabajo')&&old('trabajo')== $trabajo->id_trabajo) selected='selected' @endif >{{ $trabajo->nombre_trabajo}}</option>
                     @endforeach

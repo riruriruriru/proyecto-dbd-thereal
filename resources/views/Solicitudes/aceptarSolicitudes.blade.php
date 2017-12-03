@@ -253,7 +253,7 @@
                         <tr>
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
-                            <th> <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a></li>
+                            <th> <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Ver Solicitud</a></li>
                            
                             </th>
                              <th> 
@@ -285,7 +285,6 @@
 
     </section>
 
-<form method="GET">
     <section style="top :50px;">
         <h1>Tabla Donaciones</h1>
         <div class="tbl-header">
@@ -314,21 +313,20 @@
                             <th>{{$donacion->fecha_termino}}</th>
                             <th>{{$donacion->monto_actual}}</th>
                             <th>{{$donacion->objetivo}}</th>
-                            <th> 
-                                <form method="GET">
-                                    
-                             
-                                <script>
-                                    function donar(){
-                                        window.location.href = "/verDonaciones/{{$donacion->id_donacion}}";
-                                    }
-                                </script>                          
-                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-default" disabled>Delete</button>
-                                    <a type="button" class="btn btn-default" href="/verDonaciones/{{$donacion->id_donacion}}">Donar</a>
-                                 
-                                </div>
-                            </form>
+                            <th> <li><a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Ver Solicitud</a></li></th>
+                             <th> 
+                        <form  method="POST" action="{{ route('solicitudD.update') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group">
+                            <input id="id_donacion" type="hidden" class="form-control" name="id_donacion" value= "{{$donacion->id_donacion}}" >
+                        </div>
+                        <div class="form-group">
+                            <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
+                        </div>
+  
+                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        </form>
+
                             </th>
                         </tr>
                      @endforeach

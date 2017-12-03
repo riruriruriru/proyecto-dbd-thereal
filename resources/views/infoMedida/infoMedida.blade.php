@@ -124,11 +124,11 @@ textarea.form-control {
                             
                         </div>
                     
-
+                        @if($datos->id_tipo_usuario ==1)
                         <div class="form-group">
                             
                              <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Actualizar</button>
-                            
+                            @endif
                         </div>
                     </div>
                 </form>
@@ -285,6 +285,7 @@ textarea.form-control {
                                 <button type="button" class="btn btn-default">Edit</button>
                                 @if($datos->id_tipo_usuario!=4)
                                 <a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a>
+                                <li><a href="/verVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Modificar Voluntariado</a></li>
                                 @endif
                                 <a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse</a>
 
@@ -374,6 +375,9 @@ textarea.form-control {
                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
                                     <button type="button" class="btn btn-default" disabled>Delete</button>
                                     <a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a> 
+                                    @if($datos->id_tipo_usuario != 4)
+                                    <a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Modificar Donacion</a> 
+                                    @endif
                                 </div>
                             </th>
                         </tr>
