@@ -1,9 +1,9 @@
+@include('flash::message') 
 @extends('layouts.app')
 
 @section('styles')
 @parent
 <style type="text/css"><
-
 
 .container {
     
@@ -129,12 +129,15 @@
 @stop
 
 
-
 <!DOCTYPE html><html lang="en">
-<head>
 
-    <!-- Basic informations -->
-    <meta charset="utf-8">
+
+@section('content')
+<body >
+
+
+
+     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -187,20 +190,55 @@
 
     <!-- Stylesheets -->
     <link href="{{URL::asset('style/css/global.css')}}" type="text/css" rel="stylesheet" media="all">
-    <!-- Scripts preload -->
-    <!--[if lt IE 9]><script src="style/js/html5shiv.js"></script><![endif]-->
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-
-
-@section('content')
-<body style=" padding-top: 50px; color: #fff">
-
-
+  
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
     <div id="start" class="start">&nbsp;</div>
     <div class="maxwidth1050">&nbsp;</div>
 
-    <div class="form-group" style = "  position:  relative;margin-left: 350px;">
+      <section id="hero" class="hero" style="margin-left: 0px;">
+        <div class="orga__background">&nbsp;</div>
+        <div class="hero__gradient">&nbsp;</div>
+    </section>
+
+
+<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
+     <section style="top :50px;">
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content" style="height: 450px">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <?php $i=0 ?>
+                    @foreach($usuarios as $usuario)
+                    <?php $i++ ?>
+                        <tr>
+                            <th id="id">{{$i}}</th>
+                            <th>{{$usuario->name}}</th>
+                            <th>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                    <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
+                                    <button type="button" class="btn btn-default" disabled>Eliminar</button>
+                                     
+                                </div>
+                            </th>
+                          
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+          <div class="form-group" style = "  position:  relative;margin-left: 250px;">
 
             <div class="col-md-3">
                 
@@ -215,74 +253,23 @@
                <li><a href="/registroRNV"   class="hero__button  ghost-button  ghost-button--hero">Registrarse</a></li>
             </div>
             </div>
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+          
 
         </div>
-
-    <section id="hero" class="hero">
-        <div class="orga__background">&nbsp;</div>
-        <div class="hero__gradient">&nbsp;</div>
     </section>
-        <div class="hero__content" style="padding-top: 50px;"> 
-        <form class="form-horizontal" method="GET">
+  
+</form>
 
-        <fieldset>
 
-        <div class="container" style="padding-top: 50px">
-             <div class="col-md-3">
-                        </div>
-             <div class="col-md-50">
-                        
-            <div class="listWrap">
-       
-                <ul class="list">
-                        
-                    <li>
-                        <span>ID</span>
-                        <span>Nombre de Usuario</span>
-                        <span>Acción</span>
-                        <span></span>
-                    </li>
-                
-        				<?php $i=0 ?>
-                    	@foreach($usuarios as $usuario)
-                    	<?php $i++ ?>
-                        <span style="font-size: 20px" id="id">{{$i}}</span>
-                        <span style="font-size: 20px">{{$usuario->name}}</span>
 
-                        <span>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
-                                <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                             
-                            </div>
-                        </span>
 
-                 
-                        <li></li>
-                          
-                        @endforeach
-                       
-                </ul>
 
-            </div>
-        </div>
-    </div>
-        </fieldset>
-
-        </form>
-      
-        
-    </div>
 </body>
 </html>
-<?php
-        $dato = Session::get('flash');
-        if ($dato != ''){
-            echo "<script>alert('";
-            echo $dato;
-            echo "')";
-            echo "</script>";
-          
-        }
-?>
+  
+
+         
+  
+@endsection('content')
+
+

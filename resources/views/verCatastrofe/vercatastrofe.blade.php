@@ -169,16 +169,16 @@
                                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
 
                                                      @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
-                                                     <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a></li>
+                                                     <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a>
                                                     @endif
 
                                                      @if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4)
-                                                    <li><a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Información</a></li>
+                                                    <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Información</a>
                                                     @endif
                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3) 
-                                                    <li><a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a></li> 
+                                                    <a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a> 
                                                     @endif
-                                                    <li><a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a></li> 
+                                                    <a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a> 
                                                 
 
                                                 </div>

@@ -130,10 +130,14 @@
 
 
 <!DOCTYPE html><html lang="en">
-<head>
 
-    <!-- Basic informations -->
-    <meta charset="utf-8">
+
+@section('content')
+<body >
+
+
+
+     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -186,57 +190,48 @@
 
     <!-- Stylesheets -->
     <link href="{{URL::asset('style/css/global.css')}}" type="text/css" rel="stylesheet" media="all">
-    <!-- Scripts preload -->
-    <!--[if lt IE 9]><script src="style/js/html5shiv.js"></script><![endif]-->
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-@section('content')
-<body style="color: #fff">
+  
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
     <div id="start" class="start">&nbsp;</div>
     <div class="maxwidth1050">&nbsp;</div>
 
-      <section id="hero" class="hero">
+      <section id="hero" class="hero" style="margin-left: 0px;">
         <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
     </section>
 
-    <div class="hero__content" style="padding-top: 50px;"> 
 
-      <form class="form-horizontal" method="GET">
-         
-                        
-          <div class="container">
-             <div class="col-md-3">
-                        </div>
-          <div class="col-md-6">
+<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
+     <section style="top :50px;">
+        <h1>Tabla Medidas</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de Organización</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content" style="height: 450px">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                     @foreach($organizaciones as $organizacion)
+                        <tr>
+                            <th id="id_evento">{{$organizacion->id}}</th>
+                            <th>{{$organizacion->name}}</th>
+                          
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+    </section>
+</form>
 
-              <div class="listWrap">
-              
-                  <ul class="list">
-                  
-                      <li>
-                          <span>ID</span>
-                          <span>Nombre de Organización</span>
-                        
-                      </li>
-
-                      
-                        @foreach($organizaciones as $organizacion)
-                          <span style="font-size: 20px" id="id_organizacion">{{$organizacion->id}}</span>
-                          <span style="font-size: 20px">{{$organizacion->name}}</span>
-                          <li></li>
-                          @endforeach
-                 
-                    
-                  </ul>
-              </div>
-            </div>
-          </div>
-          
-          </form>
-
-
-    </div>
 
 </body>
 </html>
