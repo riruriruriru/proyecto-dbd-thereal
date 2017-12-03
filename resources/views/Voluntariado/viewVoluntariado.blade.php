@@ -313,7 +313,7 @@ var geocoder = new google.maps.Geocoder();
 <div class="form-group">
   <label for="cantidad_voluntarios">Cantidad Voluntarios</label>  
  
-  <input id="cantidad_voluntarios" name="cantidad_voluntarios" placeholder="Cantidad Voluntarios" class="form-control" required="" type="number"> 
+  <input id="cantidad_voluntarios" name="cantidad_voluntarios" min=1 placeholder="Cantidad Voluntarios" class="form-control" required="" type="number"> 
 </div>
 
 

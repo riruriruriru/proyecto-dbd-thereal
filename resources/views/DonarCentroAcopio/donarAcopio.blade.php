@@ -236,7 +236,7 @@ textarea.form-control {
 <div class="form-group">
   <label  for="monto_donacion">Donacion</label>  
   
-  <input id="monto_donacion" name="monto_donacion" placeholder="Descripcion" class="form-control" type="number" >
+  <input id="monto_donacion" name="monto_donacion" placeholder="Descripcion" class="form-control" type="number" min=1 >
 
   
  
