@@ -127,7 +127,7 @@ textarea.form-control {
                         </div>
                         <label for="name">Numero Tarjeta</label>
                            
-                                <input id="Numero Tarjeta" type="text" class="form-control" name="num_tarjeta" value="{{ $usuario->num_tarjeta}}" required autofocus>
+                                <input id="Numero Tarjeta" type="number" min=1 class="form-control" name="num_tarjeta" value="{{ $usuario->num_tarjeta}}">
                            
 
                         <div class="form-group">
