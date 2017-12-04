@@ -19,7 +19,7 @@ class CreateTrigger extends Migration
             'CREATE TRIGGER over_donation BEFORE UPDATE OF 
             `monto_actual` ON `Donacion`
             BEGIN
-                IF NEW.monto_actual> OLD.objetivo THEN
+                IF NEW.monto_actual> NEW.objetivo THEN
                    INSERT INTO `Donacion` (`monto_actual`) VALUES (OLD.monto_actual);
                 END IF;
             END');
