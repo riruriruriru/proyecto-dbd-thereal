@@ -205,70 +205,84 @@
     </section>
 
                 <!-- inicio tabla-->
-                
-                            <div class="container">
+    <section style="margin-top: 100px">
 
-                                <div class="listWrap" style="position: relative; top: 50px">
-                                
-                                    <ul class="list">
-                                    
-                                        <li>
-                                            <span>ID</span>
-                                            <span>Nombre de Catástrofe</span>
-                                            <span>Status</span>
-                                            <span>Acción</span>
-                                            <span></span>
-                                        </li>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0" style="top :50px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de catastrofe</th>
+                        <th>Estatus</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                        <tr>
 
-                                        
-
-                                             @foreach($catastrofes as $catastrofe)
-                                            <span name="id_catastrofe">{{$catastrofe->id_catastrofe}}</span>
-                                            <span>{{$catastrofe->nombre}}</span>
+                            @foreach($catastrofes as $catastrofe)
+                                            <th name="id_catastrofe">{{$catastrofe->id_catastrofe}}</th>
+                                            <th>{{$catastrofe->nombre}}</th>
                                             @if($catastrofe->fecha_termino != "")
-                                            <span>Inactivo</span>
+                                            <th>Inactivo</th>
                                             @elseif($catastrofe->fecha_termino == "")
-                                            <span>Activo</span>
+                                            <th>Activo</th>
                                             @endif
-                                            <span>
-                                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                            <th>
 
                                                      @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
-                                                     <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a>
+
+                                                 <div class="btn-group btn-group-xs" style="width: 150px;" role="group" aria-label="...">
+                                                     <a style="width: 150px; text-transform: none;" href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a>
+                                                 </div>
                                                     @endif
 
 
 
 
                                                      @if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4)
-                                                    <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Información</a>
+
+                                                 <div class="btn-group btn-group-xs" style="width: 150px;" role="group" aria-label="...">
+                                                    <a style="width: 150px; text-transform: none;" href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Información</a>
+                                                </div>
                                                     @endif
+
                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2 or $datos->id_tipo_usuario===3) 
-                                                    <a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a> 
+
+                                                 <div class="btn-group btn-group-xs" style="width: 150px;" role="group" aria-label="...">
+                                                    <a style="width: 150px; text-transform: none;" href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a> 
+                                                </div>
                                                     @endif
-                                                    <a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a> 
+
+                                                 <div class="btn-group btn-group-xs" style="width: 150px;" role="group" aria-label="...">
+                                                    <a style="width: 150px; text-transform: none;" href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a> 
+                                                </div>
                                                     @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
                                                         <form  method="POST" action="{{ route('borrarCatastrofe') }}">
                                                          {{ csrf_field() }}
                                                       
                                                             <input id="id_catastrofe" type="hidden" class="form-control" name="id_catastrofe" value= "{{$catastrofe->id_catastrofe}}" >
-                                                            <div class="btn-group btn-group-xs" role="group" aria-label="...">                   
-                                                         <button style="padding-top: 1px;padding-bottom: 1px;margin-top: 0px;margin-bottom: 3px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
-                                                        </div>
+                                                        
+                                                 <div class="btn-group btn-group-xs" style="width: 150px;" role="group" aria-label="...">               
+                                                         <button style="width: 150px;" style="padding-top: 1px;padding-bottom: 1px;margin-top: 0px;margin-bottom: 3px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                                     </div>
                                                         </form>
                                                     @endif
                                                 
 
-                                                </div>
-                                            </span>
-                                            <li></li>
-                                            @endforeach
-                                            <span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </fieldset>
-                            </form>
+                                       
+                                            </th>
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+</section>
+                            
 
 
 <!-- fin tabla-->

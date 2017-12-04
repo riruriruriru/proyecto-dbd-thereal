@@ -241,21 +241,28 @@ textarea.form-control {
                             <th>{{$evento->monto_recaudado}}</th>
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" style="width: 200px;" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">Edit</button>
-                                @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Modificar Evento</a></li>
-                                <li><a href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a></li>
+                            @if($datos->id_tipo_usuario!=4)
+                            <div class="btn-group btn-group-xs" style="width: 100px;" role="group" aria-label="...">
+                                
+                                
+                                <a  style=" width: 150px;text-transform: none;" href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Modificar Evento</a>
+                            </div>
+                            <div class="btn-group btn-group-xs" style="width: 100px;" role="group" aria-label="...">
+                                <a style=" width: 150px; text-transform: none;" href="/agregarActividadEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Agregar Actividad</a>
+                                </div>
                                 @endif
-                                <a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse</a>
+                            <div class="btn-group btn-group-xs" style="width: 100px;" role="group" aria-label="...">
+                                <a style="width: 150px; text-transform: none;" href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse</a>
+                            </div>
 
                                 @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
                                 <form  method="POST" action="{{ route('borrarEvento') }}">
                                                          {{ csrf_field() }}
-                                    <div class="form-group">
+                                    <div class="btn-group btn-group-xs" style="width: 200px;" role="group" aria-label="...">
                                     <input id="id_evento" type="hidden" class="form-control" name="id_evento" value= "{{$evento->id_evento}}" >
-                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                                    </div>
+                                    <button style="width: 150px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                </div>
+                                    
                                 </form>
                                 @endif
 
@@ -266,7 +273,7 @@ textarea.form-control {
                 </tbody>
             </table>
         </div>
-
+</section>
  <section >
         <h1>Tabla voluntariado</h1>
         <div class="tbl-header">
@@ -292,21 +299,27 @@ textarea.form-control {
                             <th>{{$voluntariado->cantidad_voluntarios}}</th>
                             <th>{{$voluntariado->voluntarios_actuales}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 250px;">
-                                <button type="button" class="btn btn-default">Edit</button>
+                            
                                 @if($datos->id_tipo_usuario!=4)
-                                <a href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a>
-                                <li><a href="/verVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Modificar Voluntariado</a></li>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                <a style="width: 150px; text-transform: none;" href="/agregarTrabajoVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Agregar Trabajo</a>
+                            </div>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                <a style="width: 150px; text-transform: none;" href="/verVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Modificar Voluntariado</a>
+                            </div>
                                 @endif
-                                <a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse</a>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                <a style="width: 150px; text-transform: none;" href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse</a>
+                            </div>
 
                                 @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
                                 <form  method="POST" action="{{ route('borrarVoluntariado') }}">
                                                          {{ csrf_field() }}
-                                    <div class="form-group">
+                                <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
                                     <input id="id_voluntariado" type="hidden" class="form-control" name="id_voluntariado" value= "{{$voluntariado->id_voluntariado}}" >
-                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                                    </div>
+                                    <button style="width: 150px; text-transform: none;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                </div>
+                                    
                                 </form>
                                 @endif
 
@@ -343,20 +356,25 @@ textarea.form-control {
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
                             <th> 
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                           
                                 @if($datos->id_tipo_usuario!=4)
-                                <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a></li>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                <a style="width: 150px; text-transform: none;" href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a>
+                            </div>
                                 @endif
-                                    <a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                    <a style="width: 150px; text-transform: none;" href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a>
                             </div>
 
                             @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
                                 <form  method="POST" action="{{ route('borrarCentroAcopio') }}">
                                                          {{ csrf_field() }}
-                                    <div class="form-group">
+                                   
                                     <input id="id_acopio" type="hidden" class="form-control" name="id_acopio" value= "{{$centroAcopio->id_acopio}}" >
-                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                                    </div>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 200px;">
+                                    <button style="width: 150px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                </div>
+                                    
                                 </form>
                             @endif
 
@@ -400,20 +418,25 @@ textarea.form-control {
                             <th>{{$donacion->monto_actual}}</th>
                             <th>{{$donacion->objetivo}}</th>
                             <th>                           
-                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                    <a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a> 
+                                <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 150px;">
+                                    <a style="width: 150px; text-transform: none;" href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a>
+                                </div> 
                                     @if($datos->id_tipo_usuario != 4)
-                                    <a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Modificar Donacion</a> 
-                                    @endif
+                                <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 150px;">
+                                    <a style="width: 150px; text-transform: none; " href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Modificar Donacion</a> 
                                 </div>
+                                    @endif
+                              
 
                                 @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
                                 <form  method="POST" action="{{ route('borrarDonacion') }}">
                                                          {{ csrf_field() }}
-                                    <div class="form-group">
+                                    
                                     <input id="id_donacion" type="hidden" class="form-control" name="id_donacion" value= "{{$donacion->id_donacion}}" >
-                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                                    </div>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="..." style="width: 150px;">
+                                    <button style="width: 150px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                </div>
+                                    
                                 </form>
                                 @endif
                             </th>
