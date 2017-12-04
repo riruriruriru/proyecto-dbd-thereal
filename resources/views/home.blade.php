@@ -156,7 +156,7 @@
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-          <!-- Search Widget -->
+          <!-- Search Widget >
           <div class="card my-4">
             <h5 class="card-header hero__blanco" style="padding-top: 40px;">Search</h5>
             <div class="card-body">
@@ -167,7 +167,7 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div -->
 
           <!-- Categories Widget -->
           <div class="card my-4">
@@ -182,22 +182,10 @@
                     <li>
                       <a href="/verMedida">Medidas</a>
                     </li>
-                    <li>
-                      <a href="#">Haz tu donación</a>
-                    </li>
                   </ul>
                 </div>
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">¿Quieres ser Voluntario?</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
                   </ul>
                 </div>
               </div>
