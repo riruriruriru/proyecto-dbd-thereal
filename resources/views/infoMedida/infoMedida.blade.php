@@ -326,7 +326,6 @@ textarea.form-control {
                                 @if($datos->id_tipo_usuario!=4)
                                 <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Modificar Centro</a></li>
                                 @endif
-                                <button type="button" class="btn btn-default" disabled>Delete</button>
                                     <a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a>
                             </div>
                             </th>
@@ -373,7 +372,6 @@ textarea.form-control {
                             <th>{{$donacion->objetivo}}</th>
                             <th>                           
                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-default" disabled>Delete</button>
                                     <a href="/verDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Donar</a> 
                                     @if($datos->id_tipo_usuario != 4)
                                     <a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Modificar Donacion</a> 
