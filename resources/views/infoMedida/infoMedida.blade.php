@@ -211,7 +211,7 @@ textarea.form-control {
 
 
 
-<form method="GET" style="border-top-width: 50px;border-top-style: solid;">
+
     <section >
         <h1>Tabla evento</h1>
         <div class="tbl-header">
@@ -320,8 +320,8 @@ textarea.form-control {
 
 
     </section>
-</form>
-<form method="GET">
+
+
     <section style="top :50px;">
         <h1>Tabla Centro de acopio</h1>
         <div class="tbl-header">
@@ -370,10 +370,7 @@ textarea.form-control {
 
 
     </section>
-</form>
 
-</form>
-<form method="GET">
     <section style="top :50px;">
         <h1>Tabla Donaciones</h1>
         <div class="tbl-header">
@@ -429,7 +426,7 @@ textarea.form-control {
 
 
     </section>
-</form>
+
 
 
 </body>
