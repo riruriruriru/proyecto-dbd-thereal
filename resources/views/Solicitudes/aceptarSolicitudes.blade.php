@@ -98,10 +98,11 @@
                         <tr>
                             <th id="id_medidas">{{$medida->id_medidas}}</th>
                             <th>{{$medida->nombre_medida}}</th>
-                            
-                
-                            <th> 
-                            <li><a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a></li>
+                            <th>
+
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a>
+                      
                         <form  method="POST" action="{{ route('solicitudM.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
@@ -110,8 +111,9 @@
                         <div class="form-group">
                             <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                         </div>
-  
-                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                     <button id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                    </div>
                         </form>
 
                         </div>
@@ -151,7 +153,7 @@
                             <th>{{$evento->monto_recaudado}}</th>
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
-                             <li><a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> <th>
+                             <a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Ver Solicitud</a><th>
                             <th> 
                         <form  method="POST" action="{{ route('solicitudE.update') }}">
                         {{ csrf_field() }}
@@ -253,7 +255,7 @@
                         <tr>
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
-                            <th> <li><a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Ver Solicitud</a></li>
+                            <th> <a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Ver Solicitud</a>
                            
                             </th>
                              <th> 
