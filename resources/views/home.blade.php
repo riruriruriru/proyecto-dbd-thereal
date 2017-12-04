@@ -170,31 +170,10 @@
           </div -->
 
           <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header hero__blanco">Vea también</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="/verCatastrofe">Catástrofes</a>
-                    </li>
-                    <li>
-                      <a href="/verMedida">Medidas</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div class="boxContenedor" style="padding-top: 40px;">
+            <a class="twitter-timeline" href="https://twitter.com/onemichile?lang=es">Onemi</a> 
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
-
-<div class="boxContenedor">
- <a class="twitter-timeline" href="https://twitter.com/onemichile?lang=es">Onemi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
 
        
             </div>
