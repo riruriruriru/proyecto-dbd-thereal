@@ -319,7 +319,7 @@ var geocoder = new google.maps.Geocoder();
 <!-- Text input-->
 <div class="form-group">
   <label  for="monto_objetivo">Monto Objetivo</label> 
-  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" type="number">
+  <input id="monto_objetivo" name="monto_objetivo"  placeholder="Monto Objetivo" class="form-control" required="" min=1 type="number">
 
 </div>
 

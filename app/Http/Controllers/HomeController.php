@@ -1701,7 +1701,7 @@ public function donar(Request $request)
         if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
             return back()->with('flash', 'no posee los permisos para realizar esta accion');
         }
-        return $request;
+
         $id = $request->id_medidas;
         $medida = Medidas::find($id);
         $ids_evento = Evento::where('id_medidas_evento', '=', $id)->get();
@@ -1709,19 +1709,89 @@ public function donar(Request $request)
         $ids_donaciones = Donacion::where('id_medidas_donacion', '=', $id)->get();
         $ids_voluntariados = Voluntariado::where('id_medidas_voluntariado', '=', $id)->get();
         foreach ($ids_evento as $evento) {
-            borrarEvento($evento);
+            $e = $evento->id_evento;
+            $ev = Evento::find($e);
+            $ev->delete();
         }
         foreach ($ids_acopios as $acopio) {
-            borrarCentroAcopio($acopio);
+            $a = $acopio->id_acopio;
+            $ce = CentroDeAcopio::find($a);
+            $ce->delete();
         }
         foreach ($ids_donaciones as $donacion) {
-            borrarDonacion($donacion);
+            $d = $donacion->id_donacion;
+            $do = Donacion::find($d);
+            $do->delete();
         }
         foreach ($ids_voluntariados as $voluntariado) {
-            borrarVoluntariado($voluntariado);
+            $v = $voluntariado->id_voluntariado;
+            $vo = Voluntariado::find($v);
+            $vo->delete();
         }
         $medida->delete();
         return back()->with('flash', 'Medida eliminada correctametne');
+    }
+
+    public function borrarCatastrofe(Request $request)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+
+        $idC = $request->id_catastrofe;
+        $catastrofe = Catastrofe::find($idC);
+        $medidas = Medidas::where('id_catastrofe_medidas', '=', $idC);
+        foreach ($medidas as $medida) {
+            $id = $medida->id_medidas;
+            $ids_evento = Evento::where('id_medidas_evento', '=', $id)->get();
+            $ids_acopios = CentroDeAcopio::where('id_medidas_acopio', '=', $id)->get();
+            $ids_donaciones = Donacion::where('id_medidas_donacion', '=', $id)->get();
+            $ids_voluntariados = Voluntariado::where('id_medidas_voluntariado', '=', $id)->get();
+            foreach ($ids_evento as $evento) {
+                $e = $evento->id_evento;
+                $ev = Evento::find($e);
+                $ev->delete();
+            }
+            foreach ($ids_acopios as $acopio) {
+                $a = $acopio->id_acopio;
+                $ce = CentroDeAcopio::find($a);
+                $ce->delete();
+            }
+            foreach ($ids_donaciones as $donacion) {
+                $d = $donacion->id_donacion;
+                $do = Donacion::find($d);
+                $do->delete();
+            }
+            foreach ($ids_voluntariados as $voluntariado) {
+                $v = $voluntariado->id_voluntariado;
+                $vo = Voluntariado::find($v);
+                $vo->delete();
+            }
+        }
+        $catastrofe->delete();
+        return back()->with('flash', 'Medida eliminada correctametne');
+    }
+
+
+    public function bloquearUsuario(Request $request)
+    {
+        $u = Auth::user();
+        if($u->id_tipo_usuario==2 or $u->id_tipo_usuario==3 or $u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
+            return back()->with('flash', 'no posee los permisos para realizar esta accion');
+        }
+        $idUB = $request->id_user;
+        $us = user::find($idUB);
+        $us->id_tipo_usuario = '5';
+        $us->save();
+        return back()->with('flash','Usuario bloqueado correctamente');
+    }
+
+    public function viewUsuariosB()
+    {   
+        $id_usuario_activo = auth()->id();
+        $usuarios = user::all();
+        return view('bloquearUsuario', compact('id_usuario_activo', 'usuarios'));
     }
 
 

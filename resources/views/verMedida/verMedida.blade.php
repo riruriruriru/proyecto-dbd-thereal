@@ -135,7 +135,7 @@
 @section('content')
 
 
-<form class="form-horizontal" method="GET">
+
 <fieldset>
 
 <div class="container">
@@ -161,17 +161,19 @@
                         <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
 
 
+
+                        <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Información</a>
                         @if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2)
-                            <form  method="POST" action="{{ route('borrarMedida') }}">
+                        <form  method="POST" action="{{ route('borrarMedida') }}">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <input id="id_medidas" type="hidden" class="form-control" name="id_medidas" value= "{{$medida->id_medidas}}" >
-                            </div>
-                            <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                        </form>
-
+                            </div>                                
+                                <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                            </form>
                         @endif
-                        <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Información</a>
+
+
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Agregar <span class="caret"></span>
                                 </a>
@@ -182,7 +184,6 @@
                                     <li><a href="/evento/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Evento</a></li> 
                                      <li><a href="/donacion/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Donacion</a></li> 
                                      <li><a href="/voluntariado/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Voluntariado</a></li> 
-                                     
 
                                 </ul>
                             </li>
@@ -200,7 +201,7 @@
         </ul>
     </div>
 </fieldset>
-</form>
+
 
 
 @endsection('content')

@@ -86,6 +86,11 @@ Route::post('borrarCentroAcopio', 'HomeController@borrarCentroAcopio')->name('bo
 Route::post('borrarDonacion', 'HomeController@borrarDonacion')->name('borrarDonacion');
 Route::post('borrarVoluntariado', 'HomeController@borrarVoluntariado')->name('borrarVoluntariado');
 Route::post('borrarMedida', 'HomeController@borrarMedida')->name('borrarMedida');
+Route::post('borrarCatastrofe', 'HomeController@borrarCatastrofe')->name('borrarCatastrofe');
+Route::post('bloquearUsuario', 'HomeController@bloquearUsuario')->name('bloquearUsuario');
+Route::get('/bloquearUsuario','HomeController@viewUsuariosB')->name('viewUsuariosB');
+
+
 
 
 
