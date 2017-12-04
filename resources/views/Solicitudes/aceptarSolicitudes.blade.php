@@ -101,7 +101,7 @@
                             <th>
 
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                            <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Ver Solicitud</a>
+                            <a href="/infoMedida/{{$medida->id_medidas}}" style="text-transform: none;"  type="button" class="btn btn-default">Ver Solicitud</a>
                       
                         <form  method="POST" action="{{ route('solicitudM.update') }}">
                         {{ csrf_field() }}
@@ -153,26 +153,25 @@
                             <th>{{$evento->monto_recaudado}}</th>
                             <th>{{$evento->monto_objetivo}}</th>
                             <th> 
-                             <a href="/verEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Ver Solicitud</a><th>
-                            <th> 
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                             <a href="/verEvento/{{$evento->id_evento}}" style="text-transform: none;"  type="button" class="btn btn-default">Ver Solicitud</a>
+                            
                         <form  method="POST" action="{{ route('solicitudE.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
                             <input id="id_evento" type="hidden" class="form-control" name="id_evento" value= "{{$evento->id_evento}}" >
                         </div>
+
                         <div class="form-group">
                             <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                         </div>
-  
-                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                     <button id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                 </div>
                         </form>
-
-                        </div>
-                            
-
-                            </div>
-
-                            </th>
+                    </div>
+                    </th>
+                        </th>
                         </tr>
                      @endforeach
                 </tbody>
@@ -208,8 +207,9 @@
                             <th>{{$voluntariado->cantidad_voluntarios}}</th>
                             <th>{{$voluntariado->voluntarios_actuales}}</th>
                             <th> 
-                             <li><a href="/verVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Ver Solicitud</a></li> <th>
-                            <th> 
+
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                             <a href="/verVoluntariado/{{$voluntariado->id_voluntariado}}" style="text-transform: none;" type="button" class="btn btn-default">Ver Solicitud</a>
                         <form  method="POST" action="{{ route('solicitudV.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
@@ -218,15 +218,11 @@
                         <div class="form-group">
                             <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                         </div>
-  
-                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                     <button id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                 </div>
                         </form>
-
-                        </div>
-                            
-
-                            </div>
-
+                    </div>
                             </th>
                         </tr>
                      @endforeach
@@ -255,10 +251,11 @@
                         <tr>
                             <th id="id_evento">{{$centroAcopio->id_acopio}}</th>
                             <th>{{$centroAcopio->nombre}}</th>
-                            <th> <a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Ver Solicitud</a>
+                            <th> 
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <a href="/verCentroAcopio/{{$centroAcopio->id_acopio}}" style="text-transform: none;" type="button" class="btn btn-default">Ver Solicitud</a>
                            
-                            </th>
-                             <th> 
+                           
                         <form  method="POST" action="{{ route('solicitudC.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
@@ -267,15 +264,13 @@
                         <div class="form-group">
                             <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                         </div>
-  
-                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                     <button id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                 </div>
                         </form>
 
-                        </div>
-                            
-
+                        
                             </div>
-
                             </th>
                         </tr>
                      @endforeach
@@ -315,8 +310,11 @@
                             <th>{{$donacion->fecha_termino}}</th>
                             <th>{{$donacion->monto_actual}}</th>
                             <th>{{$donacion->objetivo}}</th>
-                            <th> <li><a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Ver Solicitud</a></li></th>
-                             <th> 
+                            <th>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                    <a style="text-transform: none;" href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Ver Solicitud</a>
+                              
+                             
                         <form  method="POST" action="{{ route('solicitudD.update') }}">
                         {{ csrf_field() }}
                           <div class="form-group">
@@ -325,12 +323,13 @@
                         <div class="form-group">
                             <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                         </div>
-  
-                     <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                     <button  id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                 </div>
                         </form>
-
+                              </div>
                             </th>
-                        </tr>
+                        
                      @endforeach
                 </tbody>
             </table>
@@ -363,7 +362,7 @@
                             <th>{{$usuario->name}}</th>
                             <th> 
                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                    <a href="/verSolicitud/{{$usuario->id}}"  type="button" class="btn btn-default">Ver Solicitud</a>
+                                    <a href="/verSolicitud/{{$usuario->id}}" style="text-transform: none;" type="button" class="btn btn-default">Ver Solicitud</a>
                                     <form  method="POST" action="{{ route('solicitud.update') }}">
                                     {{ csrf_field() }}
                                       <div class="form-group">
@@ -372,8 +371,9 @@
                                     <div class="form-group">
                                         <input id="verificador" type="bool" class="form-control" name="verificador" value= "1" style = "display: none">
                                     </div>
-              
-                                        <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validar</button>
+                                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                        <button id="Submit" name="Submit" class="btn btn-default">Validar</button>
+                                    </div>
                                     </form>
                                 </div>
 
