@@ -1651,45 +1651,49 @@ public function donar(Request $request)
 
     //metodos borrar
 
-    public function borrarEvento($id)
+    public function borrarEvento(Request $request)
     {
         $u = Auth::user();
         if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
             return back()->with('flash', 'no posee los permisos para realizar esta accion');
         }
+        $id = $request->$id_evento;
         $evento = Evento::find($id);
         $evento->delete();
         return back()->with('flash', 'Evento eliminado correctamente');
     }
 
-    public function borrarCentroAcopio($id)
+    public function borrarCentroAcopio(Request $request)
     {
         $u = Auth::user();
         if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
             return back()->with('flash', 'no posee los permisos para realizar esta accion');
         }
+        $id = $request->$id_acopio;
         $centroAcopio = CentroDeAcopio::find($id);
         $centroAcopio->delete();
         return back()->with('flash', 'Centro de acopio eliminado correctametne');
     }
 
-    public function borrarVoluntariado($id)
+    public function borrarVoluntariado(Request $request)
     {
         $u = Auth::user();
         if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
             return back()->with('flash', 'no posee los permisos para realizar esta accion');
         }
+        $id = $request->$id_voluntariado;
         $voluntariado = Voluntariado::find($id);
         $voluntariado->delete();
         return back()->with('flash', 'Voluntariado eliminado correctametne');
     }
 
-    public function borrarDonacion($id)
+    public function borrarDonacion(Request $request)
     {
         $u = Auth::user();
         if($u->id_tipo_usuario==4 or $u->id_tipo_usuario==5){
             return back()->with('flash', 'no posee los permisos para realizar esta accion');
         }
+        $id = $request->$id_donacion;
         $donacion = Donacion::find($id);
         $donacion->delete();
         return back()->with('flash', 'Donacion eliminado correctametne');

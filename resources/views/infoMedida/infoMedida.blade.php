@@ -128,8 +128,9 @@ textarea.form-control {
                         <div class="form-group">
                             
                              <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Actualizar</button>
-                            @endif
                         </div>
+                        @endif
+
                     </div>
                 </form>
             </div>
@@ -248,6 +249,16 @@ textarea.form-control {
                                 @endif
                                 <a href="/inscribirseEvento/{{$evento->id_evento}}"  type="button" class="btn btn-default">Inscribirse</a>
 
+                                @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
+                                <form  method="POST" action="{{ route('borrarEvento') }}">
+                                                         {{ csrf_field() }}
+                                    <div class="form-group">
+                                    <input id="id_evento" type="hidden" class="form-control" name="id_evento" value= "{{$evento->id_evento}}" >
+                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                                    </div>
+                                </form>
+                                @endif
+
                             </div>
                             </th>
                         </tr>
@@ -289,6 +300,16 @@ textarea.form-control {
                                 @endif
                                 <a href="/inscribirseVoluntariado/{{$voluntariado->id_voluntariado}}"  type="button" class="btn btn-default">Inscribirse</a>
 
+                                @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
+                                <form  method="POST" action="{{ route('borrarVoluntariado') }}">
+                                                         {{ csrf_field() }}
+                                    <div class="form-group">
+                                    <input id="id_voluntariado" type="hidden" class="form-control" name="id_voluntariado" value= "{{$voluntariado->id_voluntariado}}" >
+                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                                    </div>
+                                </form>
+                                @endif
+
                             </div>
                             </th>
                         </tr>
@@ -328,6 +349,17 @@ textarea.form-control {
                                 @endif
                                     <a href="/donarAcopio/{{$centroAcopio->id_acopio}}"  type="button" class="btn btn-default">Donar</a>
                             </div>
+
+                            @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
+                                <form  method="POST" action="{{ route('borrarCentroAcopio') }}">
+                                                         {{ csrf_field() }}
+                                    <div class="form-group">
+                                    <input id="id_acopio" type="hidden" class="form-control" name="id_acopio" value= "{{$centroAcopio->id_acopio}}" >
+                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                                    </div>
+                                </form>
+                            @endif
+
                             </th>
                         </tr>
                      @endforeach
@@ -377,6 +409,16 @@ textarea.form-control {
                                     <a href="/modificarDonaciones/{{$donacion->id_donacion}}"  type="button" class="btn btn-default">Modificar Donacion</a> 
                                     @endif
                                 </div>
+
+                                @if($datos->id_tipo_usuario ==1 or $datos->id_tipo_usuario ==2 )
+                                <form  method="POST" action="{{ route('borrarDonacion') }}">
+                                                         {{ csrf_field() }}
+                                    <div class="form-group">
+                                    <input id="id_donacion" type="hidden" class="form-control" name="id_donacion" value= "{{$donacion->id_donacion}}" >
+                                    <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
+                                    </div>
+                                </form>
+                                @endif
                             </th>
                         </tr>
                      @endforeach
