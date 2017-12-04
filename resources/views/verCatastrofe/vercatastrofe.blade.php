@@ -172,15 +172,7 @@
                                                      <a href="/infoCatastrofe/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Editar</a>
                                                     @endif
 
-                                                    @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
-                                                        <form  method="POST" action="{{ route('borrarCatastrofe') }}">
-                                                         {{ csrf_field() }}
-                                                        <div class="form-group">
-                                                            <input id="id_catastrofe" type="hidden" class="form-control" name="id_catastrofe" value= "{{$catastrofe->id_catastrofe}}" >
-                                                        </div>                                
-                                                         <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                                                        </form>
-                                                    @endif
+
 
 
                                                      @if($datos->id_tipo_usuario===3 or $datos->id_tipo_usuario===4)
@@ -190,6 +182,16 @@
                                                     <a href="/medida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ingresar Medida</a> 
                                                     @endif
                                                     <a href="/verMedida/{{$catastrofe->id_catastrofe}}" class= "btn btn-default">Ver Medidas</a> 
+                                                    @if($datos->id_tipo_usuario===1 or $datos->id_tipo_usuario===2)
+                                                        <form  method="POST" action="{{ route('borrarCatastrofe') }}">
+                                                         {{ csrf_field() }}
+                                                      
+                                                            <input id="id_catastrofe" type="hidden" class="form-control" name="id_catastrofe" value= "{{$catastrofe->id_catastrofe}}" >
+                                                            <div class="btn-group btn-group-xs" role="group" aria-label="...">                   
+                                                         <button style="padding-top: 1px;padding-bottom: 1px;margin-top: 0px;margin-bottom: 3px;" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                                        </div>
+                                                        </form>
+                                                    @endif
                                                 
 
                                                 </div>

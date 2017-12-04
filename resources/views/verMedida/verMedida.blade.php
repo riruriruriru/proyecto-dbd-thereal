@@ -158,20 +158,12 @@
 
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                        <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
+                       
 
 
 
                         <a href="/infoMedida/{{$medida->id_medidas}}"  type="button" class="btn btn-default">Información</a>
-                        @if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2)
-                        <form  method="POST" action="{{ route('borrarMedida') }}">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <input id="id_medidas" type="hidden" class="form-control" name="id_medidas" value= "{{$medida->id_medidas}}" >
-                            </div>                                
-                                <button id="Submit" name="Submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Eliminar</button>
-                            </form>
-                        @endif
+                        
 
 
                         <li class="dropdown">
@@ -184,6 +176,16 @@
                                     <li><a href="/evento/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Evento</a></li> 
                                      <li><a href="/donacion/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Donacion</a></li> 
                                      <li><a href="/voluntariado/{{$medida->id_medidas}}" class= "btn btn-default">Agregar Voluntariado</a></li> 
+                                     @if($usuario->id_tipo_usuario===1 or $usuario->id_tipo_usuario===2)
+                                        <form  method="POST" action="{{ route('borrarMedida') }}">
+                                            {{ csrf_field() }}
+                                           
+                                                <input id="id_medidas" type="hidden" class="form-control" name="id_medidas" value= "{{$medida->id_medidas}}" >
+                                                <div class="btn-group btn-group-xs" role="group" aria-label="...">                       
+                                                <button style="" id="Submit" name="Submit" class="btn btn-default">Eliminar</button>
+                                            </div>
+                                            </form>
+                                        @endif
 
                                 </ul>
                             </li>
