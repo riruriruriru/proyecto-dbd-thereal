@@ -320,8 +320,9 @@ class CatastrofeController extends Controller
             }
         $texto = '#' . $request->nombre . ' ' . $request->nombre_tipo_catastrofe . ' ';
         $texto2 = $texto . ' '. $request->fecha_inicio;
-        $texto3 = $texto2 . ' '. $request->descripcion;    
-        Twitter::postTweet(array('status' => $texto3, 'format' => 'json'));
+        $texto3 = $texto2 . ' '. $request->descripcion;
+        $texto4 = $texto3 . ' '. $request->lugar_catastrofe;    
+        Twitter::postTweet(array('status' => $texto4, 'format' => 'json'));
         return back()->with('flash','Catastrofe ingresada correctamente');
     }
 
