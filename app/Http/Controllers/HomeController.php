@@ -21,6 +21,7 @@ use App\VoluntariadoUser;
 use App\Trabajo;
 use App\HabilidadesUser;
 use App\Habilidades;
+use Twitter;
 
 
 
@@ -1043,7 +1044,7 @@ class HomeController extends Controller
         }
         else{
 
-            
+
         }
         if(count($id_placeholder)>0 and count($actUser)==0){
             if(in_array((string)$trabajo, $habilidades_user)){
@@ -1418,6 +1419,12 @@ public function donar(Request $request)
             $id = $request->id_acopio;
             $acopio = CentroDeAcopio::where('id_acopio', $id)->first();
             $acopio->verificador = $request->verificador;
+            $texto = '#Centro_de_acopio_' . $acopio->nombre . ' ';
+            $texto3 = $texto . ' '. $acopio->descripcion;
+            $texto4 = $texto3 . ' '. $acopio->direccion;
+            $texto5 = $texto4 . ' Tipo de bien requerido: '. $acopio->tipo_bien;  
+            $texto6 = $texto5 . ' Cantidad objetivo: '. $acopio->cantidad_objetivo;
+            Twitter::postTweet(array('status' => $texto6, 'format' => 'json'));
             $acopio->save();
 
         return back()->with('flash', 'Solicitud aprobada');

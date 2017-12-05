@@ -318,7 +318,7 @@ class CatastrofeController extends Controller
         ]);
         
             }
-        $texto = '#' . $request->nombre . ' ' . $request->nombre_tipo_catastrofe . ' ';
+        $texto = '#Catastrofe_Chile_' . $request->nombre . ' ' . $request->nombre_tipo_catastrofe . ' ';
         $texto2 = $texto . ' '. $request->fecha_inicio;
         $texto3 = $texto2 . ' '. $request->descripcion;
         $texto4 = $texto3 . ' '. $request->lugar_catastrofe;    
