@@ -1038,6 +1038,13 @@ class HomeController extends Controller
         $voluntariado = Voluntariado::find($request->id_voluntariado);
         $trabajo = DB::table('Trabajo')->where('id_trabajo', '=', $request->id_trabajo)->where('trabajo_id_voluntariado', $request->id_voluntariado)->pluck('nombre_trabajo')->first();
         $actUser = DB::table('VoluntariadoUser')->where('id_voluntariado', '=', $request->id_voluntariado)->where('id_user','=',$usuario)->get();
+        if(count($id_placeholder)<1){
+            return back()->with('flash','debe inscribirse previamente al RNV');
+        }
+        else{
+
+            
+        }
         if(count($id_placeholder)>0 and count($actUser)==0){
             if(in_array((string)$trabajo, $habilidades_user)){
                   $voluntariado->voluntarios_actuales = $voluntariado->voluntarios_actuales +1;

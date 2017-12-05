@@ -243,14 +243,19 @@ textarea.form-control {
 <div class="form-group">
   <label for="selectbasic">Seleccionar Tipo</label>
     <select id="tipo_trabajo" name="tipo_trabajo" class="form-control">
-      <option value="Animacion">Animacion Evento</option>
-      <option value="Construccion">Construccion</option>
       <option value="Recoleccion">Recoleccion</option>
-      <option value="Atencion Medica">Atencion Medica</option>
-      <option value="Rescate">Rescate</option>
-      <option value="Cocina">Cocina</option>
-      <option value="Organizacion">Organizacion</option>
+      <option value="Rescate Montania">Rescate Montania</option>
+      <option value="Rescate Marino">Rescate Marino</option>
+      <option value="Construccion">Construccion</option>
       <option value="Transporte">Transporte</option>
+      <option value="Carga">Carga</option>
+      <option value="Bombero">Bombero</option>
+      <option value="Asistencia Medica">Asistencia Medica</option>
+      <option value="Cocina">Cocina</option>
+      <option value="Bombero">Bombero</option>
+      <option value="Veterinario">Veterinario</option>
+      <option value="Profesor">Profesor</option>
+
       <option value="Otros">Otros</option>
     </select>
 
