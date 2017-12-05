@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Catastrofe;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Twitter;
 
 
@@ -37,7 +39,10 @@ class CatastrofeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $usuario = Auth::user();
+      if ($usuario->id_tipo_usuario == 5){
+            return view('home');
+      }
       $placeholder='abc';
          $tipo = $request->tipo_catastrofe;
         if($tipo=='1'){
@@ -49,7 +54,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("Y-m-d", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Incendio',
              
@@ -65,7 +70,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Inundacion',
              
@@ -81,7 +86,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Terremoto',
              
@@ -97,7 +102,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Tsunami',
              
@@ -113,7 +118,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Erupción Volcánica',
              
@@ -129,7 +134,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Aluvión',
              
@@ -145,7 +150,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' =>'Sequía',
              
@@ -161,7 +166,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Temporal de lluvia',
              
@@ -177,7 +182,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Marejadas',
              
@@ -193,7 +198,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Tormentas de arena',
              
@@ -209,7 +214,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Temperaturas extremas',
              
@@ -225,7 +230,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Heladas',
              
@@ -241,7 +246,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Avalanchas de nieve',
              
@@ -257,7 +262,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Actividad volcanica',
              
@@ -273,7 +278,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Brote de enfermedades',
              
@@ -289,7 +294,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => 'Pandemia',
              
@@ -305,7 +310,7 @@ class CatastrofeController extends Controller
              'latitud' =>$request->latitud,
             'longitud' => $request->longitud,
             'fecha_inicio' => date("m-d-Y", strtotime($request->fecha_inicio)),
-            'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
+            //'fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino)),
             'descripcion' => $request->descripcion,
             'nombre_tipo_catastrofe' => $request->nombre_tipo_catastrofe,
              

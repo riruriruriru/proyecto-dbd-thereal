@@ -136,13 +136,13 @@ textarea.form-control {
     <script>
       // In the following example, markers appear when the user clicks on the map.
       // Each marker is labeled with a single alphabetical character.
-      function geocodePosition(pos) {
+function geocodePosition(pos) {
 var geocoder = new google.maps.Geocoder();
             geocoder.geocode({
                 latLng: pos
             }, function (responses) {
                 if (responses && responses.length > 0) {
-                    $('#direccion').val(responses[2].formatted_address);
+                    $('#lugar_catastrofe').val(responses[2].formatted_address);
                     console.log(responses[2].formatted_address)
                 } else {
                     
@@ -150,18 +150,28 @@ var geocoder = new google.maps.Geocoder();
             });
         }
 
+
       function initialize() {
+        var jposLat = "<?php echo (float)$latitud; ?>";
+        var jposLong = "<?php echo (float)$longitud; ?>";
         var bangalore = { lat: 12.97, lng: 77.59 };
+        var latlong = new google.maps.LatLng(jposLat,jposLong);
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.4727088, lng: -70.7702575},
           zoom: 9,
-          mapTypeId: 'roadmap'
+          center: latlong
+      
+        });
+
+        var marker2 = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: 'Origen Catastrofe'
         });
 
 
         // This event listener calls addMarker() when the map is clicked.
         google.maps.event.addListener(map, 'click', function(event) {
-          addMarker(event.latLng, map);
+          addMarker(event.latLng, map, event.place);
         });
         
 
@@ -216,7 +226,8 @@ var geocoder = new google.maps.Geocoder();
             }));
             $("#latitud").val(place.geometry.location.lat());
             $("#longitud").val(place.geometry.location.lng());
-   geocodePosition(marker.getPosition());
+              geocodePosition(place.geometry.location);
+ 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
@@ -238,17 +249,16 @@ var geocoder = new google.maps.Geocoder();
     } else {
     marker = new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
     });
 
   }
+
    $("#latitud").val(location.lat());
    $("#longitud").val(location.lng());
    geocodePosition(marker.getPosition());
-
       }
   google.maps.event.addDomListener(window, 'load', initialize);
-
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVLEuprSyELEb_mOgivlT-hxuC5IbMVOk&callback=initialize"></script>
@@ -393,6 +403,6 @@ var geocoder = new google.maps.Geocoder();
             echo $dato;
             echo "')";
             echo "</script>";
-            header('Refresh: 0.01; URL=/verMedida');
+        
         }
 ?>

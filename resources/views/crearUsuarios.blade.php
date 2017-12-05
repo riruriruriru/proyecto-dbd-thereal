@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('flash::message') 
 @section('styles')
     @parent
     <style type="text/css"><
@@ -170,7 +171,16 @@ textarea.form-control {
         </div>
     </div>
 </section>
-          
- 
-
+        
 @endsection
+
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+         
+        }
+?>

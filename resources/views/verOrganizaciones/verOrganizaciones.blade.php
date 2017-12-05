@@ -205,7 +205,7 @@
 
 <form method="GET" style="border-top-width: 50px;border-top-style: solid;">
      <section style="top :50px;">
-        <h1>Tabla Medidas</h1>
+
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>

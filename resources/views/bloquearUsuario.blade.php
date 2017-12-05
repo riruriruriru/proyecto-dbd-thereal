@@ -203,7 +203,7 @@
     </section>
 
 
-     <section style="top :50px;">
+     <section style="margin-top :100px;">
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>
@@ -273,10 +273,15 @@
 
 </body>
 </html>
-  
-
-         
-  
 @endsection('content')
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+        }
+?>
 
 

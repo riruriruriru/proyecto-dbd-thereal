@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 @section('styles')
     @parent
 <style type="text/css">
@@ -216,3 +216,13 @@
 
 </body>
 </html>
+
+<?php
+    
+        if (Auth::user()->id_tipo_usuario == 5){
+            echo "<script>alert('";
+            echo "Usuario bloqueado";
+            echo "')";
+            echo "</script>";
+        }
+?>

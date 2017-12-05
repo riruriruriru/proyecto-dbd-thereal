@@ -291,3 +291,12 @@
 </body>
 
 @endsection('content')
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+        }
+?>

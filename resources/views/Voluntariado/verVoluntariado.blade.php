@@ -275,7 +275,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="cantidad_participantes">Cantidad Participantes</label>  
 
-  <input id="cantidad_participantes" min="1" name="cantidad_participantes" placeholder="Cantidad" class="form-control" type="number">
+  <input id="cantidad_participantes" min="1" name="cantidad_participantes" required="" placeholder="Cantidad" class="form-control" type="number">
 
 </div>
 <!-- Button -->

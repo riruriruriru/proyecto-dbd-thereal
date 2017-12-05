@@ -407,11 +407,19 @@ var geocoder = new google.maps.Geocoder();
 <?php
         $dato = Session::get('flash');
         if ($dato != ''){
-            echo "<script>alert('";
-            echo $dato;
-            echo "')";
-            echo "</script>";
-            header('Refresh: 0.01; URL=/verCatastrofe');
+            if ($dato == 'La fecha inicio no puede ser menor a la fecha actual'){
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+            }
+            else{
+              echo "<script>alert('";
+              echo $dato;
+              echo "')";
+              echo "</script>";
+              header('Refresh: 0.01; URL=/verCatastrofe');
+            }
         }
 ?>
 

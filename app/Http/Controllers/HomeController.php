@@ -52,6 +52,9 @@ class HomeController extends Controller
     public function viewPerfil()
     {   
         $usuario = Auth::user();
+        if ($usuario->id_tipo_usuario == 5){
+            return view('home');
+        }
         #$usuario = \App\User::find($user->id);
         return view('perfil.perfil', compact('usuario'));
     }
@@ -60,7 +63,9 @@ class HomeController extends Controller
     public function updatePerfil(Request $loQueLlega)
     {
         $usuario = Auth::user();
-        #$usuario = \App\User::find($user->id);
+         if ($usuario->id_tipo_usuario == 5){
+            return view('home');
+        }
         $usuario->name = $loQueLlega->name;
         $usuario->last_name = $loQueLlega->last_name;
         $usuario->email = $loQueLlega->email;
@@ -87,17 +92,20 @@ class HomeController extends Controller
             if($fechaInicio > $fechaTermino){
                     return back()->with('flash', 'La fecha termino no puede ser menor');
             }
-            $fechaActual = strtotime(date("d-m-Y",time()));
-            if($fechaInicio < $fechaActual){
-                        return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
-            }
+           
             else{
+
                     $latitud =$request->latitud;
                     $longitud = $request->longitud;
                     $nombreTipo = $request->tipo_catastrofe;
                     $cat = Catastrofe::updateOrCreate( ['id_catastrofe'=> $request->id_catastrofe],['nombre' => $request->nombre],
                     ['lugar_catastrofe' => $request->lugar_catastrofe], ['latitud' => $request->latitud], ['longitud' => $request->longitud], ['fecha_inicio'=> date("m-d-Y", strtotime($request->fecha_inicio))], ['fecha_termino' => date("m-d-Y", strtotime($request->fecha_termino))], ['descripcion'=>  $request->descripcion], ['nombre_tipo_catastrofe'=> $nombreTipo]);
                     $cat->fecha_termino = $request->fecha_termino;
+                    $cat->fecha_inicio = $request->fecha_inicio;
+                    $cat->nombre_tipo_catastrofe = $request->tipo_catastrofe;
+                    $cat->latitud = $request->latitud;
+                    $cat->longitud = $request->longitud;
+
                     $cat->save();
                     return back()->with('flash', 'Catastrofe Actualizada');
             
@@ -1241,7 +1249,7 @@ public function donar(Request $request)
         $id = $request->id_acopio;
         $acopio = \App\CentroDeAcopio::find($id);
         $acopio->monto_actual = $acopio->monto_actual + $request->monto_donacion;
-        if($acopio->monto_actual>=$acopio->monto_objetivo){
+        if($acopio->monto_actual >= $acopio->cantidad_objetivo){
             $acopio->recibe = 'false';
         }
         $acopio->save();
@@ -1280,7 +1288,7 @@ public function donar(Request $request)
             'rut_pasaporte' => $data->rut_pasaporte,
             
         ]);
-        return back();
+        return back()->with('flash', 'Se creo un usuario correctamente');
     }
 
     public function viewcreateUser()
@@ -1774,7 +1782,7 @@ public function donar(Request $request)
             }
         }
         $catastrofe->delete();
-        return back()->with('flash', 'Medida eliminada correctametne');
+        return back()->with('flash', 'Catastrofe eliminada correctametne');
     }
 
 

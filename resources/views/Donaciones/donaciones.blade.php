@@ -19,7 +19,7 @@
   padding-top: 60px;
   width: 100%;
   width: 100vw;
-  height: px;
+  height: 53vw;
   background: #3a6186; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -106,7 +106,7 @@ textarea.form-control {
 <div class="form-group">
   <label for="objetivo">Monto objetivo</label>  
  
-  <input id="objetivo" name="objetivo" placeholder="Monto objetivo" class="form-control" required="" type="number" min ="0"> 
+  <input id="objetivo" name="objetivo" placeholder="Monto objetivo" class="form-control" required="" type="number" min ="1"> 
 </div>
 
 <!-- Text input-->

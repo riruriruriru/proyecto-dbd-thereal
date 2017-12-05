@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -45,14 +46,40 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="/verOrganizaciones">Organizaciones</a></li>
+                          
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                        @if(Auth::user()->id_tipo_usuario == 5)
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                               
+
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                        
+                                    </li>
+
+                                </ul>
+                            </li>
                         @else
                             <li><a href="/verOrganizaciones">Organizaciones</a></li>
                             <li><a href="/RNV">RNV</a></li>
                         @if(Auth::user()->id_tipo_usuario === 1)
                             <li><a href="/crearUsuarios">Registrar Usuarios</a></li>
+                            <li><a href="/bloquearUsuario">Bloquear</a></li>
                             <li><a href="/aceptarSolicitudes">Aceptar Solicitudes</a></li>
                         @elseif(Auth::user()->id_tipo_usuario === 4)
                             <li><a href="/agregarHabilidad">Agregar Habilidad</a></li>
@@ -116,7 +143,7 @@
 
                                 </ul>
                             </li>
-
+                        @endif
                         @endguest
                     </ul>
                 </div>

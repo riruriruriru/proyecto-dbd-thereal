@@ -211,7 +211,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre de Usuario</th>
-                        <th>Acción</th>
                     </tr>
                 </thead>
             </table>
@@ -225,13 +224,7 @@
                         <tr>
                             <th id="id">{{$i}}</th>
                             <th>{{$usuario->name}}</th>
-                            <th>
-                                <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                    <button href=""  type="button" class="btn btn-default"><a href="">Editar</a></button>
-                                    <button type="button" class="btn btn-default" disabled>Eliminar</button>
-                                     
-                                </div>
-                            </th>
+                            
                           
                         </tr>
                      @endforeach

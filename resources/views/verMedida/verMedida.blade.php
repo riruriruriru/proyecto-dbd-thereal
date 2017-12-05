@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('flash::message') 
 @section('styles')
 @parent
 <style type="text/css"><
@@ -202,10 +202,9 @@
 
 
 
-  <section >
-        <h1>Tabla evento</h1>
-        <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0" style="top :50px;">
+  <section style="margin-top :100px;">
+        <div class="tbl-header" >
+            <table cellpadding="0" cellspacing="0" border="0">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -215,8 +214,8 @@
                 </thead>
             </table>
         </div>
-        <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0">
+        <div class="tbl-content" >
+            <table cellpadding="0" cellspacing="0" border="0" >
                 <tbody> 
                         @foreach($medidas as $medida) 
                         <tr>
@@ -271,3 +270,12 @@
 
 
 @endsection('content')
+<?php
+        $dato = Session::get('flash');
+        if ($dato != ''){
+            echo "<script>alert('";
+            echo $dato;
+            echo "')";
+            echo "</script>";
+        }
+?>
