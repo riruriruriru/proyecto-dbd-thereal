@@ -4,31 +4,31 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTriggerDonacion extends Migration
+class CreateTrigger extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-     public function up()
+        public function up()
 
     {
 
-       DB::unprepared(
-            'CREATE TRIGGER trigger_donation BEFORE UPDATE ON `Donacion` FOR EACH ROW
+        /*DB::unprepared(
+            'CREATE TRIGGER over_donation BEFORE UPDATE ON `Donacion` FOR EACH ROW
             BEGIN
                 IF NEW.monto_actual> NEW.objetivo THEN
                    INSERT INTO `Donacion` (`monto_actual`) VALUES (OLD.monto_actual);
                 END IF;
-            END');
+            END');*/
     }
 
     public function down()
 
     {
 
-        DB::unprepared('DROP TRIGGER trigger_donation');
+        //DB::unprepared('DROP TRIGGER over_donation');
 
     }
 }
