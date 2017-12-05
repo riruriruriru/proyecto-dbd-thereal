@@ -78,7 +78,7 @@
         <div class="orga__background">&nbsp;</div>
         <div class="hero__gradient">&nbsp;</div>
     </section>
-     <section style="top :50px;">
+     <section style="padding-top: 50px;">
         <h1>Tabla Medidas</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
@@ -378,9 +378,6 @@
                                 </div>
 
                             </th>
-                            
-                        
-
                      @endforeach
                 </tbody>
             </table>

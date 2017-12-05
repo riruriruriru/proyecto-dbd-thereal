@@ -84,14 +84,14 @@ class HomeController extends Controller
 
             $fechaInicio = strtotime($request->fecha_inicio);
             $fechaTermino = strtotime($request->fecha_termino);
-            if($fechaInicio > $fechaTermino){
+            /*if($fechaInicio > $fechaTermino){
                     return back()->with('flash', 'La fecha termino no puede ser menor');
-            }
+            }*/
             $fechaActual = strtotime(date("d-m-Y",time()));
-            if($fechaInicio < $fechaActual){
+            /*if($fechaInicio < $fechaActual){
                         return back()->with('flash', 'La fecha inicio no puede ser menor a la fecha actual');
-            }
-            else{
+            }*/
+            //lse{
                     $latitud =$request->latitud;
                     $longitud = $request->longitud;
                     $nombreTipo = $request->tipo_catastrofe;
@@ -101,7 +101,7 @@ class HomeController extends Controller
                     $cat->save();
                     return back()->with('flash', 'Catastrofe Actualizada');
             
-            }
+            //}
             
 
             //$cat = Catastrofe::find($id);
